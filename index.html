@@ -184,6 +184,7 @@ p{max-width:38rem}
   font-family:var(--display);font-size:1.1rem;letter-spacing:.06em;
 }
 .nav__brand img{width:2.4rem;height:2.4rem;border-radius:8px}
+.nav__brand .nav__lockup{width:auto;height:2.5rem;border-radius:0}
 .nav__links{display:none;gap:1.75rem;list-style:none}
 .nav__links a{
   color:var(--powder-dim);text-decoration:none;font-size:.9rem;font-weight:600;
@@ -384,6 +385,15 @@ p{max-width:38rem}
 }
 .price-card li:last-child{border-bottom:none}
 .price-card li::before{content:"✓";color:var(--sky);font-weight:700;flex:none}
+.price-card__addons{
+  font-size:.9375rem;color:var(--powder-dim);
+  border-top:1px solid var(--sky-line);padding-top:1.1rem;margin-bottom:1.1rem;
+}
+.price-card__addons span{
+  display:block;font-family:var(--mono);font-size:.6875rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--sky);
+  margin-bottom:.4rem;
+}
 .price-card__math{
   font-size:.9375rem;color:var(--powder-dim);
   border-top:1px solid var(--sky-line);padding-top:1.25rem;
@@ -721,8 +731,7 @@ p{max-width:38rem}
 <nav class="nav" aria-label="Main">
   <div class="nav__inner">
     <a class="nav__brand" href="#top" aria-label="CYDL home">
-      <img src="assets/logo_cydl_monogram_primary.svg" alt="" width="38" height="38">
-      <span>CYDL</span>
+      <img class="nav__lockup" src="assets/logo_cydl_hearttag_lockup.svg" alt="" width="142" height="40">
     </a>
     <ul class="nav__links">
       <li><a href="#the-pile">The Pile</a></li>
@@ -744,7 +753,7 @@ p{max-width:38rem}
   <div class="hero__content">
     <div class="hero__chip reveal"><span class="chip">NC State · August 2026</span></div>
     <h1 class="reveal">The pile ends here.</h1>
-    <p class="lede reveal">Out Tuesday. Back Thursday, washed, dried, folded. $100 a month flat, and the chair goes back to being a chair.</p>
+    <p class="lede reveal">One 20 lb bag a week. Out Tuesday, back Thursday — washed, dried, folded. $100 a month flat, and the chair goes back to being a chair.</p>
     <div class="hero__cta-row reveal">
       <a class="btn btn--big" href="#waitlist">Join the Founding 100</a>
       <a class="btn-ghost" href="#how-it-works">How it works</a>
@@ -946,13 +955,15 @@ p{max-width:38rem}
       <span class="chip">One flat price</span>
       <p class="price-card__ticket">CYDL claim ticket — Nº 001–100 / Founding</p>
       <div class="price-card__amount">$100<span>/month</span></div>
-      <p class="price-card__sub">No per-pound surprises. No surge weeks. No fine print doing push-ups.</p>
+      <p class="price-card__sub">One 20 lb bag, every week. Your everyday clothes — washed, dried, folded. No per-pound surprises. No surge weeks.</p>
       <ul>
+        <li>One 20 lb bag weekly — that's a full week of one human's clothes</li>
         <li>Pickup every Tuesday, right from your door</li>
         <li>Washed, dried, and folded by people who do this for a living</li>
         <li>Delivered back Thursday. A promise, not an estimate</li>
         <li>Detergent, machines, and handling all included</li>
       </ul>
+      <p class="price-card__addons"><span>Add-ons, priced honestly:</span> Comforter — $20 each. Sheets &amp; linen bundles — separate add-on, priced at signup. The bag is for clothes; the cap is what keeps the price flat.</p>
       <p class="price-card__math">Laundry is a three-hour job — sorting, waiting, folding, the trip back for the sock. $25 a week for those three hours is about $8 an hour. Your Sunday costs more than that.</p>
     </div>
   </div>
@@ -999,6 +1010,18 @@ p{max-width:38rem}
     <details class="reveal">
       <summary>Will my hoodie come back a crop top?</summary>
       <p>No. Your clothes are washed by people who do this for a living at a commercial facility, not a roommate with a hamper and optimism. Cold wash where it matters, low heat where it counts. Delicates get treated like delicates. The hoodie comes back the size it left.</p>
+    </details>
+    <details class="reveal">
+      <summary>How much fits in the bag?</summary>
+      <p>20 pounds — a full week of one person's clothes: shirts, pants, gym gear, socks, towels from the shower kind of life. It's a hard cap, and the hard cap is the honest part: it's what lets the price stay flat instead of creeping like everyone else's. If it's bulging like it owes you money, that's a linens conversation — see below.</p>
+    </details>
+    <details class="reveal">
+      <summary>What about comforters, sheets, and bedding?</summary>
+      <p>Separate, on purpose. The weekly bag is for everyday clothes. Comforters are $20 each as an add-on — tell us at pickup. Sheet and linen bundles are their own add-on, priced when you sign up. Your comforter weighs as much as your entire wardrobe; pretending otherwise is how other services end up with surge weeks.</p>
+    </details>
+    <details class="reveal">
+      <summary>What happens if my bag is overweight?</summary>
+      <p>We weigh at the facility. A little over, we'll wash it and text you a heads-up. A comforter stuffed in the middle, we'll text you an add-on link before anything gets washed — no surprise charges, ever. Nothing gets billed that you didn't say yes to.</p>
     </details>
     <details class="reveal">
       <summary>Is $100 a month actually worth it?</summary>
