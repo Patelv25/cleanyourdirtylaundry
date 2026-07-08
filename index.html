@@ -987,6 +987,24 @@ p{max-width:38rem}
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
     reveals.forEach(function(el){ revealIO.observe(el); });
+
+    /* safety net: anything the observer missed (fast flicks, programmatic
+       jumps) reveals as soon as its top clears the viewport bottom */
+    var sweepPending = false;
+    var sweepReveals = function(){
+      sweepPending = false;
+      var limit = window.innerHeight + window.scrollY - 40;
+      reveals.forEach(function(el){
+        if (!el.classList.contains("is-in") &&
+            el.getBoundingClientRect().top + window.scrollY < limit) {
+          el.classList.add("is-in");
+          revealIO.unobserve(el);
+        }
+      });
+    };
+    window.addEventListener("scroll", function(){
+      if (!sweepPending) { sweepPending = true; requestAnimationFrame(sweepReveals); }
+    }, { passive: true });
   }
 
   /* ---------- ticker pause control (WCAG 2.2.2) ---------- */
