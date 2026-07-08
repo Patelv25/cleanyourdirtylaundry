@@ -105,7 +105,8 @@ p{max-width:38rem}
   color:var(--navy);
   background:var(--sky);
   padding:.45rem .9rem;
-  transform:rotate(-2deg);
+  --tilt:-2deg;
+  transform:rotate(var(--tilt));
   box-shadow:0 2px 10px rgba(0,0,0,.28);
   position:relative;
 }
@@ -114,7 +115,7 @@ p{max-width:38rem}
   color:var(--sky);
   border:1px solid var(--sky-line);
   box-shadow:none;
-  transform:rotate(1.5deg);
+  --tilt:1.5deg;
 }
 .chip::before,.chip::after{
   content:"";position:absolute;top:-5px;width:26px;height:12px;
@@ -295,7 +296,7 @@ p{max-width:38rem}
   will-change:transform;
 }
 .split__media .chip{position:absolute;z-index:2;top:-0.9rem;left:1.25rem}
-.split__media .chip--tail{top:auto;left:auto;bottom:-0.9rem;right:1.25rem;transform:rotate(2deg)}
+.split__media .chip--tail{top:auto;left:auto;bottom:-0.9rem;right:1.25rem;--tilt:2deg}
 
 .pull{
   font-family:var(--display);
@@ -588,6 +589,106 @@ p{max-width:38rem}
 /* mono stamp voice */
 .kicker,.chip,.step__tag,.hero__micro{font-family:var(--mono)}
 
+/* ============ V2: STAMP-IN CHIPS ============ */
+@keyframes stampIn{
+  0%{opacity:0;transform:rotate(calc(var(--tilt,-2deg) - 7deg)) scale(1.7)}
+  60%{opacity:1;transform:rotate(calc(var(--tilt,-2deg) + 1deg)) scale(.96)}
+  100%{opacity:1;transform:rotate(var(--tilt,-2deg)) scale(1)}
+}
+.js .reveal.is-in .chip,
+.js .chip.reveal.is-in{
+  animation:stampIn .45s cubic-bezier(.34,1.56,.64,1) both;
+  animation-delay:var(--stagger,0ms);
+}
+.js .reveal.is-in .chip--ghost{animation:none}
+
+/* ============ V2: PERFORATION TEAR ============ */
+.js [data-tear]{clip-path:inset(-12px 100% -12px -10px);
+  transition:clip-path 1s cubic-bezier(.22,.9,.3,1)}
+.js [data-tear].is-in{clip-path:inset(-12px -10px -12px -10px)}
+
+/* ============ V2: DRUM SCROLL INDICATOR ============ */
+.drum{
+  position:fixed;right:1.1rem;bottom:1.1rem;z-index:90;
+  width:52px;height:52px;opacity:.85;pointer-events:none;
+}
+.drum__ring{fill:none;stroke:rgba(127,191,233,.25);stroke-width:3}
+.drum__prog{fill:none;stroke:var(--sky);stroke-width:3;stroke-linecap:round;
+  stroke-dasharray:132;stroke-dashoffset:132;transform:rotate(-90deg);transform-origin:center}
+.drum__fins{stroke:var(--sky);stroke-width:2.5;stroke-linecap:round;transform-origin:center}
+@media (max-width:640px){.drum{width:40px;height:40px;right:.8rem;bottom:.8rem}}
+
+/* ============ V2: THE ROUTE ============ */
+.route{background:var(--navy-deep);overflow:hidden}
+.route .wrap{max-width:var(--maxw)}
+.route h2{margin:1rem 0 1.25rem}
+.route__map{margin-top:2.5rem;border:1px solid rgba(127,191,233,.22);
+  border-radius:8px;background:var(--navy);padding:clamp(.75rem,2vw,1.75rem)}
+.route__map svg{width:100%;height:auto;display:block}
+.route__path{fill:none;stroke:var(--sky);stroke-width:2.5;
+  stroke-dasharray:6 8;opacity:.9}
+.js .route__pathdraw{stroke-dasharray:1400;stroke-dashoffset:1400;stroke:rgba(127,191,233,.28);
+  stroke-width:2.5;fill:none}
+.js .route.is-in .route__pathdraw{animation:routeDraw 2.6s cubic-bezier(.4,0,.2,1) .3s forwards}
+@keyframes routeDraw{to{stroke-dashoffset:0}}
+.route__node{fill:var(--navy);stroke:var(--sky);stroke-width:2}
+.route__node--home{fill:var(--lemon);stroke:none}
+.route__label{font-family:var(--mono);font-size:15px;
+  fill:var(--powder);letter-spacing:.08em}
+.route__sub{font-family:var(--mono);font-size:12.5px;
+  fill:rgba(230,240,250,.62)}
+.route__path--spur{opacity:.45}
+.js .route__path--main{opacity:0;transition:opacity .8s ease}
+.js .route.is-in .route__path--main{opacity:.9;transition-delay:2.4s}
+@media (max-width:640px){
+  .route__map{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .route__map svg{min-width:560px}
+}
+.route__van{fill:var(--powder)}
+.js .route.is-in .route__van{
+  offset-path:path("M 80 300 C 180 300 200 210 300 205 C 380 201 420 150 500 130 C 560 116 600 90 640 78");
+  animation:vanRun 3s cubic-bezier(.4,0,.2,1) .5s forwards}
+@keyframes vanRun{from{offset-distance:0%}to{offset-distance:100%}}
+@media (prefers-reduced-motion: reduce){
+  .js .route__pathdraw{stroke-dashoffset:0;animation:none}
+  .js .route.is-in .route__van{animation:none;offset-distance:100%}
+  .js .route__path--main{opacity:.9;transition:none}
+  .js .reveal.is-in .chip,.js .chip.reveal.is-in{animation:none}
+  .js .reveal.is-in .gc__bubble{animation:none}
+  .js [data-tear]{clip-path:none;transition:none}
+  .drum{display:none}
+}
+.visually-hidden{
+  position:absolute;width:1px;height:1px;margin:-1px;padding:0;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+
+/* ============ V2: GROUP CHAT ============ */
+.gc{max-width:26rem}
+.gc__bubble{
+  max-width:88%;padding:.65rem 1rem;border-radius:16px;margin-bottom:.5rem;
+  font-size:.9375rem;line-height:1.45;width:fit-content;
+}
+.gc__bubble--them{background:var(--navy-raise);color:var(--powder);border-bottom-left-radius:4px}
+.gc__bubble--you{background:var(--sky);color:var(--navy);margin-left:auto;border-bottom-right-radius:4px;font-weight:500}
+.gc__meta{font-family:var(--mono);font-size:.6875rem;color:var(--powder-faint);
+  letter-spacing:.1em;text-transform:uppercase;margin:.35rem 0 .85rem;text-align:center}
+.js .reveal.is-in .gc__bubble{animation:bubbleIn .35s ease both}
+.js .reveal.is-in .gc__bubble:nth-child(3){animation-delay:.25s}
+.js .reveal.is-in .gc__bubble:nth-child(4){animation-delay:.5s}
+.js .reveal.is-in .gc__bubble:nth-child(5){animation-delay:.75s}
+.js .reveal.is-in .gc__bubble:nth-child(6){animation-delay:1s}
+@keyframes bubbleIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+
+/* ============ V2: LIVE SPOTS ============ */
+.founding__live{
+  display:inline-block;margin-top:.9rem;
+  font-family:var(--mono);font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--sky);border:1px solid rgba(127,191,233,.35);border-radius:99px;
+  padding:.45rem 1rem;
+}
+.founding__live:empty{display:none}
+
 /* ============ REDUCED MOTION ============ */
 @media (prefers-reduced-motion: reduce){
   .js .reveal{opacity:1;transform:none;transition:none}
@@ -665,6 +766,8 @@ p{max-width:38rem}
       <span class="ticker__item">Out Tuesday. Back Thursday. Folded.</span>
       <span class="ticker__item">Take a load off.</span>
       <span class="ticker__item">Get sorted.</span>
+      <span class="ticker__item">Ten minutes from the Belltower.</span>
+      <span class="ticker__item">Raleigh born. Raleigh washed.</span>
       <span class="ticker__item">Both socks. Every time.</span>
       <span class="ticker__item">Sunday is yours again.</span>
       <span class="ticker__item">Folded like you were raised right.</span>
@@ -678,6 +781,8 @@ p{max-width:38rem}
       <span class="ticker__item">Out Tuesday. Back Thursday. Folded.</span>
       <span class="ticker__item">Take a load off.</span>
       <span class="ticker__item">Get sorted.</span>
+      <span class="ticker__item">Ten minutes from the Belltower.</span>
+      <span class="ticker__item">Raleigh born. Raleigh washed.</span>
       <span class="ticker__item">Both socks. Every time.</span>
       <span class="ticker__item">Sunday is yours again.</span>
       <span class="ticker__item">Folded like you were raised right.</span>
@@ -694,6 +799,14 @@ p{max-width:38rem}
       <h2 id="pile-h" class="reveal">You know the pile.</h2>
       <p class="reveal">It started as one hoodie on the chair. Now the chair has a job it never applied for and you're running the sniff test on a Tuesday like that's a normal way to live. It isn't normal. It's just common.</p>
       <p class="reveal">Every dorm at NC State grows one: the pile, quietly gaining mass in the corner, waiting for you to run out of socks and options at the same time. Yours is about to become someone else's problem. Specifically, ours.</p>
+      <div class="gc reveal" role="group" aria-label="A group chat, dramatized">
+        <p class="gc__meta">the roommate group chat · tuesday 8:41 am</p>
+        <p class="gc__bubble gc__bubble--them"><span class="visually-hidden">Roommate: </span>whose turn is it for a laundry run</p>
+        <p class="gc__bubble gc__bubble--them"><span class="visually-hidden">Roommate: </span>we're out of quarters again btw</p>
+        <p class="gc__bubble gc__bubble--you"><span class="visually-hidden">You: </span>we don't do that anymore</p>
+        <p class="gc__bubble gc__bubble--them"><span class="visually-hidden">Roommate: </span>??</p>
+        <p class="gc__bubble gc__bubble--you"><span class="visually-hidden">You: </span>bag's already on the porch. check thursday</p>
+      </div>
       <p class="pull reveal">The pile has had a good run. End it.</p>
     </div>
     <div class="split__media reveal">
@@ -706,7 +819,7 @@ p{max-width:38rem}
   </div>
 </section>
 
-<hr class="perf" aria-hidden="true">
+<hr class="perf" aria-hidden="true" data-tear>
 
 <!-- ============ HOW IT WORKS ============ -->
 <section class="section" id="how-it-works" aria-labelledby="how-h">
@@ -739,7 +852,7 @@ p{max-width:38rem}
   </div>
 </section>
 
-<hr class="perf" aria-hidden="true">
+<hr class="perf" aria-hidden="true" data-tear>
 
 <!-- ============ THE RETURN ============ -->
 <section class="section" id="the-return" aria-labelledby="return-h">
@@ -761,7 +874,7 @@ p{max-width:38rem}
   </div>
 </section>
 
-<hr class="perf" aria-hidden="true">
+<hr class="perf" aria-hidden="true" data-tear>
 
 <!-- ============ YOUR SUNDAY BACK ============ -->
 <section class="section" id="your-sunday-back" aria-labelledby="sunday-h">
@@ -782,6 +895,40 @@ p{max-width:38rem}
   </div>
 </section>
 
+<!-- ============ THE ROUTE ============ -->
+<section class="section route reveal" id="the-route" aria-labelledby="route-h">
+  <div class="wrap">
+    <span class="kicker">The route</span>
+    <h2 id="route-h">One van. Four campuses. Zero excuses.</h2>
+    <p class="lede">We're not a national app with a contractor problem. We're a Raleigh facility with a route — and your campus is on it.</p>
+    <div class="route__map">
+      <svg viewBox="0 0 700 400" role="img" aria-label="Stylized Raleigh route map from home base on North Raleigh Boulevard: Shaw, 1.5 miles, closest stop; William Peace, 2 miles, downtown; NC State, the big one, launching August 2026; and Meredith in west Raleigh">
+        <path class="route__pathdraw" d="M 80 300 C 180 300 200 210 300 205 C 380 201 420 150 500 130 C 560 116 600 90 640 78"/>
+        <path class="route__path route__path--main" d="M 80 300 C 180 300 200 210 300 205 C 380 201 420 150 500 130 C 560 116 600 90 640 78"/>
+        <circle class="route__node route__node--home" cx="80" cy="300" r="9"/>
+        <text class="route__label" x="60" y="336">HOME BASE</text>
+        <text class="route__sub" x="60" y="354">N RALEIGH BLVD · THE MACHINES LIVE HERE</text>
+        <circle class="route__node" cx="300" cy="205" r="7"/>
+        <text class="route__label" x="283" y="178">SHAW</text>
+        <text class="route__sub" x="283" y="242">1.5 MILES · CLOSEST STOP</text>
+        <circle class="route__node" cx="500" cy="130" r="7"/>
+        <text class="route__label" x="470" y="104">WM. PEACE</text>
+        <text class="route__sub" x="470" y="166">2 MILES · DOWNTOWN</text>
+        <circle class="route__node" cx="640" cy="78" r="7"/>
+        <text class="route__label" x="545" y="50">NC STATE</text>
+        <text class="route__sub" x="545" y="30">THE BIG ONE · AUG 2026</text>
+        <circle class="route__node" cx="430" cy="330" r="7"/>
+        <text class="route__label" x="400" y="366">MEREDITH</text>
+        <text class="route__sub" x="400" y="386">WEST RALEIGH · THE SPUR</text>
+        <path class="route__path route__path--spur" d="M 80 300 C 220 340 330 345 430 330"/>
+        <circle class="route__van" cx="80" cy="300" r="5.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<hr class="perf" aria-hidden="true" data-tear>
+
 <!-- ============ PRICING ============ -->
 <section class="section pricing" id="pricing" aria-labelledby="pricing-h">
   <div class="wrap pricing__grid">
@@ -790,6 +937,7 @@ p{max-width:38rem}
       <h2 id="pricing-h" class="reveal">One price. Flat. Unlike your fitted sheet.</h2>
       <div class="founding reveal">
         <div class="founding__count"><span>100</span><small>founding spots · <span style="white-space:nowrap">Nº 001–100</span></small></div>
+        <span class="founding__live" id="spots-live"></span>
         <p>The first 100 on the waitlist get a founding number, first claim on launch-week pickup slots, and a spot that's already locked when the rest of campus finds out this exists. After 100, the list is just a list.</p>
         <a class="btn" href="#waitlist">Claim your spot</a>
       </div>
@@ -810,7 +958,7 @@ p{max-width:38rem}
   </div>
 </section>
 
-<hr class="perf" aria-hidden="true">
+<hr class="perf" aria-hidden="true" data-tear>
 
 <!-- ============ PARENTS ============ -->
 <section class="section parents" id="parents" aria-labelledby="parents-h">
@@ -837,7 +985,7 @@ p{max-width:38rem}
   </div>
 </section>
 
-<hr class="perf" aria-hidden="true">
+<hr class="perf" aria-hidden="true" data-tear>
 
 <!-- ============ FAQ ============ -->
 <section class="section faq" id="faq" aria-labelledby="faq-h">
@@ -934,6 +1082,18 @@ p{max-width:38rem}
 
 </main>
 
+<div class="drum" aria-hidden="true">
+  <svg viewBox="0 0 48 48">
+    <circle class="drum__ring" cx="24" cy="24" r="21"/>
+    <circle class="drum__prog" id="drum-prog" cx="24" cy="24" r="21"/>
+    <g class="drum__fins" id="drum-fins">
+      <line x1="24" y1="13" x2="24" y2="19"/>
+      <line x1="33.5" y1="29.5" x2="28.3" y2="26.5"/>
+      <line x1="14.5" y1="29.5" x2="19.7" y2="26.5"/>
+    </g>
+  </svg>
+</div>
+
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="wrap">
@@ -970,11 +1130,13 @@ p{max-width:38rem}
   document.querySelectorAll("[data-stagger]").forEach(function(group){
     var kids = group.querySelectorAll(".reveal");
     kids.forEach(function(el, i){
-      el.style.transitionDelay = Math.min(i * 90, 540) + "ms";
+      var d = Math.min(i * 90, 540);
+      el.style.transitionDelay = d + "ms";
+      el.style.setProperty("--stagger", d + "ms");
     });
   });
 
-  var reveals = document.querySelectorAll(".reveal");
+  var reveals = document.querySelectorAll(".reveal, [data-tear]");
   if (reduceMotion || !("IntersectionObserver" in window)) {
     reveals.forEach(function(el){ el.classList.add("is-in"); });
   } else {
@@ -1050,6 +1212,47 @@ p{max-width:38rem}
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
     applyParallax();
+  }
+
+  /* ---------- drum scroll indicator ---------- */
+  var drumProg = document.getElementById("drum-prog");
+  var drumFins = document.getElementById("drum-fins");
+  if (drumProg && drumFins && !reduceMotion) {
+    var drumPending = false;
+    var drumTick = function(){
+      drumPending = false;
+      if (motionMq.matches) return;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+      drumProg.style.strokeDashoffset = String(132 * (1 - p));
+      drumFins.style.transform = "rotate(" + Math.round(p * 720) + "deg)";
+    };
+    window.addEventListener("scroll", function(){
+      if (!drumPending) { drumPending = true; requestAnimationFrame(drumTick); }
+    }, { passive: true });
+    drumTick();
+  }
+
+  /* ---------- honest live spots counter ---------- */
+  var spotsLive = document.getElementById("spots-live");
+  if (spotsLive && window.fetch) {
+    fetch("founders-count.json", { cache: "no-store" })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (!d || typeof d.claimed !== "number") return;
+        var c = d.claimed;
+        if (c <= 0) {
+          spotsLive.textContent = "Nº 001 is still on the table";
+        } else if (c === 1) {
+          spotsLive.textContent = "Nº 001 claimed · 99 remain";
+        } else if (c < 100) {
+          spotsLive.textContent = "Nº 001–" + String(c).padStart(3, "0") +
+            " claimed · " + (100 - c) + " remain";
+        } else {
+          spotsLive.textContent = "Founding 100 full — waitlist open";
+        }
+      })
+      .catch(function(){ /* stay silent, static 100 stands */ });
   }
 
   /* ---------- waitlist form: fetch submit + inline success ---------- */
