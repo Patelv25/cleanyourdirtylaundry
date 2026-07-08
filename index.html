@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYDL — The Pile Ends Here | Student Laundry, NC State</title>
+<meta name="description" content="CYDL is student laundry done for you. Bag out Tuesday, back Thursday washed, dried, and folded. $100 a month flat. Launching at NC State August 2026. Join the Founding 100 waitlist.">
+<meta name="theme-color" content="#1E2A38">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="CYDL — The Pile Ends Here">
+<meta property="og:description" content="Out Tuesday. Back Thursday, washed, dried, folded. $100 a month flat. Launching at NC State this August. First 100 on the waitlist lock founding status.">
+<meta property="og:image" content="https://cleanyourdirtylaundry.com/assets/hero-dorm.jpg">
+<meta property="og:site_name" content="CYDL — Clean Your Dirty Laundry">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CYDL — The Pile Ends Here">
+<meta name="twitter:description" content="Out Tuesday. Back Thursday, folded. $100 a month flat. Join the Founding 100.">
+<meta name="twitter:image" content="https://cleanyourdirtylaundry.com/assets/hero-dorm.jpg">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E2A38'/%3E%3Ctext x='32' y='44' font-family='Arial Black, Arial, sans-serif' font-size='36' font-weight='900' fill='%23E6F0FA' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --navy:#1E2A38;
+  --navy-deep:#16202B;
+  --navy-raise:#243447;
+  --powder:#E6F0FA;
+  --powder-dim:rgba(230,240,250,.72);
+  --powder-faint:rgba(230,240,250,.62);
+  --sky:#7FBFE9;
+  --sky-faint:rgba(127,191,233,.16);
+  --sky-line:rgba(127,191,233,.32);
+  --lemon:#FFD24D;
+  --display:'Archivo Black', 'Arial Black', sans-serif;
+  --body:'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --mono:ui-monospace, 'SF Mono', Menlo, 'Courier New', monospace;
+  --pad:clamp(1.25rem, 5vw, 4rem);
+  --maxw:76rem;
+}
+
+/* ============ RESET / BASE ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:5.5rem}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+}
+body{
+  font-family:var(--body);
+  background:var(--navy);
+  color:var(--powder);
+  line-height:1.6;
+  font-size:1.0625rem;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--sky)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{
+  outline:2px solid var(--lemon);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+/* grain overlay */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:999;
+  pointer-events:none;
+  opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.skip-link{
+  position:absolute;left:-9999px;top:0;
+  background:var(--lemon);color:var(--navy);
+  padding:.6rem 1rem;font-weight:700;z-index:1001;text-decoration:none;
+}
+.skip-link:focus{left:1rem;top:1rem}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+/* ============ TYPE ============ */
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(2.75rem, 9.5vw, 7rem);color:var(--powder)}
+h2{font-size:clamp(2rem, 5.5vw, 4.25rem);color:var(--powder)}
+h3{font-size:clamp(1.25rem, 2.5vw, 1.75rem)}
+p{max-width:38rem}
+.lede{font-size:clamp(1.0625rem, 1.8vw, 1.3125rem);color:var(--powder-dim)}
+.kicker{
+  font-size:.8125rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--sky);margin-bottom:1rem;display:block;
+}
+
+/* tape-label chips */
+.chip{
+  display:inline-block;
+  font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--navy);
+  background:var(--sky);
+  padding:.45rem .9rem;
+  transform:rotate(-2deg);
+  box-shadow:0 2px 10px rgba(0,0,0,.28);
+  position:relative;
+}
+.chip--ghost{
+  background:var(--sky-faint);
+  color:var(--sky);
+  border:1px solid var(--sky-line);
+  box-shadow:none;
+  transform:rotate(1.5deg);
+}
+.chip::before,.chip::after{
+  content:"";position:absolute;top:-5px;width:26px;height:12px;
+  background:rgba(230,240,250,.28);
+  transform:rotate(-4deg);
+}
+.chip::before{left:-8px}
+.chip::after{right:-8px;transform:rotate(5deg)}
+.chip--ghost::before,.chip--ghost::after{display:none}
+
+/* perforation divider */
+.perf{
+  border:none;height:0;
+  border-top:2px dashed var(--sky-line);
+  margin:0 var(--pad);
+  position:relative;
+}
+.perf::before,.perf::after{
+  content:"";position:absolute;top:-8px;width:14px;height:14px;border-radius:50%;
+  background:var(--navy-deep);border:2px dashed var(--sky-line);
+}
+.perf::before{left:-7px}
+.perf::after{right:-7px}
+
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-block;
+  font-family:var(--body);font-weight:700;font-size:1rem;
+  letter-spacing:.02em;
+  background:var(--lemon);color:var(--navy);
+  border:none;cursor:pointer;text-decoration:none;
+  padding:1rem 2rem;
+  border-radius:3px;
+  box-shadow:0 4px 24px rgba(255,210,77,.22);
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  will-change:transform;
+}
+.btn:hover{background:#FFDC70;box-shadow:0 6px 32px rgba(255,210,77,.34)}
+.btn:active{transform:scale(.97)}
+.btn--big{padding:1.2rem 2.6rem;font-size:1.125rem}
+.btn--small{padding:.65rem 1.25rem;font-size:.875rem}
+.btn-ghost{
+  display:inline-block;font-weight:600;color:var(--powder);
+  text-decoration:none;padding:1rem 1.5rem;
+  border:1px solid var(--sky-line);border-radius:3px;
+  transition:border-color .18s ease,color .18s ease;
+}
+.btn-ghost:hover{border-color:var(--sky);color:var(--sky)}
+
+/* ============ NAV ============ */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(30,42,56,.82);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--sky-line);
+}
+.nav__inner{
+  max-width:var(--maxw);margin:0 auto;
+  padding:.8rem var(--pad);
+  display:flex;align-items:center;gap:1rem;justify-content:space-between;
+}
+.nav__brand{
+  display:flex;align-items:center;gap:.7rem;
+  text-decoration:none;color:var(--powder);
+  font-family:var(--display);font-size:1.1rem;letter-spacing:.06em;
+}
+.nav__brand img{width:2.4rem;height:2.4rem;border-radius:8px}
+.nav__links{display:none;gap:1.75rem;list-style:none}
+.nav__links a{
+  color:var(--powder-dim);text-decoration:none;font-size:.9rem;font-weight:600;
+  transition:color .15s ease;
+}
+.nav__links a:hover{color:var(--sky)}
+@media (min-width:860px){
+  .nav__links{display:flex}
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;align-items:center;
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero__img{
+  position:absolute;inset:0;z-index:-2;
+  width:100%;height:100%;object-fit:cover;object-position:center;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(to bottom, rgba(30,42,56,.55) 0%, rgba(30,42,56,0) 30%, rgba(30,42,56,.2) 70%, var(--navy) 100%),
+    linear-gradient(100deg, rgba(30,42,56,.97) 0%, rgba(30,42,56,.88) 42%, rgba(30,42,56,.38) 100%);
+}
+.hero__content{
+  max-width:var(--maxw);width:100%;margin:0 auto;
+  padding:8rem var(--pad) 6rem;
+}
+.hero__chip{margin-bottom:1.75rem}
+.hero h1{max-width:11ch;margin-bottom:1.5rem}
+.hero .lede{margin-bottom:2.5rem;max-width:32rem}
+.hero__cta-row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.hero__micro{
+  margin-top:1.5rem;font-size:.8125rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--sky);
+}
+.hero__scroll{
+  position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  color:var(--powder-faint);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
+  text-decoration:none;pointer-events:none;
+  font-family:var(--mono);white-space:nowrap;
+}
+
+/* ============ TICKER ============ */
+.ticker{
+  overflow:hidden;
+  border-top:1px solid rgba(127,191,233,.22);
+  border-bottom:1px solid rgba(127,191,233,.22);
+  background:var(--navy-deep);
+  padding:1.1rem 0;
+  position:relative;
+}
+.ticker:hover .ticker__track,
+.ticker:focus-within .ticker__track,
+.ticker.is-paused .ticker__track{animation-play-state:paused}
+.ticker__pause{
+  position:absolute;right:.6rem;top:50%;transform:translateY(-50%);
+  background:var(--navy);color:var(--powder-dim);
+  border:1px solid rgba(127,191,233,.35);border-radius:3px;
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:.4rem .6rem;cursor:pointer;z-index:2;
+}
+.ticker__pause:hover{color:var(--powder);border-color:var(--sky)}
+.ticker__track{
+  display:flex;width:max-content;
+  animation:marquee 46s linear infinite;
+}
+.ticker__group{display:flex;flex:none;align-items:center}
+.ticker__item{
+  flex:none;
+  font-family:var(--display);font-size:1rem;letter-spacing:.03em;
+  color:var(--powder-dim);white-space:nowrap;
+  padding:0 1.4rem;
+  display:flex;align-items:center;gap:2.8rem;
+}
+.ticker__item::after{content:"•";color:var(--sky);font-family:var(--body)}
+@keyframes marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ============ SECTIONS ============ */
+.section{padding:clamp(4.5rem, 10vw, 8.5rem) 0;position:relative}
+.section--tight{padding:clamp(3.5rem, 8vw, 6.5rem) 0}
+
+/* split layout */
+.split{
+  display:grid;gap:2.5rem;align-items:center;
+  grid-template-columns:1fr;
+}
+@media (min-width:900px){
+  .split{grid-template-columns:1fr 1fr;gap:clamp(2.5rem, 6vw, 5.5rem)}
+  .split--flip .split__media{order:2}
+  .split--flip .split__copy{order:1}
+}
+.split__copy h2{margin:1rem 0 1.25rem}
+.split__copy p + p{margin-top:1rem}
+.split__media{position:relative}
+.split__frame{
+  position:relative;overflow:hidden;border-radius:6px;
+  border:1px solid var(--sky-line);
+  padding:.5rem;background:var(--navy-raise);
+}
+.split__frame img{
+  border-radius:3px;width:100%;height:auto;
+  will-change:transform;
+}
+.split__media .chip{position:absolute;z-index:2;top:-0.9rem;left:1.25rem}
+.split__media .chip--tail{top:auto;left:auto;bottom:-0.9rem;right:1.25rem;transform:rotate(2deg)}
+
+.pull{
+  font-family:var(--display);
+  font-size:clamp(1.5rem, 3vw, 2.25rem);
+  color:var(--sky);line-height:1.3;
+  border-left:3px solid var(--sky);
+  padding-left:1.1rem;margin-top:1.75rem;max-width:34rem;
+}
+
+/* ============ STEPS ============ */
+.steps-head{margin-bottom:clamp(2.5rem,6vw,4.5rem)}
+.steps-head h2{margin-bottom:1.25rem}
+.steps{
+  display:grid;gap:2.25rem;
+  grid-template-columns:1fr;
+  counter-reset:step;
+}
+@media (min-width:820px){
+  .steps{grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,3vw,3rem)}
+}
+.step{
+  border-top:1px solid var(--sky-line);
+  padding-top:1.5rem;position:relative;
+}
+.step__num{
+  font-family:var(--display);
+  font-size:clamp(3.5rem, 8vw, 6rem);
+  line-height:1;
+  color:transparent;
+  -webkit-text-stroke:2px var(--sky);
+  display:block;margin-bottom:.9rem;
+}
+@supports not (-webkit-text-stroke:2px var(--sky)){
+  .step__num{color:var(--sky)}
+}
+.step h3{color:var(--powder);margin-bottom:.75rem}
+.step p{color:var(--powder-dim);font-size:1rem}
+.step__tag{
+  display:inline-block;margin-top:1rem;
+  font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--sky);
+}
+
+/* ============ STACK (unboxing) ============ */
+.stack{
+  display:grid;gap:2.5rem;align-items:center;grid-template-columns:1fr;
+}
+@media (min-width:900px){
+  .stack{grid-template-columns:.9fr 1.1fr;gap:clamp(2.5rem,6vw,5.5rem)}
+}
+.stack__media{position:relative;max-width:30rem;margin:0 auto;width:100%}
+
+/* ============ PRICING ============ */
+.pricing{background:var(--navy-deep)}
+.pricing__grid{
+  display:grid;gap:2.5rem;grid-template-columns:1fr;align-items:start;
+}
+@media (min-width:940px){
+  .pricing__grid{grid-template-columns:1.1fr .9fr;gap:clamp(2.5rem,6vw,5rem)}
+}
+.price-card{
+  border:2px dashed var(--sky-line);
+  border-radius:8px;
+  background:var(--navy);
+  padding:clamp(1.75rem, 4vw, 2.75rem);
+  position:relative;
+}
+.price-card .chip{position:absolute;top:-0.95rem;right:1.5rem}
+.price-card__amount{
+  font-family:var(--display);
+  font-size:clamp(3.5rem, 9vw, 5.5rem);
+  color:var(--powder);line-height:1;
+}
+.price-card__amount span{
+  font-size:clamp(1rem, 2vw, 1.25rem);color:var(--powder-dim);
+  font-family:var(--body);font-weight:600;
+}
+.price-card__sub{color:var(--powder-dim);margin:.75rem 0 1.75rem;font-size:.9375rem}
+.price-card ul{list-style:none;margin-bottom:1.75rem}
+.price-card li{
+  padding:.7rem 0;
+  border-bottom:1px solid rgba(127,191,233,.18);
+  display:flex;gap:.75rem;align-items:baseline;
+  font-size:1rem;
+}
+.price-card li:last-child{border-bottom:none}
+.price-card li::before{content:"✓";color:var(--sky);font-weight:700;flex:none}
+.price-card__math{
+  font-size:.9375rem;color:var(--powder-dim);
+  border-top:1px solid var(--sky-line);padding-top:1.25rem;
+}
+.price-card__ticket{
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--sky);margin-bottom:1.1rem;
+  padding-bottom:.9rem;border-bottom:1px solid rgba(127,191,233,.22);
+}
+.price-card::before,.price-card::after{
+  content:"";position:absolute;top:50%;width:18px;height:18px;border-radius:50%;
+  background:var(--navy-deep);transform:translateY(-50%);
+  border:2px dashed var(--sky-line);
+}
+.price-card::before{left:-11px}
+.price-card::after{right:-11px}
+.founding{
+  padding:clamp(1.5rem, 3vw, 2.25rem) 0;
+}
+.founding h2{margin:1rem 0 1.25rem}
+.founding__count{
+  font-family:var(--display);
+  font-size:clamp(5rem, 14vw, 9rem);
+  color:transparent;line-height:1;
+  -webkit-text-stroke:2px var(--sky);
+  display:flex;align-items:baseline;gap:.75rem;
+}
+@supports not (-webkit-text-stroke:2px var(--sky)){
+  .founding__count{color:var(--sky)}
+}
+.founding__count small{
+  font-family:var(--body);font-size:1rem;font-weight:600;
+  color:var(--powder-dim);letter-spacing:.08em;text-transform:uppercase;
+}
+.founding p{color:var(--powder-dim);margin:1.25rem 0 2rem}
+.founding__end{
+  font-family:var(--display);color:var(--powder);font-size:1.2rem;margin-top:0;
+}
+
+/* ============ PARENTS ============ */
+.parents{position:relative;overflow:hidden}
+.parents .split__copy .lede{margin-top:1.25rem}
+.parents__proof{
+  margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem;
+}
+.parents__proof span{
+  font-size:.8125rem;font-weight:600;letter-spacing:.06em;
+  color:var(--sky);
+  border:1px solid var(--sky-line);border-radius:99px;
+  padding:.45rem 1rem;
+}
+
+/* ============ FAQ ============ */
+.faq h2{margin-bottom:clamp(2rem,5vw,3.25rem)}
+.faq details{
+  border-top:1px solid var(--sky-line);
+}
+.faq details:last-of-type{border-bottom:1px solid var(--sky-line)}
+.faq summary{
+  cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:1.5rem;
+  padding:1.4rem 0;
+  font-family:var(--display);font-size:clamp(1.05rem, 2vw, 1.35rem);
+  color:var(--powder);
+  transition:color .15s ease;
+}
+.faq summary:hover{color:var(--sky)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";
+  font-family:var(--body);font-weight:400;font-size:1.75rem;color:var(--sky);
+  flex:none;line-height:1;
+  transition:transform .25s ease;
+}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{
+  padding:0 0 1.6rem;color:var(--powder-dim);max-width:44rem;
+}
+
+/* ============ WAITLIST ============ */
+.waitlist{position:relative;overflow:hidden;isolation:isolate}
+.waitlist__bg{
+  position:absolute;inset:0;z-index:-2;
+  width:100%;height:100%;object-fit:cover;opacity:.16;
+}
+.waitlist::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to bottom, var(--navy) 0%, rgba(30,42,56,.72) 50%, var(--navy) 100%);
+}
+.waitlist__inner{max-width:44rem;margin:0 auto;text-align:center}
+.waitlist__inner .chip{margin-bottom:1.5rem}
+.waitlist__inner h2{margin-bottom:1rem}
+.waitlist__inner > p{margin:0 auto 1rem}
+.waitlist__kick{
+  font-family:var(--display);color:var(--powder);font-size:1.1rem;margin-bottom:2.5rem !important;
+}
+.form{
+  text-align:left;
+  border:1px solid var(--sky-line);border-radius:8px;
+  background:rgba(22,32,43,.88);
+  padding:clamp(1.5rem, 4vw, 2.5rem);
+}
+.form__row{display:grid;gap:1.25rem;grid-template-columns:1fr;margin-bottom:1.25rem}
+@media (min-width:640px){
+  .form__row--2{grid-template-columns:1fr 1fr}
+}
+.form label,.form legend{
+  display:block;font-size:.8125rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--sky);
+  margin-bottom:.5rem;
+}
+.form input[type="text"],.form input[type="email"],.form select{
+  width:100%;
+  background:var(--navy);color:var(--powder);
+  border:1px solid rgba(127,191,233,.55);border-radius:4px;
+  padding:.9rem 1rem;font-size:1rem;font-family:var(--body);
+  appearance:none;
+}
+.form select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237FBFE9' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 1rem center;
+  padding-right:2.5rem;
+}
+.form input::placeholder{color:var(--powder-faint)}
+.form fieldset{border:none}
+.form__pills{display:flex;gap:.75rem}
+.form__pill{position:relative;flex:1}
+.form__pill input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.form__pill span{
+  display:block;text-align:center;
+  border:1px solid rgba(127,191,233,.55);border-radius:4px;
+  padding:.85rem .5rem;font-weight:600;font-size:.9375rem;color:var(--powder-dim);
+  transition:all .15s ease;
+}
+.form__pill input:checked + span{
+  background:var(--sky-faint);border-color:var(--sky);border-style:solid;color:var(--powder);
+}
+.form__pill input:focus-visible + span{outline:2px solid var(--lemon);outline-offset:3px}
+.form .btn{width:100%;margin-top:.5rem}
+.form__fine{
+  margin-top:1rem;text-align:center;font-size:.8125rem;color:var(--powder-faint);
+}
+.honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+
+.success{
+  display:none;text-align:center;
+  border:2px dashed var(--sky);border-radius:8px;
+  background:rgba(22,32,43,.88);
+  padding:clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 4vw, 2.5rem);
+}
+.success h3{
+  font-size:clamp(1.75rem, 4vw, 2.5rem);color:var(--powder);margin-bottom:1rem;
+}
+.success p{margin:0 auto;color:var(--powder-dim)}
+.success a{color:var(--sky)}
+.waitlist--done .form{display:none}
+.waitlist--done .success{display:block}
+
+/* ============ FOOTER ============ */
+.footer{
+  border-top:1px solid rgba(127,191,233,.22);
+  background:var(--navy-deep);
+  padding:clamp(3rem, 7vw, 5rem) 0 2.5rem;
+}
+.footer__word{
+  font-family:var(--display);
+  font-size:clamp(2.25rem, 7vw, 5.5rem);
+  line-height:1.05;
+  letter-spacing:.04em;color:var(--powder);
+  margin-bottom:.75rem;text-wrap:balance;
+}
+.footer__word span{color:var(--sky)}
+.footer__tag{color:var(--powder-dim);margin-bottom:2.5rem}
+.footer__grid{
+  display:grid;gap:2rem;grid-template-columns:1fr;
+  padding-bottom:2.5rem;margin-bottom:2rem;
+  border-bottom:1px solid rgba(127,191,233,.18);
+}
+@media (min-width:760px){
+  .footer__grid{grid-template-columns:1fr 1fr 1fr}
+}
+.footer__col h3{
+  font-family:var(--body);font-size:.8125rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin-bottom:.9rem;
+}
+.footer__col p,.footer__col a{
+  color:var(--powder-dim);font-size:.9375rem;text-decoration:none;
+}
+.footer__col a:hover{color:var(--sky)}
+.footer__fine{
+  display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
+  font-size:.8125rem;color:var(--powder-faint);
+}
+
+/* ============ REVEAL ============ */
+.js .reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s cubic-bezier(.2,.65,.25,1), transform .7s cubic-bezier(.2,.65,.25,1);
+}
+.js .reveal.is-in{opacity:1;transform:none}
+
+/* mono stamp voice */
+.kicker,.chip,.step__tag,.hero__micro{font-family:var(--mono)}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .ticker__track{animation:none;flex-wrap:wrap;width:auto}
+  .ticker__group{flex:1 1 100%;flex-wrap:wrap;row-gap:.5rem}
+  .ticker__group[aria-hidden="true"]{display:none}
+  .ticker__pause{display:none}
+  .btn{transition:none}
+  .faq summary::after{transition:none}
+}
+
+/* ============ SMALL SCREENS ============ */
+@media (max-width:420px){
+  body{font-size:1rem}
+  .cta-x{display:none}
+  .hero__content{padding-top:6.5rem;padding-bottom:5rem}
+  .hero__cta-row .btn--big{width:100%;text-align:center}
+  .hero__cta-row .btn-ghost{width:100%;text-align:center}
+  .form__pills{flex-direction:column}
+  .ticker__item{font-size:.875rem}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" aria-label="Main">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top" aria-label="CYDL home">
+      <img src="assets/logo_cydl_monogram_primary.svg" alt="" width="38" height="38">
+      <span>CYDL</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#the-pile">The Pile</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#parents">Parents</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn btn--small" href="#waitlist">Join the <span class="cta-x">Founding </span>100</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <img class="hero__img" src="assets/hero-dorm.jpg" fetchpriority="high"
+       alt="A dorm room desk chair buried under a mountain of dirty laundry">
+  <div class="hero__content">
+    <div class="hero__chip reveal"><span class="chip">NC State · August 2026</span></div>
+    <h1 class="reveal">The pile ends here.</h1>
+    <p class="lede reveal">Out Tuesday. Back Thursday, washed, dried, folded. $100 a month flat, and the chair goes back to being a chair.</p>
+    <div class="hero__cta-row reveal">
+      <a class="btn btn--big" href="#waitlist">Join the Founding 100</a>
+      <a class="btn-ghost" href="#how-it-works">How it works</a>
+    </div>
+    <p class="hero__micro reveal">First 100 on the list lock founding status</p>
+  </div>
+  <span class="hero__scroll" aria-hidden="true">Keep reading — it gets cleaner</span>
+</header>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker">
+  <button class="ticker__pause" type="button" aria-pressed="false" id="ticker-pause">Pause</button>
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item">The sniff test is not a system.</span>
+      <span class="ticker__item">Your chair was never a closet.</span>
+      <span class="ticker__item">Three hours every Sunday. Gone. Poof.</span>
+      <span class="ticker__item">We don't air your dirty laundry. We clean it.</span>
+      <span class="ticker__item">Out Tuesday. Back Thursday. Folded.</span>
+      <span class="ticker__item">Take a load off.</span>
+      <span class="ticker__item">Get sorted.</span>
+      <span class="ticker__item">Both socks. Every time.</span>
+      <span class="ticker__item">Sunday is yours again.</span>
+      <span class="ticker__item">Folded like you were raised right.</span>
+      <span class="ticker__item">The pile ends here.</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item">The sniff test is not a system.</span>
+      <span class="ticker__item">Your chair was never a closet.</span>
+      <span class="ticker__item">Three hours every Sunday. Gone. Poof.</span>
+      <span class="ticker__item">We don't air your dirty laundry. We clean it.</span>
+      <span class="ticker__item">Out Tuesday. Back Thursday. Folded.</span>
+      <span class="ticker__item">Take a load off.</span>
+      <span class="ticker__item">Get sorted.</span>
+      <span class="ticker__item">Both socks. Every time.</span>
+      <span class="ticker__item">Sunday is yours again.</span>
+      <span class="ticker__item">Folded like you were raised right.</span>
+      <span class="ticker__item">The pile ends here.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ THE PILE ============ -->
+<section class="section" id="the-pile" aria-labelledby="pile-h">
+  <div class="wrap split" data-stagger>
+    <div class="split__copy">
+      <span class="kicker reveal">Exhibit A</span>
+      <h2 id="pile-h" class="reveal">You know the pile.</h2>
+      <p class="reveal">It started as one hoodie on the chair. Now the chair has a job it never applied for and you're running the sniff test on a Tuesday like that's a normal way to live. It isn't normal. It's just common.</p>
+      <p class="reveal">Every dorm at NC State grows one: the pile, quietly gaining mass in the corner, waiting for you to run out of socks and options at the same time. Yours is about to become someone else's problem. Specifically, ours.</p>
+      <p class="pull reveal">The pile has had a good run. End it.</p>
+    </div>
+    <div class="split__media reveal">
+      <span class="chip">Tuesday, 8:47 AM</span>
+      <div class="split__frame" data-parallax>
+        <img src="assets/tuesday-ritual.jpg" loading="lazy" width="1920" height="1080"
+             alt="A student setting a full CYDL laundry bag outside a dorm room door on a Tuesday morning">
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="perf" aria-hidden="true">
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how-it-works" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="steps-head" data-stagger>
+      <span class="kicker reveal">The whole system</span>
+      <h2 id="how-h" class="reveal">Out Tuesday. Back Thursday.</h2>
+      <p class="lede reveal">One bag out, one bag back, every week of the semester. No guarding a dryer at 1am. No machine that eats one sock per cycle as a tax.</p>
+    </div>
+    <div class="steps" data-stagger>
+      <div class="step reveal">
+        <span class="step__num" aria-hidden="true">01</span>
+        <h3>Fill the bag. Set it out Tuesday.</h3>
+        <p>That's your entire job. No sorting, no schlepping, no babysitting a machine in a basement on a Sunday. The bag does the commute. You don't.</p>
+        <span class="step__tag">Your part: 30 seconds</span>
+      </div>
+      <div class="step reveal">
+        <span class="step__num" aria-hidden="true">02</span>
+        <h3>We wash, dry, and fold everything.</h3>
+        <p>At a real commercial laundry facility in Raleigh, with industrial machines and people who do this for a living. Not a stranger's bathtub.</p>
+        <span class="step__tag">Your part: nothing</span>
+      </div>
+      <div class="step reveal">
+        <span class="step__num" aria-hidden="true">03</span>
+        <h3>Back Thursday. Folded.</h3>
+        <p>Same clothes, better mood, both socks. Thursday is a promise, not an estimate.</p>
+        <span class="step__tag">Your part: open the bag</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="perf" aria-hidden="true">
+
+<!-- ============ THE RETURN ============ -->
+<section class="section" id="the-return" aria-labelledby="return-h">
+  <div class="wrap stack" data-stagger>
+    <div class="stack__media reveal">
+      <span class="chip" style="position:absolute;top:-0.9rem;left:1.25rem;z-index:2">Folded better than your excuses</span>
+      <div class="split__frame" data-parallax>
+        <img src="assets/fresh-stack.jpg" loading="lazy" width="1080" height="1350"
+             alt="A crisp stack of freshly washed and folded clothes emerging from a CYDL delivery bag">
+      </div>
+    </div>
+    <div class="split__copy">
+      <span class="kicker reveal">Thursday, delivered</span>
+      <h2 id="return-h" class="reveal">Folded like you have your life together.</h2>
+      <p class="reveal">Thursday's bag opens to a stack so clean it reads as a personality upgrade. Shirts squared. Socks paired, both present. The hoodie is soft again and the exact size it left, which we mention because we know what dorm dryers do to hoodies.</p>
+      <p class="reveal">You didn't get organized. You just look like you did, which on a college campus is the same thing.</p>
+      <p class="pull reveal">Folded like you were raised right.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="perf" aria-hidden="true">
+
+<!-- ============ YOUR SUNDAY BACK ============ -->
+<section class="section" id="your-sunday-back" aria-labelledby="sunday-h">
+  <div class="wrap split split--flip" data-stagger>
+    <div class="split__copy">
+      <span class="kicker reveal">The real product</span>
+      <h2 id="sunday-h" class="reveal">Take a load off.</h2>
+      <p class="reveal">Count the Sundays between move-in and finals. That's how many laundry days you're not doing anymore. Spend them at the game, at the library, asleep.</p>
+      <p class="reveal">And for the record: walking into a Monday 8am in a shirt that was folded on Thursday is a genuine competitive advantage. We're not here to tell you what to do with your time. We're here to make sure the pile doesn't get a vote.</p>
+    </div>
+    <div class="split__media reveal">
+      <span class="chip chip--tail">Saturday, unbothered</span>
+      <div class="split__frame" data-parallax>
+        <img src="assets/gameday-exit.jpg" loading="lazy" width="1920" height="1080"
+             alt="Students in red heading out of a dorm toward a game day, laundry nowhere in sight">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section pricing" id="pricing" aria-labelledby="pricing-h">
+  <div class="wrap pricing__grid">
+    <div data-stagger>
+      <span class="kicker reveal">The math</span>
+      <h2 id="pricing-h" class="reveal">One price. Flat. Unlike your fitted sheet.</h2>
+      <div class="founding reveal">
+        <div class="founding__count"><span>100</span><small>founding spots · <span style="white-space:nowrap">Nº 001–100</span></small></div>
+        <p>The first 100 on the waitlist get a founding number, first claim on launch-week pickup slots, and a spot that's already locked when the rest of campus finds out this exists. After 100, the list is just a list.</p>
+        <a class="btn" href="#waitlist">Claim your spot</a>
+      </div>
+    </div>
+    <div class="price-card reveal">
+      <span class="chip">One flat price</span>
+      <p class="price-card__ticket">CYDL claim ticket — Nº 001–100 / Founding</p>
+      <div class="price-card__amount">$100<span>/month</span></div>
+      <p class="price-card__sub">No per-pound surprises. No surge weeks. No fine print doing push-ups.</p>
+      <ul>
+        <li>Pickup every Tuesday, right from your door</li>
+        <li>Washed, dried, and folded by people who do this for a living</li>
+        <li>Delivered back Thursday. A promise, not an estimate</li>
+        <li>Detergent, machines, and handling all included</li>
+      </ul>
+      <p class="price-card__math">Laundry is a three-hour job — sorting, waiting, folding, the trip back for the sock. $25 a week for those three hours is about $8 an hour. Your Sunday costs more than that.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="perf" aria-hidden="true">
+
+<!-- ============ PARENTS ============ -->
+<section class="section parents" id="parents" aria-labelledby="parents-h">
+  <div class="wrap split" data-stagger>
+    <div class="split__copy">
+      <span class="chip chip--ghost reveal">For the person actually paying</span>
+      <h2 id="parents-h" class="reveal" style="margin-top:1.25rem">Parents, this is the tab worth picking up.</h2>
+      <p class="reveal">One flat $100 a month. No per-pound surprises, no surge weeks, no call about a broken card reader. The clothes are cleaned at a real commercial laundry facility in Raleigh with industrial machines and actual staff, on a schedule that runs whether anyone remembers or not.</p>
+      <p class="reveal">You'll know it's working when the video calls start coming from a clean room and nobody asks how to wash a comforter. They get their Sunday back. You get receipts.</p>
+      <p class="pull reveal">It's the gift that says "we believe in you" without saying "we worry about you."</p>
+      <div class="parents__proof reveal">
+        <span>Real commercial facility</span>
+        <span>Flat, predictable price</span>
+        <span>Runs every week, reminder or not</span>
+      </div>
+    </div>
+    <div class="split__media reveal">
+      <span class="chip">Proof of life, Thursday edition</span>
+      <div class="split__frame" data-parallax>
+        <img src="assets/parent-facetime.jpg" loading="lazy" width="1920" height="1080"
+             alt="A student on a video call with a parent from a clean, organized dorm room">
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="perf" aria-hidden="true">
+
+<!-- ============ FAQ ============ -->
+<section class="section faq" id="faq" aria-labelledby="faq-h">
+  <div class="wrap" style="max-width:52rem" data-stagger>
+    <span class="kicker reveal">Fair questions</span>
+    <h2 id="faq-h" class="reveal">Asked, answered, folded.</h2>
+    <details class="reveal">
+      <summary>What if I need something back faster?</summary>
+      <p>Real emergency — an interview, a formal, an incident? DM <a href="https://www.instagram.com/cleanyourdirtylaundry" rel="noopener">@cleanyourdirtylaundry</a> and we'll tell you straight whether we can pull it off. Otherwise the rhythm is Tuesday out, Thursday back. Two days, every week, like clockwork.</p>
+    </details>
+    <details class="reveal">
+      <summary>Will my hoodie come back a crop top?</summary>
+      <p>No. Your clothes are washed by people who do this for a living at a commercial facility, not a roommate with a hamper and optimism. Cold wash where it matters, low heat where it counts. Delicates get treated like delicates. The hoodie comes back the size it left.</p>
+    </details>
+    <details class="reveal">
+      <summary>Is $100 a month actually worth it?</summary>
+      <p>Add up machine money, detergent, dryer sheets, and every Sunday between now and May. Then decide what an afternoon of your semester is worth. If your time is worth nothing, no. If it's worth anything at all, yes.</p>
+    </details>
+    <details class="reveal">
+      <summary>Where do you actually wash it?</summary>
+      <p>A real commercial laundromat on North Raleigh Boulevard. Industrial machines, trained staff, an actual building with an address. Not a side hustle with a basket and a dream, and never a stranger's bathtub.</p>
+    </details>
+    <details class="reveal">
+      <summary>Can my parents pay?</summary>
+      <p>Yes, and most will want to. It's one flat charge, no surprise fees, and it's the difference between calling home about life and calling home about laundry. Send them the link.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ WAITLIST ============ -->
+<section class="section waitlist" id="waitlist" aria-labelledby="waitlist-h">
+  <img class="waitlist__bg" src="assets/texture-rinse.jpg" loading="lazy" alt="" aria-hidden="true">
+  <div class="wrap waitlist__inner" data-stagger>
+    <span class="chip reveal">100 spots. One button.</span>
+    <h2 id="waitlist-h" class="reveal">The Founding 100.</h2>
+    <p class="lede reveal">We launch at NC State this August, the week campus comes back to life. First 100 spots lock founding status before we hit campus. Name and email. That's it.</p>
+    <p class="waitlist__kick reveal">The pile has had a good run. End it.</p>
+
+    <div aria-live="polite">
+      <form class="form reveal" id="waitlist-form" action="https://formsubmit.co/vee@gethamperd.com" method="POST">
+        <input type="hidden" name="_subject" value="CYDL Waitlist">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="honeypot" aria-hidden="true">
+          <label for="hp-field">Leave this field empty</label>
+          <input type="text" id="hp-field" name="_honey" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form__row form__row--2">
+          <div>
+            <label for="f-name">First name</label>
+            <input type="text" id="f-name" name="first_name" placeholder="Pat" required autocomplete="given-name">
+          </div>
+          <div>
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" placeholder="pat@ncsu.edu" required autocomplete="email">
+          </div>
+        </div>
+        <div class="form__row form__row--2">
+          <div>
+            <label for="f-school">School</label>
+            <select id="f-school" name="school" required>
+              <option value="" disabled selected>Pick one</option>
+              <option value="NC State">NC State</option>
+              <option value="Meredith">Meredith</option>
+              <option value="William Peace">William Peace</option>
+              <option value="Shaw">Shaw</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <fieldset>
+            <legend>I am the</legend>
+            <div class="form__pills">
+              <label class="form__pill">
+                <input type="radio" name="role" value="student" checked>
+                <span>Student</span>
+              </label>
+              <label class="form__pill">
+                <input type="radio" name="role" value="parent">
+                <span>Parent</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <button class="btn btn--big" type="submit" id="submit-btn">Claim your spot</button>
+        <p class="form__fine">No spam. No sharing. Just your Founding 100 number when it's ready.</p>
+      </form>
+
+      <div class="success reveal" id="success-box" role="status">
+        <h3>You're in.</h3>
+        <p>Your number is coming by email. Go do literally anything else. We'll be in touch before move-in. Follow <a href="https://www.instagram.com/cleanyourdirtylaundry" rel="noopener">@cleanyourdirtylaundry</a> and watch the pile lose.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <p class="footer__word">CLEAN <span>•</span> YOUR <span>•</span> DIRTY <span>•</span> LAUNDRY</p>
+    <p class="footer__tag">We don't air your dirty laundry. We clean it.</p>
+    <div class="footer__grid">
+      <div class="footer__col">
+        <h3>Find us</h3>
+        <p><a href="https://www.instagram.com/cleanyourdirtylaundry" rel="noopener">@cleanyourdirtylaundry</a></p>
+      </div>
+      <div class="footer__col">
+        <h3>Launch</h3>
+        <p>NC State · Packapalooza<br>Saturday, August 22, 2026</p>
+      </div>
+      <div class="footer__col">
+        <h3>Move-in</h3>
+        <p>August 14–16, 2026<br>The pile is already forming.</p>
+      </div>
+    </div>
+    <div class="footer__fine">
+      <span>© 2026 CYDL. Backed by a real commercial laundry facility in Raleigh.</span>
+      <span>Your mom asked us to remind you to call her.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var motionMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var reduceMotion = motionMq.matches;
+
+  /* ---------- staggered reveals ---------- */
+  document.querySelectorAll("[data-stagger]").forEach(function(group){
+    var kids = group.querySelectorAll(".reveal");
+    kids.forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i * 90, 540) + "ms";
+    });
+  });
+
+  var reveals = document.querySelectorAll(".reveal");
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    reveals.forEach(function(el){ el.classList.add("is-in"); });
+  } else {
+    var revealIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+          revealIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    reveals.forEach(function(el){ revealIO.observe(el); });
+  }
+
+  /* ---------- ticker pause control (WCAG 2.2.2) ---------- */
+  var tickerPause = document.getElementById("ticker-pause");
+  if (tickerPause) {
+    tickerPause.addEventListener("click", function(){
+      var ticker = tickerPause.closest(".ticker");
+      var paused = ticker.classList.toggle("is-paused");
+      tickerPause.setAttribute("aria-pressed", String(paused));
+      tickerPause.textContent = paused ? "Play" : "Pause";
+    });
+  }
+
+  /* ---------- subtle parallax on section images ---------- */
+  var parallaxFrames = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
+  if (!reduceMotion && parallaxFrames.length) {
+    var ticking = false;
+    var applyParallax = function(){
+      ticking = false;
+      if (motionMq.matches) {
+        parallaxFrames.forEach(function(frame){
+          var img = frame.querySelector("img");
+          if (img) img.style.transform = "";
+        });
+        return;
+      }
+      var vh = window.innerHeight;
+      parallaxFrames.forEach(function(frame){
+        var rect = frame.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > vh) return;
+        var mid = rect.top + rect.height / 2;
+        var offset = ((mid - vh / 2) / vh) * -26;
+        var img = frame.querySelector("img");
+        if (img) img.style.transform = "scale(1.1) translateY(" + offset.toFixed(1) + "px)";
+      });
+    };
+    var onScroll = function(){
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(applyParallax);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    applyParallax();
+  }
+
+  /* ---------- waitlist form: fetch submit + inline success ---------- */
+  var form = document.getElementById("waitlist-form");
+  var submitBtn = document.getElementById("submit-btn");
+  var waitlistSection = document.getElementById("waitlist");
+  if (form && submitBtn && waitlistSection && window.fetch) {
+    var nativeFallback = false;
+    form.addEventListener("submit", function(e){
+      if (nativeFallback) return; /* let the browser POST normally */
+      e.preventDefault();
+      submitBtn.disabled = true;
+      var originalLabel = submitBtn.textContent;
+      submitBtn.textContent = "Claiming…";
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      }).then(function(res){
+        if (!res.ok) throw new Error("bad status " + res.status);
+        waitlistSection.classList.add("waitlist--done");
+        var box = document.getElementById("success-box");
+        if (box) {
+          box.classList.add("is-in");
+          box.setAttribute("tabindex", "-1");
+          box.focus({ preventScroll: false });
+        }
+      }).catch(function(){
+        /* graceful fallback: plain POST, formsubmit shows its own page */
+        nativeFallback = true;
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+        form.submit();
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
