@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CYDL — The Pile Ends Here | Student Laundry, NC State</title>
-<meta name="description" content="CYDL is student laundry done for you. Bag out Tuesday, back Thursday washed, dried, and folded. $100 a month flat. Launching at NC State August 2026. Join the Founding 100 waitlist.">
+<meta name="description" content="CYDL is student laundry done for you. Bag out Tuesday, back Thursday washed, dried, and folded. $100 a month flat. Launching at NC State August 2026. Sign up, get a number — the first 100 numbers are founding.">
 <meta name="theme-color" content="#1E2A38">
 
 <meta property="og:type" content="website">
@@ -12,6 +12,8 @@
 <meta property="og:description" content="Out Tuesday. Back Thursday, washed, dried, folded. $100 a month flat. Launching at NC State this August. Sign up, get a number — the first 100 numbers are founding.">
 <meta property="og:image" content="https://cleanyourdirtylaundry.com/assets/hero-dorm.jpg">
 <meta property="og:site_name" content="CYDL — Clean Your Dirty Laundry">
+<meta property="og:url" content="https://cleanyourdirtylaundry.com/">
+<link rel="canonical" href="https://cleanyourdirtylaundry.com/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="CYDL — The Pile Ends Here">
 <meta name="twitter:description" content="Out Tuesday. Back Thursday, folded. $100 a month flat. Claim your spot — the first 100 numbers are founding.">
@@ -22,6 +24,58 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cleanyourdirtylaundry.com/#org",
+      "name": "CYDL — Clean Your Dirty Laundry",
+      "url": "https://cleanyourdirtylaundry.com/",
+      "email": "hello@cleanyourdirtylaundry.com",
+      "logo": "https://cleanyourdirtylaundry.com/assets/logo_cydl_hearttag_lockup.svg",
+      "sameAs": ["https://www.instagram.com/cleanyourdirtylaundry"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://cleanyourdirtylaundry.com/#site",
+      "url": "https://cleanyourdirtylaundry.com/",
+      "name": "CYDL — The Pile Ends Here",
+      "publisher": {"@id": "https://cleanyourdirtylaundry.com/#org"}
+    },
+    {
+      "@type": "Service",
+      "name": "Weekly student laundry pickup and delivery",
+      "serviceType": "Laundry pickup and delivery subscription",
+      "provider": {"@id": "https://cleanyourdirtylaundry.com/#org"},
+      "areaServed": {"@type": "City", "name": "Raleigh", "address": {"@type": "PostalAddress", "addressRegion": "NC", "addressCountry": "US"}},
+      "audience": {"@type": "Audience", "audienceType": "College students and their parents"},
+      "offers": {
+        "@type": "Offer",
+        "price": "100",
+        "priceCurrency": "USD",
+        "description": "One 20 lb bag per week, picked up Tuesday, delivered back Thursday washed, dried, and folded. $100 per month flat. Comforters $20 each as an add-on."
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What if I need something back faster?", "acceptedAnswer": {"@type": "Answer", "text": "For a real emergency, DM @cleanyourdirtylaundry on Instagram and we'll tell you straight whether we can pull it off. Otherwise the rhythm is Tuesday out, Thursday back — two days, every week."}},
+        {"@type": "Question", "name": "What if I forget to put the bag out?", "acceptedAnswer": {"@type": "Answer", "text": "We text you a reminder Monday night, every week. The reminder comes to you, the bag goes out Tuesday."}},
+        {"@type": "Question", "name": "Will my hoodie come back a crop top?", "acceptedAnswer": {"@type": "Answer", "text": "No. Clothes are washed at a commercial facility — cold wash where it matters, low heat where it counts, delicates treated like delicates. The hoodie comes back the size it left."}},
+        {"@type": "Question", "name": "How much fits in the bag?", "acceptedAnswer": {"@type": "Answer", "text": "20 pounds — a full week of one person's clothes. It's a hard cap, and the hard cap is what lets the price stay flat."}},
+        {"@type": "Question", "name": "What about comforters, sheets, and bedding?", "acceptedAnswer": {"@type": "Answer", "text": "Separate on purpose. Comforters are $20 each as an add-on. Sheet and linen bundles are their own add-on, priced when you sign up."}},
+        {"@type": "Question", "name": "What happens if my bag is overweight?", "acceptedAnswer": {"@type": "Answer", "text": "We weigh at the facility. A little over, we wash it and text a heads-up. A comforter stuffed in the middle, we text an add-on link before anything gets washed — no surprise charges, ever."}},
+        {"@type": "Question", "name": "Is $100 a month actually worth it?", "acceptedAnswer": {"@type": "Answer", "text": "Add up machine money, detergent, dryer sheets, and every laundry Sunday between now and May, then decide what an afternoon of your semester is worth."}},
+        {"@type": "Question", "name": "Where do you actually wash it?", "acceptedAnswer": {"@type": "Answer", "text": "A real commercial laundromat on North Raleigh Boulevard — industrial machines, trained staff, an actual building with an address."}},
+        {"@type": "Question", "name": "Can my parents pay?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and most will want to. One flat charge, no surprise fees. There's a dedicated parent page at cleanyourdirtylaundry.com/parents.html."}}
+      ]
+    }
+  ]
+}
+</script>
 
 <style>
 /* ============ TOKENS ============ */
@@ -60,8 +114,8 @@ body{
 }
 img{max-width:100%;display:block}
 a{color:var(--sky)}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{
-  outline:2px solid var(--lemon);
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid var(--sky);
   outline-offset:3px;
   border-radius:2px;
 }
@@ -79,7 +133,7 @@ body::after{
 
 .skip-link{
   position:absolute;left:-9999px;top:0;
-  background:var(--lemon);color:var(--navy);
+  background:var(--sky);color:var(--navy);
   padding:.6rem 1rem;font-weight:700;z-index:1001;text-decoration:none;
 }
 .skip-link:focus{left:1rem;top:1rem}
@@ -531,7 +585,7 @@ p{max-width:38rem}
 .form__pill input:checked + span{
   background:var(--sky-faint);border-color:var(--sky);border-style:solid;color:var(--powder);
 }
-.form__pill input:focus-visible + span{outline:2px solid var(--lemon);outline-offset:3px}
+.form__pill input:focus-visible + span{outline:2px solid var(--sky);outline-offset:3px}
 .form .btn{width:100%;margin-top:.5rem}
 .form__fine{
   margin-top:1rem;text-align:center;font-size:.8125rem;color:var(--powder-faint);
@@ -770,7 +824,7 @@ p{max-width:38rem}
 .steps-head{position:relative}
 .bag-perch{max-width:8rem;margin:1.75rem 0 0}
 @media (min-width:820px){.bag-perch{position:absolute;right:0;bottom:-.75rem;max-width:9.5rem;margin:0}}
-.bagglow{filter:drop-shadow(0 0 16px rgba(232,201,122,.38))}
+.bagglow{filter:drop-shadow(0 0 16px rgba(217,184,72,.42))}
 
 /* CH4 fold rise + freed chair */
 .js .fold-rise{opacity:0;transform:translateY(34px);
@@ -819,21 +873,21 @@ p{max-width:38rem}
 <svg class="svgdefs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <radialGradient id="g-bagglow" cx="50%" cy="52%" r="52%">
-      <stop offset="0%" stop-color="#E8C97A" stop-opacity=".5"/>
-      <stop offset="60%" stop-color="#E8C97A" stop-opacity=".16"/>
-      <stop offset="100%" stop-color="#E8C97A" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#D9B848" stop-opacity=".5"/>
+      <stop offset="60%" stop-color="#D9B848" stop-opacity=".16"/>
+      <stop offset="100%" stop-color="#D9B848" stop-opacity="0"/>
     </radialGradient>
 
     <!-- pile-1 · week one: a single innocent hoodie, dropped flat -->
     <symbol id="c-pile-1" viewBox="0 0 160 120">
       <ellipse cx="80" cy="110" rx="58" ry="7" fill="#16202B" opacity=".35"/>
-      <path d="M38 62 C20 64 10 78 16 88 C20 95 32 96 38 90 L42 76 Z" fill="#CFA14E" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M122 62 C140 64 150 78 144 88 C140 95 128 96 122 90 L118 76 Z" fill="#CFA14E" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M40 104 C32 82 36 66 56 58 L104 58 C124 66 128 82 120 104 C96 112 64 112 40 104 Z" fill="#CFA14E" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M58 58 C60 46 72 40 80 40 C88 40 100 46 102 58 C94 64 66 64 58 58 Z" fill="#B98E3F" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M38 62 C20 64 10 78 16 88 C20 95 32 96 38 90 L42 76 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M122 62 C140 64 150 78 144 88 C140 95 128 96 122 90 L118 76 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M40 104 C32 82 36 66 56 58 L104 58 C124 66 128 82 120 104 C96 112 64 112 40 104 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M58 58 C60 46 72 40 80 40 C88 40 100 46 102 58 C94 64 66 64 58 58 Z" fill="#5FA8D9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
       <ellipse cx="80" cy="57" rx="13" ry="6" fill="#16202B" opacity=".55"/>
-      <path d="M72 62 C71 72 72 80 70 87 M88 62 C89 72 88 80 90 87" fill="none" stroke="#EDE4D2" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="70" cy="90" r="2.6" fill="#EDE4D2"/><circle cx="90" cy="90" r="2.6" fill="#EDE4D2"/>
+      <path d="M72 62 C71 72 72 80 70 87 M88 62 C89 72 88 80 90 87" fill="none" stroke="#E6F0FA" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="70" cy="90" r="2.6" fill="#E6F0FA"/><circle cx="90" cy="90" r="2.6" fill="#E6F0FA"/>
       <path d="M62 92 L98 92 L94 106 L66 106 Z" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round" opacity=".45"/>
       <path d="M46 76 C50 80 54 80 58 76" fill="none" stroke="#16202B" stroke-width="2" stroke-linecap="round" opacity=".35"/>
     </symbol>
@@ -841,12 +895,12 @@ p{max-width:38rem}
     <!-- pile-2 · week three: sweater base, towel draped on top, sock hanging, napping -->
     <symbol id="c-pile-2" viewBox="0 0 220 160">
       <ellipse cx="110" cy="148" rx="88" ry="9" fill="#16202B" opacity=".35"/>
-      <path d="M28 140 C16 110 38 88 76 84 L156 84 C186 90 202 108 194 130 C188 142 172 146 156 146 C118 152 52 150 28 140 Z" fill="#CFA14E" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M46 130 C44 140 40 148 34 152" fill="none" stroke="#B98E3F" stroke-width="8" stroke-linecap="round"/>
-      <path d="M60 92 C62 66 96 52 130 58 C158 62 172 78 166 92 C158 104 138 106 116 104 C94 104 70 102 60 92 Z" fill="#EDE4D2" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M156 94 C166 104 166 120 156 128 C150 122 150 104 156 94 Z" fill="#EDE4D2" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M72 74 C96 68 134 68 158 76" fill="none" stroke="#DCCFB4" stroke-width="3" stroke-linecap="round"/>
-      <path d="M182 100 C192 100 198 108 196 118 C195 126 188 132 181 129 C176 126 176 118 178 112 Z" fill="#9AA7B5" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M28 140 C16 110 38 88 76 84 L156 84 C186 90 202 108 194 130 C188 142 172 146 156 146 C118 152 52 150 28 140 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M46 130 C44 140 40 148 34 152" fill="none" stroke="#5FA8D9" stroke-width="8" stroke-linecap="round"/>
+      <path d="M60 92 C62 66 96 52 130 58 C158 62 172 78 166 92 C158 104 138 106 116 104 C94 104 70 102 60 92 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M156 94 C166 104 166 120 156 128 C150 122 150 104 156 94 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M72 74 C96 68 134 68 158 76" fill="none" stroke="#C6D6E6" stroke-width="3" stroke-linecap="round"/>
+      <path d="M182 100 C192 100 198 108 196 118 C195 126 188 132 181 129 C176 126 176 118 178 112 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
       <path d="M180 104 l10 2 M179 109 l10 2" stroke="#16202B" stroke-width="1.6" opacity=".4"/>
       <path d="M94 84 C98 80 104 80 108 84 M126 84 C130 80 136 80 140 84" fill="none" stroke="#16202B" stroke-width="3" stroke-linecap="round"/>
       <path d="M112 96 C117 99 123 99 128 96" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linecap="round"/>
@@ -856,29 +910,29 @@ p{max-width:38rem}
     <!-- pile-3 · week five: three garment strata, smug face, sleeves drooping, sock at base -->
     <symbol id="c-pile-3" viewBox="0 0 300 220">
       <ellipse cx="150" cy="206" rx="124" ry="11" fill="#16202B" opacity=".35"/>
-      <path d="M30 196 C16 160 42 134 86 130 L226 130 C266 136 286 160 274 192 C238 210 62 212 30 196 Z" fill="#CFA14E" stroke="#16202B" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M244 142 C258 152 262 172 252 184 C244 190 236 184 238 172 C239 162 240 150 244 142 Z" fill="#B98E3F" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M30 196 C16 160 42 134 86 130 L226 130 C266 136 286 160 274 192 C238 210 62 212 30 196 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M244 142 C258 152 262 172 252 184 C244 190 236 184 238 172 C239 162 240 150 244 142 Z" fill="#5FA8D9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
       <path d="M56 178 C80 168 112 168 130 176" fill="none" stroke="#16202B" stroke-width="3" stroke-linecap="round" opacity=".3"/>
       <path d="M156 176 C180 168 212 168 234 176" fill="none" stroke="#16202B" stroke-width="3" stroke-linecap="round" opacity=".3"/>
-      <path d="M54 134 C48 106 74 88 112 88 C144 88 166 100 166 118 C164 130 130 136 100 134 Z" fill="#9AA7B5" stroke="#16202B" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M62 134 C50 146 46 164 56 176 C64 182 72 176 71 164 C70 152 66 142 62 134 Z" fill="#9AA7B5" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M70 108 C92 100 134 100 156 110" fill="none" stroke="#8493A3" stroke-width="3" stroke-linecap="round"/>
-      <path d="M116 94 C114 66 146 50 184 56 C216 62 234 82 226 102 C216 116 186 120 158 116 C140 113 122 106 116 94 Z" fill="#EDE4D2" stroke="#16202B" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M218 104 C230 116 230 136 218 146 C210 138 210 116 218 104 Z" fill="#EDE4D2" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M130 74 C152 66 190 68 210 78" fill="none" stroke="#DCCFB4" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M54 134 C48 106 74 88 112 88 C144 88 166 100 166 118 C164 130 130 136 100 134 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M62 134 C50 146 46 164 56 176 C64 182 72 176 71 164 C70 152 66 142 62 134 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M70 108 C92 100 134 100 156 110" fill="none" stroke="#7E93A9" stroke-width="3" stroke-linecap="round"/>
+      <path d="M116 94 C114 66 146 50 184 56 C216 62 234 82 226 102 C216 116 186 120 158 116 C140 113 122 106 116 94 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M218 104 C230 116 230 136 218 146 C210 138 210 116 218 104 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M130 74 C152 66 190 68 210 78" fill="none" stroke="#C6D6E6" stroke-width="3.5" stroke-linecap="round"/>
       <path d="M146 86 C153 81 165 81 172 86 M186 84 C193 79 205 79 211 84" fill="none" stroke="#16202B" stroke-width="4" stroke-linecap="round"/>
       <path d="M188 71 C194 67 202 67 207 70" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linecap="round" opacity=".45"/>
       <path d="M168 100 C175 104 185 104 192 99" fill="none" stroke="#16202B" stroke-width="3.5" stroke-linecap="round"/>
-      <path d="M92 200 C82 202 74 198 74 192 C74 186 82 184 90 186 C98 182 106 184 106 190 C106 196 100 200 92 200 Z" fill="#EDE4D2" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M92 200 C82 202 74 198 74 192 C74 186 82 184 90 186 C98 182 106 184 106 190 C106 196 100 200 92 200 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
       <path d="M78 190 l8 -1 M79 195 l8 -1" stroke="#16202B" stroke-width="1.5" opacity=".4"/>
     </symbol>
 
     <!-- pile-flat · ch5: deflated strata, one eye barely open, limp sleeve, still smug -->
     <symbol id="c-pile-flat" viewBox="0 0 220 110">
       <ellipse cx="110" cy="100" rx="94" ry="8" fill="#16202B" opacity=".35"/>
-      <path d="M22 94 C16 76 36 64 68 62 L162 62 C188 66 202 78 196 90 C182 100 42 102 22 94 Z" fill="#CFA14E" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M58 64 C56 48 82 40 112 42 C138 44 154 54 150 64 C136 72 74 72 58 64 Z" fill="#EDE4D2" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M36 90 C26 94 18 92 16 86 C15 80 22 78 30 80 C36 78 42 82 42 86 Z" fill="#9AA7B5" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M22 94 C16 76 36 64 68 62 L162 62 C188 66 202 78 196 90 C182 100 42 102 22 94 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M58 64 C56 48 82 40 112 42 C138 44 154 54 150 64 C136 72 74 72 58 64 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M36 90 C26 94 18 92 16 86 C15 80 22 78 30 80 C36 78 42 82 42 86 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
       <path d="M72 54 C78 49 86 49 92 54 C90 58 74 58 72 54 Z" fill="#16202B"/>
       <path d="M116 52 C122 48 130 48 134 52" fill="none" stroke="#16202B" stroke-width="3" stroke-linecap="round"/>
       <path d="M96 66 C102 70 112 70 120 66" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linecap="round"/>
@@ -889,41 +943,41 @@ p{max-width:38rem}
     <symbol id="c-bag" viewBox="0 0 170 200">
       <circle cx="85" cy="104" r="80" fill="url(#g-bagglow)"/>
       <ellipse cx="85" cy="184" rx="52" ry="7" fill="#16202B" opacity=".35"/>
-      <path d="M60 44 C52 30 62 18 74 22 C78 12 96 12 100 22 C112 18 120 30 112 44" fill="#EDE4D2" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M58 46 C40 78 34 130 44 162 C58 182 112 182 126 162 C136 130 130 78 112 46 C96 38 74 38 58 46 Z" fill="#EDE4D2" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M60 44 C52 30 62 18 74 22 C78 12 96 12 100 22 C112 18 120 30 112 44" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M58 46 C40 78 34 130 44 162 C58 182 112 182 126 162 C136 130 130 78 112 46 C96 38 74 38 58 46 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
       <path d="M58 46 C74 54 96 54 112 46" fill="none" stroke="#16202B" stroke-width="2.5"/>
       <path d="M52 60 C50 56 54 50 58 52 M118 60 C120 56 116 50 112 52" fill="none" stroke="#16202B" stroke-width="2" opacity=".5"/>
-      <path d="M44 128 C42 120 44 112 48 106" fill="none" stroke="#DCCFB4" stroke-width="4" stroke-linecap="round"/>
-      <rect x="64" y="104" width="44" height="38" rx="5" fill="#F4EDDE" stroke="#16202B" stroke-width="2.5"/>
-      <rect x="68.5" y="108.5" width="35" height="29" rx="3" fill="none" stroke="#B98E3F" stroke-width="1.6" stroke-dasharray="4 3"/>
-      <path d="M86 132 C74 122 78 112 86 116 C94 112 98 122 86 132 Z" fill="#CFA14E" stroke="#B98E3F" stroke-width="1.5"/>
-      <path d="M50 24 l0 7 M46.5 27.5 l7 0 M124 34 l0 6 M121 37 l6 0 M136 70 l0 5 M133.5 72.5 l5 0 M34 84 l0 5 M31.5 86.5 l5 0" stroke="#E8C97A" stroke-width="2" stroke-linecap="round"/>
+      <path d="M44 128 C42 120 44 112 48 106" fill="none" stroke="#C6D6E6" stroke-width="4" stroke-linecap="round"/>
+      <rect x="64" y="104" width="44" height="38" rx="5" fill="#F2F7FC" stroke="#16202B" stroke-width="2.5"/>
+      <rect x="68.5" y="108.5" width="35" height="29" rx="3" fill="none" stroke="#5FA8D9" stroke-width="1.6" stroke-dasharray="4 3"/>
+      <path d="M86 132 C74 122 78 112 86 116 C94 112 98 122 86 132 Z" fill="#C9A227" stroke="#A88A1F" stroke-width="1.5"/>
+      <path d="M50 24 l0 7 M46.5 27.5 l7 0 M124 34 l0 6 M121 37 l6 0 M136 70 l0 5 M133.5 72.5 l5 0 M34 84 l0 5 M31.5 86.5 l5 0" stroke="#D9B848" stroke-width="2" stroke-linecap="round"/>
     </symbol>
 
     <!-- bag-open-stack · thursday: open bag, folded stack rising -->
     <symbol id="c-bag-stack" viewBox="0 0 220 210">
       <ellipse cx="110" cy="196" rx="72" ry="8" fill="#16202B" opacity=".35"/>
-      <g class="fold-rise">
-        <rect x="62" y="26" width="96" height="24" rx="5" fill="#EDE4D2" stroke="#16202B" stroke-width="3"/>
-        <rect x="58" y="52" width="104" height="24" rx="5" fill="#9AA7B5" stroke="#16202B" stroke-width="3"/>
-        <rect x="62" y="78" width="96" height="24" rx="5" fill="#CFA14E" stroke="#16202B" stroke-width="3"/>
+      <g>
+        <rect x="62" y="26" width="96" height="24" rx="5" fill="#E6F0FA" stroke="#16202B" stroke-width="3"/>
+        <rect x="58" y="52" width="104" height="24" rx="5" fill="#8FA3B8" stroke="#16202B" stroke-width="3"/>
+        <rect x="62" y="78" width="96" height="24" rx="5" fill="#7FBFE9" stroke="#16202B" stroke-width="3"/>
         <path d="M110 26 l0 76" stroke="#16202B" stroke-width="2" opacity=".28"/>
       </g>
-      <path d="M42 118 C36 102 48 92 62 96 L158 96 C172 92 184 102 178 118 C186 148 180 176 168 188 C146 200 74 200 52 188 C40 176 34 148 42 118 Z" fill="#EDE4D2" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M42 118 C36 102 48 92 62 96 L158 96 C172 92 184 102 178 118 C186 148 180 176 168 188 C146 200 74 200 52 188 C40 176 34 148 42 118 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
       <path d="M62 96 C84 108 136 108 158 96" fill="none" stroke="#16202B" stroke-width="2.5"/>
-      <path d="M52 128 C50 140 51 156 55 168" fill="none" stroke="#DCCFB4" stroke-width="4" stroke-linecap="round"/>
-      <path d="M96 146 C88 138 91 130 97 133 C103 130 106 138 96 146 Z" fill="#CFA14E" stroke="#B98E3F" stroke-width="1.4"/>
+      <path d="M52 128 C50 140 51 156 55 168" fill="none" stroke="#C6D6E6" stroke-width="4" stroke-linecap="round"/>
+      <path d="M96 146 C88 138 91 130 97 133 C103 130 106 138 96 146 Z" fill="#C9A227" stroke="#A88A1F" stroke-width="1.4"/>
     </symbol>
 
     <!-- chair-freed · the first victim, released back into being furniture -->
     <symbol id="c-chair" viewBox="0 0 120 150">
       <ellipse cx="60" cy="140" rx="42" ry="6" fill="#16202B" opacity=".35"/>
-      <path d="M34 16 L40 88 M86 16 L80 88" stroke="#A98B62" stroke-width="7" stroke-linecap="round"/>
-      <path d="M34 22 C50 16 70 16 86 22 M36 44 C52 39 68 39 84 44 M38 66 C52 62 68 62 82 66" fill="none" stroke="#A98B62" stroke-width="6" stroke-linecap="round"/>
-      <path d="M32 88 C50 82 70 82 88 88 L86 100 C68 95 52 95 34 100 Z" fill="#BFA075" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M38 100 L34 136 M82 100 L86 136 M44 118 L76 118" stroke="#A98B62" stroke-width="6" stroke-linecap="round"/>
-      <path d="M98 30 l0 7 M94.5 33.5 l7 0" stroke="#E8C97A" stroke-width="2.2" stroke-linecap="round"/>
-      <path d="M16 54 l0 5 M13.5 56.5 l5 0" stroke="#E8C97A" stroke-width="2" stroke-linecap="round"/>
+      <path d="M34 16 L40 88 M86 16 L80 88" stroke="#7E93A9" stroke-width="7" stroke-linecap="round"/>
+      <path d="M34 22 C50 16 70 16 86 22 M36 44 C52 39 68 39 84 44 M38 66 C52 62 68 62 82 66" fill="none" stroke="#7E93A9" stroke-width="6" stroke-linecap="round"/>
+      <path d="M32 88 C50 82 70 82 88 88 L86 100 C68 95 52 95 34 100 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M38 100 L34 136 M82 100 L86 136 M44 118 L76 118" stroke="#7E93A9" stroke-width="6" stroke-linecap="round"/>
+      <path d="M98 30 l0 7 M94.5 33.5 l7 0" stroke="#D9B848" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M16 54 l0 5 M13.5 56.5 l5 0" stroke="#D9B848" stroke-width="2" stroke-linecap="round"/>
     </symbol>
   </defs>
 </svg>
@@ -941,7 +995,7 @@ p{max-width:38rem}
       <li><a href="#parents">Parents</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a class="btn btn--small" href="#waitlist">Claim your <span class="cta-x">founding </span>spot</a>
+    <a class="btn btn--small" href="#waitlist">Claim your spot</a>
   </div>
 </nav>
 
@@ -1138,6 +1192,41 @@ p{max-width:38rem}
 
 <hr class="perf" aria-hidden="true" data-tear>
 
+<!-- ============ THE ROUTE (V3: CH3) ============ -->
+<section class="section route reveal" id="the-route" aria-labelledby="route-h">
+  <div class="wrap">
+    <p class="plate"><b>CH. 03</b> The route</p>
+    <span class="kicker">The route</span>
+    <h2 id="route-h">One van. Four campuses. Zero excuses.</h2>
+    <p class="lede">We're not a national app with a contractor problem. We're a Raleigh facility with a route — and your campus is on it.</p>
+    <div class="route__map" tabindex="0" role="region" aria-label="Raleigh route map, scrolls sideways on small screens">
+      <svg viewBox="0 0 700 400" role="img" aria-label="Stylized Raleigh route map from home base on North Raleigh Boulevard: Shaw, 1.5 miles, closest stop; William Peace, 2 miles, downtown; NC State, the big one, launching August 2026; and Meredith in west Raleigh">
+        <path class="route__pathdraw" d="M 80 300 C 180 300 200 210 300 205 C 380 201 420 150 500 130 C 560 116 600 90 640 78"/>
+        <path class="route__path route__path--main" d="M 80 300 C 180 300 200 210 300 205 C 380 201 420 150 500 130 C 560 116 600 90 640 78"/>
+        <circle class="route__node route__node--home" cx="80" cy="300" r="9"/>
+        <text class="route__label" x="60" y="336">HOME BASE</text>
+        <text class="route__sub" x="60" y="354">N RALEIGH BLVD · THE MACHINES LIVE HERE</text>
+        <circle class="route__node" cx="300" cy="205" r="7"/>
+        <text class="route__label" x="283" y="178">SHAW</text>
+        <text class="route__sub" x="283" y="242">1.5 MILES · CLOSEST STOP</text>
+        <circle class="route__node" cx="500" cy="130" r="7"/>
+        <text class="route__label" x="470" y="104">WM. PEACE</text>
+        <text class="route__sub" x="470" y="166">2 MILES · DOWNTOWN</text>
+        <circle class="route__node" cx="640" cy="78" r="7"/>
+        <text class="route__label" x="520" y="50">NC STATE</text>
+        <text class="route__sub" x="520" y="30">THE BIG ONE · AUG 2026</text>
+        <circle class="route__node" cx="430" cy="330" r="7"/>
+        <text class="route__label" x="400" y="366">MEREDITH</text>
+        <text class="route__sub" x="400" y="386">WEST RALEIGH · THE SPUR</text>
+        <path class="route__path route__path--spur" d="M 80 300 C 220 340 330 345 430 330"/>
+        <circle class="route__van" cx="80" cy="300" r="5.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<hr class="perf" aria-hidden="true" data-tear>
+
 <!-- ============ THE RETURN ============ -->
 <section class="section" id="the-return" aria-labelledby="return-h">
   <div class="wrap stack" data-stagger>
@@ -1189,39 +1278,6 @@ p{max-width:38rem}
   </div>
 </section>
 
-<!-- ============ THE ROUTE ============ -->
-<section class="section route reveal" id="the-route" aria-labelledby="route-h">
-  <div class="wrap">
-    <p class="plate"><b>CH. 03</b> The route</p>
-    <span class="kicker">The route</span>
-    <h2 id="route-h">One van. Four campuses. Zero excuses.</h2>
-    <p class="lede">We're not a national app with a contractor problem. We're a Raleigh facility with a route — and your campus is on it.</p>
-    <div class="route__map">
-      <svg viewBox="0 0 700 400" role="img" aria-label="Stylized Raleigh route map from home base on North Raleigh Boulevard: Shaw, 1.5 miles, closest stop; William Peace, 2 miles, downtown; NC State, the big one, launching August 2026; and Meredith in west Raleigh">
-        <path class="route__pathdraw" d="M 80 300 C 180 300 200 210 300 205 C 380 201 420 150 500 130 C 560 116 600 90 640 78"/>
-        <path class="route__path route__path--main" d="M 80 300 C 180 300 200 210 300 205 C 380 201 420 150 500 130 C 560 116 600 90 640 78"/>
-        <circle class="route__node route__node--home" cx="80" cy="300" r="9"/>
-        <text class="route__label" x="60" y="336">HOME BASE</text>
-        <text class="route__sub" x="60" y="354">N RALEIGH BLVD · THE MACHINES LIVE HERE</text>
-        <circle class="route__node" cx="300" cy="205" r="7"/>
-        <text class="route__label" x="283" y="178">SHAW</text>
-        <text class="route__sub" x="283" y="242">1.5 MILES · CLOSEST STOP</text>
-        <circle class="route__node" cx="500" cy="130" r="7"/>
-        <text class="route__label" x="470" y="104">WM. PEACE</text>
-        <text class="route__sub" x="470" y="166">2 MILES · DOWNTOWN</text>
-        <circle class="route__node" cx="640" cy="78" r="7"/>
-        <text class="route__label" x="520" y="50">NC STATE</text>
-        <text class="route__sub" x="520" y="30">THE BIG ONE · AUG 2026</text>
-        <circle class="route__node" cx="430" cy="330" r="7"/>
-        <text class="route__label" x="400" y="366">MEREDITH</text>
-        <text class="route__sub" x="400" y="386">WEST RALEIGH · THE SPUR</text>
-        <path class="route__path route__path--spur" d="M 80 300 C 220 340 330 345 430 330"/>
-        <circle class="route__van" cx="80" cy="300" r="5.5"/>
-      </svg>
-    </div>
-  </div>
-</section>
-
 <hr class="perf" aria-hidden="true" data-tear>
 
 <!-- ============ PARENTS ============ -->
@@ -1230,13 +1286,13 @@ p{max-width:38rem}
     <div class="split__copy">
       <span class="chip chip--ghost reveal">For the person actually paying</span>
       <h2 id="parents-h" class="reveal" style="margin-top:1.25rem">Parents, this is the tab worth picking up.</h2>
-      <p class="reveal">One flat $100 a month. No per-pound surprises, no surge weeks, no call about a broken card reader. The clothes are cleaned at a real commercial laundry facility in Raleigh with industrial machines and actual staff, on a schedule that runs whether anyone remembers or not.</p>
+      <p class="reveal">One flat $100 a month. No per-pound surprises, no surge weeks, no call about a broken card reader. The clothes are cleaned at a real commercial laundry facility in Raleigh with industrial machines and actual staff, on a schedule with the Monday-night reminder built in.</p>
       <p class="reveal">You'll know it's working when the video calls start coming from a clean room and nobody asks how to wash a comforter. They get their Sunday back. You get receipts.</p>
       <p class="pull reveal">It's the gift that says "we believe in you" without saying "we worry about you."</p>
       <div class="parents__proof reveal">
         <span>Real commercial facility</span>
         <span>Flat, predictable price</span>
-        <span>Runs every week, reminder or not</span>
+        <span>Monday-night reminder, every week</span>
       </div>
       <p class="reveal" style="margin-top:2rem"><a class="btn-ghost" href="parents.html">The full parent page →</a></p>
       <p class="reveal" style="margin-top:1rem;font-size:.9rem;color:var(--powder-faint)">Questions from a parent brain? <a href="mailto:hello@cleanyourdirtylaundry.com">hello@cleanyourdirtylaundry.com</a></p>
@@ -1292,7 +1348,7 @@ p{max-width:38rem}
     </details>
     <details class="reveal">
       <summary>Can my parents pay?</summary>
-      <p>Yes, and most will want to. It's one flat charge, no surprise fees, and it's the difference between calling home about life and calling home about laundry. Send them the link.</p>
+      <p>Yes, and most will want to. It's one flat charge, no surprise fees, and it's the difference between calling home about life and calling home about laundry. Send them <a href="parents.html">the parent page</a> — it was written for them.</p>
     </details>
   </div>
 </section>
@@ -1310,7 +1366,7 @@ p{max-width:38rem}
     <span class="chip reveal">One form. One number.</span>
     <h2 id="waitlist-h" class="reveal">Claim your spot.</h2>
     <p class="lede reveal">We launch at NC State this August, the week campus comes back to life. Sign up with a name and email — you get a number.</p>
-    <ol class="ticket-how reveal">
+    <ol class="ticket-how reveal" role="list">
       <li><b>01</b> Sign up</li>
       <li><b>02</b> You get a number</li>
       <li><b>03</b> Nº 001–100 = founding</li>
@@ -1367,7 +1423,7 @@ p{max-width:38rem}
           </fieldset>
         </div>
         <button class="btn btn--big" type="submit" id="submit-btn">Claim your spot</button>
-        <p class="form__fine">No spam. No sharing. Just your Founding 100 number when it's ready.</p>
+        <p class="form__fine">No spam. No sharing. Just your number when it's ready.</p>
       </form>
 
       <div class="success reveal" id="success-box" role="status">
