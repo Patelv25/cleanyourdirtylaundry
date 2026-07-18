@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CYDL — Motion Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F6F0DA; --ink:#4A3B2A; --ink-soft:#8A7A63;
+  --navy:#1E2A38; --poster-navy:#1C2A37; --powder:#E6F0FA;
+  --mustard:#C99940; --lemon:#FFD24D;
+  --display:'Archivo Black','Arial Black',sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+  --mono:ui-monospace,'SF Mono',Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#000;overflow:hidden}
+body:not(.go) *{animation-play-state:paused !important}
+#stage{position:relative;width:1280px;height:720px;overflow:hidden;background:var(--parchment)}
+.scene{position:absolute;inset:0;opacity:0}
+img{display:block}
+
+/* ---------- generic bits ---------- */
+.plate{position:absolute;top:36px;left:60px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.plate b{color:var(--mustard);margin-right:10px}
+.w{display:inline-block;opacity:0;transform:translateY(.45em)}
+@keyframes wordin{to{opacity:1;transform:none}}
+@keyframes fadein{to{opacity:1}}
+@keyframes fadeout{to{opacity:0}}
+
+/* ---------- S1 HERO 0-4.5s ---------- */
+#s1{opacity:1;animation:fadeout .4s ease 4.1s forwards}
+#s1 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;transform:scale(1);animation:heroPush 4.5s ease-out forwards}
+@keyframes heroPush{to{transform:scale(1.05)}}
+#s1 .copy{position:absolute;top:90px;right:70px;width:520px}
+#s1 h1{font-family:var(--display);font-size:72px;line-height:.98;color:var(--ink);text-transform:uppercase}
+#s1 .sub{margin-top:16px;font-size:18px;line-height:1.55;color:var(--ink-soft);opacity:0;animation:fadein .7s ease 1.7s forwards}
+#s1 .btn{display:inline-block;margin-top:22px;background:var(--lemon);color:var(--navy);font-family:var(--body);font-weight:700;font-size:16px;padding:13px 26px;border-radius:12px;opacity:0;transform:scale(.9);animation:pop .45s cubic-bezier(.34,1.5,.5,1) 2.2s forwards}
+@keyframes pop{to{opacity:1;transform:scale(1)}}
+
+/* ---------- S2 CH1 4.5-11s ---------- */
+#s2{background:linear-gradient(180deg,#F9F3E5,#F2EAD2);animation:fadein .4s ease 4.4s forwards, fadeout .4s ease 10.6s forwards}
+#s2 .floor{position:absolute;left:60px;right:60px;bottom:96px;height:2px;background:rgba(74,59,42,.18)}
+#s2 .wk{position:absolute;left:60px;top:104px;font-family:var(--mono);font-size:13px;letter-spacing:.22em;color:var(--ink-soft);text-transform:uppercase}
+.num{position:absolute;left:54px;top:122px;font-family:var(--display);font-size:215px;line-height:.9;color:var(--ink);opacity:0}
+#n1{animation:numin .5s ease 4.9s forwards, numout .4s ease 6.8s forwards}
+#n2{animation:numin .5s ease 7.0s forwards, numout .4s ease 8.9s forwards}
+#n3{animation:numin .5s ease 9.1s forwards}
+@keyframes numin{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes numout{to{opacity:0;transform:translateY(-26px)}}
+.cap{position:absolute;left:60px;top:370px;font-family:var(--display);font-size:44px;line-height:1.06;color:var(--ink);text-transform:uppercase;width:470px;opacity:0}
+.cap .l2{color:var(--mustard);display:block}
+#c1{animation:fadein .01s linear 5.1s forwards, fadeout .35s ease 6.8s forwards}
+#c2{animation:fadein .01s linear 7.2s forwards, fadeout .35s ease 8.9s forwards}
+#c3{animation:fadein .01s linear 9.3s forwards}
+#s2 .kick{position:absolute;left:60px;top:552px;width:400px;font-weight:600;font-size:17.5px;line-height:1.5;color:var(--ink-soft);opacity:0;animation:fadein .6s ease 10.0s forwards}
+.grow{position:absolute;bottom:98px;opacity:0}
+#g1{right:520px;animation:growin .6s cubic-bezier(.34,1.4,.5,1) 5.0s forwards, ghost .5s ease 7.0s forwards}
+#g2{right:150px;animation:growin .7s cubic-bezier(.34,1.4,.5,1) 7.1s forwards, ghost .5s ease 9.1s forwards}
+#g3{right:80px;animation:growin .8s cubic-bezier(.34,1.4,.5,1) 9.2s forwards}
+@keyframes growin{from{opacity:0;transform:translateY(30px) scale(.92)}to{opacity:1;transform:none}}
+@keyframes ghost{to{opacity:.18}}
+
+/* ---------- S3 CH2 11-14.5s ---------- */
+#s3{animation:fadein .45s ease 11.0s forwards, fadeout .4s ease 14.1s forwards}
+#s3 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#s3 .copy{position:absolute;top:92px;left:70px;width:560px}
+#s3 h2{font-family:var(--display);font-size:56px;line-height:1;color:var(--ink);text-transform:uppercase}
+#s3 .sub{margin-top:14px;font-size:17.5px;line-height:1.55;color:var(--ink-soft);max-width:38ch;opacity:0;animation:fadein .6s ease 12.6s forwards}
+#s3 .glow{position:absolute;right:170px;bottom:40px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(217,184,72,.34),rgba(217,184,72,0) 65%);animation:pulse 2.2s ease-in-out 11.2s infinite}
+@keyframes pulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.07)}}
+
+/* ---------- S4 CH3 14.5-18s ---------- */
+#s4{background:var(--poster-navy);animation:fadein .45s ease 14.5s forwards, fadeout .4s ease 17.6s forwards}
+#s4 .poster{position:absolute;right:0;top:0;height:100%;width:auto;transform-origin:right center;transform:scale(1.02);animation:posterDrift 3.5s ease-out 14.5s forwards}
+@keyframes posterDrift{to{transform:scale(1.08)}}
+#s4 .type{position:absolute;left:60px;top:50%;transform:translateY(-50%);width:600px;font-family:var(--display);font-size:54px;line-height:1.04;color:var(--powder);text-transform:uppercase}
+#s4 .end{color:var(--lemon);display:inline-block;opacity:0;transform:scale(.85);animation:pop .4s cubic-bezier(.34,1.5,.5,1) 16.4s forwards}
+
+/* ---------- S5 CH4 18-21.5s ---------- */
+#s5{animation:fadein .45s ease 18.0s forwards, fadeout .4s ease 21.1s forwards}
+#s5 .bg{position:absolute;left:0;width:100%;height:130%;object-fit:cover;top:0;transform:translateY(-18%);animation:riseReveal 2.6s ease-out 18.2s forwards}
+@keyframes riseReveal{from{transform:translateY(-4%)}to{transform:translateY(-18%)}}
+#s5 .type{position:absolute;top:56px;left:0;right:0;text-align:center}
+#s5 h2{font-family:var(--display);font-size:50px;color:var(--ink);text-transform:uppercase}
+#s5 .sub{margin-top:8px;font-size:17px;color:var(--ink-soft);opacity:0;animation:fadein .5s ease 19.4s forwards}
+
+/* ---------- S6 CH5 21.5-24.5s ---------- */
+#s6{background:linear-gradient(180deg,#F9F3E5,#EFE7CC);animation:fadein .45s ease 21.5s forwards}
+#s6 .mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+#s6 h2{font-family:var(--display);font-size:60px;color:var(--ink);text-transform:uppercase;line-height:1}
+#s6 .sub{margin-top:12px;font-size:17.5px;color:var(--ink-soft);opacity:0;animation:fadein .5s ease 22.4s forwards}
+#s6 .btn{display:inline-block;margin-top:24px;background:var(--lemon);color:var(--navy);font-weight:700;font-size:18px;padding:16px 38px;border-radius:12px;opacity:0;transform:scale(.88);animation:pop .5s cubic-bezier(.34,1.5,.5,1) 22.8s forwards}
+#s6 .pile{position:absolute;right:80px;bottom:60px;text-align:center;opacity:0;animation:fadein .6s ease 23.2s forwards}
+#s6 .pile img{width:150px}
+#s6 .pile span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--ink-soft);text-transform:uppercase;display:block;margin-top:4px}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <div class="scene" id="s1">
+    <img class="bg" src="a/scene-dorm-hero.png" alt="">
+    <div class="copy">
+      <h1><span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) .45s forwards">The</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) .58s forwards">pile</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) .71s forwards">ends</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) .84s forwards">here.</span></h1>
+      <p class="sub">One 20 lb bag a week. Out Tuesday, back Thursday. Washed, dried, folded. $100 a month flat.</p>
+      <span class="btn">Claim your spot</span>
+    </div>
+  </div>
+
+  <div class="scene" id="s2">
+    <p class="plate"><b>CH. 01</b> The pile grows</p>
+    <p class="wk">Week</p>
+    <p class="num" id="n1">01</p>
+    <p class="num" id="n2">03</p>
+    <p class="num" id="n3">05</p>
+    <p class="cap" id="c1">One hoodie.<span class="l2">Innocent.</span></p>
+    <p class="cap" id="c2">The chair<span class="l2">is gone.</span></p>
+    <p class="cap" id="c3">It has<span class="l2">opinions now.</span></p>
+    <p class="kick">Meet the pile. Smug. Well-rested. Living rent-free in your room.</p>
+    <div class="floor"></div>
+    <div class="grow" id="g1"><img src="a/chair-simple.png" width="150" alt=""></div>
+    <div class="grow" id="g2"><img src="a/pile-on-chair.png" width="300" alt=""></div>
+    <div class="grow" id="g3"><img src="a/pile-on-desk.png" width="470" alt=""></div>
+  </div>
+
+  <div class="scene" id="s3">
+    <img class="bg" src="a/scene-tuesday-porch.png" alt="">
+    <div class="glow"></div>
+    <div class="copy">
+      <p class="plate" style="position:static;margin-bottom:12px"><b>CH. 02</b> Tuesday. The bag.</p>
+      <h2><span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 11.7s forwards">Tuesday,</span><br><span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 11.9s forwards">8:47 AM.</span></h2>
+      <p class="sub">Bag on the porch by 8. We text you a reminder Monday night. That's the whole job.</p>
+    </div>
+  </div>
+
+  <div class="scene" id="s4">
+    <img class="poster" src="a/bag-vs-pile-poster.jpg" alt="">
+    <p class="type"><span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 15.2s forwards">The</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 15.32s forwards">pile</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 15.44s forwards">has</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 15.56s forwards">had</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 15.68s forwards">a</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 15.8s forwards">good</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 15.92s forwards">run.</span> <span class="end">End it.</span></p>
+  </div>
+
+  <div class="scene" id="s5">
+    <img class="bg" src="a/scene-thursday-fold.png" alt="">
+    <div class="type">
+      <p class="plate" style="position:static;margin-bottom:10px;text-align:center"><b>CH. 04</b> Thursday</p>
+      <h2><span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 18.7s forwards">Back</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 18.84s forwards">Thursday.</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 18.98s forwards">Folded.</span></h2>
+      <p class="sub">Sorted by type. Both socks. Every time.</p>
+    </div>
+  </div>
+
+  <div class="scene" id="s6">
+    <div class="mid">
+      <h2><span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 21.9s forwards">Claim</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 22.05s forwards">your</span> <span class="w" style="animation:wordin .5s cubic-bezier(.2,1,.3,1) 22.2s forwards">spot.</span></h2>
+      <p class="sub">Sign up, get a number. The first 100 numbers are founding numbers.</p>
+      <span class="btn">Claim your spot</span>
+    </div>
+    <div class="pile">
+      <img src="a/pile-standing.png" alt="">
+      <span>the pile, unemployed</span>
+    </div>
+  </div>
+
+</div>
+<script>
+document.fonts.ready.then(function(){
+  setTimeout(function(){ document.body.classList.add('go'); window.__go = true; }, 250);
+});
+</script>
+</body>
+</html>

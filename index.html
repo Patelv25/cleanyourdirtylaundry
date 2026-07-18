@@ -24,6 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/world/scene-dorm-hero.webp" fetchpriority="high">
 
 <script type="application/ld+json">
 {
@@ -90,6 +91,16 @@
   --sky-faint:rgba(127,191,233,.16);
   --sky-line:rgba(127,191,233,.32);
   --lemon:#FFD24D;
+  /* the warm world */
+  --parchment:#F6F0DA;
+  --parch-deep:#EFE7CC;
+  --parch-raise:#FBF6E7;
+  --ink:#4A3B2A;
+  --ink-soft:#7A6A52;
+  --ink-faint:rgba(74,59,42,.58);
+  --ink-line:rgba(74,59,42,.22);
+  --mustard:#C99940;
+  --heartglow:rgba(217,184,72,.4);
   --display:'Archivo Black', 'Arial Black', sans-serif;
   --body:'Inter', 'Helvetica Neue', Arial, sans-serif;
   --mono:ui-monospace, 'SF Mono', Menlo, 'Courier New', monospace;
@@ -119,6 +130,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
   outline-offset:3px;
   border-radius:2px;
 }
+.lt a:focus-visible,.lt button:focus-visible,.lt input:focus-visible,.lt select:focus-visible,.lt summary:focus-visible{
+  outline-color:var(--ink);
+}
 
 /* grain overlay */
 body::after{
@@ -127,7 +141,7 @@ body::after{
   inset:0;
   z-index:999;
   pointer-events:none;
-  opacity:.055;
+  opacity:.05;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -142,7 +156,7 @@ body::after{
 
 /* ============ TYPE ============ */
 h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;letter-spacing:-.01em;text-wrap:balance}
-h1{font-size:clamp(2.75rem, 9.5vw, 7rem);color:var(--powder)}
+h1{font-size:clamp(2.75rem, 9.5vw, 6.5rem);color:var(--powder)}
 h2{font-size:clamp(2rem, 5.5vw, 4.25rem);color:var(--powder)}
 h3{font-size:clamp(1.25rem, 2.5vw, 1.75rem)}
 p{max-width:38rem}
@@ -151,6 +165,14 @@ p{max-width:38rem}
   font-size:.8125rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
   color:var(--sky);margin-bottom:1rem;display:block;
 }
+
+/* light-world section theme */
+.lt{background:var(--parchment);color:var(--ink)}
+.lt h1,.lt h2,.lt h3{color:var(--ink)}
+.lt p{color:var(--ink-soft)}
+.lt .lede{color:var(--ink-soft)}
+.lt .kicker{color:var(--mustard)}
+.lt a{color:#8A6A1F}
 
 /* tape-label chips */
 .chip{
@@ -179,6 +201,8 @@ p{max-width:38rem}
 .chip::before{left:-8px}
 .chip::after{right:-8px;transform:rotate(5deg)}
 .chip--ghost::before,.chip--ghost::after{display:none}
+.lt .chip{box-shadow:0 2px 10px rgba(74,59,42,.22)}
+.lt .chip::before,.lt .chip::after{background:rgba(74,59,42,.14)}
 
 /* perforation divider */
 .perf{
@@ -193,6 +217,8 @@ p{max-width:38rem}
 }
 .perf::before{left:-7px}
 .perf::after{right:-7px}
+.perf--lt{border-top-color:var(--ink-line)}
+.perf--lt::before,.perf--lt::after{background:var(--parch-deep);border-color:var(--ink-line)}
 
 /* ============ BUTTONS ============ */
 .btn{
@@ -218,6 +244,9 @@ p{max-width:38rem}
   transition:border-color .18s ease,color .18s ease;
 }
 .btn-ghost:hover{border-color:var(--sky);color:var(--sky)}
+.lt .btn-ghost{color:var(--ink);border-color:var(--ink-line)}
+.lt .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+.lt .btn{box-shadow:0 4px 20px rgba(74,59,42,.2)}
 
 /* ============ NAV ============ */
 .nav{
@@ -237,7 +266,6 @@ p{max-width:38rem}
   text-decoration:none;color:var(--powder);
   font-family:var(--display);font-size:1.1rem;letter-spacing:.06em;
 }
-.nav__brand img{width:2.4rem;height:2.4rem;border-radius:8px}
 .nav__brand .nav__lockup{width:auto;height:2.5rem;border-radius:0}
 .nav__links{display:none;gap:1.75rem;list-style:none}
 .nav__links a{
@@ -249,41 +277,54 @@ p{max-width:38rem}
   .nav__links{display:flex}
 }
 
-/* ============ HERO ============ */
+/* ============ HERO (the room) ============ */
 .hero{
   position:relative;
   min-height:100svh;
   display:flex;align-items:center;
   overflow:hidden;
   isolation:isolate;
+  background:var(--parchment);
 }
 .hero__img{
   position:absolute;inset:0;z-index:-2;
-  width:100%;height:100%;object-fit:cover;object-position:center;
-}
-.hero::before{
-  content:"";position:absolute;inset:0;z-index:-1;
-  background:
-    linear-gradient(to bottom, rgba(30,42,56,.55) 0%, rgba(30,42,56,0) 30%, rgba(30,42,56,.2) 70%, var(--navy) 100%),
-    linear-gradient(100deg, rgba(30,42,56,.97) 0%, rgba(30,42,56,.88) 42%, rgba(30,42,56,.38) 100%);
+  width:100%;height:100%;object-fit:cover;object-position:22% 36%;
 }
 .hero__content{
   max-width:var(--maxw);width:100%;margin:0 auto;
-  padding:8rem var(--pad) 6rem;
+  padding:6.25rem var(--pad) 5rem;
+  display:flex;justify-content:flex-end;
 }
-.hero__chip{margin-bottom:1.75rem}
-.hero h1{max-width:11ch;margin-bottom:1.5rem}
-.hero .lede{margin-bottom:2.5rem;max-width:32rem}
+.hero__panel{
+  max-width:38rem;
+  padding:clamp(1.5rem,3vw,2.25rem);
+  background:linear-gradient(180deg, rgba(246,240,218,.95), rgba(246,240,218,.86) 74%, rgba(246,240,218,.55));
+  border-radius:16px;
+}
+.hero__plate{margin-bottom:1.1rem}
+.hero h1{color:var(--ink);font-size:clamp(2.5rem, 5.6vw, 4.25rem);max-width:14ch;margin-bottom:1.25rem}
+.hero .lede{margin-bottom:2rem;max-width:30rem;color:var(--ink-soft)}
 .hero__cta-row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
 .hero__micro{
-  margin-top:1.5rem;font-size:.8125rem;font-weight:600;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--sky);
+  margin-top:1.4rem;font-size:.8125rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
 }
 .hero__scroll{
   position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);
-  color:var(--powder-faint);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-faint);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
   text-decoration:none;pointer-events:none;
   font-family:var(--mono);white-space:nowrap;
+}
+/* headline words cascade in once fonts + js are up */
+.hw{display:inline-block}
+.js .hero:not(.hero--in) .hw{opacity:0;transform:translateY(.45em)}
+.js .hero--in .hw{
+  opacity:1;transform:none;
+  transition:opacity .55s cubic-bezier(.2,1,.3,1) var(--d,0ms), transform .55s cubic-bezier(.2,1,.3,1) var(--d,0ms);
+}
+@media (prefers-reduced-motion: no-preference){
+  .js .hero__img{transform:scale(1);transition:transform 8s ease-out}
+  .js .hero--in .hero__img{transform:scale(1.05)}
 }
 
 /* ============ TICKER ============ */
@@ -326,7 +367,6 @@ p{max-width:38rem}
 
 /* ============ SECTIONS ============ */
 .section{padding:clamp(4.5rem, 10vw, 8.5rem) 0;position:relative}
-.section--tight{padding:clamp(3.5rem, 8vw, 6.5rem) 0}
 
 /* split layout */
 .split{
@@ -350,6 +390,7 @@ p{max-width:38rem}
   border-radius:3px;width:100%;height:auto;
   will-change:transform;
 }
+.lt .split__frame{border-color:var(--ink-line);background:var(--parch-raise)}
 .split__media .chip{position:absolute;z-index:2;top:-0.9rem;left:1.25rem}
 .split__media .chip--tail{top:auto;left:auto;bottom:-0.9rem;right:1.25rem;--tilt:2deg}
 
@@ -360,20 +401,196 @@ p{max-width:38rem}
   border-left:3px solid var(--sky);
   padding-left:1.1rem;margin-top:1.75rem;max-width:34rem;
 }
+.lt .pull{color:var(--ink);border-left-color:var(--mustard)}
+
+/* world panels (illustration on parchment card) */
+.world-panel{
+  position:relative;border-radius:10px;
+  border:1px solid var(--ink-line);
+  background:linear-gradient(180deg,var(--parch-raise),var(--parch-deep));
+  padding:clamp(1.5rem,3.5vw,2.5rem);
+}
+.world-panel img{margin:0 auto}
+
+/* ============ CH1 — THE PILE GROWS (pinned conquest scene) ============ */
+.grow{position:relative}
+.grow__track{position:relative}
+.grow__stage{position:relative;padding:clamp(3rem,7vw,5rem) 0}
+.grow__scene{position:relative;max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+.gplate{margin-bottom:1rem}
+.gbeat{padding:clamp(2rem,5vw,3rem) 0}
+.gbeat__wk{
+  font-family:var(--mono);font-size:.8125rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--ink-soft);
+}
+.gbeat__num{
+  font-family:var(--display);
+  font-size:clamp(7rem,20vw,14rem);
+  line-height:.92;color:var(--ink);letter-spacing:-.02em;
+}
+.gbeat__cap{
+  font-family:var(--display);
+  font-size:clamp(1.75rem,4.6vw,3rem);
+  line-height:1.06;color:var(--ink);text-transform:uppercase;
+  max-width:12ch;margin-top:1.1rem;
+}
+.gbeat__cap em{font-style:normal;color:var(--mustard);display:block}
+.gbeat__art{margin-top:1.75rem}
+.gbeat__art img{margin:0}
+.grow__kick{max-width:24rem}
+.grow__kick p{
+  font-weight:600;font-size:clamp(1.05rem,2vw,1.2rem);
+  color:var(--ink-soft);line-height:1.5;
+}
+.grow__floor,.grow__rail{display:none}
+
+/* pinned mode (JS + motion + tall-enough viewport only) */
+.js .grow--pin .grow__track{height:390vh}
+.js .grow--pin .grow__stage{
+  position:sticky;top:0;height:100svh;
+  display:flex;align-items:stretch;overflow:hidden;padding:0;
+}
+.js .grow--pin .grow__scene{width:100%;max-width:none;padding:0}
+.js .grow--pin .gplate{position:absolute;top:2.4rem;left:var(--pad);z-index:3}
+.js .grow--pin .grow__floor{
+  display:block;position:absolute;left:var(--pad);right:var(--pad);bottom:14%;
+  height:2px;background:var(--ink-line);
+}
+.js .grow--pin .grow__rail{
+  display:block;position:absolute;left:calc(var(--pad)*.45);top:50%;
+  transform:translateY(-50%);height:min(300px,38svh);width:2px;
+  background:var(--ink-line);
+}
+.js .grow--pin .grow__rail i{
+  position:absolute;inset:0;background:var(--mustard);
+  transform:scaleY(0);transform-origin:top;will-change:transform;
+}
+.js .grow--pin .grow__rail span{
+  position:absolute;left:12px;transform:translateY(-50%);
+  font-family:var(--mono);font-size:.625rem;letter-spacing:.12em;
+  color:var(--ink-faint);white-space:nowrap;
+}
+.js .grow--pin .grow__rail span:nth-of-type(1){top:0}
+.js .grow--pin .grow__rail span:nth-of-type(2){top:50%}
+.js .grow--pin .grow__rail span:nth-of-type(3){top:100%}
+.js .grow--pin .grow__rail span.on{color:var(--mustard);font-weight:700}
+.js .grow--pin .gbeat{
+  position:absolute;inset:0;padding:0;pointer-events:none;
+}
+.js .grow--pin .gbeat__type{
+  position:absolute;left:calc(var(--pad) + 2.2rem);top:50%;
+  transform:translateY(-52%);max-width:34rem;
+}
+.js .grow--pin .gbeat__art{
+  position:absolute;right:calc(var(--pad)*1.4);bottom:14%;margin:0;
+  transform-origin:bottom center;
+}
+.js .grow--pin .gbeat--1 .gbeat__art img{width:clamp(7rem,13vw,10.5rem)}
+.js .grow--pin .gbeat--2 .gbeat__art img{width:clamp(11rem,21vw,19rem)}
+.js .grow--pin .gbeat--3 .gbeat__art img{width:clamp(16rem,32vw,29rem)}
+.js .grow--pin .gbeat .gbeat__type{opacity:0;transition:opacity .45s ease, transform .45s ease}
+.js .grow--pin .gbeat .gbeat__art{opacity:0;transform:translateY(30px) scale(.94);
+  transition:opacity .5s ease, transform .6s cubic-bezier(.34,1.3,.5,1)}
+.js .grow--pin .gbeat.is-on .gbeat__type{opacity:1;transform:translateY(-50%)}
+.js .grow--pin .gbeat.is-on .gbeat__art{opacity:1;transform:none}
+.js .grow--pin .gbeat.is-past .gbeat__art{opacity:0;transform:none}
+.js .grow--pin .grow__kick{
+  position:absolute;left:calc(var(--pad) + 2.2rem);bottom:16.5%;z-index:2;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+.js .grow--pin .grow__kick.is-on{opacity:1;transform:none}
+@media (min-width:700px){
+  .js .grow--pin .gbeat--3 .gbeat__art{right:calc(var(--pad)*.8)}
+}
+@media (max-width:699px){
+  .js .grow--pin .gbeat__type{left:var(--pad);top:12%;transform:none;max-width:none;right:var(--pad)}
+  .js .grow--pin .gbeat.is-on .gbeat__type{transform:none}
+  .js .grow--pin .gbeat__num{font-size:clamp(5rem,28vw,7.5rem)}
+  .js .grow--pin .gbeat__cap{font-size:1.75rem;max-width:16ch}
+  .js .grow--pin .gbeat__art{right:var(--pad)}
+  .js .grow--pin .gbeat--1 .gbeat__art img{width:6.5rem}
+  .js .grow--pin .gbeat--2 .gbeat__art img{width:9rem}
+  .js .grow--pin .gbeat--3 .gbeat__art img{width:13.5rem}
+  .js .grow--pin .grow__rail{display:none}
+  .js .grow--pin .grow__kick{bottom:15.5%;left:var(--pad);right:var(--pad)}
+  .js .grow--pin .grow__kick p{font-size:.95rem}
+}
+
+/* static/stacked fallback keeps beats airy and centered */
+.grow:not(.grow--pin) .gbeat{max-width:44rem}
+.grow:not(.grow--pin) .gbeat__art img{max-width:min(70%,22rem)}
+.grow:not(.grow--pin) .grow__kick{padding:1rem 0 2rem}
+
+/* the pile breathes (motion-safe only) */
+@media (prefers-reduced-motion: no-preference){
+  .js .breathe{animation:pileBreathe 5.5s ease-in-out infinite;transform-origin:bottom center}
+}
+@keyframes pileBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.014,1.03)}}
+
+/* ============ EXHIBIT A ============ */
+.lt--deep{background:var(--parch-deep)}
+.proof-slot{margin-top:2rem;border:1px dashed var(--ink-line);border-radius:6px;
+  padding:1rem 1.25rem;max-width:34rem}
+.proof-slot p{font-size:.9rem;color:var(--ink-faint);margin:0}
+.proof-slot b{font-family:var(--mono);font-size:.6875rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mustard);display:block;margin-bottom:.35rem;font-weight:700}
+
+/* group chat */
+.gc{max-width:26rem}
+.gc__bubble{
+  max-width:88%;padding:.65rem 1rem;border-radius:16px;margin-bottom:.5rem;
+  font-size:.9375rem;line-height:1.45;width:fit-content;
+}
+.gc__bubble--them{background:#E7DFC6;color:var(--ink);border-bottom-left-radius:4px}
+.gc__bubble--you{background:var(--navy);color:var(--powder);margin-left:auto;border-bottom-right-radius:4px;font-weight:500}
+.gc__meta{font-family:var(--mono);font-size:.6875rem;color:var(--ink-faint);
+  letter-spacing:.1em;text-transform:uppercase;margin:.35rem 0 .85rem;text-align:center}
+.js .reveal.is-in .gc__bubble{animation:bubbleIn .35s ease both}
+.js .reveal.is-in .gc__bubble:nth-child(3){animation-delay:.25s}
+.js .reveal.is-in .gc__bubble:nth-child(4){animation-delay:.5s}
+.js .reveal.is-in .gc__bubble:nth-child(5){animation-delay:.75s}
+.js .reveal.is-in .gc__bubble:nth-child(6){animation-delay:1s}
+@keyframes bubbleIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+
+/* ============ CH2 — PORCH BANNER ============ */
+.porch{
+  position:relative;min-height:78svh;
+  display:flex;align-items:center;
+  overflow:hidden;isolation:isolate;
+  background:var(--parchment);
+}
+.porch__img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:72% center}
+.porch__inner{max-width:var(--maxw);width:100%;margin:0 auto;padding:5rem var(--pad)}
+.porch__panel{
+  max-width:32rem;padding:clamp(1.5rem,3vw,2.25rem);
+  background:linear-gradient(180deg, rgba(246,240,218,.94), rgba(246,240,218,.8) 75%, rgba(246,240,218,.35));
+  border-radius:16px;
+}
+.porch__panel h2{margin:.9rem 0 1rem}
+@media (prefers-reduced-motion: no-preference){
+  .porch::before{
+    content:"";position:absolute;z-index:-1;right:8%;bottom:6%;
+    width:min(46vw,460px);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle, var(--heartglow), rgba(217,184,72,0) 64%);
+    animation:glowPulse 4s ease-in-out infinite;
+    pointer-events:none;
+  }
+}
+@keyframes glowPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.95;transform:scale(1.06)}}
 
 /* ============ STEPS ============ */
-.steps-head{margin-bottom:clamp(2.5rem,6vw,4.5rem)}
+.steps-head{margin-bottom:clamp(2.5rem,6vw,4.5rem);position:relative}
 .steps-head h2{margin-bottom:1.25rem}
 .steps{
   display:grid;gap:2.25rem;
   grid-template-columns:1fr;
-  counter-reset:step;
 }
 @media (min-width:820px){
   .steps{grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,3vw,3rem)}
 }
 .step{
-  border-top:1px solid var(--sky-line);
+  border-top:1px solid var(--ink-line);
   padding-top:1.5rem;position:relative;
 }
 .step__num{
@@ -381,30 +598,21 @@ p{max-width:38rem}
   font-size:clamp(3.5rem, 8vw, 6rem);
   line-height:1;
   color:transparent;
-  -webkit-text-stroke:2px var(--sky);
+  -webkit-text-stroke:2px var(--mustard);
   display:block;margin-bottom:.9rem;
 }
-@supports not (-webkit-text-stroke:2px var(--sky)){
-  .step__num{color:var(--sky)}
+@supports not (-webkit-text-stroke:2px var(--mustard)){
+  .step__num{color:var(--mustard)}
 }
-.step h3{color:var(--powder);margin-bottom:.75rem}
-.step p{color:var(--powder-dim);font-size:1rem}
+.step h3{color:var(--ink);margin-bottom:.75rem}
+.step p{color:var(--ink-soft);font-size:1rem}
 .step__tag{
   display:inline-block;margin-top:1rem;
   font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--sky);
+  color:var(--mustard);
 }
 
-/* ============ STACK (unboxing) ============ */
-.stack{
-  display:grid;gap:2.5rem;align-items:center;grid-template-columns:1fr;
-}
-@media (min-width:900px){
-  .stack{grid-template-columns:.9fr 1.1fr;gap:clamp(2.5rem,6vw,5.5rem)}
-}
-.stack__media{position:relative;max-width:30rem;margin:0 auto;width:100%}
-
-/* ============ PRICING ============ */
+/* ============ PRICING (navy receipts) ============ */
 .pricing{background:var(--navy-deep)}
 .pricing__grid{
   display:grid;gap:2.5rem;grid-template-columns:1fr;align-items:start;
@@ -464,32 +672,91 @@ p{max-width:38rem}
 }
 .price-card::before{left:-11px}
 .price-card::after{right:-11px}
-.founding{
-  padding:clamp(1.5rem, 3vw, 2.25rem) 0;
+.pricing .parents__proof span{color:var(--sky);border-color:var(--sky-line)}
+
+/* ============ CH3 — STANDOFF ============ */
+.standoff{background:#1C2A37;overflow:hidden}
+.standoff__grid{
+  display:grid;gap:2.5rem;align-items:center;grid-template-columns:1fr;
 }
-.founding h2{margin:1rem 0 1.25rem}
-.founding__count{
-  font-family:var(--display);
-  font-size:clamp(5rem, 14vw, 9rem);
-  color:transparent;line-height:1;
-  -webkit-text-stroke:2px var(--sky);
-  display:flex;align-items:baseline;gap:.75rem;
+@media (min-width:900px){
+  .standoff__grid{grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem)}
 }
-@supports not (-webkit-text-stroke:2px var(--sky)){
-  .founding__count{color:var(--sky)}
+.standoff h2{color:var(--powder);margin:1rem 0 1.25rem}
+.standoff h2 .end{color:var(--lemon)}
+.standoff p{color:var(--powder-dim)}
+.standoff__poster img{
+  max-height:min(78svh,44rem);width:auto;margin:0 auto;
+  filter:drop-shadow(0 18px 44px rgba(0,0,0,.35));
 }
-.founding__count small{
-  font-family:var(--body);font-size:1rem;font-weight:600;
-  color:var(--powder-dim);letter-spacing:.08em;text-transform:uppercase;
+
+/* ============ ROUTE ============ */
+.route{background:var(--navy-deep);overflow:hidden}
+.route .wrap{max-width:var(--maxw)}
+.route h2{margin:1rem 0 1.25rem}
+.route__map{margin-top:2.5rem;border:1px solid rgba(127,191,233,.22);
+  border-radius:8px;background:var(--navy);padding:clamp(.75rem,2vw,1.75rem)}
+.route__map svg{width:100%;height:auto;display:block}
+.route__path{fill:none;stroke:var(--sky);stroke-width:2.5;
+  stroke-dasharray:6 8;opacity:.9}
+.js .route__pathdraw{stroke-dasharray:1400;stroke-dashoffset:1400;stroke:rgba(127,191,233,.28);
+  stroke-width:2.5;fill:none}
+.js .route.is-in .route__pathdraw{animation:routeDraw 2.6s cubic-bezier(.4,0,.2,1) .3s forwards}
+@keyframes routeDraw{to{stroke-dashoffset:0}}
+.route__node{fill:var(--navy);stroke:var(--sky);stroke-width:2}
+.route__node--home{fill:var(--lemon);stroke:none}
+.route__label{font-family:var(--mono);font-size:15px;
+  fill:var(--powder);letter-spacing:.08em}
+.route__sub{font-family:var(--mono);font-size:12.5px;
+  fill:rgba(230,240,250,.62)}
+.route__path--spur{opacity:.45}
+.js .route__path--main{opacity:0;transition:opacity .8s ease}
+.js .route.is-in .route__path--main{opacity:.9;transition-delay:2.4s}
+@media (max-width:640px){
+  .route__map{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .route__map svg{min-width:560px}
 }
-.founding p{color:var(--powder-dim);margin:1.25rem 0 2rem}
-.founding__end{
-  font-family:var(--display);color:var(--powder);font-size:1.2rem;margin-top:0;
+.route__van{fill:var(--powder)}
+.js .route.is-in .route__van{
+  offset-path:path("M 80 300 C 180 300 200 210 300 205 C 380 201 420 150 500 130 C 560 116 600 90 640 78");
+  animation:vanRun 3s cubic-bezier(.4,0,.2,1) .5s forwards}
+@keyframes vanRun{from{offset-distance:0%}to{offset-distance:100%}}
+.js .route.route--scrub .route__van{animation:none;
+  offset-path:path("M 80 300 C 180 300 200 210 300 205 C 380 201 420 150 500 130 C 560 116 600 90 640 78");
+  offset-distance:var(--van,0%)}
+
+/* ============ CH4 — THE RETURN ============ */
+.stack{
+  display:grid;gap:2.5rem;align-items:center;grid-template-columns:1fr;
 }
+@media (min-width:900px){
+  .stack{grid-template-columns:.9fr 1.1fr;gap:clamp(2.5rem,6vw,5.5rem)}
+}
+.stack__media{position:relative;max-width:30rem;margin:0 auto;width:100%}
+.sparkle{
+  position:absolute;width:10px;height:10px;pointer-events:none;
+  background:var(--mustard);
+  clip-path:polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+}
+@media (prefers-reduced-motion: no-preference){
+  .js .sparkle{animation:twinkle 2.6s ease-in-out infinite}
+  .js .sparkle:nth-of-type(2){animation-delay:.7s}
+  .js .sparkle:nth-of-type(3){animation-delay:1.3s}
+  .js .sparkle:nth-of-type(4){animation-delay:1.9s}
+}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}
+.chair-note{display:flex;align-items:center;gap:1rem;margin-top:1.75rem;
+  border:1px solid var(--ink-line);border-radius:6px;padding:.9rem 1.1rem;max-width:30rem}
+.chair-note p{font-size:.9rem;color:var(--ink-soft);margin:0}
+.chair-note b{font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mustard);display:block;margin-bottom:.2rem}
+
+/* backbone strip (sunday media) */
+.backbone{display:flex;align-items:flex-end;justify-content:center;gap:clamp(1.5rem,4vw,3rem)}
+.backbone img{width:clamp(8rem,16vw,13rem)}
 
 /* ============ PARENTS ============ */
 .parents{position:relative;overflow:hidden}
-.parents .split__copy .lede{margin-top:1.25rem}
 .parents__proof{
   margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem;
 }
@@ -499,56 +766,99 @@ p{max-width:38rem}
   border:1px solid var(--sky-line);border-radius:99px;
   padding:.45rem 1rem;
 }
+.lt .parents__proof span{color:#8A6A1F;border-color:var(--ink-line)}
 
 /* ============ FAQ ============ */
 .faq h2{margin-bottom:clamp(2rem,5vw,3.25rem)}
 .faq details{
-  border-top:1px solid var(--sky-line);
+  border-top:1px solid var(--ink-line);
 }
-.faq details:last-of-type{border-bottom:1px solid var(--sky-line)}
+.faq details:last-of-type{border-bottom:1px solid var(--ink-line)}
 .faq summary{
   cursor:pointer;list-style:none;
   display:flex;justify-content:space-between;align-items:center;gap:1.5rem;
   padding:1.4rem 0;
   font-family:var(--display);font-size:clamp(1.05rem, 2vw, 1.35rem);
-  color:var(--powder);
+  color:var(--ink);
   transition:color .15s ease;
 }
-.faq summary:hover{color:var(--sky)}
+.faq summary:hover{color:var(--mustard)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{
   content:"+";
-  font-family:var(--body);font-weight:400;font-size:1.75rem;color:var(--sky);
+  font-family:var(--body);font-weight:400;font-size:1.75rem;color:var(--mustard);
   flex:none;line-height:1;
   transition:transform .25s ease;
 }
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq details p{
-  padding:0 0 1.6rem;color:var(--powder-dim);max-width:44rem;
+  padding:0 0 1.6rem;color:var(--ink-soft);max-width:44rem;
 }
 
-/* ============ WAITLIST ============ */
+/* ============ CH5 — WAITLIST (parchment ticket) ============ */
 .waitlist{position:relative;overflow:hidden;isolation:isolate}
-.waitlist__bg{
-  position:absolute;inset:0;z-index:-2;
-  width:100%;height:100%;object-fit:cover;opacity:.16;
-}
-.waitlist::before{
-  content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(to bottom, var(--navy) 0%, rgba(30,42,56,.72) 50%, var(--navy) 100%);
-}
 .waitlist__inner{max-width:44rem;margin:0 auto;text-align:center}
 .waitlist__inner .chip{margin-bottom:1.5rem}
 .waitlist__inner h2{margin-bottom:1rem}
 .waitlist__inner > p{margin:0 auto 1rem}
+.waitlist .plate{justify-content:center}
+.waitlist .plate::after{display:none}
 .waitlist__kick{
-  font-family:var(--display);color:var(--powder);font-size:1.1rem;margin-bottom:2.5rem !important;
+  font-family:var(--display);color:var(--ink);font-size:1.1rem;margin-bottom:2.5rem !important;
 }
+.duel{max-width:26rem;margin:0 auto 2rem}
+.duel img{width:100%}
+.ticket-how{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin:0 0 2rem;padding:0;list-style:none}
+.ticket-how li{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-soft);border:1px solid var(--ink-line);border-radius:99px;padding:.45rem 1rem}
+.ticket-how b{color:var(--mustard);font-weight:700}
+.founding{padding:clamp(1.25rem, 3vw, 2rem) 0}
+.founding__count{
+  font-family:var(--display);
+  font-size:clamp(5rem, 14vw, 9rem);
+  color:transparent;line-height:1;
+  -webkit-text-stroke:2px var(--mustard);
+  display:flex;align-items:baseline;gap:.75rem;justify-content:center;
+}
+@supports not (-webkit-text-stroke:2px var(--mustard)){
+  .founding__count{color:var(--mustard)}
+}
+.founding__count small{
+  font-family:var(--body);font-size:1rem;font-weight:600;
+  color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;
+}
+.founding p{color:var(--ink-soft);margin:1.25rem auto 0}
+.founding__live{
+  display:inline-block;margin-top:.9rem;
+  font-family:var(--mono);font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;
+  color:#8A6A1F;border:1px solid var(--ink-line);border-radius:99px;
+  padding:.45rem 1rem;
+}
+.founding__live:empty{display:none}
+/* honest cohort meter — fills against the CURRENT cohort of 25, real data only */
+.cohort{max-width:26rem;margin:1.5rem auto 0;text-align:left}
+.cohort__label{
+  display:flex;justify-content:space-between;gap:1rem;
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:.5rem;
+}
+.cohort__bar{
+  height:10px;border-radius:99px;border:1px solid var(--ink-line);
+  background:var(--parch-raise);overflow:hidden;
+}
+.cohort__fill{
+  height:100%;width:100%;background:var(--mustard);border-radius:99px;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .9s cubic-bezier(.2,.65,.25,1);
+}
+.cohort:not(.is-live){display:none}
+
 .form{
   text-align:left;
   border:1px solid var(--sky-line);border-radius:8px;
-  background:rgba(22,32,43,.88);
+  background:var(--navy-deep);
   padding:clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow:0 18px 50px rgba(74,59,42,.16);
 }
 .form__row{display:grid;gap:1.25rem;grid-template-columns:1fr;margin-bottom:1.25rem}
 @media (min-width:640px){
@@ -590,19 +900,20 @@ p{max-width:38rem}
 .form__fine{
   margin-top:1rem;text-align:center;font-size:.8125rem;color:var(--powder-faint);
 }
+.form a{color:var(--sky)}
 .honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
 
 .success{
   display:none;text-align:center;
-  border:2px dashed var(--sky);border-radius:8px;
-  background:rgba(22,32,43,.88);
+  border:2px dashed var(--mustard);border-radius:8px;
+  background:var(--parch-raise);
   padding:clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 4vw, 2.5rem);
 }
 .success h3{
-  font-size:clamp(1.75rem, 4vw, 2.5rem);color:var(--powder);margin-bottom:1rem;
+  font-size:clamp(1.75rem, 4vw, 2.5rem);color:var(--ink);margin-bottom:1rem;
 }
-.success p{margin:0 auto;color:var(--powder-dim)}
-.success a{color:var(--sky)}
+.success p{margin:0 auto;color:var(--ink-soft)}
+.success a{color:#8A6A1F}
 .waitlist--done .form{display:none}
 .waitlist--done .success{display:block}
 
@@ -653,7 +964,7 @@ p{max-width:38rem}
 /* mono stamp voice */
 .kicker,.chip,.step__tag,.hero__micro{font-family:var(--mono)}
 
-/* ============ V2: STAMP-IN CHIPS ============ */
+/* stamp-in chips */
 @keyframes stampIn{
   0%{opacity:0;transform:rotate(calc(var(--tilt,-2deg) - 7deg)) scale(1.7)}
   60%{opacity:1;transform:rotate(calc(var(--tilt,-2deg) + 1deg)) scale(.96)}
@@ -666,12 +977,12 @@ p{max-width:38rem}
 }
 .js .reveal.is-in .chip--ghost{animation:none}
 
-/* ============ V2: PERFORATION TEAR ============ */
+/* perforation tear */
 .js [data-tear]{clip-path:inset(-12px 100% -12px -10px);
   transition:clip-path 1s cubic-bezier(.22,.9,.3,1)}
 .js [data-tear].is-in{clip-path:inset(-12px -10px -12px -10px)}
 
-/* ============ V2: DRUM SCROLL INDICATOR ============ */
+/* drum scroll indicator */
 .drum{
   position:fixed;right:1.1rem;bottom:1.1rem;z-index:90;
   width:52px;height:52px;opacity:.85;pointer-events:none;
@@ -682,76 +993,20 @@ p{max-width:38rem}
 .drum__fins{stroke:var(--sky);stroke-width:2.5;stroke-linecap:round;transform-origin:center}
 @media (max-width:640px){.drum{width:40px;height:40px;right:.8rem;bottom:.8rem}}
 
-/* ============ V2: THE ROUTE ============ */
-.route{background:var(--navy-deep);overflow:hidden}
-.route .wrap{max-width:var(--maxw)}
-.route h2{margin:1rem 0 1.25rem}
-.route__map{margin-top:2.5rem;border:1px solid rgba(127,191,233,.22);
-  border-radius:8px;background:var(--navy);padding:clamp(.75rem,2vw,1.75rem)}
-.route__map svg{width:100%;height:auto;display:block}
-.route__path{fill:none;stroke:var(--sky);stroke-width:2.5;
-  stroke-dasharray:6 8;opacity:.9}
-.js .route__pathdraw{stroke-dasharray:1400;stroke-dashoffset:1400;stroke:rgba(127,191,233,.28);
-  stroke-width:2.5;fill:none}
-.js .route.is-in .route__pathdraw{animation:routeDraw 2.6s cubic-bezier(.4,0,.2,1) .3s forwards}
-@keyframes routeDraw{to{stroke-dashoffset:0}}
-.route__node{fill:var(--navy);stroke:var(--sky);stroke-width:2}
-.route__node--home{fill:var(--lemon);stroke:none}
-.route__label{font-family:var(--mono);font-size:15px;
-  fill:var(--powder);letter-spacing:.08em}
-.route__sub{font-family:var(--mono);font-size:12.5px;
-  fill:rgba(230,240,250,.62)}
-.route__path--spur{opacity:.45}
-.js .route__path--main{opacity:0;transition:opacity .8s ease}
-.js .route.is-in .route__path--main{opacity:.9;transition-delay:2.4s}
-@media (max-width:640px){
-  .route__map{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .route__map svg{min-width:560px}
-}
-.route__van{fill:var(--powder)}
-.js .route.is-in .route__van{
-  offset-path:path("M 80 300 C 180 300 200 210 300 205 C 380 201 420 150 500 130 C 560 116 600 90 640 78");
-  animation:vanRun 3s cubic-bezier(.4,0,.2,1) .5s forwards}
-@keyframes vanRun{from{offset-distance:0%}to{offset-distance:100%}}
-@media (prefers-reduced-motion: reduce){
-  .js .route__pathdraw{stroke-dashoffset:0;animation:none}
-  .js .route.is-in .route__van{animation:none;offset-distance:100%}
-  .js .route__path--main{opacity:.9;transition:none}
-  .js .reveal.is-in .chip,.js .chip.reveal.is-in{animation:none}
-  .js .reveal.is-in .gc__bubble{animation:none}
-  .js [data-tear]{clip-path:none;transition:none}
-  .drum{display:none}
-}
+/* chapter plates */
+.plate{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem;
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--powder-faint)}
+.plate b{color:var(--sky);font-weight:700}
+.plate::after{content:"";flex:0 1 7rem;height:1px;background:var(--sky-line)}
+.lt .plate,.hero .plate,.porch .plate{color:var(--ink-faint)}
+.lt .plate b,.hero .plate b,.porch .plate b{color:var(--mustard)}
+.lt .plate::after,.hero .plate::after,.porch .plate::after{background:var(--ink-line)}
+
 .visually-hidden{
   position:absolute;width:1px;height:1px;margin:-1px;padding:0;
   overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
 }
-
-/* ============ V2: GROUP CHAT ============ */
-.gc{max-width:26rem}
-.gc__bubble{
-  max-width:88%;padding:.65rem 1rem;border-radius:16px;margin-bottom:.5rem;
-  font-size:.9375rem;line-height:1.45;width:fit-content;
-}
-.gc__bubble--them{background:var(--navy-raise);color:var(--powder);border-bottom-left-radius:4px}
-.gc__bubble--you{background:var(--sky);color:var(--navy);margin-left:auto;border-bottom-right-radius:4px;font-weight:500}
-.gc__meta{font-family:var(--mono);font-size:.6875rem;color:var(--powder-faint);
-  letter-spacing:.1em;text-transform:uppercase;margin:.35rem 0 .85rem;text-align:center}
-.js .reveal.is-in .gc__bubble{animation:bubbleIn .35s ease both}
-.js .reveal.is-in .gc__bubble:nth-child(3){animation-delay:.25s}
-.js .reveal.is-in .gc__bubble:nth-child(4){animation-delay:.5s}
-.js .reveal.is-in .gc__bubble:nth-child(5){animation-delay:.75s}
-.js .reveal.is-in .gc__bubble:nth-child(6){animation-delay:1s}
-@keyframes bubbleIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
-
-/* ============ V2: LIVE SPOTS ============ */
-.founding__live{
-  display:inline-block;margin-top:.9rem;
-  font-family:var(--mono);font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--sky);border:1px solid rgba(127,191,233,.35);border-radius:99px;
-  padding:.45rem 1rem;
-}
-.founding__live:empty{display:none}
 
 /* ============ REDUCED MOTION ============ */
 @media (prefers-reduced-motion: reduce){
@@ -762,225 +1017,34 @@ p{max-width:38rem}
   .ticker__pause{display:none}
   .btn{transition:none}
   .faq summary::after{transition:none}
+  .js .route__pathdraw{stroke-dashoffset:0;animation:none}
+  .js .route.is-in .route__van{animation:none;offset-distance:100%}
+  .js .route__path--main{opacity:.9;transition:none}
+  .js .reveal.is-in .chip,.js .chip.reveal.is-in{animation:none}
+  .js .reveal.is-in .gc__bubble{animation:none}
+  .js [data-tear]{clip-path:none;transition:none}
+  .drum{display:none}
+  .js .route.route--scrub .route__van{offset-distance:100%}
+  .js .hero:not(.hero--in) .hw{opacity:1;transform:none}
+  .js .hero--in .hw{transition:none}
+  .cohort__fill{transition:none}
 }
 
 /* ============ SMALL SCREENS ============ */
 @media (max-width:420px){
   body{font-size:1rem}
-  .cta-x{display:none}
-  .hero__content{padding-top:6.5rem;padding-bottom:5rem}
+  .hero__content{padding-top:6rem;padding-bottom:5rem}
   .hero__cta-row .btn--big{width:100%;text-align:center}
   .hero__cta-row .btn-ghost{width:100%;text-align:center}
   .form__pills{flex-direction:column}
   .ticker__item{font-size:.875rem}
-}
-
-/* ============ V3: THE PILE vs THE BAG ============ */
-/* chapter plates */
-.plate{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem;
-  font-family:var(--mono);font-size:.6875rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--powder-faint)}
-.plate b{color:var(--sky);font-weight:700}
-.plate::after{content:"";flex:0 1 7rem;height:1px;background:var(--sky-line)}
-
-/* character mounts */
-.charm{line-height:0}
-.charm svg{width:100%;height:auto;display:block;overflow:visible}
-.svgdefs{position:absolute;width:0;height:0;overflow:hidden}
-
-/* CH1 growth strip */
-.grow{background:var(--navy-deep);padding:clamp(3.5rem,8vw,6rem) 0;overflow:hidden}
-.grow__grid{display:grid;gap:2.5rem;grid-template-columns:1fr;align-items:end}
-@media (min-width:760px){.grow__grid{grid-template-columns:1fr 1.15fr 1.45fr;gap:clamp(1.5rem,3vw,3rem)}}
-.grow__stage{text-align:center}
-.grow__stage .charm{margin:0 auto;transform-origin:bottom center}
-.grow__stage:nth-child(1) .charm{max-width:8.5rem}
-.grow__stage:nth-child(2) .charm{max-width:13rem}
-.grow__stage:nth-child(3) .charm{max-width:19rem}
-.js .grow__stage.reveal .charm{transform:scale(.55);transition:transform .9s cubic-bezier(.34,1.3,.5,1)}
-.js .grow__stage.reveal.is-in .charm{transform:scale(1)}
-.grow__cap{margin:1.2rem auto 0;font-family:var(--display);
-  font-size:clamp(1.05rem,2.4vw,1.45rem);color:var(--powder);max-width:15ch;line-height:1.25}
-.grow__cap small{display:block;font-family:var(--mono);font-size:.6875rem;font-weight:400;
-  letter-spacing:.2em;color:var(--sky);margin-bottom:.5rem;text-transform:uppercase}
-.grow__kick{text-align:center;margin-top:clamp(2.5rem,6vw,4rem)}
-.grow__kick p{margin:0 auto;font-family:var(--display);color:var(--sky);
-  font-size:clamp(1.15rem,2.6vw,1.6rem)}
-
-/* the pile breathes (motion-safe only) */
-@media (prefers-reduced-motion: no-preference){
-  .js .charm--breathe svg{animation:pileBreathe 5.5s ease-in-out infinite;transform-origin:bottom center}
-}
-@keyframes pileBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.014,1.032)}}
-
-/* CH1 honest proof slot */
-.proof-slot{margin-top:2rem;border:1px dashed var(--sky-line);border-radius:6px;
-  padding:1rem 1.25rem;max-width:34rem}
-.proof-slot p{font-size:.9rem;color:var(--powder-faint);margin:0}
-.proof-slot b{font-family:var(--mono);font-size:.6875rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--sky);display:block;margin-bottom:.35rem;font-weight:700}
-
-/* CH2 the bag perches by the steps */
-.steps-head{position:relative}
-.bag-perch{max-width:8rem;margin:1.75rem 0 0}
-@media (min-width:820px){.bag-perch{position:absolute;right:0;bottom:-.75rem;max-width:9.5rem;margin:0}}
-.bagglow{filter:drop-shadow(0 0 16px rgba(217,184,72,.42))}
-
-/* CH4 fold rise + freed chair */
-.js .fold-rise{opacity:0;transform:translateY(34px);
-  transition:opacity .8s ease .25s,transform .8s cubic-bezier(.2,.65,.25,1) .25s}
-.js .fold-rise.is-in{opacity:1;transform:none}
-.stack__charm{max-width:11rem;margin:0 auto 1.25rem}
-.chair-note{display:flex;align-items:center;gap:1rem;margin-top:1.75rem;
-  border:1px solid var(--sky-line);border-radius:6px;padding:.9rem 1.1rem;max-width:30rem}
-.chair-note .charm{flex:0 0 3rem}
-.chair-note p{font-size:.9rem;color:var(--powder-dim);margin:0}
-
-/* CH5 the duel + number pills */
-.duel{display:flex;align-items:flex-end;justify-content:center;gap:2.75rem;margin:0 auto 2.25rem;max-width:24rem}
-.duel__bag{flex:0 0 6rem}
-.duel__pile{flex:0 0 8.5rem;opacity:.9}
-.duel__vs{font-family:var(--mono);font-size:.6875rem;letter-spacing:.2em;color:var(--powder-faint);
-  align-self:center;text-transform:uppercase}
-.ticket-how{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin:0 0 2.25rem;padding:0;list-style:none}
-.ticket-how li{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--powder-dim);border:1px solid var(--sky-line);border-radius:99px;padding:.45rem 1rem}
-.ticket-how b{color:var(--sky);font-weight:700}
-
-/* CH3 scroll-scrubbed van (JS adds .route--scrub only when motion is OK).
-   Selector doubled to out-cascade the v2 .route.is-in animation rule. */
-.js .route.route--scrub .route__van{animation:none;
-  offset-path:path("M 80 300 C 180 300 200 210 300 205 C 380 201 420 150 500 130 C 560 116 600 90 640 78");
-  offset-distance:var(--van,0%)}
-
-/* fold-rise fires off the parent .reveal (use-shadow content can't be styled) */
-.js .reveal.is-in .fold-rise{opacity:1;transform:none}
-
-@media (prefers-reduced-motion: reduce){
-  .js .grow__stage.reveal .charm{transform:none;transition:none}
-  .js .charm--breathe svg{animation:none}
-  .js .fold-rise{opacity:1;transform:none;transition:none}
-  .js .route.route--scrub .route__van{offset-distance:100%}
+  .hero__panel,.porch__panel{padding:1.25rem}
 }
 </style>
-<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
-
-<!-- ============ V3 CHARACTER LIBRARY (Pile = canon villain; Bag = object, no face) ============ -->
-<svg class="svgdefs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <radialGradient id="g-bagglow" cx="50%" cy="52%" r="52%">
-      <stop offset="0%" stop-color="#D9B848" stop-opacity=".5"/>
-      <stop offset="60%" stop-color="#D9B848" stop-opacity=".16"/>
-      <stop offset="100%" stop-color="#D9B848" stop-opacity="0"/>
-    </radialGradient>
-
-    <!-- pile-1 · week one: a single innocent hoodie, dropped flat -->
-    <symbol id="c-pile-1" viewBox="0 0 160 120">
-      <ellipse cx="80" cy="110" rx="58" ry="7" fill="#16202B" opacity=".35"/>
-      <path d="M38 62 C20 64 10 78 16 88 C20 95 32 96 38 90 L42 76 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M122 62 C140 64 150 78 144 88 C140 95 128 96 122 90 L118 76 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M40 104 C32 82 36 66 56 58 L104 58 C124 66 128 82 120 104 C96 112 64 112 40 104 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M58 58 C60 46 72 40 80 40 C88 40 100 46 102 58 C94 64 66 64 58 58 Z" fill="#5FA8D9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <ellipse cx="80" cy="57" rx="13" ry="6" fill="#16202B" opacity=".55"/>
-      <path d="M72 62 C71 72 72 80 70 87 M88 62 C89 72 88 80 90 87" fill="none" stroke="#E6F0FA" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="70" cy="90" r="2.6" fill="#E6F0FA"/><circle cx="90" cy="90" r="2.6" fill="#E6F0FA"/>
-      <path d="M62 92 L98 92 L94 106 L66 106 Z" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round" opacity=".45"/>
-      <path d="M46 76 C50 80 54 80 58 76" fill="none" stroke="#16202B" stroke-width="2" stroke-linecap="round" opacity=".35"/>
-    </symbol>
-
-    <!-- pile-2 · week three: sweater base, towel draped on top, sock hanging, napping -->
-    <symbol id="c-pile-2" viewBox="0 0 220 160">
-      <ellipse cx="110" cy="148" rx="88" ry="9" fill="#16202B" opacity=".35"/>
-      <path d="M28 140 C16 110 38 88 76 84 L156 84 C186 90 202 108 194 130 C188 142 172 146 156 146 C118 152 52 150 28 140 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M46 130 C44 140 40 148 34 152" fill="none" stroke="#5FA8D9" stroke-width="8" stroke-linecap="round"/>
-      <path d="M60 92 C62 66 96 52 130 58 C158 62 172 78 166 92 C158 104 138 106 116 104 C94 104 70 102 60 92 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M156 94 C166 104 166 120 156 128 C150 122 150 104 156 94 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M72 74 C96 68 134 68 158 76" fill="none" stroke="#C6D6E6" stroke-width="3" stroke-linecap="round"/>
-      <path d="M182 100 C192 100 198 108 196 118 C195 126 188 132 181 129 C176 126 176 118 178 112 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M180 104 l10 2 M179 109 l10 2" stroke="#16202B" stroke-width="1.6" opacity=".4"/>
-      <path d="M94 84 C98 80 104 80 108 84 M126 84 C130 80 136 80 140 84" fill="none" stroke="#16202B" stroke-width="3" stroke-linecap="round"/>
-      <path d="M112 96 C117 99 123 99 128 96" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M90 120 C110 114 140 114 162 120" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linecap="round" opacity=".3"/>
-    </symbol>
-
-    <!-- pile-3 · week five: three garment strata, smug face, sleeves drooping, sock at base -->
-    <symbol id="c-pile-3" viewBox="0 0 300 220">
-      <ellipse cx="150" cy="206" rx="124" ry="11" fill="#16202B" opacity=".35"/>
-      <path d="M30 196 C16 160 42 134 86 130 L226 130 C266 136 286 160 274 192 C238 210 62 212 30 196 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M244 142 C258 152 262 172 252 184 C244 190 236 184 238 172 C239 162 240 150 244 142 Z" fill="#5FA8D9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M56 178 C80 168 112 168 130 176" fill="none" stroke="#16202B" stroke-width="3" stroke-linecap="round" opacity=".3"/>
-      <path d="M156 176 C180 168 212 168 234 176" fill="none" stroke="#16202B" stroke-width="3" stroke-linecap="round" opacity=".3"/>
-      <path d="M54 134 C48 106 74 88 112 88 C144 88 166 100 166 118 C164 130 130 136 100 134 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M62 134 C50 146 46 164 56 176 C64 182 72 176 71 164 C70 152 66 142 62 134 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M70 108 C92 100 134 100 156 110" fill="none" stroke="#7E93A9" stroke-width="3" stroke-linecap="round"/>
-      <path d="M116 94 C114 66 146 50 184 56 C216 62 234 82 226 102 C216 116 186 120 158 116 C140 113 122 106 116 94 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M218 104 C230 116 230 136 218 146 C210 138 210 116 218 104 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M130 74 C152 66 190 68 210 78" fill="none" stroke="#C6D6E6" stroke-width="3.5" stroke-linecap="round"/>
-      <path d="M146 86 C153 81 165 81 172 86 M186 84 C193 79 205 79 211 84" fill="none" stroke="#16202B" stroke-width="4" stroke-linecap="round"/>
-      <path d="M188 71 C194 67 202 67 207 70" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linecap="round" opacity=".45"/>
-      <path d="M168 100 C175 104 185 104 192 99" fill="none" stroke="#16202B" stroke-width="3.5" stroke-linecap="round"/>
-      <path d="M92 200 C82 202 74 198 74 192 C74 186 82 184 90 186 C98 182 106 184 106 190 C106 196 100 200 92 200 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M78 190 l8 -1 M79 195 l8 -1" stroke="#16202B" stroke-width="1.5" opacity=".4"/>
-    </symbol>
-
-    <!-- pile-flat · ch5: deflated strata, one eye barely open, limp sleeve, still smug -->
-    <symbol id="c-pile-flat" viewBox="0 0 220 110">
-      <ellipse cx="110" cy="100" rx="94" ry="8" fill="#16202B" opacity=".35"/>
-      <path d="M22 94 C16 76 36 64 68 62 L162 62 C188 66 202 78 196 90 C182 100 42 102 22 94 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M58 64 C56 48 82 40 112 42 C138 44 154 54 150 64 C136 72 74 72 58 64 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M36 90 C26 94 18 92 16 86 C15 80 22 78 30 80 C36 78 42 82 42 86 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M72 54 C78 49 86 49 92 54 C90 58 74 58 72 54 Z" fill="#16202B"/>
-      <path d="M116 52 C122 48 130 48 134 52" fill="none" stroke="#16202B" stroke-width="3" stroke-linecap="round"/>
-      <path d="M96 66 C102 70 112 70 120 66" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M156 78 C168 74 182 76 190 82" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linecap="round" opacity=".3"/>
-    </symbol>
-
-    <!-- bag-hero · the object. drawstring, stitched patch, gold heart. no face. -->
-    <symbol id="c-bag" viewBox="0 0 170 200">
-      <circle cx="85" cy="104" r="80" fill="url(#g-bagglow)"/>
-      <ellipse cx="85" cy="184" rx="52" ry="7" fill="#16202B" opacity=".35"/>
-      <path d="M60 44 C52 30 62 18 74 22 C78 12 96 12 100 22 C112 18 120 30 112 44" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M58 46 C40 78 34 130 44 162 C58 182 112 182 126 162 C136 130 130 78 112 46 C96 38 74 38 58 46 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M58 46 C74 54 96 54 112 46" fill="none" stroke="#16202B" stroke-width="2.5"/>
-      <path d="M52 60 C50 56 54 50 58 52 M118 60 C120 56 116 50 112 52" fill="none" stroke="#16202B" stroke-width="2" opacity=".5"/>
-      <path d="M44 128 C42 120 44 112 48 106" fill="none" stroke="#C6D6E6" stroke-width="4" stroke-linecap="round"/>
-      <rect x="64" y="104" width="44" height="38" rx="5" fill="#F2F7FC" stroke="#16202B" stroke-width="2.5"/>
-      <rect x="68.5" y="108.5" width="35" height="29" rx="3" fill="none" stroke="#5FA8D9" stroke-width="1.6" stroke-dasharray="4 3"/>
-      <path d="M86 132 C74 122 78 112 86 116 C94 112 98 122 86 132 Z" fill="#C9A227" stroke="#A88A1F" stroke-width="1.5"/>
-      <path d="M50 24 l0 7 M46.5 27.5 l7 0 M124 34 l0 6 M121 37 l6 0 M136 70 l0 5 M133.5 72.5 l5 0 M34 84 l0 5 M31.5 86.5 l5 0" stroke="#D9B848" stroke-width="2" stroke-linecap="round"/>
-    </symbol>
-
-    <!-- bag-open-stack · thursday: open bag, folded stack rising -->
-    <symbol id="c-bag-stack" viewBox="0 0 220 210">
-      <ellipse cx="110" cy="196" rx="72" ry="8" fill="#16202B" opacity=".35"/>
-      <g>
-        <rect x="62" y="26" width="96" height="24" rx="5" fill="#E6F0FA" stroke="#16202B" stroke-width="3"/>
-        <rect x="58" y="52" width="104" height="24" rx="5" fill="#8FA3B8" stroke="#16202B" stroke-width="3"/>
-        <rect x="62" y="78" width="96" height="24" rx="5" fill="#7FBFE9" stroke="#16202B" stroke-width="3"/>
-        <path d="M110 26 l0 76" stroke="#16202B" stroke-width="2" opacity=".28"/>
-      </g>
-      <path d="M42 118 C36 102 48 92 62 96 L158 96 C172 92 184 102 178 118 C186 148 180 176 168 188 C146 200 74 200 52 188 C40 176 34 148 42 118 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M62 96 C84 108 136 108 158 96" fill="none" stroke="#16202B" stroke-width="2.5"/>
-      <path d="M52 128 C50 140 51 156 55 168" fill="none" stroke="#C6D6E6" stroke-width="4" stroke-linecap="round"/>
-      <path d="M96 146 C88 138 91 130 97 133 C103 130 106 138 96 146 Z" fill="#C9A227" stroke="#A88A1F" stroke-width="1.4"/>
-    </symbol>
-
-    <!-- chair-freed · the first victim, released back into being furniture -->
-    <symbol id="c-chair" viewBox="0 0 120 150">
-      <ellipse cx="60" cy="140" rx="42" ry="6" fill="#16202B" opacity=".35"/>
-      <path d="M34 16 L40 88 M86 16 L80 88" stroke="#7E93A9" stroke-width="7" stroke-linecap="round"/>
-      <path d="M34 22 C50 16 70 16 86 22 M36 44 C52 39 68 39 84 44 M38 66 C52 62 68 62 82 66" fill="none" stroke="#7E93A9" stroke-width="6" stroke-linecap="round"/>
-      <path d="M32 88 C50 82 70 82 88 88 L86 100 C68 95 52 95 34 100 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M38 100 L34 136 M82 100 L86 136 M44 118 L76 118" stroke="#7E93A9" stroke-width="6" stroke-linecap="round"/>
-      <path d="M98 30 l0 7 M94.5 33.5 l7 0" stroke="#D9B848" stroke-width="2.2" stroke-linecap="round"/>
-      <path d="M16 54 l0 5 M13.5 56.5 l5 0" stroke="#D9B848" stroke-width="2" stroke-linecap="round"/>
-    </symbol>
-  </defs>
-</svg>
 
 <!-- ============ NAV ============ -->
 <nav class="nav" aria-label="Main">
@@ -1001,20 +1065,21 @@ p{max-width:38rem}
 
 <main id="main">
 
-<!-- ============ HERO ============ -->
-<header class="hero" id="top">
-  <img class="hero__img" src="assets/hero-dorm.jpg" fetchpriority="high"
-       alt="A dorm room desk chair buried under a mountain of dirty laundry">
+<!-- ============ HERO — THE ROOM ============ -->
+<header class="hero lt" id="top">
+  <img class="hero__img" src="assets/world/scene-dorm-hero.webp" fetchpriority="high" width="1376" height="768"
+       alt="An illustrated dorm room where a smug pile of laundry sits on the armchair like it lives there">
   <div class="hero__content">
-    <p class="plate reveal"><b>CH. 01</b> The pile grows</p>
-    <div class="hero__chip reveal"><span class="chip">NC State · August 2026</span></div>
-    <h1 class="reveal">The pile ends here.</h1>
-    <p class="lede reveal">One 20 lb bag a week. Out Tuesday, back Thursday — washed, dried, folded. $100 a month flat, and the chair goes back to being a chair.</p>
-    <div class="hero__cta-row reveal">
-      <a class="btn btn--big" href="#waitlist">Claim your spot</a>
-      <a class="btn-ghost" href="#how-it-works">How it works</a>
+    <div class="hero__panel">
+      <p class="plate hero__plate"><b>CH. 01</b> The pile grows</p>
+      <h1><span class="hw" style="--d:80ms">The</span> <span class="hw" style="--d:190ms">pile</span> <span class="hw" style="--d:300ms">ends</span> <span class="hw" style="--d:410ms">here.</span></h1>
+      <p class="lede">One 20 lb bag a week. Out Tuesday, back Thursday — washed, dried, folded. $100 a month flat.</p>
+      <div class="hero__cta-row">
+        <a class="btn btn--big" href="#waitlist">Claim your spot</a>
+        <a class="btn-ghost" href="#how-it-works">How it works</a>
+      </div>
+      <p class="hero__micro">Sign up, get a number — the first 100 numbers are founding</p>
     </div>
-    <p class="hero__micro reveal">Sign up, get a number — the first 100 numbers are founding</p>
   </div>
   <span class="hero__scroll" aria-hidden="true">Keep reading — it gets cleaner</span>
 </header>
@@ -1056,38 +1121,62 @@ p{max-width:38rem}
   </div>
 </div>
 
-<!-- ============ V3 CH1: THE PILE GROWS ============ -->
-<section class="grow" id="the-pile-grows" aria-labelledby="grow-h">
-  <div class="wrap">
-    <h2 id="grow-h" class="visually-hidden">The pile, week by week</h2>
-    <div class="grow__grid" data-stagger>
-      <div class="grow__stage reveal">
-        <div class="charm" role="img" aria-label="Week one: a single hoodie dropped on the floor">
-          <svg viewBox="0 0 160 120"><use href="#c-pile-1"/></svg>
+<!-- ============ CH1: THE PILE GROWS — pinned conquest scene ============ -->
+<section class="grow lt" id="the-pile-grows" aria-labelledby="grow-h">
+  <h2 id="grow-h" class="visually-hidden">The pile, week by week</h2>
+  <div class="grow__track">
+    <div class="grow__stage">
+      <div class="grow__scene">
+        <p class="plate gplate"><b>CH. 01</b> The pile grows</p>
+        <div class="grow__rail" aria-hidden="true"><i id="grow-fill"></i><span>WK 01</span><span>WK 03</span><span>WK 05</span></div>
+        <div class="grow__floor" aria-hidden="true"></div>
+
+        <div class="gbeat gbeat--1">
+          <div class="gbeat__type">
+            <p class="gbeat__wk">Week</p>
+            <p class="gbeat__num" aria-hidden="true">01</p>
+            <p class="gbeat__cap">One hoodie.<em>Innocent.</em></p>
+          </div>
+          <div class="gbeat__art">
+            <img src="assets/world/chair-simple.webp" width="218" height="336" loading="lazy"
+                 alt="Week one: a few clothes tossed on a wooden chair">
+          </div>
         </div>
-        <p class="grow__cap"><small>Week one</small>One hoodie. Innocent.</p>
-      </div>
-      <div class="grow__stage reveal">
-        <div class="charm" role="img" aria-label="Week three: a knee-high mound of laundry, eyes closed, napping">
-          <svg viewBox="0 0 220 160"><use href="#c-pile-2"/></svg>
+
+        <div class="gbeat gbeat--2">
+          <div class="gbeat__type">
+            <p class="gbeat__wk">Week</p>
+            <p class="gbeat__num" aria-hidden="true">03</p>
+            <p class="gbeat__cap">The chair<em>is gone.</em></p>
+          </div>
+          <div class="gbeat__art">
+            <img src="assets/world/pile-on-chair.webp" width="309" height="517" loading="lazy"
+                 alt="Week three: the pile has claimed the whole chair and is napping on it">
+          </div>
         </div>
-        <p class="grow__cap"><small>Week three</small>The chair is gone.</p>
-      </div>
-      <div class="grow__stage reveal">
-        <div class="charm charm--breathe" role="img" aria-label="Week five: a laundry mountain with heavy lids and a small satisfied smile">
-          <svg viewBox="0 0 300 220"><use href="#c-pile-3"/></svg>
+
+        <div class="gbeat gbeat--3">
+          <div class="gbeat__type">
+            <p class="gbeat__wk">Week</p>
+            <p class="gbeat__num" aria-hidden="true">05</p>
+            <p class="gbeat__cap">It has<em>opinions now.</em></p>
+          </div>
+          <div class="gbeat__art">
+            <img class="breathe" src="assets/world/pile-on-desk.webp" width="680" height="631" loading="lazy"
+                 alt="Week five: the pile has spread across the desk, books and homework buried, smug as ever">
+          </div>
         </div>
-        <p class="grow__cap"><small>Week five</small>It has opinions now.</p>
+
+        <div class="grow__kick">
+          <p>Meet the pile. Smug. Well-rested. Living rent-free in your room.</p>
+        </div>
       </div>
-    </div>
-    <div class="grow__kick reveal">
-      <p>Meet the pile. Smug. Well-rested. Living rent-free in your room.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ THE PILE ============ -->
-<section class="section" id="the-pile" aria-labelledby="pile-h">
+<!-- ============ EXHIBIT A ============ -->
+<section class="section lt lt--deep" id="the-pile" aria-labelledby="pile-h">
   <div class="wrap split" data-stagger>
     <div class="split__copy">
       <span class="kicker reveal">Exhibit A</span>
@@ -1109,28 +1198,37 @@ p{max-width:38rem}
       </div>
     </div>
     <div class="split__media reveal">
-      <span class="chip">Tuesday, 8:47 AM</span>
-      <div class="split__frame" data-parallax>
-        <img src="assets/tuesday-ritual.jpg" loading="lazy" width="1920" height="1080"
-             alt="A student setting a full CYDL laundry bag outside a dorm room door on a Tuesday morning">
+      <span class="chip">Every room has one</span>
+      <div class="world-panel">
+        <img src="assets/world/chair-buried.webp" width="500" height="509" loading="lazy"
+             alt="An armchair buried under a mountain of folded and crumpled clothes">
       </div>
     </div>
   </div>
 </section>
 
-<hr class="perf" aria-hidden="true" data-tear>
+<hr class="perf perf--lt" aria-hidden="true" data-tear>
+
+<!-- ============ CH2: TUESDAY — THE PORCH ============ -->
+<section class="porch lt" id="tuesday" aria-labelledby="tuesday-h">
+  <img class="porch__img" src="assets/world/scene-tuesday-porch.webp" width="1376" height="768" loading="lazy"
+       alt="An illustrated hallway: the CYDL bag sits on a doormat by a dorm door, glowing softly">
+  <div class="porch__inner">
+    <div class="porch__panel reveal">
+      <p class="plate"><b>CH. 02</b> Tuesday. The bag.</p>
+      <h2 id="tuesday-h">Tuesday, 8:47 AM.</h2>
+      <p class="lede">Bag on the porch by 8. We text you a reminder Monday night. That's the whole job.</p>
+    </div>
+  </div>
+</section>
 
 <!-- ============ HOW IT WORKS ============ -->
-<section class="section" id="how-it-works" aria-labelledby="how-h">
+<section class="section lt" id="how-it-works" aria-labelledby="how-h">
   <div class="wrap">
     <div class="steps-head" data-stagger>
-      <p class="plate reveal"><b>CH. 02</b> Tuesday. The bag.</p>
       <span class="kicker reveal">The whole system</span>
       <h2 id="how-h" class="reveal">Out Tuesday. Back Thursday.</h2>
       <p class="lede reveal">One bag out, one bag back, every week of the semester. No guarding a dryer at 1am. No machine that eats one sock per cycle as a tax.</p>
-      <div class="charm bag-perch bagglow reveal" role="img" aria-label="The CYDL bag: a cream drawstring bag with a stitched gold heart tag, glowing softly">
-        <svg viewBox="0 0 170 200"><use href="#c-bag"/></svg>
-      </div>
     </div>
     <div class="steps" data-stagger>
       <div class="step reveal">
@@ -1155,9 +1253,7 @@ p{max-width:38rem}
   </div>
 </section>
 
-<hr class="perf" aria-hidden="true" data-tear>
-
-<!-- ============ PRICING (V3: CH2 — THE RECEIPTS) ============ -->
+<!-- ============ PRICING (CH2 — THE RECEIPTS) ============ -->
 <section class="section pricing" id="pricing" aria-labelledby="pricing-h">
   <div class="wrap pricing__grid">
     <div data-stagger>
@@ -1190,9 +1286,22 @@ p{max-width:38rem}
   </div>
 </section>
 
-<hr class="perf" aria-hidden="true" data-tear>
+<!-- ============ CH3: THE STANDOFF ============ -->
+<section class="section standoff" id="the-standoff" aria-labelledby="standoff-h">
+  <div class="wrap standoff__grid" data-stagger>
+    <div>
+      <p class="plate reveal"><b>CH. 03</b> The standoff</p>
+      <h2 id="standoff-h" class="reveal">The pile has had a good run. <span class="end">End it.</span></h2>
+      <p class="reveal lede">One glowing bag on a porch beats a five-week dynasty. Tuesday settles it.</p>
+    </div>
+    <div class="standoff__poster reveal">
+      <img src="assets/world/standoff-poster.webp" width="1024" height="1280" loading="lazy"
+           alt="Night scene: the small glowing CYDL bag faces down a towering smug pile of laundry">
+    </div>
+  </div>
+</section>
 
-<!-- ============ THE ROUTE (V3: CH3) ============ -->
+<!-- ============ THE ROUTE (CH3) ============ -->
 <section class="section route reveal" id="the-route" aria-labelledby="route-h">
   <div class="wrap">
     <p class="plate"><b>CH. 03</b> The route</p>
@@ -1225,19 +1334,18 @@ p{max-width:38rem}
   </div>
 </section>
 
-<hr class="perf" aria-hidden="true" data-tear>
-
-<!-- ============ THE RETURN ============ -->
-<section class="section" id="the-return" aria-labelledby="return-h">
+<!-- ============ CH4: THE RETURN ============ -->
+<section class="section lt" id="the-return" aria-labelledby="return-h">
   <div class="wrap stack" data-stagger>
     <div class="stack__media reveal">
-      <div class="charm stack__charm fold-rise" role="img" aria-label="The CYDL bag open, with a neat folded stack rising out of it">
-        <svg viewBox="0 0 220 210"><use href="#c-bag-stack"/></svg>
-      </div>
       <span class="chip" style="position:absolute;top:-0.9rem;left:1.25rem;z-index:2">Folded better than your excuses</span>
-      <div class="split__frame" data-parallax>
-        <img src="assets/fresh-stack.jpg" loading="lazy" width="1080" height="1350"
-             alt="A crisp stack of freshly washed and folded clothes emerging from a CYDL delivery bag">
+      <div class="world-panel">
+        <img src="assets/world/scene-thursday-fold.webp" width="1200" height="896" loading="lazy"
+             alt="The CYDL bag open on a bed, a crisp stack of folded clothes rising out of it">
+        <span class="sparkle" style="top:12%;left:14%" aria-hidden="true"></span>
+        <span class="sparkle" style="top:22%;right:16%" aria-hidden="true"></span>
+        <span class="sparkle" style="top:48%;left:8%" aria-hidden="true"></span>
+        <span class="sparkle" style="top:8%;right:34%" aria-hidden="true"></span>
       </div>
     </div>
     <div class="split__copy">
@@ -1251,10 +1359,10 @@ p{max-width:38rem}
   </div>
 </section>
 
-<hr class="perf" aria-hidden="true" data-tear>
+<hr class="perf perf--lt" aria-hidden="true" data-tear>
 
 <!-- ============ YOUR SUNDAY BACK ============ -->
-<section class="section" id="your-sunday-back" aria-labelledby="sunday-h">
+<section class="section lt lt--deep" id="your-sunday-back" aria-labelledby="sunday-h">
   <div class="wrap split split--flip" data-stagger>
     <div class="split__copy">
       <span class="kicker reveal">The real product</span>
@@ -1262,23 +1370,24 @@ p{max-width:38rem}
       <p class="reveal">Count the Sundays between move-in and finals. That's how many laundry days you're not doing anymore. Spend them at the game, at the library, asleep.</p>
       <p class="reveal">And for the record: walking into a Monday 8am in a shirt that was folded on Thursday is a genuine competitive advantage. We're not here to tell you what to do with your time. We're here to make sure the pile doesn't get a vote.</p>
       <div class="chair-note reveal">
-        <div class="charm" role="img" aria-label="The desk chair, empty and free, with a small sparkle">
-          <svg viewBox="0 0 120 150"><use href="#c-chair"/></svg>
-        </div>
-        <p>Status update: the chair has been released back into being furniture. It's doing great.</p>
+        <p><b>Status update</b>The chair has been released back into being furniture. It's doing great.</p>
       </div>
     </div>
     <div class="split__media reveal">
-      <span class="chip chip--tail">Saturday, unbothered</span>
-      <div class="split__frame" data-parallax>
-        <img src="assets/gameday-exit.jpg" loading="lazy" width="1920" height="1080"
-             alt="Students in red heading out of a dorm toward a game day, laundry nowhere in sight">
+      <span class="chip chip--tail">The machines live here</span>
+      <div class="world-panel">
+        <div class="backbone">
+          <img src="assets/world/truck-a.webp" width="544" height="358" loading="lazy"
+               alt="The CYDL delivery truck, an off-white box truck with rounded, friendly proportions">
+          <img src="assets/world/washing-machine.webp" width="669" height="762" loading="lazy"
+               alt="A cream front-loading washing machine with a small gold heart tag and sparkles">
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<hr class="perf" aria-hidden="true" data-tear>
+<hr class="perf perf--lt" aria-hidden="true" data-tear>
 
 <!-- ============ PARENTS ============ -->
 <section class="section parents" id="parents" aria-labelledby="parents-h">
@@ -1307,10 +1416,8 @@ p{max-width:38rem}
   </div>
 </section>
 
-<hr class="perf" aria-hidden="true" data-tear>
-
 <!-- ============ FAQ ============ -->
-<section class="section faq" id="faq" aria-labelledby="faq-h">
+<section class="section faq lt" id="faq" aria-labelledby="faq-h">
   <div class="wrap" style="max-width:52rem" data-stagger>
     <span class="kicker reveal">Fair questions</span>
     <h2 id="faq-h" class="reveal">Asked, answered, folded.</h2>
@@ -1353,15 +1460,13 @@ p{max-width:38rem}
   </div>
 </section>
 
-<!-- ============ WAITLIST ============ -->
-<section class="section waitlist" id="waitlist" aria-labelledby="waitlist-h">
-  <img class="waitlist__bg" src="assets/texture-rinse.jpg" loading="lazy" alt="" aria-hidden="true">
+<!-- ============ CH5: THE TICKET ============ -->
+<section class="section waitlist lt" id="waitlist" aria-labelledby="waitlist-h">
   <div class="wrap waitlist__inner" data-stagger>
-    <p class="plate reveal" style="justify-content:center"><b>CH. 05</b> The ticket</p>
-    <div class="duel reveal" aria-hidden="true">
-      <div class="charm duel__pile"><svg viewBox="0 0 220 110"><use href="#c-pile-flat"/></svg></div>
-      <span class="duel__vs">vs</span>
-      <div class="charm duel__bag bagglow"><svg viewBox="0 0 170 200"><use href="#c-bag"/></svg></div>
+    <p class="plate reveal"><b>CH. 05</b> The ticket</p>
+    <div class="duel reveal">
+      <img src="assets/world/pile-meets-bag.webp" width="574" height="328" loading="lazy"
+           alt="The pile, deflated and losing, eyes the small glowing CYDL bag beside it">
     </div>
     <span class="chip reveal">One form. One number.</span>
     <h2 id="waitlist-h" class="reveal">Claim your spot.</h2>
@@ -1372,8 +1477,12 @@ p{max-width:38rem}
       <li><b>03</b> Nº 001–100 = founding</li>
     </ol>
     <div class="founding reveal" style="padding-top:0">
-      <div class="founding__count" style="justify-content:center"><span>100</span><small>founding numbers · <span style="white-space:nowrap">Nº 001–100</span></small></div>
+      <div class="founding__count"><span>100</span><small>founding numbers · <span style="white-space:nowrap">Nº 001–100</span></small></div>
       <span class="founding__live" id="spots-live"></span>
+      <div class="cohort" id="cohort" aria-hidden="true">
+        <div class="cohort__label"><span id="cohort-name">Cohort one · the first 25</span><span id="cohort-count"></span></div>
+        <div class="cohort__bar"><div class="cohort__fill" id="cohort-fill"></div></div>
+      </div>
       <p style="margin:1.25rem auto">A founding number is a jersey number, not a discount code: first claim on launch-week pickup slots, numbered founding gear down the line, and proof you were here before it was obvious. After 100, the list is just a list.</p>
     </div>
     <p class="waitlist__kick reveal">The pile has had a good run. End it.</p>
@@ -1476,6 +1585,7 @@ p{max-width:38rem}
   </div>
 </footer>
 
+<script>document.documentElement.classList.add('js')</script>
 <script>
 (function(){
   "use strict";
@@ -1506,8 +1616,8 @@ p{max-width:38rem}
     }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
     reveals.forEach(function(el){ revealIO.observe(el); });
 
-    /* safety net: anything the observer missed (fast flicks, programmatic
-       jumps) reveals as soon as its top clears the viewport bottom */
+    /* safety net: anything the observer missed reveals once its top clears
+       the viewport bottom */
     var sweepPending = false;
     var sweepReveals = function(){
       sweepPending = false;
@@ -1523,6 +1633,64 @@ p{max-width:38rem}
     window.addEventListener("scroll", function(){
       if (!sweepPending) { sweepPending = true; requestAnimationFrame(sweepReveals); }
     }, { passive: true });
+  }
+
+  /* ---------- hero word cascade ---------- */
+  var hero = document.querySelector(".hero");
+  if (hero) {
+    var boot = function(){ hero.classList.add("hero--in"); };
+    if (reduceMotion) { boot(); }
+    else if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function(){ setTimeout(boot, 60); });
+      setTimeout(boot, 1800); /* fonts hang safety */
+    } else { setTimeout(boot, 250); }
+  }
+
+  /* ---------- CH1 pinned conquest scene ---------- */
+  var grow = document.getElementById("the-pile-grows");
+  if (grow) {
+    var beats = grow.querySelectorAll(".gbeat");
+    var growFill = document.getElementById("grow-fill");
+    var growKick = grow.querySelector(".grow__kick");
+    var track = grow.querySelector(".grow__track");
+    var growPending = false;
+
+    var growTick = function(){
+      growPending = false;
+      if (!grow.classList.contains("grow--pin")) return;
+      var r = track.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var total = r.height - vh;
+      if (total <= 0) return;
+      var p = Math.min(1, Math.max(0, -r.top / total));
+      var idx = p < 0.34 ? 0 : (p < 0.72 ? 1 : 2);
+      beats.forEach(function(b, i){
+        b.classList.toggle("is-on", i === idx);
+        b.classList.toggle("is-past", i < idx);
+      });
+      grow.querySelectorAll(".grow__rail span").forEach(function(s, i){
+        s.classList.toggle("on", i === idx);
+      });
+      if (growFill) growFill.style.transform = "scaleY(" + p.toFixed(4) + ")";
+      if (growKick) growKick.classList.toggle("is-on", p > 0.86);
+    };
+    var onGrowScroll = function(){
+      if (!growPending) { growPending = true; requestAnimationFrame(growTick); }
+    };
+    var applyGrowMode = function(){
+      var pin = !motionMq.matches && window.innerHeight >= 520;
+      grow.classList.toggle("grow--pin", pin);
+      if (!pin) {
+        beats.forEach(function(b){ b.classList.remove("is-on", "is-past"); });
+        if (growKick) growKick.classList.remove("is-on");
+      } else {
+        onGrowScroll();
+      }
+    };
+    window.addEventListener("scroll", onGrowScroll, { passive: true });
+    window.addEventListener("resize", applyGrowMode, { passive: true });
+    if (motionMq.addEventListener) motionMq.addEventListener("change", applyGrowMode);
+    applyGrowMode();
   }
 
   /* ---------- ticker pause control (WCAG 2.2.2) ---------- */
@@ -1589,7 +1757,7 @@ p{max-width:38rem}
     drumTick();
   }
 
-  /* ---------- honest live spots counter ---------- */
+  /* ---------- honest live counter + cohort meter (real data only) ---------- */
   var spotsLive = document.getElementById("spots-live");
   if (spotsLive && window.fetch) {
     fetch("founders-count.json", { cache: "no-store" })
@@ -1600,12 +1768,31 @@ p{max-width:38rem}
         if (c <= 0) {
           spotsLive.textContent = "Nº 001 is still on the table";
         } else if (c === 1) {
-          spotsLive.textContent = "Nº 001 claimed · 99 remain";
+          spotsLive.textContent = "Nº 001 claimed · Nº 002 is still on the table";
         } else if (c < 100) {
           spotsLive.textContent = "Nº 001–" + String(c).padStart(3, "0") +
-            " claimed · " + (100 - c) + " remain";
+            " claimed · Nº " + String(c + 1).padStart(3, "0") + " is yours";
         } else {
           spotsLive.textContent = "Founding 100 full — waitlist open";
+        }
+        /* cohort meter: fills against the CURRENT cohort of 25 */
+        var meter = document.getElementById("cohort");
+        var fill = document.getElementById("cohort-fill");
+        var label = document.getElementById("cohort-name");
+        var count = document.getElementById("cohort-count");
+        if (meter && fill && label && count && c >= 0 && c < 100) {
+          var COHORT = 25;
+          var idx = Math.floor(c / COHORT);            /* 0-3 */
+          var names = ["one", "two", "three", "four"];
+          var inCohort = c - idx * COHORT;             /* 0-24 */
+          label.textContent = "Cohort " + names[idx] + " · numbers " +
+            String(idx * COHORT + 1).padStart(3, "0") + "–" +
+            String((idx + 1) * COHORT).padStart(3, "0");
+          count.textContent = inCohort + " of " + COHORT + " claimed";
+          meter.classList.add("is-live");
+          requestAnimationFrame(function(){
+            fill.style.transform = "scaleX(" + (inCohort / COHORT).toFixed(3) + ")";
+          });
         }
       })
       .catch(function(){ /* stay silent, static 100 stands */ });
@@ -1648,7 +1835,7 @@ p{max-width:38rem}
 })();
 </script>
 
-<!-- V3: CH3 scroll-scrubbed route van -->
+<!-- CH3 scroll-scrubbed route van -->
 <script>
 (function(){
   "use strict";

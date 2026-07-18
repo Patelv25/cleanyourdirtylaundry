@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYDL CH1 — Design Boards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E2A38; --navy-deep:#16202B; --navy-raise:#243447;
+  --powder:#E6F0FA; --sky:#7FBFE9; --bluegrey:#8FA3B8;
+  --display:'Archivo Black','Arial Black',sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+  --mono:ui-monospace,'SF Mono',Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0d141c;font-family:var(--body);color:var(--powder)}
+.svgdefs{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ---- artboard chrome ---- */
+.board{width:1280px;margin:0 auto}
+.board + .board{margin-top:48px}
+.board__tag{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--bluegrey);padding:14px 4px}
+.board__tag b{color:var(--powder);font-weight:600}
+.canvas{position:relative;width:1280px;height:760px;background:var(--navy-deep);overflow:hidden;outline:1px solid #2c3c4e}
+.canvas--mobile{width:375px;height:812px}
+.notes{width:1280px;border:1px dashed #3a4d61;border-top:none;padding:12px 18px;font-family:var(--mono);font-size:11.5px;line-height:1.7;color:#9db2c6;background:#101922}
+.notes--mobile{width:375px}
+.notes b{color:var(--powder);font-weight:600}
+
+/* ---- shared scene pieces ---- */
+.plate{position:absolute;top:44px;left:96px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bluegrey)}
+.plate b{color:var(--sky);font-weight:600;margin-right:10px}
+.rail{position:absolute;left:40px;top:50%;transform:translateY(-50%);height:340px;width:2px;background:rgba(230,240,250,.12)}
+.rail__fill{position:absolute;left:0;top:0;width:2px;background:var(--sky)}
+.rail__tick{position:absolute;left:-4px;width:10px;height:2px;background:rgba(230,240,250,.25)}
+.rail__lab{position:absolute;left:16px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--bluegrey);transform:translateY(-50%)}
+.rail__lab.is-on{color:var(--sky)}
+.floor{position:absolute;left:96px;right:96px;bottom:120px;height:1px;background:rgba(230,240,250,.14)}
+.stage{position:absolute;left:96px;top:0;bottom:120px;width:600px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:56px}
+.wk{font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--bluegrey);margin-bottom:2px}
+.num{font-family:var(--display);font-size:264px;line-height:.88;letter-spacing:-.02em;color:var(--powder)}
+.num--ghost{color:transparent;-webkit-text-stroke:2px rgba(230,240,250,.22)}
+.cap{font-family:var(--display);font-size:54px;line-height:1.04;text-transform:uppercase;letter-spacing:.005em;margin-top:26px}
+.cap .l2{color:var(--sky);display:block}
+.cap--held span{opacity:.28}
+.pilezone{position:absolute;right:96px;bottom:121px;display:flex;align-items:flex-end;justify-content:center}
+.pilezone svg{display:block;overflow:visible}
+.exit{margin-top:30px;font-family:var(--body);font-weight:600;font-size:19px;color:var(--sky);max-width:30ch;line-height:1.5}
+
+/* per-word kinetic hint on board B: mid-reveal frame */
+.cap--kinetic span{display:inline-block}
+.cap--kinetic .w-in{opacity:1;transform:none}
+.cap--kinetic .w-mid{opacity:.55;transform:translateY(.18em)}
+.cap--kinetic .w-out{opacity:.12;transform:translateY(.42em)}
+
+/* ---- mobile board ---- */
+.m-plate{position:absolute;top:24px;left:22px;font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--bluegrey)}
+.m-plate b{color:var(--sky);margin-right:8px}
+.m-stage{position:absolute;left:22px;right:22px;top:96px}
+.m-wk{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bluegrey)}
+.m-num{font-family:var(--display);font-size:150px;line-height:.9;color:var(--powder)}
+.m-cap{font-family:var(--display);font-size:31px;line-height:1.06;text-transform:uppercase;margin-top:16px}
+.m-cap .l2{color:var(--sky);display:block}
+.m-floor{position:absolute;left:22px;right:22px;bottom:96px;height:1px;background:rgba(230,240,250,.14)}
+.m-pile{position:absolute;right:22px;bottom:97px}
+.m-rail{position:absolute;left:0;right:0;bottom:44px;display:flex;justify-content:center;gap:8px}
+.m-rail i{width:34px;height:2px;background:rgba(230,240,250,.16)}
+.m-rail i.on{background:var(--sky)}
+</style>
+</head>
+<body>
+
+<svg class="svgdefs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="c-pile-1" viewBox="0 0 160 120">
+<ellipse cx="80" cy="110" rx="58" ry="7" fill="#16202B" opacity=".35"/>
+<path d="M38 62 C20 64 10 78 16 88 C20 95 32 96 38 90 L42 76 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+<path d="M122 62 C140 64 150 78 144 88 C140 95 128 96 122 90 L118 76 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+<path d="M40 104 C32 82 36 66 56 58 L104 58 C124 66 128 82 120 104 C96 112 64 112 40 104 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+<path d="M58 58 C60 46 72 40 80 40 C88 40 100 46 102 58 C94 64 66 64 58 58 Z" fill="#5FA8D9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="80" cy="57" rx="13" ry="6" fill="#16202B" opacity=".55"/>
+<path d="M72 62 C71 72 72 80 70 87 M88 62 C89 72 88 80 90 87" fill="none" stroke="#E6F0FA" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="70" cy="90" r="2.6" fill="#E6F0FA"/><circle cx="90" cy="90" r="2.6" fill="#E6F0FA"/>
+<path d="M62 92 L98 92 L94 106 L66 106 Z" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round" opacity=".45"/>
+<path d="M46 76 C50 80 54 80 58 76" fill="none" stroke="#16202B" stroke-width="2" stroke-linecap="round" opacity=".35"/>
+</symbol>
+<symbol id="c-pile-2" viewBox="0 0 220 160">
+<ellipse cx="110" cy="148" rx="88" ry="9" fill="#16202B" opacity=".35"/>
+<path d="M28 140 C16 110 38 88 76 84 L156 84 C186 90 202 108 194 130 C188 142 172 146 156 146 C118 152 52 150 28 140 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+<path d="M46 130 C44 140 40 148 34 152" fill="none" stroke="#5FA8D9" stroke-width="8" stroke-linecap="round"/>
+<path d="M60 92 C62 66 96 52 130 58 C158 62 172 78 166 92 C158 104 138 106 116 104 C94 104 70 102 60 92 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+<path d="M156 94 C166 104 166 120 156 128 C150 122 150 104 156 94 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M72 74 C96 68 134 68 158 76" fill="none" stroke="#C6D6E6" stroke-width="3" stroke-linecap="round"/>
+<path d="M182 100 C192 100 198 108 196 118 C195 126 188 132 181 129 C176 126 176 118 178 112 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M180 104 l10 2 M179 109 l10 2" stroke="#16202B" stroke-width="1.6" opacity=".4"/>
+<path d="M94 84 C98 80 104 80 108 84 M126 84 C130 80 136 80 140 84" fill="none" stroke="#16202B" stroke-width="3" stroke-linecap="round"/>
+<path d="M112 96 C117 99 123 99 128 96" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M90 120 C110 114 140 114 162 120" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linecap="round" opacity=".3"/>
+</symbol>
+<symbol id="c-pile-3" viewBox="0 0 300 220">
+<ellipse cx="150" cy="206" rx="124" ry="11" fill="#16202B" opacity=".35"/>
+<path d="M30 196 C16 160 42 134 86 130 L226 130 C266 136 286 160 274 192 C238 210 62 212 30 196 Z" fill="#7FBFE9" stroke="#16202B" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M244 142 C258 152 262 172 252 184 C244 190 236 184 238 172 C239 162 240 150 244 142 Z" fill="#5FA8D9" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+<path d="M56 178 C80 168 112 168 130 176" fill="none" stroke="#16202B" stroke-width="3" stroke-linecap="round" opacity=".3"/>
+<path d="M156 176 C180 168 212 168 234 176" fill="none" stroke="#16202B" stroke-width="3" stroke-linecap="round" opacity=".3"/>
+<path d="M54 134 C48 106 74 88 112 88 C144 88 166 100 166 118 C164 130 130 136 100 134 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M62 134 C50 146 46 164 56 176 C64 182 72 176 71 164 C70 152 66 142 62 134 Z" fill="#8FA3B8" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+<path d="M70 108 C92 100 134 100 156 110" fill="none" stroke="#7E93A9" stroke-width="3" stroke-linecap="round"/>
+<path d="M116 94 C114 66 146 50 184 56 C216 62 234 82 226 102 C216 116 186 120 158 116 C140 113 122 106 116 94 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M218 104 C230 116 230 136 218 146 C210 138 210 116 218 104 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="3" stroke-linejoin="round"/>
+<path d="M130 74 C152 66 190 68 210 78" fill="none" stroke="#C6D6E6" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M146 86 C153 81 165 81 172 86 M186 84 C193 79 205 79 211 84" fill="none" stroke="#16202B" stroke-width="4" stroke-linecap="round"/>
+<path d="M188 71 C194 67 202 67 207 70" fill="none" stroke="#16202B" stroke-width="2.5" stroke-linecap="round" opacity=".45"/>
+<path d="M168 100 C175 104 185 104 192 99" fill="none" stroke="#16202B" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M92 200 C82 202 74 198 74 192 C74 186 82 184 90 186 C98 182 106 184 106 190 C106 196 100 200 92 200 Z" fill="#E6F0FA" stroke="#16202B" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M78 190 l8 -1 M79 195 l8 -1" stroke="#16202B" stroke-width="1.5" opacity=".4"/>
+</symbol>
+</defs></svg>
+
+<!-- ============ BOARD A — BEAT 1 ============ -->
+<section class="board" id="board-a">
+  <p class="board__tag"><b>BOARD A</b> · CH. 01 pinned scene · beat 1 of 3 · scroll progress 0-33% · 1280x760</p>
+  <div class="canvas">
+    <p class="plate"><b>CH. 01</b> The pile grows</p>
+    <div class="rail">
+      <div class="rail__fill" style="height:14%"></div>
+      <div class="rail__tick" style="top:0"></div><span class="rail__lab is-on" style="top:0">WK 01</span>
+      <div class="rail__tick" style="top:50%"></div><span class="rail__lab" style="top:50%">WK 03</span>
+      <div class="rail__tick" style="top:100%"></div><span class="rail__lab" style="top:100%">WK 05</span>
+    </div>
+    <div class="floor"></div>
+    <div class="stage">
+      <p class="wk">Week</p>
+      <p class="num">01</p>
+      <p class="cap">One hoodie.<span class="l2">Innocent.</span></p>
+    </div>
+    <div class="pilezone" style="width:190px">
+      <svg viewBox="0 0 160 120" width="150"><use href="#c-pile-1"/></svg>
+    </div>
+  </div>
+  <div class="notes">
+    <b>SCENE</b> · section becomes a 380vh scroll track, stage pins (position:sticky, 100dvh). One Pile, one floor line, no cards.<br>
+    <b>TYPE</b> · numeral + caption reveal word-by-word as the beat window opens (translateY .5em + fade, 60ms stagger, transform/opacity only).<br>
+    <b>PILE</b> · sits ON the floor line, bottom-anchored. Beat 1: pile-1 at ~150px.
+    <b>RAIL</b> · left edge tracks scene progress, skywash fill, mono week ticks.
+  </div>
+</section>
+
+<!-- ============ BOARD B — BEAT 2 ============ -->
+<section class="board" id="board-b">
+  <p class="board__tag"><b>BOARD B</b> · beat 2 of 3 · scroll progress 33-66% · frame shows caption mid-reveal</p>
+  <div class="canvas">
+    <p class="plate"><b>CH. 01</b> The pile grows</p>
+    <div class="rail">
+      <div class="rail__fill" style="height:52%"></div>
+      <div class="rail__tick" style="top:0"></div><span class="rail__lab" style="top:0">WK 01</span>
+      <div class="rail__tick" style="top:50%"></div><span class="rail__lab is-on" style="top:50%">WK 03</span>
+      <div class="rail__tick" style="top:100%"></div><span class="rail__lab" style="top:100%">WK 05</span>
+    </div>
+    <div class="floor"></div>
+    <div class="stage">
+      <p class="wk">Week</p>
+      <p class="num">03</p>
+      <p class="cap cap--kinetic"><span class="w-in">The</span> <span class="w-in">chair</span> <span class="w-mid">is</span> <span class="w-out">gone.</span></p>
+    </div>
+    <div class="pilezone" style="width:330px">
+      <svg viewBox="0 0 220 160" width="310"><use href="#c-pile-2"/></svg>
+    </div>
+  </div>
+  <div class="notes">
+    <b>CROSSFADE</b> · pile-1 fades/scales out, pile-2 in (240ms overlap, bottom-anchored so it grows upward, never floats).<br>
+    <b>NUMERAL</b> · 01 flips to 03 with a short vertical roll. Caption shown mid-reveal here: words land left to right.<br>
+    <b>NO NEW COLORS</b> · powder type, skywash punch line + rail fill only. Lemon Zest stays reserved for CTAs, none in this scene.
+  </div>
+</section>
+
+<!-- ============ BOARD C — BEAT 3 + EXIT ============ -->
+<section class="board" id="board-c">
+  <p class="board__tag"><b>BOARD C</b> · beat 3 of 3 · scroll progress 66-100% · exit line in, then scene unpins</p>
+  <div class="canvas">
+    <p class="plate"><b>CH. 01</b> The pile grows</p>
+    <div class="rail">
+      <div class="rail__fill" style="height:100%"></div>
+      <div class="rail__tick" style="top:0"></div><span class="rail__lab" style="top:0">WK 01</span>
+      <div class="rail__tick" style="top:50%"></div><span class="rail__lab" style="top:50%">WK 03</span>
+      <div class="rail__tick" style="top:100%"></div><span class="rail__lab is-on" style="top:100%">WK 05</span>
+    </div>
+    <div class="floor"></div>
+    <div class="stage">
+      <p class="wk">Week</p>
+      <p class="num">05</p>
+      <p class="cap">It has<span class="l2">opinions now.</span></p>
+      <p class="exit">Meet the pile. Smug. Well-rested. Living rent-free in your room.</p>
+    </div>
+    <div class="pilezone" style="width:480px">
+      <svg viewBox="0 0 300 220" width="460"><use href="#c-pile-3"/></svg>
+    </div>
+  </div>
+  <div class="notes">
+    <b>BEAT 3</b> · pile-3 at full size, existing pileBreathe animation runs (5.5s ease, already shipped). Face rules intact: smug-sleepy only.<br>
+    <b>EXIT</b> · kick line fades in under the caption, rail completes, scene unpins into #the-pile ("Exhibit A / You know the pile." untouched).<br>
+    <b>FALLBACKS</b> · reduced-motion OR no-JS OR short viewports: track collapses to the current 3-stage static grid (exact v3.1 layout, zero loss).
+  </div>
+</section>
+
+<!-- ============ BOARD D — MOBILE 375 ============ -->
+<section class="board" id="board-d" style="width:375px">
+  <p class="board__tag" style="width:900px"><b>BOARD D</b> · mobile 375px · beat 2 · type above, Pile on floor line below, dash rail bottom</p>
+  <div class="canvas canvas--mobile">
+    <p class="m-plate"><b>CH. 01</b> The pile grows</p>
+    <div class="m-stage">
+      <p class="m-wk">Week</p>
+      <p class="m-num">03</p>
+      <p class="m-cap">The chair<span class="l2">is gone.</span></p>
+    </div>
+    <div class="m-floor"></div>
+    <div class="m-pile">
+      <svg viewBox="0 0 220 160" width="215"><use href="#c-pile-2"/></svg>
+    </div>
+    <div class="m-rail"><i></i><i class="on"></i><i></i></div>
+  </div>
+  <div class="notes notes--mobile">
+    <b>MOBILE</b> · same pinned scene, single column. Track 320vh. Numeral 150px, caption 31px. Pile bottom-right on the floor line. Vertical rail becomes 3 dashes. No horizontal scroll.
+  </div>
+</section>
+
+</body>
+</html>
