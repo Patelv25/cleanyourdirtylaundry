@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/world/scene-dorm-hero.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/world/hero-hybrid.webp" fetchpriority="high">
 
 <script type="application/ld+json">
 {
@@ -91,15 +91,15 @@
   --sky-faint:rgba(127,191,233,.16);
   --sky-line:rgba(127,191,233,.32);
   --lemon:#FFD24D;
-  /* the warm world */
-  --parchment:#F6F0DA;
-  --parch-deep:#EFE7CC;
-  --parch-raise:#FBF6E7;
-  --ink:#4A3B2A;
-  --ink-soft:#7A6A52;
-  --ink-faint:rgba(74,59,42,.58);
-  --ink-line:rgba(74,59,42,.22);
-  --mustard:#C99940;
+  /* the light world — powder rinse system (brand bible: navy + powder own 70%) */
+  --parchment:#F1F6FC;
+  --parch-deep:#E6F0FA;
+  --parch-raise:#FAFCFE;
+  --ink:#1E2A38;
+  --ink-soft:#44546A;
+  --ink-faint:rgba(30,42,56,.6);
+  --ink-line:rgba(30,42,56,.16);
+  --mustard:#2F6FA8;
   --heartglow:rgba(217,184,72,.4);
   --display:'Archivo Black', 'Arial Black', sans-serif;
   --body:'Inter', 'Helvetica Neue', Arial, sans-serif;
@@ -172,7 +172,7 @@ p{max-width:38rem}
 .lt p{color:var(--ink-soft)}
 .lt .lede{color:var(--ink-soft)}
 .lt .kicker{color:var(--mustard)}
-.lt a{color:#8A6A1F}
+.lt a{color:#2F6FA8}
 
 /* tape-label chips */
 .chip{
@@ -288,7 +288,18 @@ p{max-width:38rem}
 }
 .hero__img{
   position:absolute;inset:0;z-index:-2;
-  width:100%;height:100%;object-fit:cover;object-position:22% 36%;
+  width:100%;height:100%;object-fit:cover;object-position:center 40%;
+}
+.hero h1{text-transform:uppercase;letter-spacing:.015em}
+.hero__video,.porch__video{
+  position:absolute;inset:0;z-index:-1;
+  width:100%;height:100%;object-fit:cover;object-position:center 40%;
+  opacity:0;transition:opacity .8s ease;pointer-events:none;
+}
+.porch__video{object-position:72% center}
+.hero__video.is-live,.porch__video.is-live{opacity:1}
+@media (prefers-reduced-motion: reduce){
+  .hero__video,.porch__video{display:none}
 }
 .hero__content{
   max-width:var(--maxw);width:100%;margin:0 auto;
@@ -298,8 +309,9 @@ p{max-width:38rem}
 .hero__panel{
   max-width:38rem;
   padding:clamp(1.5rem,3vw,2.25rem);
-  background:linear-gradient(180deg, rgba(246,240,218,.95), rgba(246,240,218,.86) 74%, rgba(246,240,218,.55));
+  background:linear-gradient(180deg, rgba(241,246,252,.94), rgba(241,246,252,.85) 74%, rgba(241,246,252,.5));
   border-radius:16px;
+  box-shadow:0 24px 60px rgba(30,42,56,.08);
 }
 .hero__plate{margin-bottom:1.1rem}
 .hero h1{color:var(--ink);font-size:clamp(2.5rem, 5.6vw, 4.25rem);max-width:14ch;margin-bottom:1.25rem}
@@ -403,7 +415,7 @@ p{max-width:38rem}
 }
 .lt .pull{color:var(--ink);border-left-color:var(--mustard)}
 
-/* world panels (illustration on parchment card) */
+/* world panels */
 .world-panel{
   position:relative;border-radius:10px;
   border:1px solid var(--ink-line);
@@ -411,6 +423,20 @@ p{max-width:38rem}
   padding:clamp(1.5rem,3.5vw,2.5rem);
 }
 .world-panel img{margin:0 auto}
+.world-panel--photo{padding:.5rem;overflow:hidden}
+.world-panel--photo img{border-radius:6px}
+
+/* THE DROP — merch */
+.drop{background:var(--navy-deep)}
+.drop__grid{display:grid;gap:2.5rem;align-items:center;grid-template-columns:1fr}
+@media (min-width:900px){.drop__grid{grid-template-columns:.95fr 1.05fr;gap:clamp(2.5rem,6vw,5rem)}}
+.drop__media{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--sky-line)}
+.drop__media img{width:100%;height:auto;display:block}
+.drop h2{margin:1rem 0 1.25rem}
+.drop .lede{margin-bottom:1.5rem}
+.drop__list{list-style:none;margin:0 0 2rem;padding:0;display:flex;flex-wrap:wrap;gap:.6rem}
+.drop__list li{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--powder-dim);border:1px solid var(--sky-line);border-radius:99px;padding:.45rem 1rem}
 
 /* ============ CH1 — THE PILE GROWS (pinned conquest scene) ============ */
 .grow{position:relative}
@@ -578,6 +604,7 @@ p{max-width:38rem}
   }
 }
 @keyframes glowPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.95;transform:scale(1.06)}}
+.porch:has(.porch__video.is-live)::before{display:none}
 
 /* ============ STEPS ============ */
 .steps-head{margin-bottom:clamp(2.5rem,6vw,4.5rem);position:relative}
@@ -674,21 +701,23 @@ p{max-width:38rem}
 .price-card::after{right:-11px}
 .pricing .parents__proof span{color:var(--sky);border-color:var(--sky-line)}
 
-/* ============ CH3 — STANDOFF ============ */
-.standoff{background:#1C2A37;overflow:hidden}
-.standoff__grid{
-  display:grid;gap:2.5rem;align-items:center;grid-template-columns:1fr;
+/* ============ CH3 — STANDOFF (full-bleed hybrid night scene) ============ */
+.standoff{
+  position:relative;min-height:86svh;
+  display:flex;align-items:center;
+  overflow:hidden;isolation:isolate;
+  background:#131C28;
 }
-@media (min-width:900px){
-  .standoff__grid{grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem)}
+.standoff__img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center}
+.standoff::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(100deg, rgba(19,28,40,.88) 0%, rgba(19,28,40,.55) 40%, rgba(19,28,40,0) 68%);
 }
+.standoff__inner{max-width:var(--maxw);width:100%;margin:0 auto;padding:5rem var(--pad)}
+.standoff__copy{max-width:34rem}
 .standoff h2{color:var(--powder);margin:1rem 0 1.25rem}
 .standoff h2 .end{color:var(--lemon)}
 .standoff p{color:var(--powder-dim)}
-.standoff__poster img{
-  max-height:min(78svh,44rem);width:auto;margin:0 auto;
-  filter:drop-shadow(0 18px 44px rgba(0,0,0,.35));
-}
 
 /* ============ ROUTE ============ */
 .route{background:var(--navy-deep);overflow:hidden}
@@ -766,7 +795,7 @@ p{max-width:38rem}
   border:1px solid var(--sky-line);border-radius:99px;
   padding:.45rem 1rem;
 }
-.lt .parents__proof span{color:#8A6A1F;border-color:var(--ink-line)}
+.lt .parents__proof span{color:#2F6FA8;border-color:var(--ink-line)}
 
 /* ============ FAQ ============ */
 .faq h2{margin-bottom:clamp(2rem,5vw,3.25rem)}
@@ -831,7 +860,7 @@ p{max-width:38rem}
 .founding__live{
   display:inline-block;margin-top:.9rem;
   font-family:var(--mono);font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;
-  color:#8A6A1F;border:1px solid var(--ink-line);border-radius:99px;
+  color:#2F6FA8;border:1px solid var(--ink-line);border-radius:99px;
   padding:.45rem 1rem;
 }
 .founding__live:empty{display:none}
@@ -913,7 +942,7 @@ p{max-width:38rem}
   font-size:clamp(1.75rem, 4vw, 2.5rem);color:var(--ink);margin-bottom:1rem;
 }
 .success p{margin:0 auto;color:var(--ink-soft)}
-.success a{color:#8A6A1F}
+.success a{color:#2F6FA8}
 .waitlist--done .form{display:none}
 .waitlist--done .success{display:block}
 
@@ -1067,8 +1096,10 @@ p{max-width:38rem}
 
 <!-- ============ HERO — THE ROOM ============ -->
 <header class="hero lt" id="top">
-  <img class="hero__img" src="assets/world/scene-dorm-hero.webp" fetchpriority="high" width="1376" height="768"
-       alt="An illustrated dorm room where a smug pile of laundry sits on the armchair like it lives there">
+  <img class="hero__img" src="assets/world/hero-hybrid.webp" fetchpriority="high" width="1376" height="768"
+       alt="A real messy dorm room where an illustrated pile of laundry sits smugly on the desk chair while a small glowing CYDL bag waits by the bed">
+  <video class="hero__video" src="assets/world/hero-loop.mp4" poster="assets/world/hero-hybrid.webp"
+         muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
   <div class="hero__content">
     <div class="hero__panel">
       <p class="plate hero__plate"><b>CH. 01</b> The pile grows</p>
@@ -1138,8 +1169,8 @@ p{max-width:38rem}
             <p class="gbeat__cap">One hoodie.<em>Innocent.</em></p>
           </div>
           <div class="gbeat__art">
-            <img src="assets/world/chair-simple.webp" width="218" height="336" loading="lazy"
-                 alt="Week one: a few clothes tossed on a wooden chair">
+            <img src="assets/world/blue-chair-stacks.webp" width="260" height="417" loading="lazy"
+                 alt="Week one: a few folded clothes tossed on a wooden chair">
           </div>
         </div>
 
@@ -1150,7 +1181,7 @@ p{max-width:38rem}
             <p class="gbeat__cap">The chair<em>is gone.</em></p>
           </div>
           <div class="gbeat__art">
-            <img src="assets/world/pile-on-chair.webp" width="309" height="517" loading="lazy"
+            <img src="assets/world/blue-pile-chair.webp" width="271" height="434" loading="lazy"
                  alt="Week three: the pile has claimed the whole chair and is napping on it">
           </div>
         </div>
@@ -1162,7 +1193,7 @@ p{max-width:38rem}
             <p class="gbeat__cap">It has<em>opinions now.</em></p>
           </div>
           <div class="gbeat__art">
-            <img class="breathe" src="assets/world/pile-on-desk.webp" width="680" height="631" loading="lazy"
+            <img class="breathe" src="assets/world/blue-pile-desk.webp" width="550" height="490" loading="lazy"
                  alt="Week five: the pile has spread across the desk, books and homework buried, smug as ever">
           </div>
         </div>
@@ -1200,8 +1231,8 @@ p{max-width:38rem}
     <div class="split__media reveal">
       <span class="chip">Every room has one</span>
       <div class="world-panel">
-        <img src="assets/world/chair-buried.webp" width="500" height="509" loading="lazy"
-             alt="An armchair buried under a mountain of folded and crumpled clothes">
+        <img src="assets/world/blue-pile-floor.webp" width="507" height="438" loading="lazy"
+             alt="The pile: a mound of tangled laundry with heavy-lidded eyes and a satisfied smile, napping on the floor">
       </div>
     </div>
   </div>
@@ -1211,8 +1242,10 @@ p{max-width:38rem}
 
 <!-- ============ CH2: TUESDAY — THE PORCH ============ -->
 <section class="porch lt" id="tuesday" aria-labelledby="tuesday-h">
-  <img class="porch__img" src="assets/world/scene-tuesday-porch.webp" width="1376" height="768" loading="lazy"
-       alt="An illustrated hallway: the CYDL bag sits on a doormat by a dorm door, glowing softly">
+  <img class="porch__img" src="assets/world/porch-hybrid.webp" width="1376" height="768" loading="lazy"
+       alt="A real dorm hallway in morning light: the illustrated CYDL bag sits on the doormat, glowing softly">
+  <video class="porch__video" src="assets/world/porch-loop.mp4" poster="assets/world/porch-hybrid.webp"
+         muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
   <div class="porch__inner">
     <div class="porch__panel reveal">
       <p class="plate"><b>CH. 02</b> Tuesday. The bag.</p>
@@ -1287,16 +1320,14 @@ p{max-width:38rem}
 </section>
 
 <!-- ============ CH3: THE STANDOFF ============ -->
-<section class="section standoff" id="the-standoff" aria-labelledby="standoff-h">
-  <div class="wrap standoff__grid" data-stagger>
-    <div>
+<section class="standoff" id="the-standoff" aria-labelledby="standoff-h">
+  <img class="standoff__img" src="assets/world/standoff-night.webp" width="1376" height="768" loading="lazy"
+       alt="A dark dorm room at night: the small glowing CYDL bag faces down a towering smug pile of laundry">
+  <div class="standoff__inner">
+    <div class="standoff__copy" data-stagger>
       <p class="plate reveal"><b>CH. 03</b> The standoff</p>
       <h2 id="standoff-h" class="reveal">The pile has had a good run. <span class="end">End it.</span></h2>
       <p class="reveal lede">One glowing bag on a porch beats a five-week dynasty. Tuesday settles it.</p>
-    </div>
-    <div class="standoff__poster reveal">
-      <img src="assets/world/standoff-poster.webp" width="1024" height="1280" loading="lazy"
-           alt="Night scene: the small glowing CYDL bag faces down a towering smug pile of laundry">
     </div>
   </div>
 </section>
@@ -1340,8 +1371,8 @@ p{max-width:38rem}
     <div class="stack__media reveal">
       <span class="chip" style="position:absolute;top:-0.9rem;left:1.25rem;z-index:2">Folded better than your excuses</span>
       <div class="world-panel">
-        <img src="assets/world/scene-thursday-fold.webp" width="1200" height="896" loading="lazy"
-             alt="The CYDL bag open on a bed, a crisp stack of folded clothes rising out of it">
+        <img src="assets/world/fold-hybrid.webp" width="1200" height="896" loading="lazy"
+             alt="On a real dorm bed, the illustrated CYDL bag stands open with a crisp folded stack rising out of it">
         <span class="sparkle" style="top:12%;left:14%" aria-hidden="true"></span>
         <span class="sparkle" style="top:22%;right:16%" aria-hidden="true"></span>
         <span class="sparkle" style="top:48%;left:8%" aria-hidden="true"></span>
@@ -1376,18 +1407,35 @@ p{max-width:38rem}
     <div class="split__media reveal">
       <span class="chip chip--tail">The machines live here</span>
       <div class="world-panel">
-        <div class="backbone">
-          <img src="assets/world/truck-a.webp" width="544" height="358" loading="lazy"
-               alt="The CYDL delivery truck, an off-white box truck with rounded, friendly proportions">
-          <img src="assets/world/washing-machine.webp" width="669" height="762" loading="lazy"
-               alt="A cream front-loading washing machine with a small gold heart tag and sparkles">
-        </div>
+        <img src="assets/world/blue-backbone.webp" width="612" height="520" loading="lazy"
+             alt="The CYDL delivery truck with a gold heart on its side, next to a cream washing machine">
       </div>
     </div>
   </div>
 </section>
 
-<hr class="perf perf--lt" aria-hidden="true" data-tear>
+<!-- ============ THE DROP — MERCH ============ -->
+<section class="section drop" id="the-drop" aria-labelledby="drop-h">
+  <div class="wrap drop__grid" data-stagger>
+    <div class="drop__media reveal">
+      <img src="assets/world/merch-drop.webp" width="1264" height="848" loading="lazy"
+           alt="CYDL merch flat lay: ivory heavyweight hoodie with a navy embroidered heart, charcoal tee, and cream canvas bag with a heart patch">
+    </div>
+    <div>
+      <span class="kicker reveal">The drop</span>
+      <h2 id="drop-h" class="reveal">Not merch. A uniform.</h2>
+      <p class="lede reveal">Heavyweight hoodies, tees, and the canvas bag people ask about. Made to be worn to class, not to advertise a laundry service.</p>
+      <ul class="drop__list reveal">
+        <li>Heavyweight hoodie</li>
+        <li>Campus tees</li>
+        <li>The canvas bag</li>
+        <li>Stickers</li>
+      </ul>
+      <p class="reveal">First drop lands at Packapalooza, Saturday, August 22. Founding numbers get first look.</p>
+      <p class="reveal" style="margin-top:1.5rem"><a class="btn-ghost" href="https://www.instagram.com/cleanyourdirtylaundry" rel="noopener">Watch the drop on Instagram</a></p>
+    </div>
+  </div>
+</section>
 
 <!-- ============ PARENTS ============ -->
 <section class="section parents" id="parents" aria-labelledby="parents-h">
@@ -1465,8 +1513,8 @@ p{max-width:38rem}
   <div class="wrap waitlist__inner" data-stagger>
     <p class="plate reveal"><b>CH. 05</b> The ticket</p>
     <div class="duel reveal">
-      <img src="assets/world/pile-meets-bag.webp" width="574" height="328" loading="lazy"
-           alt="The pile, deflated and losing, eyes the small glowing CYDL bag beside it">
+      <img src="assets/world/blue-duel.webp" width="555" height="454" loading="lazy"
+           alt="The pile, deflated and losing, sits beside the taller glowing CYDL bag">
     </div>
     <span class="chip reveal">One form. One number.</span>
     <h2 id="waitlist-h" class="reveal">Claim your spot.</h2>
@@ -1633,6 +1681,26 @@ p{max-width:38rem}
     window.addEventListener("scroll", function(){
       if (!sweepPending) { sweepPending = true; requestAnimationFrame(sweepReveals); }
     }, { passive: true });
+  }
+
+  /* ---------- ambient video loops (motion-safe, lazy) ---------- */
+  var loops = document.querySelectorAll(".hero__video, .porch__video");
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (loops.length && !reduceMotion && !saveData && "IntersectionObserver" in window) {
+    var vidIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var v = entry.target;
+        if (entry.isIntersecting) {
+          v.play().then(function(){ v.classList.add("is-live"); }).catch(function(){});
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.2 });
+    loops.forEach(function(v){ vidIO.observe(v); });
+    if (motionMq.addEventListener) motionMq.addEventListener("change", function(){
+      if (motionMq.matches) loops.forEach(function(v){ v.pause(); v.classList.remove("is-live"); });
+    });
   }
 
   /* ---------- hero word cascade ---------- */
