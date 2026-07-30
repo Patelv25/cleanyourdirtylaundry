@@ -931,6 +931,53 @@ p{max-width:38rem}
 }
 .form a{color:var(--sky)}
 .honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+.form input[type="tel"]{
+  width:100%;
+  background:var(--navy);color:var(--powder);
+  border:1px solid rgba(127,191,233,.55);border-radius:4px;
+  padding:.9rem 1rem;font-size:1rem;font-family:var(--body);
+  appearance:none;
+}
+.form__hint{
+  margin-top:.45rem;font-size:.75rem;line-height:1.4;
+  color:var(--powder-faint);font-family:var(--mono);
+  letter-spacing:.02em;
+}
+.form__opt{
+  font-weight:400;letter-spacing:.06em;color:var(--powder-faint);
+  text-transform:none;
+}
+.form__checks{display:grid;gap:.65rem}
+.form__check{position:relative;display:flex;align-items:center;gap:.7rem;cursor:pointer}
+.form__check input{
+  appearance:none;flex:0 0 1.15rem;width:1.15rem;height:1.15rem;
+  border:1px solid rgba(127,191,233,.55);border-radius:3px;
+  background:var(--navy);cursor:pointer;
+}
+.form__check input:checked{
+  background:var(--sky);border-color:var(--sky);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10'%3E%3Cpath d='M1 5l3.5 3.5L11 1.5' stroke='%231E2A38' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:center;
+}
+.form__check input:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+.form__check span{
+  font-size:.9375rem;color:var(--powder-dim);
+  letter-spacing:0;text-transform:none;font-weight:500;
+}
+
+/* ---- step 2: revealed only after the spot is claimed ---- */
+.step2{margin-top:2.25rem;border-top:1px solid var(--ink-line);padding-top:1.75rem;text-align:left}
+.step2__kicker{
+  position:relative;z-index:1;
+  font-family:var(--mono);font-size:.75rem;line-height:1.5;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-faint);margin:0 0 1.25rem;
+}
+.form--tight{padding:clamp(1.25rem, 3vw, 1.75rem)}
+.step2__done{display:none}
+.step2--done .form--tight,.step2--done .step2__kicker{display:none}
+.step2--done .step2__done{display:block}
+.step2__done p{color:var(--powder-dim)}
+.step2__done b{color:var(--powder)}
 
 .success{
   display:none;text-align:center;
@@ -943,7 +990,9 @@ p{max-width:38rem}
 }
 .success p{margin:0 auto;color:var(--ink-soft)}
 .success a{color:#2F6FA8}
-.waitlist--done .form{display:none}
+/* Scoped to the claim form only — the step-2 details form lives inside the
+   success box and must survive the switch. */
+.waitlist--done #waitlist-form{display:none}
 .waitlist--done .success{display:block}
 
 /* ============ FOOTER ============ */
@@ -1068,6 +1117,12 @@ p{max-width:38rem}
   .form__pills{flex-direction:column}
   .ticker__item{font-size:.875rem}
   .hero__panel,.porch__panel{padding:1.25rem}
+}
+/* Narrow viewports crop the hero to its centre and lose the Pile, who sits
+   left of frame. Pull the focal point onto him so mobile still gets the joke. */
+@media (max-width:760px){
+  .hero__img,.hero__video{object-position:26% 52%}
+  .hero__plate{white-space:nowrap}
 }
 </style>
 </head>
@@ -1555,6 +1610,12 @@ p{max-width:38rem}
         </div>
         <div class="form__row form__row--2">
           <div>
+            <label for="f-phone">Mobile</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="919 555 0134" required autocomplete="tel"
+                   inputmode="tel" pattern="[0-9()+\-.\s]{10,}">
+            <p class="form__hint">For the Monday-night reminder. That's it.</p>
+          </div>
+          <div>
             <label for="f-school">School</label>
             <select id="f-school" name="school" required>
               <option value="" disabled selected>Pick one</option>
@@ -1565,6 +1626,8 @@ p{max-width:38rem}
               <option value="Other">Other</option>
             </select>
           </div>
+        </div>
+        <div class="form__row">
           <fieldset>
             <legend>I am the</legend>
             <div class="form__pills">
@@ -1579,13 +1642,94 @@ p{max-width:38rem}
             </div>
           </fieldset>
         </div>
+        <!-- Attribution: filled by JS from the querystring + referrer so we know
+             which reel, email, or flyer actually converted. Never user-visible. -->
+        <input type="hidden" name="utm_source" value="">
+        <input type="hidden" name="utm_medium" value="">
+        <input type="hidden" name="utm_campaign" value="">
+        <input type="hidden" name="utm_content" value="">
+        <input type="hidden" name="utm_term" value="">
+        <input type="hidden" name="referrer" value="">
+        <input type="hidden" name="landing_page" value="">
         <button class="btn btn--big" type="submit" id="submit-btn">Claim your spot</button>
         <p class="form__fine">No spam. No sharing. Just your number when it's ready.</p>
       </form>
 
       <div class="success reveal" id="success-box" role="status">
         <h3>You're in.</h3>
-        <p>Your number is coming by email — Nº 100 or under means you're founding. Go do literally anything else. We'll be in touch before move-in. Follow <a href="https://www.instagram.com/cleanyourdirtylaundry" rel="noopener">@cleanyourdirtylaundry</a> and watch the pile lose.</p>
+        <p>Your number is coming by email — Nº 100 or under means you're founding. Follow <a href="https://www.instagram.com/cleanyourdirtylaundry" rel="noopener">@cleanyourdirtylaundry</a> and watch the pile lose.</p>
+
+        <!-- Step 2. The spot is already claimed above, so nothing here can lose
+             the lead. Everything is optional and it exists to make move-in week
+             a route stop instead of a phone-tag exercise. -->
+        <div class="step2" id="step2">
+          <p class="step2__kicker">Two optional things — 20 seconds, and move-in week runs itself</p>
+          <form class="form form--tight" id="details-form" action="https://formsubmit.co/vee@gethamperd.com" method="POST">
+            <input type="hidden" name="_subject" value="CYDL Details">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="email" id="d-email" value="">
+            <input type="hidden" name="first_name" id="d-name" value="">
+            <div class="honeypot" aria-hidden="true">
+              <label for="d-hp">Leave this field empty</label>
+              <input type="text" id="d-hp" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="form__row">
+              <div>
+                <label for="d-address">Where's the pickup?</label>
+                <input type="text" id="d-address" name="pickup_address" placeholder="Dorm + room, or street address">
+                <p class="form__hint">Tells us whether you're already on the Tuesday route.</p>
+              </div>
+            </div>
+            <div class="form__row form__row--2">
+              <div>
+                <label for="d-payer-name">Who's paying? <span class="form__opt">optional</span></label>
+                <input type="text" id="d-payer-name" name="payer_name" placeholder="Name on the card">
+              </div>
+              <div>
+                <label for="d-payer-email">Their email <span class="form__opt">optional</span></label>
+                <input type="email" id="d-payer-email" name="payer_email" placeholder="mom@example.com">
+                <p class="form__hint">Parents get the receipt. Students get the clean clothes.</p>
+              </div>
+            </div>
+            <div class="form__row">
+              <fieldset>
+                <legend>Anything beyond clothes?</legend>
+                <div class="form__checks">
+                  <label class="form__check">
+                    <input type="checkbox" name="addon_comforter" value="yes">
+                    <span>Comforter — $20 each</span>
+                  </label>
+                  <label class="form__check">
+                    <input type="checkbox" name="addon_linens" value="yes">
+                    <span>Sheets &amp; linens — priced at signup</span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="form__row">
+              <div>
+                <label for="d-heard">How'd you hear about us?</label>
+                <select id="d-heard" name="heard_from">
+                  <option value="" disabled selected>Pick one</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="Friend or roommate">Friend or roommate</option>
+                  <option value="Greek house">Greek house</option>
+                  <option value="Parent">A parent told me</option>
+                  <option value="Packapalooza">Packapalooza / campus event</option>
+                  <option value="Flyer or QR code">Flyer or QR code</option>
+                  <option value="Search">Google / search</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn btn--big" type="submit" id="details-btn">Lock it in</button>
+            <p class="form__fine">Skip it if you'd rather. Your number is already yours.</p>
+          </form>
+          <div class="step2__done" id="step2-done" role="status">
+            <p><b>Done.</b> You're on the route list for move-in week. Nothing left to do — go be a person.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1870,6 +2014,28 @@ p{max-width:38rem}
   var form = document.getElementById("waitlist-form");
   var submitBtn = document.getElementById("submit-btn");
   var waitlistSection = document.getElementById("waitlist");
+  /* ---------- attribution: which reel / email / flyer actually converted ----------
+     Stamped into the hidden fields at load. Also persisted to sessionStorage so a
+     visitor who lands on a UTM link, wanders the story, then signs up still keeps
+     the source that brought them in. */
+  if (form) {
+    var params = new URLSearchParams(window.location.search);
+    var UTM_KEYS = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
+    var stored = {};
+    try { stored = JSON.parse(sessionStorage.getItem("cydl_attr") || "{}"); } catch (err) { stored = {}; }
+    var attr = {};
+    UTM_KEYS.forEach(function(key){
+      attr[key] = params.get(key) || stored[key] || "";
+    });
+    attr.referrer = stored.referrer || document.referrer || "";
+    attr.landing_page = stored.landing_page || (window.location.pathname + window.location.search);
+    try { sessionStorage.setItem("cydl_attr", JSON.stringify(attr)); } catch (err) {}
+    Object.keys(attr).forEach(function(key){
+      var field = form.querySelector('input[name="' + key + '"]');
+      if (field) field.value = attr[key];
+    });
+  }
+
   if (form && submitBtn && waitlistSection && window.fetch) {
     var nativeFallback = false;
     form.addEventListener("submit", function(e){
@@ -1891,12 +2057,42 @@ p{max-width:38rem}
           box.setAttribute("tabindex", "-1");
           box.focus({ preventScroll: false });
         }
+        /* carry identity into step 2 so the two submissions can be joined on email */
+        var emailField = form.querySelector('input[name="email"]');
+        var nameField = form.querySelector('input[name="first_name"]');
+        var dEmail = document.getElementById("d-email");
+        var dName = document.getElementById("d-name");
+        if (dEmail && emailField) dEmail.value = emailField.value;
+        if (dName && nameField) dName.value = nameField.value;
       }).catch(function(){
         /* graceful fallback: plain POST, formsubmit shows its own page */
         nativeFallback = true;
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel;
         form.submit();
+      });
+    });
+  }
+
+  /* ---------- step 2: operational details, posted separately ----------
+     Failure here is silent on purpose. The spot is already claimed; a dropped
+     detail form must never read to the student as a failed signup. */
+  var detailsForm = document.getElementById("details-form");
+  var detailsBtn = document.getElementById("details-btn");
+  var step2 = document.getElementById("step2");
+  if (detailsForm && detailsBtn && step2 && window.fetch) {
+    detailsForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      detailsBtn.disabled = true;
+      detailsBtn.textContent = "Saving…";
+      fetch(detailsForm.action, {
+        method: "POST",
+        body: new FormData(detailsForm),
+        headers: { "Accept": "application/json" }
+      }).then(function(){
+        step2.classList.add("step2--done");
+      }).catch(function(){
+        step2.classList.add("step2--done");
       });
     });
   }
