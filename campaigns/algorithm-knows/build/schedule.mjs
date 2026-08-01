@@ -89,6 +89,33 @@ camp.posts.forEach((p, i) => {
   md.push('---\n');
 });
 
+// ── upload queue: the chronological run-sheet you actually work through ──
+const q = [`# UPLOAD QUEUE — ${camp.campaign}\n`];
+q.push(`**Brand: CYDL.** Post to **${camp.accounts.instagram}** on Instagram and`);
+q.push(`**${camp.accounts.facebook_page}** on Facebook (${camp.accounts.facebook_url}).`);
+q.push(`Not Hamper'd — that is a different brand with different accounts.\n`);
+q.push(`Work top to bottom. All times **${camp.timezone}**. Tick as you schedule.\n`);
+q.push(`---\n`);
+
+camp.posts.forEach((p, i) => {
+  const dir = resolve(OUT, slug(p));
+  const files = existsSync(dir) ? readdirSync(dir).sort() : [];
+  const place = PLACEMENT[p.format];
+  const ig = files.filter(f => f.includes('4x5') || f.includes('9x16'));
+  const fb = files.filter(f => f.includes('1x1') || f.includes('9x16'));
+
+  q.push(`### ${i + 1}. ${p.id} — ${p.name}`);
+  q.push(`- [ ] **${dayName(p.schedule)} ${fmtDate(p.schedule)}, ${fmtTime(p.schedule)} ET**`);
+  q.push(`- [ ] Instagram · ${place.ig} · \`${(ig.length ? ig : files).join('`, `')}\``);
+  q.push(`- [ ] Facebook · ${place.fb} · \`${(fb.length ? fb : files).join('`, `')}\``);
+  q.push(`- [ ] Alt text set on every image`);
+  if (p.first_comment) q.push(`- [ ] First comment posted`);
+  q.push(`\n<details><summary>caption</summary>\n\n\`\`\`\n${p.caption}\n\n${tags(p, i)}\n\`\`\`\n`);
+  if (p.first_comment) q.push(`First comment: \`${p.first_comment}\`\n`);
+  q.push(`Alt: ${p.alt}\n</details>\n`);
+});
+writeFileSync(resolve(SCHED, 'UPLOAD-QUEUE.md'), q.join('\n'));
+
 const csvCell = v => `"${String(v).replace(/"/g, '""')}"`;
 const header = ['brand', 'instagram_account', 'facebook_page',
   'post_id', 'name', 'publish_date', 'day', 'publish_time', 'timezone',
