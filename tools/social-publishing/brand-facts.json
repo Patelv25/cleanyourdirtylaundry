@@ -1,0 +1,36 @@
+{
+  "_comment": "Locked contact/brand facts used by content_policy_validator.py. Sourced from jarvis-mission-control/hamperd/brand/ground-truth.md and this repo's AGENTS.md rail #1. Update ONLY with Vee's approval.",
+  "brands": {
+    "hamperd": {
+      "display_name": "Hamper'd",
+      "website": "hamperd.com",
+      "email": "info@gethamperd.com",
+      "phone": null,
+      "phone_status": "UNRESOLVED",
+      "phone_note": "ground-truth.md locks (919) 301-8054. The Google Business Profile post that got posting suspended on 2026-07-30 used (919) 283-3010, which appears in no repo. Vee must confirm which is correct, then set `phone` here. Until then the validator BLOCKS any Hamper'd copy containing a phone number.",
+      "forbidden_cross_brand": ["cleanyourdirtylaundry.com", "cleanyourdirtylaundry", "Clean Your Dirty Laundry"]
+    },
+    "cydl": {
+      "display_name": "Clean Your Dirty Laundry",
+      "website": "cleanyourdirtylaundry.com",
+      "email": "hello@cleanyourdirtylaundry.com",
+      "phone": null,
+      "phone_status": "NONE_EXISTS",
+      "phone_note": "AGENTS.md rail #1: CYDL has NO phone number. Any phone number in CYDL copy is invented and must block.",
+      "forbidden_cross_brand": ["hamperd.com", "gethamperd.com", "Hamper'd", "Hamperd"]
+    }
+  },
+  "surfaces": {
+    "google_business_profile": {
+      "phone_in_body": "forbidden",
+      "reason": "Google Business Profile posts content policy disallows phone numbers in post body text ('phone stuffing'). Google's detector flags any digit run of phone-number length regardless of punctuation. Use the 'Call now' CTA button, or put the number inside the image instead.",
+      "policy_url": "https://support.google.com/business/answer/7213077"
+    },
+    "facebook": {
+      "phone_in_body": "must_match_ground_truth"
+    },
+    "instagram": {
+      "phone_in_body": "must_match_ground_truth"
+    }
+  }
+}
