@@ -109,6 +109,23 @@ console.log('\nBRAND');
     }
   }
 
+  // the logo must be the brand's real file, not a reconstruction. A final
+  // brand with a site source must use a logo file that site actually
+  // references — this is the check that catches a hand-drawn lookalike.
+  if (brand.logo.type === 'file') {
+    if (!existsSync(resolve(REPO, brand.logo.file))) {
+      fail(`logo file ${brand.logo.file} does not exist`);
+    }
+  }
+  if (brand.status === 'final' && brand.accounts.verify_against) {
+    const site = readFileSync(resolve(REPO, brand.accounts.verify_against), 'utf8');
+    if (brand.logo.type !== 'file') {
+      fail(`brand is final but the logo is type "${brand.logo.type}" — embed the real logo file, never a redraw`);
+    } else if (!site.includes(brand.logo.file.split('/').pop())) {
+      fail(`logo ${brand.logo.file} is not the one ${brand.accounts.verify_against} uses`);
+    }
+  }
+
   // account targeting, checked against the live site markup where we have it
   if (brand.accounts.verify_against) {
     const site = readFileSync(resolve(REPO, brand.accounts.verify_against), 'utf8');

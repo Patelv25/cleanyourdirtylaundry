@@ -36,6 +36,16 @@ const only = argv.filter(a => /^P\d\d$/.test(a));
 const camp = JSON.parse(readFileSync(resolve(ROOT, 'campaign.json'), 'utf8'));
 const brand = JSON.parse(readFileSync(resolve(ROOT, 'brand.json'), 'utf8'));
 const REPO = resolve(HERE, '../..');
+
+// A logo of type "file" is embedded from the real asset — never redrawn.
+// Text fills are swapped to CSS vars so the one file adapts to light and dark
+// frames; the tag and heart keep their authored colors.
+if (brand.logo.type === 'file') {
+  let svg = readFileSync(resolve(REPO, brand.logo.file), 'utf8');
+  svg = svg.replace(/(<text[^>]*?)fill="#E6F0FA"/g, '$1style="fill:var(--fg)"')
+           .replace(/(<text[^>]*?)fill="#7FBFE9"/g, '$1style="fill:var(--accent)"');
+  brand.logo.svg = svg;
+}
 // art paths are resolved relative to the template, which lives in _engine/templates
 const artPath = key => relative(resolve(HERE, 'templates'),
   resolve(REPO, brand.art.dir, key + (brand.art.prefix === 'blue-' ? '.webp' : '')));

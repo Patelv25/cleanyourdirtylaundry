@@ -125,7 +125,11 @@
   .cta .url{position:static;color:var(--barfg);opacity:.72;
     font-size:calc(var(--u)*19);letter-spacing:calc(var(--u)*1.4)}
 
-  /* ── heart-tag lockup (matches assets/logo_cydl_hearttag_lockup.svg) ─ */
+  /* ── brand lockup ────────────────────────────────────────────────── */
+  /* mark--svg embeds the brand's real logo file, sized by height */
+  .mark--svg svg{height:calc(var(--u)*74);width:auto;display:block}
+  .endcard .mark--svg svg{height:calc(var(--u)*74)}
+
   .mark{position:absolute;display:flex;align-items:center;gap:calc(var(--u)*16)}
   .mark .tag{width:calc(var(--u)*62);height:calc(var(--u)*62);border-radius:calc(var(--u)*10);
     background:var(--powder);position:relative;flex:none;
@@ -150,8 +154,10 @@
   .endcard.on{display:flex}
   .endcard .mark{position:static;transform:scale(2);transform-origin:center;
     margin-bottom:calc(var(--u)*34)}
-  .endcard .facts{max-width:100%;text-align:center;line-height:1.75;
-    white-space:normal;overflow:visible}
+  /* .facts is flex:1 for the receipts bar; inside the endcard it must NOT
+     grow or it swallows the whole column and shoves the lockup off-canvas */
+  .endcard .facts{flex:0 0 auto;width:100%;max-width:100%;text-align:center;
+    line-height:1.75;white-space:normal;overflow:visible}
   /* persistent corner lockup so the brand is on screen the whole way through */
   .vmark{position:absolute;top:calc(var(--u)*300);left:var(--pad);transform:scale(.92);
     transform-origin:left center}
@@ -173,10 +179,13 @@
 <script>
 const HEART = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27.5C10 21.5 3 16.3 3 10.4 3 6.3 6.4 3 10.5 3c2.3 0 4.4 1.1 5.5 2.8C17.1 4.1 19.2 3 21.5 3 25.6 3 29 6.3 29 10.4c0 5.9-7 11.1-13 17.1Z"/></svg>';
 let BRAND = null;   // set by applyBrand() before any render
-function mark(){
+// cls/attrs are injected directly — no fragile string-replace on the class
+function mark(cls, attrs){
   const l = BRAND.logo;
+  const open = '<div class="mark '+(l.svg?'mark--svg ':'')+(cls||'')+'" '+(attrs||'')+'>';
+  if (l.svg) return open+l.svg+'</div>';
   const tag = l.type === 'hearttag' ? '<div class="tag">'+HEART+'</div>' : '';
-  return '<div class="mark">'+tag+
+  return open+tag+
     '<div class="wm"><b>'+esc(l.wordmark)+'</b><span>'+esc(l.tagline)+'</span></div></div>';
 }
 
@@ -260,7 +269,7 @@ window.renderStill = function(o){
     '<div class="bar" style="bottom:'+(S.barBottom*u)+'px"><div class="facts">'+esc(o.facts)+'</div>'+
       '<div class="cta"><div class="chip">'+esc(o.chipText||BRAND.cta)+'</div>'+
       '<div class="url">'+esc(BRAND.url)+'</div></div></div>'+
-    mark().replace('class="mark"','class="mark" style="top:'+(S.top*u)+'px;right:'+(S.pad*u)+'px;'+
+    mark('', 'style="top:'+(S.top*u)+'px;right:'+(S.pad*u)+'px;'+
       'transform:translateY('+(-24*u)+'px)"') + draftBand();
 
   // shrink the receipts line until the longest row fits the bar
@@ -310,7 +319,7 @@ window.setupVideo = function(o){
       '</h1></div>').join('');
 
   f.innerHTML='<div class="wash"></div><div class="grid"></div>'+
-    mark().replace('class="mark"','class="mark vmark" id="vm"')+beats+
+    mark('vmark', 'id="vm"')+beats+
     '<div class="endcard" id="ec">'+mark()+
       '<div class="facts" style="text-align:center;font-size:'+(28*u)+'px;line-height:1.7">'+
         esc(o.facts)+'</div>'+

@@ -5,32 +5,41 @@
   "lane": "Campus / student housing / NC State",
   "url": "cleanyourdirtylaundry.com",
   "email": "hello@cleanyourdirtylaundry.com",
-
   "logo": {
-    "type": "hearttag",
+    "type": "file",
+    "file": "assets/logo_cydl_hearttag_lockup.svg",
+    "_note": "The real brand lockup — same file the site nav and the schema.org logo field use. Never redraw it.",
+    "theme_fills": {
+      "_note": "The file is authored for dark backgrounds (powder wordmark, sky tagline). These substitutions let the one file adapt per theme; tag + heart stay untouched.",
+      "#E6F0FA_text": "var(--fg)",
+      "#7FBFE9_text": "var(--accent)"
+    },
     "wordmark": "CYDL",
     "tagline": "CLEAN YOUR DIRTY LAUNDRY"
   },
-
   "fonts": {
     "display": "'Archivo Black','Arial Black',sans-serif",
     "body": "'Inter',Helvetica,Arial,sans-serif",
     "mono": "'Plex Mono',ui-monospace,Menlo,monospace"
   },
-
   "palette": {
-    "navy": "#1E2A38", "navy-deep": "#16202B", "navy-raise": "#243447",
-    "powder": "#E6F0FA", "sky": "#7FBFE9", "steel": "#8FA3B8",
-    "lemon": "#FFD24D", "parchment": "#F1F6FC", "ink": "#1E2A38",
-    "deep-sky": "#2F6FA8", "heart": "#C9A227"
+    "navy": "#1E2A38",
+    "navy-deep": "#16202B",
+    "navy-raise": "#243447",
+    "powder": "#E6F0FA",
+    "sky": "#7FBFE9",
+    "steel": "#8FA3B8",
+    "lemon": "#FFD24D",
+    "parchment": "#F1F6FC",
+    "ink": "#1E2A38",
+    "deep-sky": "#2F6FA8",
+    "heart": "#C9A227"
   },
-
   "art": {
     "dir": "assets/world",
     "prefix": "blue-",
     "note": "The v2.1 brand-bible cutouts. The warm/cream originals break AGENTS.md rail #2."
   },
-
   "accounts": {
     "instagram": "@cleanyourdirtylaundry",
     "instagram_url": "https://www.instagram.com/cleanyourdirtylaundry",
@@ -38,9 +47,7 @@
     "facebook_url": "https://www.facebook.com/profile.php?id=61592741337111",
     "verify_against": "index.html"
   },
-
   "cta": "Claim your spot",
-
   "forbidden": {
     "other_brand": "hamper'?d|hamperd\\.com|gethamperd",
     "other_brand_label": "Hamper'd",
