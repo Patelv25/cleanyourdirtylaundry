@@ -3,6 +3,29 @@
 Ten posts for Facebook + Instagram, Aug 3 → Aug 22 2026 (launch = Packapalooza,
 Sat Aug 22).
 
+## Which brand this is
+
+**CYDL — Clean Your Dirty Laundry.** The campus brand: NC State, student
+housing, dorms, move-in, Packapalooza, the $100/mo student bag. CYDL's own
+navy/powder palette, Archivo Black + Inter, the heart-tag lockup, and the
+Pile-and-Bag characters.
+
+**Not Hamper'd.** `hamperd.com` is the sibling Raleigh household + commercial
+brand — as the site footer puts it, *"CYDL is the campus brand… the Raleigh
+household version is Hamper'd."* Same facility and same route, but a different
+site, logo, audience and set of accounts. Nothing in this campaign is Hamper'd's
+and none of it may be published to a Hamper'd account. `verify.mjs` fails the
+build if Hamper'd is mentioned, if the copy drifts into the residential or
+commercial lane, or if any artwork comes from outside CYDL's own set.
+
+**Post to these accounts and no others** (taken from `index.html`'s schema.org
+`sameAs` block, and re-checked against it on every verify run):
+
+- Instagram — **@cleanyourdirtylaundry**
+- Facebook — **CYDL**, `facebook.com/profile.php?id=61592741337111`
+
+Both are also stamped on every row of `schedule/queue.csv` and `queue.json`.
+
 **The hook.** Every post opens by admitting the ad is targeted, then names the
 specific domestic evidence that got you targeted — the chair, the sock ration,
 the sheets that haven't moved since move-in. The reader's own suspicion, said
@@ -73,14 +96,21 @@ network, no external requests, no design tool in the loop.
 
 ### verify.mjs
 
-Two gates, mirroring `AGENTS.md`:
+Three gates, mirroring `AGENTS.md`:
 
 - **Facts** — scans every line of copy for `$49`, a phone number, the facility's
   real name, wolf references, exclamation marks, hype words, invented stats, a
   price other than `$100/mo`, a cap other than `20 lb`, or a number attached to
   sheets/linens.
-- **Palette** — samples every rendered frame and fails if more than 0.5% of
-  pixels sit outside the navy/powder/sky hue band or the lemon/heart-gold band.
+- **Brand** — fails on any Hamper'd mention, on copy aimed at the residential or
+  commercial lane, on artwork outside the CYDL `blue-*` set, and if the queue's
+  target accounts stop matching `index.html`.
+- **Palette** — fails if any character cutout has an opaque background (it would
+  render as a white box), or if more than 0.5% of a frame's pixels sit outside
+  the navy/powder/sky hue band or the lemon/heart-gold band.
+
+Verified by planting faults: a Hamper'd cross-sell, a warm-palette asset and a
+`$49` hook were each caught.
 
 ## Art
 

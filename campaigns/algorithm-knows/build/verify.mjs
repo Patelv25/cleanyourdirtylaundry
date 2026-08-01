@@ -57,7 +57,45 @@ for (const p of camp.posts) {
 }
 if (!fails) ok(`${camp.posts.length} posts clear on locked facts and voice`);
 
-// ── 2. palette ────────────────────────────────────────────────────────
+// ── 2. brand ──────────────────────────────────────────────────────────
+// CYDL is the campus brand. Hamper'd (hamperd.com) is the sibling Raleigh
+// household + commercial brand — separate site, logo, audience and accounts.
+// Nothing in this campaign may carry Hamper'd branding or be aimed at it.
+console.log('\nBRAND');
+{
+  const OTHER = /hamper'?d|hamperd\.com|gethamperd/i;
+  const RESIDENTIAL = /\b(homeowner|household|residential|commercial account|office|airbnb|short[- ]term rental)\b/i;
+
+  for (const p of camp.posts) {
+    const text = copyOf(p);
+    if (OTHER.test(text)) fail(`${p.id} mentions Hamper'd — this is the CYDL campaign`);
+    if (RESIDENTIAL.test(text)) fail(`${p.id} pitches a residential/commercial audience — that is Hamper'd's lane`);
+  }
+
+  // every image must come from this repo's own CYDL artwork
+  const legalArt = new Set(readdirSync(resolve(ROOT, '../../assets/world'))
+    .filter(f => f.startsWith('blue-') && f.endsWith('.webp'))
+    .map(f => f.replace('.webp', '')));
+  for (const p of camp.posts) {
+    for (const key of [p.art, ...p.slides.map(s => s.art)].filter(Boolean)) {
+      if (!legalArt.has(key)) {
+        fail(`${p.id} uses "${key}" — not in the CYDL blue-* brand-bible set`);
+      }
+    }
+  }
+
+  // the queue must name CYDL's own accounts, taken from the live site markup
+  const site = readFileSync(resolve(ROOT, '../../index.html'), 'utf8');
+  for (const [label, val] of Object.entries({
+    instagram: camp.accounts.instagram_url,
+    facebook: camp.accounts.facebook_url,
+  })) {
+    if (!site.includes(val)) fail(`${label} account ${val} is not in index.html's sameAs block`);
+  }
+  if (!fails) ok(`CYDL only — accounts match the site, all art from the blue-* set`);
+}
+
+// ── 3. palette ────────────────────────────────────────────────────────
 console.log('\nPALETTE');
 const dirs = existsSync(OUT) ? readdirSync(OUT) : [];
 const frames = dirs.flatMap(d =>
@@ -70,6 +108,26 @@ if (!frames.length) {
   const browser = await chromium.launch({ args: ['--allow-file-access-from-files'] });
   const page = await browser.newPage();
   await page.goto(pathToFileURL(resolve(HERE, 'templates/creative.html')).href);
+
+  // character cutouts must have a transparent matte — an opaque asset renders
+  // as a white box on navy (blue-backbone.webp is one; it looked fine in a
+  // file listing and only showed up on screen)
+  const usedArt = [...new Set(camp.posts.flatMap(p =>
+    [p.art, ...p.slides.map(s => s.art)].filter(Boolean)))];
+  for (const key of usedArt) {
+    const opaque = await page.evaluate(async src => {
+      const img = new Image(); img.src = src; await img.decode();
+      const c = document.createElement('canvas');
+      c.width = img.width; c.height = img.height;
+      const g = c.getContext('2d', { willReadFrequently: true });
+      g.drawImage(img, 0, 0);
+      const at = (x, y) => g.getImageData(x, y, 1, 1).data[3];
+      return [at(1, 1), at(img.width - 2, 1), at(1, img.height - 2),
+              at(img.width - 2, img.height - 2)].every(a => a > 250);
+    }, pathToFileURL(resolve(ROOT, '../../assets/world', key + '.webp')).href);
+    if (opaque) fail(`${key}.webp has an opaque background — it will render as a box`);
+  }
+  if (!fails) ok(`${usedArt.length} character cutouts have transparent mattes`);
 
   const worst = [];
   for (const f of frames) {

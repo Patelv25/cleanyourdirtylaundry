@@ -100,8 +100,11 @@
   .bar{position:absolute;left:0;right:0;background:var(--bar);color:var(--barfg);
     display:flex;align-items:center;gap:calc(var(--u)*28);
     padding:0 var(--pad);height:var(--barh)}
+  /* pre (not pre-line) so a too-long receipts line overflows instead of
+     silently wrapping into a broken stack — fitFacts() then shrinks it */
   .facts{font-family:var(--mono);font-weight:500;font-size:calc(var(--u)*22);
-    letter-spacing:calc(var(--u)*1.6);line-height:1.55;opacity:.92;white-space:pre-line}
+    letter-spacing:calc(var(--u)*1.6);line-height:1.55;opacity:.92;white-space:pre;
+    flex:1 1 auto;min-width:0;overflow:hidden}
   .cta{margin-left:auto;flex:none;display:flex;flex-direction:column;
     align-items:center;gap:calc(var(--u)*12)}
   .chip{background:var(--lemon);color:var(--navy);
@@ -137,7 +140,8 @@
   .endcard.on{display:flex}
   .endcard .mark{position:static;transform:scale(2);transform-origin:center;
     margin-bottom:calc(var(--u)*34)}
-  .endcard .facts{max-width:100%;text-align:center;line-height:1.75}
+  .endcard .facts{max-width:100%;text-align:center;line-height:1.75;
+    white-space:normal;overflow:visible}
   /* persistent corner lockup so the brand is on screen the whole way through */
   .vmark{position:absolute;top:calc(var(--u)*300);left:var(--pad);transform:scale(.92);
     transform-origin:left center}
@@ -215,6 +219,13 @@ window.renderStill = function(o){
       '<div class="url">cleanyourdirtylaundry.com</div></div></div>'+
     MARK.replace('class="mark"','class="mark" style="top:'+(S.top*u)+'px;right:'+(S.pad*u)+'px;'+
       'transform:translateY('+(-24*u)+'px)"');
+
+  // shrink the receipts line until the longest row fits the bar
+  const facts = f.querySelector('.facts');
+  for (let s=22; s>=14; s-=0.5){
+    facts.style.fontSize='calc(var(--u) * '+s+')';
+    if (facts.scrollWidth <= facts.clientWidth + 1) break;
+  }
 
   // give the hook every pixel the kicker and the lower row don't need
   const box = f.querySelector(isPanel ? '.panel' : '.body');

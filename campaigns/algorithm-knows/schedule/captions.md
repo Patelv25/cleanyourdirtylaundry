@@ -2,6 +2,13 @@
 
 Every post opens by admitting the ad is targeted, then names the specific domestic evidence that got you targeted. The hook is the reader's own suspicion, said out loud first. Deadpan, receipts-first, no hype.
 
+## Post these to CYDL only
+
+- Instagram: **@cleanyourdirtylaundry**
+- Facebook: **CYDL** — https://www.facebook.com/profile.php?id=61592741337111
+
+> Hamper'd (hamperd.com) is the sibling Raleigh household + commercial brand. Different site, different logo, different audience, different accounts. No asset, font, colour or line of copy in this campaign is Hamper'd's, and none of it may be published to a Hamper'd account.
+
 All times **America/New_York**. Window: 2026-08-03 through 2026-08-22 (Packapalooza launch).
 Assets: `campaigns/algorithm-knows/out/<post>/`
 

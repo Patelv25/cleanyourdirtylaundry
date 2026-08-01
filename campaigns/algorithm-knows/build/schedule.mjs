@@ -40,6 +40,10 @@ const rows = [], json = [], md = [];
 
 md.push(`# ${camp.campaign} — publishing queue\n`);
 md.push(`${camp.premise}\n`);
+md.push(`## Post these to CYDL only\n`);
+md.push(`- Instagram: **${camp.accounts.instagram}**`);
+md.push(`- Facebook: **${camp.accounts.facebook_page}** — ${camp.accounts.facebook_url}\n`);
+md.push(`> ${camp.not_this_brand}\n`);
 md.push(`All times **${camp.timezone}**. Window: ${camp.window}.`);
 md.push(`Assets: \`campaigns/${camp.slug}/out/<post>/\`\n`);
 md.push(`> Every price, date and cap below is from the locked-facts list in`);
@@ -55,6 +59,9 @@ camp.posts.forEach((p, i) => {
   const fullCaption = `${p.caption}\n\n${hashtags}`;
 
   json.push({
+    brand: 'CYDL',
+    instagram_account: camp.accounts.instagram,
+    facebook_page: camp.accounts.facebook_url,
     id: p.id, name: p.name, format: p.format,
     publish_at: p.schedule,
     instagram: place.ig, facebook: place.fb,
@@ -63,6 +70,7 @@ camp.posts.forEach((p, i) => {
   });
 
   rows.push([
+    'CYDL', camp.accounts.instagram, camp.accounts.facebook_url,
     p.id, p.name, fmtDate(p.schedule), dayName(p.schedule), fmtTime(p.schedule),
     'America/New_York', p.format, place.ig, place.fb,
     media.join(' | '), fullCaption, p.first_comment || '', p.alt,
@@ -82,14 +90,17 @@ camp.posts.forEach((p, i) => {
 });
 
 const csvCell = v => `"${String(v).replace(/"/g, '""')}"`;
-const header = ['post_id', 'name', 'publish_date', 'day', 'publish_time', 'timezone',
+const header = ['brand', 'instagram_account', 'facebook_page',
+  'post_id', 'name', 'publish_date', 'day', 'publish_time', 'timezone',
   'format', 'instagram_placement', 'facebook_placement', 'media_files',
   'caption', 'first_comment', 'alt_text'];
 const csv = [header.join(','), ...rows.map(r => r.map(csvCell).join(','))].join('\n');
 
 writeFileSync(resolve(SCHED, 'queue.csv'), csv + '\n');
 writeFileSync(resolve(SCHED, 'queue.json'), JSON.stringify({
-  campaign: camp.campaign, timezone: camp.timezone, posts: json,
+  campaign: camp.campaign, brand: camp.brand, accounts: camp.accounts,
+  not_this_brand: camp.not_this_brand,
+  timezone: camp.timezone, posts: json,
 }, null, 2) + '\n');
 writeFileSync(resolve(SCHED, 'captions.md'), md.join('\n'));
 

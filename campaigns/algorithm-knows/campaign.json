@@ -1,7 +1,7 @@
 {
   "campaign": "THE ALGORITHM KNOWS",
   "slug": "algorithm-knows",
-  "brand": "Clean Your Dirty Laundry (CYDL)",
+  "brand": "CYDL — Clean Your Dirty Laundry (the campus brand; NC State / student housing)",
   "site": "cleanyourdirtylaundry.com",
   "email": "hello@cleanyourdirtylaundry.com",
   "premise": "Every post opens by admitting the ad is targeted, then names the specific domestic evidence that got you targeted. The hook is the reader's own suspicion, said out loud first. Deadpan, receipts-first, no hype.",
@@ -22,11 +22,11 @@
   },
   "receipts_bar": {
     "_default": "$100/MO FLAT · ONE 20 LB BAG A WEEK\nOUT TUESDAY · BACK THURSDAY · FOLDED",
-    "P05": "$100/MO FLAT · 20 LB CAP · COMFORTER $20\nSHEETS + LINENS PRICED AT SIGNUP",
+    "P05": "$100/MO FLAT · 20 LB CAP\nCOMFORTER $20 · LINENS AT SIGNUP",
     "P06": "MOVE-IN AUG 14–16 · WE START AUG 22\n$100/MO FLAT · ONE 20 LB BAG A WEEK",
-    "P08": "$100/MO FLAT · 20 LB HARD CAP · COMFORTER $20\nSHEETS + LINENS PRICED AT SIGNUP",
-    "P09": "MON: WE TEXT · TUE: BAG OUT · THU: BACK FOLDED\n$100/MO FLAT · ONE 20 LB BAG A WEEK",
-    "P10": "PACKAPALOOZA · SAT AUG 22 · $100/MO FLAT\nFIRST 100 NUMBERS ARE FOUNDING NUMBERS"
+    "P08": "$100/MO FLAT · 20 LB HARD CAP\nCOMFORTER $20 · LINENS AT SIGNUP",
+    "P09": "TUE OUT · THU BACK · FOLDED\n$100/MO FLAT · ONE 20 LB BAG A WEEK",
+    "P10": "PACKAPALOOZA · SAT AUG 22\n$100/MO FLAT · FIRST 100 ARE FOUNDING"
   },
   "hashtags": {
     "core": [
@@ -401,7 +401,7 @@
           "accent_line": 0,
           "sub": "One message. Put the bag out.",
           "layout": "evidence",
-          "art": "blue-pile-floor"
+          "art": "blue-pile-chair"
         },
         {
           "kicker": "STEP 02 · TUESDAY",
@@ -439,7 +439,7 @@
         "feed-4x5",
         "feed-1x1"
       ],
-      "art": "blue-chair-stacks",
+      "art": "blue-pile-desk",
       "theme": "navy",
       "schedule": "2026-08-22T09:00:00-04:00",
       "video": {
@@ -503,5 +503,13 @@
       "alt": "Navy graphic reading 'The algorithm was right. You do hate it.' with a Packapalooza Saturday Aug 22 kicker and founding-number offer copy.",
       "first_comment": "Founding numbers are the first 100 signups. Locked pickup priority at launch, numbered founding gear later. hello@cleanyourdirtylaundry.com"
     }
-  ]
+  ],
+  "not_this_brand": "Hamper'd (hamperd.com) is the sibling Raleigh household + commercial brand. Different site, different logo, different audience, different accounts. No asset, font, colour or line of copy in this campaign is Hamper'd's, and none of it may be published to a Hamper'd account.",
+  "accounts": {
+    "instagram": "@cleanyourdirtylaundry",
+    "instagram_url": "https://www.instagram.com/cleanyourdirtylaundry",
+    "facebook_page": "CYDL",
+    "facebook_url": "https://www.facebook.com/profile.php?id=61592741337111",
+    "source": "index.html schema.org sameAs — verified against the live site markup"
+  }
 }
