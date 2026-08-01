@@ -1,0 +1,299 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>CYDL creative frame</title>
+<style>
+  /* ── fonts (vendored from npm; no network) ───────────────────────── */
+  @font-face{font-family:'Archivo Black';font-weight:400;font-display:block;
+    src:url('../node_modules/@fontsource/archivo-black/files/archivo-black-latin-400-normal.woff2') format('woff2')}
+  @font-face{font-family:'Inter';font-weight:400;font-display:block;
+    src:url('../node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2') format('woff2')}
+  @font-face{font-family:'Inter';font-weight:600;font-display:block;
+    src:url('../node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2') format('woff2')}
+  @font-face{font-family:'Inter';font-weight:700;font-display:block;
+    src:url('../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2') format('woff2')}
+  @font-face{font-family:'Plex Mono';font-weight:500;font-display:block;
+    src:url('../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2') format('woff2')}
+
+  /* ── locked palette (V3-SPEC / AGENTS.md rail #2) ────────────────── */
+  :root{
+    --navy:#1E2A38; --navy-deep:#16202B; --navy-raise:#243447;
+    --powder:#E6F0FA; --sky:#7FBFE9; --steel:#8FA3B8; --lemon:#FFD24D;
+    --parchment:#F1F6FC; --parch-raise:#FAFCFE; --ink:#1E2A38;
+    --ink-soft:#44546A; --deep-sky:#2F6FA8; --heart:#C9A227;
+    --display:'Archivo Black','Arial Black',sans-serif;
+    --body:'Inter',Helvetica,Arial,sans-serif;
+    --mono:'Plex Mono',ui-monospace,Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:#000}
+
+  #frame{position:relative;overflow:hidden;
+    /* --u = 1px at a 1080px-wide canvas; every value below scales with it */
+    font-size:calc(var(--u) * 16);
+  }
+
+  /* ── themes ──────────────────────────────────────────────────────── */
+  .t-navy,.t-night{--bg:var(--navy-deep);--fg:var(--powder);--accent:var(--sky);
+    --dim:rgba(230,240,250,.70);--rule:rgba(127,191,233,.30);--bar:var(--navy-raise);
+    --barfg:var(--powder);--panel:rgba(230,240,250,.045)}
+  .t-night{--bg:#16202B}
+  .t-powder{--bg:var(--parchment);--fg:var(--ink);--accent:var(--deep-sky);
+    --dim:rgba(30,42,56,.66);--rule:rgba(30,42,56,.18);--bar:var(--navy);
+    --barfg:var(--powder);--panel:rgba(30,42,56,.035)}
+
+  #frame{background:var(--bg);color:var(--fg)}
+
+  /* soft directional wash — powder/navy only, no new hues */
+  .wash{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 80% at 12% 4%, rgba(127,191,233,.13), transparent 62%)}
+  .t-powder .wash{background:radial-gradient(120% 80% at 12% 4%, rgba(127,191,233,.28), transparent 60%)}
+  .t-powder .grid{opacity:.28}
+  /* faint 40px grid — reads as "data", stays inside palette */
+  .grid{position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(var(--rule) 1px,transparent 1px),
+                     linear-gradient(90deg,var(--rule) 1px,transparent 1px);
+    background-size:calc(var(--u)*60) calc(var(--u)*60);
+    -webkit-mask-image:radial-gradient(80% 60% at 78% 22%,#000,transparent 70%)}
+
+  /* ── content stack ───────────────────────────────────────────────── */
+  .body{position:absolute;left:var(--pad);right:var(--pad);top:var(--top);
+    bottom:var(--bottom);display:flex;flex-direction:column}
+
+  .kicker{font-family:var(--mono);font-weight:500;color:var(--accent);
+    font-size:calc(var(--u)*23);letter-spacing:calc(var(--u)*4.4);text-transform:uppercase;
+    display:flex;align-items:center;gap:calc(var(--u)*18);white-space:nowrap}
+  .kicker::after{content:"";flex:1;height:1px;background:var(--rule)}
+  .dot{width:calc(var(--u)*11);height:calc(var(--u)*11);border-radius:50%;
+    background:var(--accent);flex:none}
+
+  .hook{font-family:var(--display);text-transform:uppercase;line-height:.90;
+    letter-spacing:calc(var(--u)*-1.5);margin-top:calc(var(--u)*40)}
+  /* nowrap so the fitter can see a too-long line and shrink instead of
+     silently re-wrapping the copywriter's line breaks */
+  .hook .ln{display:block;white-space:nowrap}
+  .hook .ln.ac{color:var(--accent)}
+
+  .sub{font-family:var(--body);font-weight:400;color:var(--dim);
+    font-size:calc(var(--u)*33);line-height:1.4}
+
+  .spacer{flex:1}
+
+  /* lower row: copy on the left, character art on the right — they can
+     never collide because they are siblings in a flex row, not layers */
+  .lower{display:flex;align-items:flex-end;gap:calc(var(--u)*40)}
+  .lower .sub{flex:1 1 auto;min-width:0}
+  .lower.noart .sub{max-width:calc(var(--u)*780)}
+
+  /* evidence-panel variant (carousel middle slides) */
+  .panel{border:1px solid var(--rule);background:var(--panel);
+    border-radius:calc(var(--u)*22);padding:calc(var(--u)*52) calc(var(--u)*46);
+    display:flex;flex-direction:column;flex:1}
+  .panel .hook{margin-top:calc(var(--u)*28)}
+
+  /* ── art ─────────────────────────────────────────────────────────── */
+  .art{flex:none;display:flex;align-items:flex-end;justify-content:flex-end;
+    filter:drop-shadow(0 calc(var(--u)*24) calc(var(--u)*42) rgba(22,32,43,.40))}
+  .art img{display:block;max-width:100%;max-height:100%;
+    width:auto;height:100%;object-fit:contain}
+
+  /* ── footer receipts bar ─────────────────────────────────────────── */
+  .bar{position:absolute;left:0;right:0;background:var(--bar);color:var(--barfg);
+    display:flex;align-items:center;gap:calc(var(--u)*28);
+    padding:0 var(--pad);height:var(--barh)}
+  .facts{font-family:var(--mono);font-weight:500;font-size:calc(var(--u)*22);
+    letter-spacing:calc(var(--u)*1.6);line-height:1.55;opacity:.92;white-space:pre-line}
+  .cta{margin-left:auto;flex:none;display:flex;flex-direction:column;
+    align-items:center;gap:calc(var(--u)*12)}
+  .chip{background:var(--lemon);color:var(--navy);
+    font-family:var(--body);font-weight:700;text-transform:uppercase;
+    font-size:calc(var(--u)*25);letter-spacing:calc(var(--u)*1.6);
+    padding:calc(var(--u)*20) calc(var(--u)*32);border-radius:calc(var(--u)*12);
+    white-space:nowrap}
+  .cta .url{position:static;color:var(--barfg);opacity:.72;
+    font-size:calc(var(--u)*19);letter-spacing:calc(var(--u)*1.4)}
+
+  /* ── heart-tag lockup (matches assets/logo_cydl_hearttag_lockup.svg) ─ */
+  .mark{position:absolute;display:flex;align-items:center;gap:calc(var(--u)*16)}
+  .mark .tag{width:calc(var(--u)*62);height:calc(var(--u)*62);border-radius:calc(var(--u)*10);
+    background:var(--powder);position:relative;flex:none;
+    display:flex;align-items:center;justify-content:center}
+  .mark .tag::before{content:"";position:absolute;inset:calc(var(--u)*5);
+    border:calc(var(--u)*2) dashed var(--navy);border-radius:calc(var(--u)*7)}
+  .mark .tag svg{width:52%;height:52%;fill:var(--heart);position:relative}
+  .mark .wm b{display:block;font-family:var(--display);font-size:calc(var(--u)*30);
+    letter-spacing:calc(var(--u)*3);color:var(--fg);line-height:1}
+  .mark .wm span{display:block;font-family:var(--mono);font-size:calc(var(--u)*12.5);
+    letter-spacing:calc(var(--u)*2.4);color:var(--accent);margin-top:calc(var(--u)*5)}
+  .url{position:absolute;font-family:var(--mono);font-size:calc(var(--u)*22);
+    letter-spacing:calc(var(--u)*2);color:var(--dim)}
+
+  /* ── video-only bits ─────────────────────────────────────────────── */
+  .beat{position:absolute;left:var(--pad);right:var(--pad);
+    top:50%;transform:translateY(-50%);opacity:0}
+  .beat.on{opacity:1}
+  .endcard{position:absolute;inset:0;display:none;flex-direction:column;
+    align-items:center;justify-content:center;gap:calc(var(--u)*46);background:var(--bg);
+    padding:0 calc(var(--u)*110)}
+  .endcard.on{display:flex}
+  .endcard .mark{position:static;transform:scale(2);transform-origin:center;
+    margin-bottom:calc(var(--u)*34)}
+  .endcard .facts{max-width:100%;text-align:center;line-height:1.75}
+  /* persistent corner lockup so the brand is on screen the whole way through */
+  .vmark{position:absolute;top:calc(var(--u)*300);left:var(--pad);transform:scale(.92);
+    transform-origin:left center}
+  .prog{position:absolute;left:0;top:calc(var(--u)*250);height:calc(var(--u)*7);
+    background:var(--accent);opacity:.85}
+</style>
+
+<div id="frame"><div class="wash"></div><div class="grid"></div></div>
+
+<script>
+const HEART = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27.5C10 21.5 3 16.3 3 10.4 3 6.3 6.4 3 10.5 3c2.3 0 4.4 1.1 5.5 2.8C17.1 4.1 19.2 3 21.5 3 25.6 3 29 6.3 29 10.4c0 5.9-7 11.1-13 17.1Z"/></svg>';
+const MARK = '<div class="mark" style="--p:1"><div class="tag">'+HEART+'</div>'+
+  '<div class="wm"><b>CYDL</b><span>CLEAN YOUR DIRTY LAUNDRY</span></div></div>';
+
+const SPECS = {
+  // barBottom lifts the receipts bar clear of the platform UI on 9:16 surfaces
+  'feed-4x5':   {w:1080,h:1350,pad:84,top:96, barBottom:0,  barh:186,hookMin:70,hookMax:132,artH:400,artW:400},
+  'feed-1x1':   {w:1080,h:1080,pad:78,top:84, barBottom:0,  barh:166,hookMin:62,hookMax:112,artH:310,artW:330},
+  'story-9x16': {w:1080,h:1920,pad:88,top:300,barBottom:360,barh:196,hookMin:80,hookMax:148,artH:560,artW:520},
+  'reel-9x16':  {w:1080,h:1920,pad:88,top:300,barBottom:360,barh:196,hookMin:80,hookMax:148,artH:560,artW:520}
+};
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+
+// Shrink the display type until the hook block fits its allotted box.
+function fitHook(el, min, max, boxH, boxW){
+  let lo=min, hi=max, best=min;
+  for(let i=0;i<28;i++){
+    const mid=(lo+hi)/2;
+    el.style.fontSize='calc(var(--u) * '+mid+')';
+    const fits = el.scrollHeight<=boxH && el.scrollWidth<=boxW+1;
+    if(fits){best=mid; lo=mid;} else {hi=mid;}
+    if(hi-lo<0.4) break;
+  }
+  el.style.fontSize='calc(var(--u) * '+best+')';
+  return best;
+}
+
+window.renderStill = function(o){
+  const S=SPECS[o.spec], u=S.w/1080;
+  const contentBottom = S.barBottom + S.barh + 56;   // clear the receipts bar
+  // the panel variant starts lower so its border clears the corner lockup
+  const contentTop = S.top + (o.layout==='evidence' ? 64 : 0);
+  const f=document.getElementById('frame');
+  f.className='t-'+(o.theme||'navy');
+  f.style.setProperty('--u',u+'px');
+  f.style.width=S.w+'px'; f.style.height=S.h+'px';
+  f.style.setProperty('--pad',(S.pad*u)+'px');
+  f.style.setProperty('--top',(contentTop*u)+'px');
+  f.style.setProperty('--bottom',(contentBottom*u)+'px');
+  f.style.setProperty('--barh',(S.barh*u)+'px');
+
+  const isPanel = o.layout==='evidence';
+  const hookHTML = o.hook.map((l,i)=>
+    '<span class="ln'+(i===o.accent_line?' ac':'')+'">'+esc(l)+'</span>').join('');
+
+  const artHTML = o.art
+    ? '<div class="art" style="height:'+(S.artH*u)+'px;width:'+(S.artW*u)+'px">'+
+      '<img src="'+o.art+'" alt=""></div>' : '';
+
+  const stack =
+    '<div class="kicker"><span class="dot"></span>'+esc(o.kicker)+'</div>'+
+    '<h1 class="hook" id="hk">'+hookHTML+'</h1>'+
+    '<div class="spacer"></div>'+
+    '<div class="lower'+(o.art?'':' noart')+'">'+
+      (o.sub?'<p class="sub">'+esc(o.sub)+'</p>':'<div class="sub"></div>')+
+      artHTML+
+    '</div>';
+
+  f.innerHTML =
+    '<div class="wash"></div><div class="grid"></div>'+
+    '<div class="body">'+(isPanel?'<div class="panel">'+stack+'</div>':stack)+'</div>'+
+    '<div class="bar" style="bottom:'+(S.barBottom*u)+'px"><div class="facts">'+esc(o.facts)+'</div>'+
+      '<div class="cta"><div class="chip">'+esc(o.chipText||'Claim your spot')+'</div>'+
+      '<div class="url">cleanyourdirtylaundry.com</div></div></div>'+
+    MARK.replace('class="mark"','class="mark" style="top:'+(S.top*u)+'px;right:'+(S.pad*u)+'px;'+
+      'transform:translateY('+(-24*u)+'px)"');
+
+  // give the hook every pixel the kicker and the lower row don't need
+  const box = f.querySelector(isPanel ? '.panel' : '.body');
+  const hk = f.querySelector('#hk');
+  const avail = box.clientHeight
+    - f.querySelector('.kicker').offsetHeight
+    - f.querySelector('.lower').offsetHeight
+    - 86*u;                                   // breathing room above/below
+  fitHook(hk, S.hookMin, S.hookMax, Math.max(avail, 140*u), box.clientWidth);
+  return {w:S.w,h:S.h};
+};
+
+// ── video frame renderer ───────────────────────────────────────────
+window.setupVideo = function(o){
+  const S=SPECS['reel-9x16'], u=S.w/1080;
+  const f=document.getElementById('frame');
+  f.className='t-night';
+  f.style.setProperty('--u',u+'px');
+  f.style.width=S.w+'px'; f.style.height=S.h+'px';
+  f.style.setProperty('--pad',(S.pad*u)+'px');
+
+  const beats=o.beats.map((b,i)=>
+    '<div class="beat" data-i="'+i+'">'+
+      (b.kicker?'<div class="kicker" style="margin-bottom:'+(40*u)+'px">'+
+        '<span class="dot"></span>'+esc(b.kicker)+'</div>':'')+
+      '<h1 class="hook" data-hook="'+i+'" style="margin-top:0">'+
+        b.lines.map(l=>'<span class="ln'+(b.theme==='offer'?' ac':'')+'">'+esc(l)+'</span>').join('')+
+      '</h1></div>').join('');
+
+  f.innerHTML='<div class="wash"></div><div class="grid"></div>'+
+    MARK.replace('class="mark"','class="mark vmark" id="vm"')+beats+
+    '<div class="endcard" id="ec">'+MARK+
+      '<div class="facts" style="text-align:center;font-size:'+(28*u)+'px;line-height:1.7">'+
+        esc(o.facts)+'</div>'+
+      '<div class="chip" style="margin:0">'+esc(o.chipText||'Claim your spot')+'</div>'+
+      '<div class="url" style="position:static">cleanyourdirtylaundry.com</div>'+
+    '</div>'+
+    '<div class="prog" id="pg" style="width:0"></div>';
+
+  // pre-fit every beat's type once, so frames are stable
+  f.querySelectorAll('[data-hook]').forEach(h=>{
+    h.parentElement.style.opacity='1';
+    fitHook(h, 74, 150, 900*u, S.w - 2*S.pad*u);
+    h.parentElement.style.opacity='0';
+  });
+  window.__beats=o.beats; window.__dur=o.duration; window.__u=u;
+  return {w:S.w,h:S.h};
+};
+
+window.drawFrame = function(t){
+  const beats=window.__beats, dur=window.__dur, u=window.__u;
+  const f=document.getElementById('frame');
+  const ec=document.getElementById('ec');
+  const endAt = dur - 2.0;
+  document.getElementById('pg').style.width=(Math.min(t/dur,1)*100)+'%';
+
+  const vm=document.getElementById('vm');
+  if(t>=endAt){
+    f.querySelectorAll('.beat').forEach(b=>b.classList.remove('on'));
+    vm.style.opacity=0;
+    ec.classList.add('on');
+    const p=Math.min((t-endAt)/0.45,1);
+    ec.style.opacity=p;
+    return;
+  }
+  ec.classList.remove('on');
+  vm.style.opacity=1;
+  let idx=-1;
+  for(let i=0;i<beats.length;i++) if(t>=beats[i].t) idx=i;
+  f.querySelectorAll('.beat').forEach(b=>{
+    const i=+b.dataset.i;
+    if(i!==idx){b.classList.remove('on');b.style.opacity=0;return;}
+    b.classList.add('on');
+    const local=t-beats[i].t;
+    // 0.32s ease-out rise-in, hold, no exit animation (hard cut = deadpan)
+    const p=Math.min(local/0.32,1);
+    const e=1-Math.pow(1-p,3);
+    b.style.opacity=e;
+    b.style.transform='translateY(calc(-50% + '+((1-e)*26*u)+'px))';
+  });
+};
+</script>

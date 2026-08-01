@@ -1,0 +1,507 @@
+{
+  "campaign": "THE ALGORITHM KNOWS",
+  "slug": "algorithm-knows",
+  "brand": "Clean Your Dirty Laundry (CYDL)",
+  "site": "cleanyourdirtylaundry.com",
+  "email": "hello@cleanyourdirtylaundry.com",
+  "premise": "Every post opens by admitting the ad is targeted, then names the specific domestic evidence that got you targeted. The hook is the reader's own suspicion, said out loud first. Deadpan, receipts-first, no hype.",
+  "timezone": "America/New_York",
+  "window": "2026-08-03 through 2026-08-22 (Packapalooza launch)",
+  "locked_facts": {
+    "price": "$100/month, flat",
+    "cap": "one 20 lb bag per week, hard cap",
+    "comforter": "$20 add-on",
+    "linens": "sheets/linens priced at signup (no number exists)",
+    "cycle": "pickup Tuesday, back Thursday",
+    "launch": "Packapalooza, Saturday Aug 22 2026",
+    "movein": "Aug 14-16",
+    "facility": "a commercial laundromat on North Raleigh Boulevard",
+    "founding": "first 100 signup numbers are founding numbers: locked pickup priority at launch, numbered founding gear later",
+    "cta": "Claim your spot",
+    "no_phone": true
+  },
+  "receipts_bar": {
+    "_default": "$100/MO FLAT · ONE 20 LB BAG A WEEK\nOUT TUESDAY · BACK THURSDAY · FOLDED",
+    "P05": "$100/MO FLAT · 20 LB CAP · COMFORTER $20\nSHEETS + LINENS PRICED AT SIGNUP",
+    "P06": "MOVE-IN AUG 14–16 · WE START AUG 22\n$100/MO FLAT · ONE 20 LB BAG A WEEK",
+    "P08": "$100/MO FLAT · 20 LB HARD CAP · COMFORTER $20\nSHEETS + LINENS PRICED AT SIGNUP",
+    "P09": "MON: WE TEXT · TUE: BAG OUT · THU: BACK FOLDED\n$100/MO FLAT · ONE 20 LB BAG A WEEK",
+    "P10": "PACKAPALOOZA · SAT AUG 22 · $100/MO FLAT\nFIRST 100 NUMBERS ARE FOUNDING NUMBERS"
+  },
+  "hashtags": {
+    "core": [
+      "#cleanyourdirtylaundry",
+      "#raleigh",
+      "#raleighnc",
+      "#collegelife",
+      "#dormlife"
+    ],
+    "rotate": [
+      "#laundryday",
+      "#laundryservice",
+      "#campuslife",
+      "#studentlife",
+      "#moveinday",
+      "#packapalooza",
+      "#offcampus",
+      "#collegehacks",
+      "#adulting",
+      "#foldedandreturned"
+    ]
+  },
+  "posts": [
+    {
+      "id": "P01",
+      "name": "The Chair",
+      "format": "single",
+      "renders": [
+        "feed-4x5",
+        "feed-1x1"
+      ],
+      "art": "blue-pile-chair",
+      "theme": "navy",
+      "schedule": "2026-08-03T18:30:00-04:00",
+      "slides": [
+        {
+          "kicker": "WHY YOU'RE SEEING THIS",
+          "hook": [
+            "YOU DIDN'T",
+            "SEARCH FOR",
+            "THIS."
+          ],
+          "accent_line": 2,
+          "sub": "Nobody searches for a laundry service. The algorithm just noticed your chair stopped being a chair."
+        }
+      ],
+      "caption": "Nobody types \"laundry service\" into a search bar. You scroll until something describes your room back to you.\n\nSo: the chair. It hasn't been a chair in a while. There is a hoodie on it doing structural work.\n\n$100/month, flat. One 20 lb bag a week. Out Tuesday, back Thursday, folded.\nRaleigh campuses. We start at Packapalooza, Saturday Aug 22.\n\nClaim your spot: cleanyourdirtylaundry.com",
+      "alt": "Navy graphic reading 'You didn't search for this.' beside an illustration of a chair buried under a pile of laundry. Footer reads $100/mo flat, one 20 lb bag a week, out Tuesday back Thursday.",
+      "first_comment": "Pickup Tuesday. Back Thursday. Washed at a commercial laundromat on North Raleigh Boulevard. hello@cleanyourdirtylaundry.com"
+    },
+    {
+      "id": "P02",
+      "name": "The Evidence",
+      "format": "carousel",
+      "renders": [
+        "feed-4x5"
+      ],
+      "theme": "navy",
+      "schedule": "2026-08-05T20:00:00-04:00",
+      "slides": [
+        {
+          "kicker": "AD TRANSPARENCY · CYDL",
+          "hook": [
+            "HOW DID",
+            "THEY KNOW?"
+          ],
+          "accent_line": 1,
+          "sub": "Fair question. Here is the file.",
+          "layout": "hook"
+        },
+        {
+          "kicker": "EXHIBIT A",
+          "hook": [
+            "THE HOODIE",
+            "TRICK."
+          ],
+          "accent_line": 1,
+          "sub": "You turned it inside out and filed that under clean.",
+          "layout": "evidence",
+          "art": "blue-pile-desk"
+        },
+        {
+          "kicker": "EXHIBIT B",
+          "hook": [
+            "SOCK",
+            "RATIONING."
+          ],
+          "accent_line": 1,
+          "sub": "You have been counting backwards from seven since Sunday.",
+          "layout": "evidence",
+          "art": "blue-pile-floor"
+        },
+        {
+          "kicker": "EXHIBIT C",
+          "hook": [
+            "THE SHEETS."
+          ],
+          "accent_line": 0,
+          "sub": "They remember move-in day. Vividly.",
+          "layout": "evidence",
+          "art": "blue-pile-chair"
+        },
+        {
+          "kicker": "CONCLUSION",
+          "hook": [
+            "THAT'S HOW."
+          ],
+          "accent_line": 0,
+          "sub": "One bag a week and none of this is your problem anymore.",
+          "layout": "offer",
+          "art": "blue-duel"
+        }
+      ],
+      "caption": "You are seeing this because of a hoodie you turned inside out.\n\nThat is the whole targeting model. There is no data broker. There is a chair, a drawer that only has one sock in it, and a set of sheets that have been on that bed since August.\n\n$100/month, flat. One 20 lb bag a week, hard cap. Comforter is a $20 add-on. Sheets and linens are priced at signup.\n\nOut Tuesday. Back Thursday. Folded.\ncleanyourdirtylaundry.com",
+      "alt": "Five-slide carousel styled as an ad-transparency file. Slides read How did they know, Exhibit A the hoodie trick, Exhibit B sock rationing, Exhibit C the sheets, and a closing offer card with pricing.",
+      "first_comment": "Hard cap is 20 lb. If a bag goes over, you get a text before anything is charged. hello@cleanyourdirtylaundry.com"
+    },
+    {
+      "id": "P03",
+      "name": "1:47 AM",
+      "format": "reel",
+      "renders": [
+        "reel-9x16",
+        "feed-4x5"
+      ],
+      "theme": "night",
+      "schedule": "2026-08-07T19:30:00-04:00",
+      "video": {
+        "duration": 12,
+        "beats": [
+          {
+            "t": 0.0,
+            "lines": [
+              "IT'S 1:47 AM."
+            ],
+            "kicker": "WHY YOU'RE SEEING THIS"
+          },
+          {
+            "t": 2.0,
+            "lines": [
+              "YOU ARE NOT",
+              "LOOKING FOR A",
+              "LAUNDRY SERVICE."
+            ]
+          },
+          {
+            "t": 4.4,
+            "lines": [
+              "YOU ARE LOOKING",
+              "FOR ANYTHING."
+            ]
+          },
+          {
+            "t": 6.4,
+            "lines": [
+              "AND YET.",
+              "HERE WE ARE."
+            ]
+          },
+          {
+            "t": 8.4,
+            "lines": [
+              "$100/MO. FLAT.",
+              "ONE 20 LB BAG A WEEK."
+            ],
+            "theme": "offer"
+          },
+          {
+            "t": 10.2,
+            "lines": [
+              "OUT TUESDAY.",
+              "BACK THURSDAY."
+            ],
+            "theme": "offer"
+          }
+        ],
+        "end_card": true
+      },
+      "slides": [
+        {
+          "kicker": "WHY YOU'RE SEEING THIS",
+          "hook": [
+            "IT'S 1:47 AM.",
+            "AND YET.",
+            "HERE WE ARE."
+          ],
+          "accent_line": 2,
+          "sub": "You are not looking for a laundry service. You are looking for anything."
+        }
+      ],
+      "caption": "It is 1:47 AM and you are not looking for a laundry service. You are looking for anything.\n\nAnd yet.\n\n$100/month, flat. One 20 lb bag a week. Out Tuesday, back Thursday, folded.\ncleanyourdirtylaundry.com",
+      "alt": "Vertical video on a dark navy background. White text appears line by line: It's 1:47 AM. You are not looking for a laundry service. You are looking for anything. And yet. Here we are. Ends with pricing and the CYDL logo.",
+      "first_comment": "No app to download. You sign up, you get a number, we text you Monday night. hello@cleanyourdirtylaundry.com"
+    },
+    {
+      "id": "P04",
+      "name": "The Sock Count",
+      "format": "single",
+      "renders": [
+        "feed-4x5",
+        "feed-1x1"
+      ],
+      "art": "blue-pile-floor",
+      "theme": "powder",
+      "schedule": "2026-08-10T22:45:00-04:00",
+      "slides": [
+        {
+          "kicker": "TARGETING RATIONALE",
+          "hook": [
+            "IT COUNTED",
+            "YOUR SOCKS."
+          ],
+          "accent_line": 1,
+          "sub": "You are down to the pair you do not like. That is a data point and you generated it yourself."
+        }
+      ],
+      "caption": "Somewhere in the last four days you started wearing the socks you do not like. Nobody decides that on purpose. It just happens, and then an ad shows up.\n\nOne 20 lb bag a week covers a normal person's normal week. Out Tuesday, back Thursday, folded.\n\n$100/month, flat.\ncleanyourdirtylaundry.com",
+      "alt": "Powder blue graphic reading 'It counted your socks.' next to an illustration of a laundry pile on the floor, with pricing in the footer.",
+      "first_comment": "20 lb is roughly two full kitchen bags of clothes. It is a hard cap, not a starting point."
+    },
+    {
+      "id": "P05",
+      "name": "The Sheets",
+      "format": "carousel",
+      "renders": [
+        "feed-4x5"
+      ],
+      "theme": "navy",
+      "schedule": "2026-08-12T18:00:00-04:00",
+      "slides": [
+        {
+          "kicker": "WHY YOU'RE SEEING THIS",
+          "hook": [
+            "YOUR SHEETS",
+            "GAVE YOU UP."
+          ],
+          "accent_line": 1,
+          "sub": "Nobody reports this. It is just visible from space.",
+          "layout": "hook"
+        },
+        {
+          "kicker": "THE MATH",
+          "hook": [
+            "SAME SHEETS.",
+            "SINCE MOVE-IN."
+          ],
+          "accent_line": 1,
+          "sub": "You know the date. We are not going to say it out loud.",
+          "layout": "evidence",
+          "art": "blue-pile-chair"
+        },
+        {
+          "kicker": "THE FIX",
+          "hook": [
+            "PUT THEM",
+            "IN THE BAG."
+          ],
+          "accent_line": 1,
+          "sub": "Sheets and linens are an add-on, priced at signup. Comforter is $20.",
+          "layout": "offer",
+          "art": "blue-duel"
+        }
+      ],
+      "caption": "The sheets have been on that bed since move-in. You know the date. We are not going to say it out loud.\n\nStrip them Monday night, put them in the bag Tuesday morning. Sheets and linens are an add-on priced at signup. A comforter is $20.\n\n$100/month, flat, for the weekly bag. Out Tuesday, back Thursday.\ncleanyourdirtylaundry.com",
+      "alt": "Three-slide carousel reading Your sheets gave you up, Same sheets since move-in, and Put them in the bag, with add-on pricing on the final slide.",
+      "first_comment": "Comforter is a $20 add-on. Sheets and linens are priced at signup. hello@cleanyourdirtylaundry.com"
+    },
+    {
+      "id": "P06",
+      "name": "Move-In Week",
+      "format": "single",
+      "renders": [
+        "feed-4x5",
+        "feed-1x1"
+      ],
+      "art": "blue-pile-desk",
+      "theme": "navy",
+      "schedule": "2026-08-14T12:30:00-04:00",
+      "slides": [
+        {
+          "kicker": "MOVE-IN · AUG 14–16",
+          "hook": [
+            "YOU HAVEN'T",
+            "UNPACKED.",
+            "IT ALREADY KNOWS."
+          ],
+          "accent_line": 2,
+          "sub": "The pile starts today. It is very patient and it has nowhere else to be."
+        }
+      ],
+      "caption": "Move-in is Aug 14 to 16. The pile starts on day one. It is patient. It has nowhere else to be.\n\nFirst pickup is a Tuesday. You will have already forgotten which one, so we text you Monday night.\n\n$100/month, flat. One 20 lb bag a week. Back Thursday, folded.\ncleanyourdirtylaundry.com",
+      "alt": "Navy graphic reading 'You haven't unpacked. It already knows.' with a move-in date kicker and an illustration of a laundry pile on a desk.",
+      "first_comment": "We text you Monday night so the bag is out Tuesday. That is the entire reminder system."
+    },
+    {
+      "id": "P07",
+      "name": "For You Chair",
+      "format": "story",
+      "renders": [
+        "story-9x16"
+      ],
+      "art": "blue-pile-chair",
+      "theme": "powder",
+      "schedule": "2026-08-16T17:00:00-04:00",
+      "slides": [
+        {
+          "kicker": "FOR YOU PAGE",
+          "hook": [
+            "FOR YOU PAGE.",
+            "NOT FOR YOU CHAIR."
+          ],
+          "accent_line": 1,
+          "sub": "One of those two is being handled. It is not the chair."
+        }
+      ],
+      "caption": "For You Page. Not For You Chair.\n\nOne of those two is being handled and it is not the chair.\n\n$100/month, flat. One 20 lb bag a week. Out Tuesday, back Thursday.\ncleanyourdirtylaundry.com",
+      "alt": "Vertical story graphic reading 'For You Page. Not For You Chair.' with an illustration of a laundry pile sitting on a chair.",
+      "first_comment": ""
+    },
+    {
+      "id": "P08",
+      "name": "The Person Paying",
+      "format": "single",
+      "renders": [
+        "feed-4x5",
+        "feed-1x1"
+      ],
+      "art": "blue-duel",
+      "theme": "powder",
+      "schedule": "2026-08-18T08:15:00-04:00",
+      "slides": [
+        {
+          "kicker": "DIFFERENT AUDIENCE",
+          "hook": [
+            "IT DIDN'T SEND",
+            "THIS TO THEM.",
+            "IT SENT IT TO YOU."
+          ],
+          "accent_line": 2,
+          "sub": "Because you are the one who has seen the FaceTime background."
+        }
+      ],
+      "caption": "This one did not go to your kid. It went to you, because you are the one who has seen the background of the FaceTime.\n\n$100 a month, flat. One 20 lb bag a week, hard cap. Comforter is a $20 add-on. Sheets and linens are priced at signup. If a bag runs over the cap, they get a text before anything is charged.\n\nPicked up Tuesday, washed at a commercial laundromat on North Raleigh Boulevard, back Thursday, folded.\n\nThe full parent page: cleanyourdirtylaundry.com/parents.html",
+      "alt": "Powder blue graphic reading 'It didn't send this to them. It sent it to you.' with an illustration of a laundry pile facing a canvas laundry bag.",
+      "first_comment": "Written for the person paying: cleanyourdirtylaundry.com/parents.html · hello@cleanyourdirtylaundry.com"
+    },
+    {
+      "id": "P09",
+      "name": "It Knows Your Tuesday",
+      "format": "carousel",
+      "renders": [
+        "feed-4x5"
+      ],
+      "theme": "navy",
+      "schedule": "2026-08-20T19:00:00-04:00",
+      "slides": [
+        {
+          "kicker": "SCHEDULE DETECTED",
+          "hook": [
+            "IT KNOWS",
+            "YOUR TUESDAY."
+          ],
+          "accent_line": 1,
+          "sub": "So do we. That is the entire product.",
+          "layout": "hook"
+        },
+        {
+          "kicker": "STEP 01 · MONDAY NIGHT",
+          "hook": [
+            "WE TEXT YOU."
+          ],
+          "accent_line": 0,
+          "sub": "One message. Put the bag out.",
+          "layout": "evidence",
+          "art": "blue-pile-floor"
+        },
+        {
+          "kicker": "STEP 02 · TUESDAY",
+          "hook": [
+            "THE BAG",
+            "GOES OUT."
+          ],
+          "accent_line": 1,
+          "sub": "One 20 lb bag. Hard cap. Washed at a commercial laundromat on North Raleigh Boulevard.",
+          "layout": "evidence",
+          "art": "blue-duel"
+        },
+        {
+          "kicker": "STEP 03 · THURSDAY",
+          "hook": [
+            "IT COMES",
+            "BACK FOLDED."
+          ],
+          "accent_line": 1,
+          "sub": "$100 a month, flat. That is the whole receipt.",
+          "layout": "offer",
+          "art": "blue-chair-stacks"
+        }
+      ],
+      "caption": "Your Tuesday is already spoken for. Class, work, the same walk, the same coffee. We just added one step to it and it takes nine seconds.\n\nMonday night: we text you.\nTuesday: the bag goes out.\nThursday: it comes back folded.\n\n$100/month, flat. One 20 lb bag a week, hard cap. Washed at a commercial laundromat on North Raleigh Boulevard.\ncleanyourdirtylaundry.com",
+      "alt": "Four-slide carousel: It knows your Tuesday, Monday night we text you, Tuesday the bag goes out, Thursday it comes back folded, with flat pricing on the last slide.",
+      "first_comment": "One van, four campuses. hello@cleanyourdirtylaundry.com"
+    },
+    {
+      "id": "P10",
+      "name": "Founding Numbers",
+      "format": "reel",
+      "renders": [
+        "reel-9x16",
+        "feed-4x5",
+        "feed-1x1"
+      ],
+      "art": "blue-chair-stacks",
+      "theme": "navy",
+      "schedule": "2026-08-22T09:00:00-04:00",
+      "video": {
+        "duration": 11,
+        "beats": [
+          {
+            "t": 0.0,
+            "lines": [
+              "THE ALGORITHM",
+              "WAS RIGHT."
+            ],
+            "kicker": "PACKAPALOOZA · SAT AUG 22"
+          },
+          {
+            "t": 2.2,
+            "lines": [
+              "YOU DO HATE",
+              "DOING LAUNDRY."
+            ]
+          },
+          {
+            "t": 4.2,
+            "lines": [
+              "SIGN UP.",
+              "YOU GET A NUMBER."
+            ]
+          },
+          {
+            "t": 6.2,
+            "lines": [
+              "THE FIRST 100",
+              "ARE FOUNDING",
+              "NUMBERS."
+            ],
+            "theme": "offer"
+          },
+          {
+            "t": 8.6,
+            "lines": [
+              "$100/MO. FLAT.",
+              "OUT TUE. BACK THU."
+            ],
+            "theme": "offer"
+          }
+        ],
+        "end_card": true
+      },
+      "slides": [
+        {
+          "kicker": "PACKAPALOOZA · SAT AUG 22",
+          "hook": [
+            "THE ALGORITHM",
+            "WAS RIGHT.",
+            "YOU DO HATE IT."
+          ],
+          "accent_line": 2,
+          "sub": "Sign up, you get a number. The first 100 numbers are founding numbers."
+        }
+      ],
+      "caption": "The algorithm was right. You do hate doing laundry. It has been right about that for weeks.\n\nWe start today at Packapalooza. Sign up and you get a number. The first 100 numbers are founding numbers: locked pickup priority at launch, and numbered founding gear later.\n\n$100/month, flat. One 20 lb bag a week. Out Tuesday, back Thursday, folded.\n\nClaim your spot: cleanyourdirtylaundry.com",
+      "alt": "Navy graphic reading 'The algorithm was right. You do hate it.' with a Packapalooza Saturday Aug 22 kicker and founding-number offer copy.",
+      "first_comment": "Founding numbers are the first 100 signups. Locked pickup priority at launch, numbered founding gear later. hello@cleanyourdirtylaundry.com"
+    }
+  ]
+}
