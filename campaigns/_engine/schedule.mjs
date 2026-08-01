@@ -3,16 +3,21 @@
 // Writes schedule/queue.csv, schedule/queue.json, schedule/captions.md,
 // and a preview contact sheet at preview.html.
 
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs';
 import { resolve, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const ROOT = resolve(HERE, '..');
+const campArg = process.argv.slice(2).find(a => !a.startsWith('--'));
+const ROOT = resolve(HERE, campArg || '../algorithm-knows');
 const OUT = resolve(ROOT, 'out');
 const SCHED = resolve(ROOT, 'schedule');
+mkdirSync(SCHED, { recursive: true });
 
 const camp = JSON.parse(readFileSync(resolve(ROOT, 'campaign.json'), 'utf8'));
+const brand = JSON.parse(readFileSync(resolve(ROOT, 'brand.json'), 'utf8'));
+const DRAFT = brand.status !== 'final';
+const acct = brand.accounts;
 const slug = p => `${p.id}-${p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 
 // Which surface each format goes out on. IG Reels cross-post to FB Reels;
@@ -40,9 +45,15 @@ const rows = [], json = [], md = [];
 
 md.push(`# ${camp.campaign} — publishing queue\n`);
 md.push(`${camp.premise}\n`);
-md.push(`## Post these to CYDL only\n`);
-md.push(`- Instagram: **${camp.accounts.instagram}**`);
-md.push(`- Facebook: **${camp.accounts.facebook_page}** — ${camp.accounts.facebook_url}\n`);
+if (DRAFT) {
+  md.push(`> ## ⚠ DRAFT — DO NOT PUBLISH`);
+  md.push(`> ${brand.name}'s brand kit is not in this repo, so every frame renders with`);
+  md.push(`> placeholder branding and a DRAFT band, and the copy still contains {{TOKENS}}.`);
+  md.push(`> See BRAND-KIT-NEEDED.md.\n`);
+}
+md.push(`## Post these to ${brand.name} only\n`);
+md.push(`- Instagram: **${acct.instagram}**`);
+md.push(`- Facebook: **${acct.facebook_page}** — ${acct.facebook_url}\n`);
 md.push(`> ${camp.not_this_brand}\n`);
 md.push(`All times **${camp.timezone}**. Window: ${camp.window}.`);
 md.push(`Assets: \`campaigns/${camp.slug}/out/<post>/\`\n`);
@@ -59,9 +70,9 @@ camp.posts.forEach((p, i) => {
   const fullCaption = `${p.caption}\n\n${hashtags}`;
 
   json.push({
-    brand: 'CYDL',
-    instagram_account: camp.accounts.instagram,
-    facebook_page: camp.accounts.facebook_url,
+    brand: brand.name,
+    instagram_account: acct.instagram,
+    facebook_page: acct.facebook_url,
     id: p.id, name: p.name, format: p.format,
     publish_at: p.schedule,
     instagram: place.ig, facebook: place.fb,
@@ -70,7 +81,8 @@ camp.posts.forEach((p, i) => {
   });
 
   rows.push([
-    'CYDL', camp.accounts.instagram, camp.accounts.facebook_url,
+    DRAFT ? 'DRAFT — DO NOT PUBLISH' : 'READY',
+    brand.name, acct.instagram, acct.facebook_url,
     p.id, p.name, fmtDate(p.schedule), dayName(p.schedule), fmtTime(p.schedule),
     'America/New_York', p.format, place.ig, place.fb,
     media.join(' | '), fullCaption, p.first_comment || '', p.alt,
@@ -91,9 +103,14 @@ camp.posts.forEach((p, i) => {
 
 // ── upload queue: the chronological run-sheet you actually work through ──
 const q = [`# UPLOAD QUEUE — ${camp.campaign}\n`];
-q.push(`**Brand: CYDL.** Post to **${camp.accounts.instagram}** on Instagram and`);
-q.push(`**${camp.accounts.facebook_page}** on Facebook (${camp.accounts.facebook_url}).`);
-q.push(`Not Hamper'd — that is a different brand with different accounts.\n`);
+if (DRAFT) {
+  q.push(`> ## ⚠ DRAFT — DO NOT PUBLISH`);
+  q.push(`> Placeholder branding, unresolved {{TOKENS}}, and no confirmed accounts.`);
+  q.push(`> Fill brand.json, re-run render + verify, then work this list.\n`);
+}
+q.push(`**Brand: ${brand.name}.** Post to **${acct.instagram}** on Instagram and`);
+q.push(`**${acct.facebook_page}** on Facebook (${acct.facebook_url}).`);
+q.push(`Not ${brand.forbidden.other_brand_label} — that is a different brand with different accounts.\n`);
 q.push(`Work top to bottom. All times **${camp.timezone}**. Tick as you schedule.\n`);
 q.push(`---\n`);
 
@@ -117,7 +134,7 @@ camp.posts.forEach((p, i) => {
 writeFileSync(resolve(SCHED, 'UPLOAD-QUEUE.md'), q.join('\n'));
 
 const csvCell = v => `"${String(v).replace(/"/g, '""')}"`;
-const header = ['brand', 'instagram_account', 'facebook_page',
+const header = ['status', 'brand', 'instagram_account', 'facebook_page',
   'post_id', 'name', 'publish_date', 'day', 'publish_time', 'timezone',
   'format', 'instagram_placement', 'facebook_placement', 'media_files',
   'caption', 'first_comment', 'alt_text'];
@@ -125,7 +142,7 @@ const csv = [header.join(','), ...rows.map(r => r.map(csvCell).join(','))].join(
 
 writeFileSync(resolve(SCHED, 'queue.csv'), csv + '\n');
 writeFileSync(resolve(SCHED, 'queue.json'), JSON.stringify({
-  campaign: camp.campaign, brand: camp.brand, accounts: camp.accounts,
+  campaign: camp.campaign, brand: camp.brand, accounts: acct,
   not_this_brand: camp.not_this_brand,
   timezone: camp.timezone, posts: json,
 }, null, 2) + '\n');
@@ -154,7 +171,7 @@ const cards = camp.posts.map((p, i) => {
 }).join('\n');
 
 writeFileSync(resolve(ROOT, 'preview.html'), `<!doctype html>
-<meta charset="utf-8"><title>CYDL — ${camp.campaign}</title>
+<meta charset="utf-8"><title>${brand.name} — ${camp.campaign}</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 :root{--navy:#1E2A38;--deep:#16202B;--powder:#E6F0FA;--sky:#7FBFE9;--lemon:#FFD24D}

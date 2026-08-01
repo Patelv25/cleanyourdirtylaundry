@@ -1,127 +1,213 @@
 {
   "campaign": "THE SUNDAY TAX",
   "slug": "hamperd-sunday-tax",
-  "status": "DRAFT — copy only. Not rendered, not scheduled. See BRAND-KIT-NEEDED.md.",
-  "brand": "Hamper'd — hamperd.com — Raleigh residential + commercial laundry",
-  "not_this_brand": "CYDL (cleanyourdirtylaundry.com) is the sibling campus/student brand. Different palette, logo, characters, pricing, audience and accounts. Nothing from the CYDL campaign may be reused here: not the navy/powder palette, not Archivo Black, not the heart-tag lockup, not the Pile or the Bag characters, not the $100/mo student price, and not the deadpan student voice.",
+  "brand": "Hamper'd — Raleigh residential + commercial",
+  "site": "hamperd.com",
+  "email": "{{EMAIL}}",
+  "status": "DRAFT — renders with placeholder branding. See BRAND-KIT-NEEDED.md.",
 
-  "premise": "CYDL's campaign sells to people who have no money and no clean socks. Hamper'd sells to people who have money and no time. So the hook is not 'how did they know your room is a mess' — it is the hours. Every post puts a number on the part of the weekend laundry quietly takes, then hands it back. Warmer than CYDL, still plainspoken, family-run rather than clever.",
+  "premise": "CYDL sells to people with no clean socks. Hamper'd sells to people with no time. So the hook is never 'we can tell your place is a mess' — it is the hours. Every post prices the part of the week laundry quietly takes, then hands it back. Warm and family-run rather than deadpan and clever.",
 
-  "audience": {
-    "residential": "Two-income households, young families, new parents, professionals in Raleigh and surrounding areas. They are not embarrassed about laundry — they are tired of it.",
-    "commercial": "Short-term rental hosts, salons, barbershops, gyms and studios, small restaurants, clinics. They buy on reliability and turnaround, not on cleverness."
-  },
+  "not_this_brand": "CYDL (cleanyourdirtylaundry.com) is the sibling campus brand. Its navy/powder palette, Archivo Black, heart-tag lockup, Pile and Bag characters, $100/mo student price and deadpan student voice must never appear here.",
 
-  "voice_proposal": "Warm, direct, receipts-first. Short sentences. Says the real number of hours out loud. No hype, no exclamation marks. NOT the CYDL deadpan — Hamper'd is family-run and should sound like it. CONFIRM BEFORE RENDER.",
+  "timezone": "America/New_York",
+  "window": "2026-08-04 through 2026-09-03, Tuesdays and Thursdays",
 
   "sourced_facts": {
-    "_note": "Everything below came from hamperd.com's own search-result copy — the site returns 403 to this session, so it is SECOND-HAND. Confirm each line before anything is published.",
+    "_note": "From hamperd.com's own search-result copy — the site returns 403 to this session, so this is SECOND-HAND. Confirm before publishing.",
     "positioning": "Family-run, eco-friendly laundry service in Raleigh",
-    "serves": "Families, busy students, professionals, and local businesses",
-    "model": "One flat monthly rate — predictable cost, no per-pound math, no surprise totals",
-    "subscription_perks": "Guaranteed weekly pickup slot, priority service, free reusable Hamper'd bag",
+    "model": "One flat monthly rate — no per-pound math, no surprise totals",
+    "perks": "Guaranteed weekly pickup slot, priority service, free reusable Hamper'd bag",
     "turnaround": "Picked up, washed, folded, delivered back in 24-48 hours",
-    "lanes": "Residential pickup + delivery, and a separate commercial laundry offering"
+    "lanes": "Residential pickup + delivery, and a separate commercial offering"
   },
 
   "unresolved": {
-    "_note": "Tokens used in the copy below. NOTHING is invented — each must be filled from the real brand before render.",
     "{{PRICE}}": "the flat monthly rate — no number is known",
-    "{{PLANS}}": "plan names/tiers, if there is more than one",
-    "{{AREA}}": "the exact service area wording (which Raleigh suburbs)",
-    "{{PICKUP}}": "the pickup/delivery day pattern for residential",
-    "{{COMMERCIAL_TERMS}}": "how commercial is priced and scheduled"
+    "{{AREA}}": "exact service-area wording",
+    "{{PICKUP}}": "residential pickup/delivery day pattern",
+    "{{COMMERCIAL_TERMS}}": "how commercial is priced and scheduled",
+    "{{EMAIL}}": "public contact address"
+  },
+
+  "receipts_bar": {
+    "_default": "{{PRICE}}/MO FLAT · NO PER-POUND MATH\nPICKED UP · WASHED · FOLDED IN 24–48 HRS",
+    "H06": "FREE REUSABLE BAG · GUARANTEED WEEKLY SLOT\n{{PRICE}}/MO FLAT · BACK IN 24–48 HRS",
+    "H08": "COMMERCIAL LAUNDRY · RALEIGH\n{{COMMERCIAL_TERMS}}",
+    "H09": "COMMERCIAL LAUNDRY · RALEIGH\n{{COMMERCIAL_TERMS}}",
+    "H10": "SHORT-TERM RENTAL TURNOVER · RALEIGH\n{{COMMERCIAL_TERMS}}"
+  },
+
+  "hashtags": {
+    "core": ["#hamperd", "#raleigh", "#raleighnc", "#laundryservice"],
+    "rotate": ["#laundryday", "#pickupanddelivery", "#washandfold", "#raleighsmallbusiness",
+      "#workingparents", "#familyrun", "#trianglenc", "#airbnbhost", "#raleighbusiness", "#timeback"]
   },
 
   "posts": [
     {
       "id": "H01", "name": "The Basement", "lane": "residential", "format": "single",
-      "hook": ["YOU DIDN'T BUY", "A HOUSE TO SPEND", "SUNDAY IN IT."],
-      "sub": "The basement. The laundry room. Whichever one it is, you are down there again.",
+      "renders": ["feed-4x5", "feed-1x1"], "theme": "navy",
+      "schedule": "2026-08-04T18:00:00-04:00",
+      "slides": [{
+        "kicker": "THE SUNDAY TAX · 01",
+        "hook": ["YOU DIDN'T BUY", "A HOUSE TO SPEND", "SUNDAY IN IT."],
+        "accent_line": 2,
+        "sub": "The basement. The laundry room. Whichever one it is, you are down there again."
+      }],
       "caption": "You did not buy a house to spend Sunday in the basement.\n\nHamper'd picks it up, washes it, folds it, and brings it back in 24 to 48 hours. One flat monthly rate — {{PRICE}}. No per-pound math, no surprise total at the end.\n\nRaleigh and {{AREA}}.\nhamperd.com",
-      "photo_brief": "Real photo. A finished basement laundry room on a Sunday afternoon, two full baskets on the floor, good window light. Nobody in frame. Lived-in, not styled."
+      "alt": "Graphic reading 'You didn't buy a house to spend Sunday in it.' with flat monthly pricing and 24 to 48 hour turnaround in the footer.",
+      "first_comment": "Family-run, eco-friendly, Raleigh-based. {{EMAIL}}",
+      "photo_brief": "A finished basement laundry room on a Sunday afternoon, two full baskets on the floor, good window light. Nobody in frame. Lived-in, not styled."
     },
     {
       "id": "H02", "name": "The Thursday Load", "lane": "residential", "format": "single",
-      "hook": ["THE LOAD", "YOU STARTED", "THURSDAY", "IS STILL IN THERE."],
-      "sub": "You know the smell. You are going to have to run it again.",
-      "caption": "The load you started Thursday is still in the washer. You know because you opened it. You are going to have to run it again.\n\nThat is the part nobody counts — laundry is not one job, it is a job you have to keep remembering.\n\nWe remember it for you. Picked up, washed, folded, back in 24 to 48 hours. {{PRICE}} a month, flat.\nhamperd.com",
-      "photo_brief": "Real photo. Open front-loader with a forgotten damp load inside, shot slightly overhead, cool daylight. Instantly recognisable, mildly funny, not gross."
+      "renders": ["feed-4x5", "feed-1x1"], "theme": "powder",
+      "schedule": "2026-08-06T12:15:00-04:00",
+      "slides": [{
+        "kicker": "THE SUNDAY TAX · 02",
+        "hook": ["THE LOAD YOU", "STARTED THURSDAY", "IS STILL IN THERE."],
+        "accent_line": 2,
+        "sub": "You know because you opened it. You are going to have to run it again."
+      }],
+      "caption": "The load you started Thursday is still in the washer. You know because you opened it. You are going to have to run it again.\n\nThat is the part nobody counts. Laundry is not one job — it is a job you have to keep remembering.\n\nWe remember it for you. Picked up, washed, folded, back in 24 to 48 hours. {{PRICE}} a month, flat.\nhamperd.com",
+      "alt": "Graphic reading 'The load you started Thursday is still in there.' above flat monthly pricing and 24 to 48 hour turnaround.",
+      "first_comment": "Guaranteed weekly pickup slot means it stops being something you have to remember.",
+      "photo_brief": "Open front-loader with a forgotten damp load inside, shot slightly overhead, cool daylight. Recognisable and mildly funny, not gross."
     },
     {
       "id": "H03", "name": "Never Once Empty", "lane": "residential", "format": "single",
-      "hook": ["TWO JOBS.", "THREE KIDS.", "ONE HAMPER THAT", "HAS NEVER BEEN EMPTY."],
-      "sub": "It is not a chore. It is a standing appointment you never agreed to.",
-      "caption": "Two jobs. Three kids. One hamper that has never once, in its entire life, been empty.\n\nIt is not really a chore. It is a standing weekly appointment nobody ever agreed to.\n\nHamper'd takes the appointment. Flat {{PRICE}} a month, guaranteed weekly pickup slot, back in 24 to 48 hours folded.\nhamperd.com",
-      "photo_brief": "Real photo. An overflowing family hamper on a landing, kids' clothes visible, warm evening light from a hallway. Honest, not staged."
+      "renders": ["feed-4x5", "feed-1x1"], "theme": "navy",
+      "schedule": "2026-08-11T18:00:00-04:00",
+      "slides": [{
+        "kicker": "THE SUNDAY TAX · 03",
+        "hook": ["TWO JOBS.", "THREE KIDS.", "ONE HAMPER THAT'S", "NEVER BEEN EMPTY."],
+        "accent_line": 3,
+        "sub": "It is not a chore. It is a standing weekly appointment nobody agreed to."
+      }],
+      "caption": "Two jobs. Three kids. One hamper that has never once, in its entire life, been empty.\n\nIt is not really a chore. It is a standing weekly appointment nobody ever agreed to.\n\nHamper'd takes the appointment. {{PRICE}} a month flat, guaranteed weekly pickup slot, back in 24 to 48 hours folded.\nhamperd.com",
+      "alt": "Graphic reading 'Two jobs. Three kids. One hamper that's never been empty.' with flat monthly pricing in the footer.",
+      "first_comment": "Free reusable Hamper'd bag with a subscription. Fill it, put it out, done.",
+      "photo_brief": "An overflowing family hamper on a landing, kids' clothes visible, warm evening light from a hallway. Honest, not staged."
     },
     {
       "id": "H04", "name": "What A Sunday Costs", "lane": "residential", "format": "carousel",
+      "renders": ["feed-4x5"], "theme": "navy",
+      "schedule": "2026-08-13T19:00:00-04:00",
       "slides": [
-        { "hook": ["WHAT A SUNDAY", "ACTUALLY COSTS."], "sub": "Add it up once. You will not want to add it up twice." },
-        { "hook": ["SORTING.", "20 MINUTES."], "sub": "Before a single machine has run." },
-        { "hook": ["WASH AND DRY.", "THREE HOURS."], "sub": "Not working. Not resting. Waiting." },
-        { "hook": ["FOLDING.", "45 MINUTES."], "sub": "In front of something you are not really watching." },
-        { "hook": ["PUTTING IT AWAY.", "TOMORROW.", "PROBABLY."], "sub": "Let us be honest about this one." },
-        { "hook": ["OR: ONE BAG.", "ON YOUR PORCH."], "sub": "{{PRICE}} a month, flat. Back in 24 to 48 hours, folded." }
+        { "kicker": "THE SUNDAY TAX · 04", "hook": ["WHAT A SUNDAY", "ACTUALLY COSTS."], "accent_line": 1, "sub": "Add it up once. You will not want to add it up twice.", "layout": "hook" },
+        { "kicker": "STEP 01", "hook": ["SORTING.", "20 MINUTES."], "accent_line": 1, "sub": "Before a single machine has run.", "layout": "evidence" },
+        { "kicker": "STEP 02", "hook": ["WASH AND DRY.", "THREE HOURS."], "accent_line": 1, "sub": "Not working. Not resting. Waiting.", "layout": "evidence" },
+        { "kicker": "STEP 03", "hook": ["FOLDING.", "45 MINUTES."], "accent_line": 1, "sub": "In front of something you are not really watching.", "layout": "evidence" },
+        { "kicker": "STEP 04", "hook": ["PUTTING IT AWAY.", "TOMORROW.", "PROBABLY."], "accent_line": 2, "sub": "Let us be honest about this one.", "layout": "evidence" },
+        { "kicker": "OR", "hook": ["ONE BAG.", "ON YOUR PORCH."], "accent_line": 1, "sub": "{{PRICE}} a month, flat. Back in 24 to 48 hours, folded.", "layout": "offer" }
       ],
       "caption": "Add up one Sunday. Sorting, twenty minutes. Wash and dry, three hours of waiting. Folding, forty-five minutes. Putting it away — tomorrow, probably.\n\nThat is most of a day, every week, for as long as you live in that house.\n\nOr: one bag on the porch. {{PRICE}} a month, flat.\nhamperd.com",
-      "photo_brief": "Six real photos, one per slide, same house, same day, same light — a small photo-essay. Sorting on a bed, machine running, folded stack, a full basket by the stairs, then the Hamper'd bag on the porch."
+      "alt": "Six-slide carousel costing out a Sunday spent on laundry: sorting twenty minutes, wash and dry three hours, folding forty-five minutes, putting it away tomorrow, versus one bag on the porch.",
+      "first_comment": "No per-pound math and no surprise totals. One flat rate, every month.",
+      "photo_brief": "Six photos, one per slide, same house, same day, same light — a small photo-essay ending on the bag on the porch."
     },
     {
       "id": "H05", "name": "Works Weekends", "lane": "residential", "format": "single",
-      "hook": ["YOUR WASHER", "WORKS WEEKENDS.", "YOU SHOULDN'T", "HAVE TO."],
-      "sub": "It is the only one in the house getting overtime.",
-      "caption": "Your washing machine works every weekend. It is the only one in the house getting overtime and it is not even complaining.\n\nYou can stop covering its shift. Flat {{PRICE}} a month, guaranteed weekly pickup, folded and back in 24 to 48 hours.\nhamperd.com",
-      "photo_brief": "Real photo. A washer mid-cycle at dusk, warm kitchen light spilling in from the next room, house otherwise quiet and empty."
+      "renders": ["feed-4x5", "feed-1x1"], "theme": "powder",
+      "schedule": "2026-08-18T07:45:00-04:00",
+      "slides": [{
+        "kicker": "THE SUNDAY TAX · 05",
+        "hook": ["YOUR WASHER", "WORKS WEEKENDS.", "YOU SHOULDN'T."],
+        "accent_line": 2,
+        "sub": "It is the only one in the house getting overtime, and it is not even complaining."
+      }],
+      "caption": "Your washing machine works every weekend. It is the only one in the house getting overtime and it is not even complaining.\n\nYou can stop covering its shift. {{PRICE}} a month flat, guaranteed weekly pickup, folded and back in 24 to 48 hours.\nhamperd.com",
+      "alt": "Graphic reading 'Your washer works weekends. You shouldn't.' with flat monthly pricing and turnaround in the footer.",
+      "first_comment": "Picked up on your guaranteed slot, back in 24 to 48 hours. {{EMAIL}}",
+      "photo_brief": "A washer mid-cycle at dusk, warm light spilling in from the next room, house otherwise quiet and empty."
     },
     {
       "id": "H06", "name": "The Whole Product", "lane": "residential", "format": "carousel",
+      "renders": ["feed-4x5"], "theme": "navy",
+      "schedule": "2026-08-20T18:30:00-04:00",
       "slides": [
-        { "hook": ["THE BAG COMES", "TO YOU."], "sub": "Free reusable Hamper'd bag when you subscribe." },
-        { "hook": ["YOU FILL IT.", "THAT IS YOUR", "ENTIRE JOB."], "sub": "No sorting, no counting, no per-pound math." },
-        { "hook": ["{{PICKUP}}.", "GUARANTEED SLOT."], "sub": "Subscribers get a locked weekly pickup time and priority service." },
-        { "hook": ["BACK IN", "24 TO 48 HOURS.", "FOLDED."], "sub": "{{PRICE}} a month, flat. That is the whole product." }
+        { "kicker": "HOW IT WORKS · 01", "hook": ["THE BAG COMES", "TO YOU."], "accent_line": 1, "sub": "Free reusable Hamper'd bag when you subscribe.", "layout": "hook" },
+        { "kicker": "HOW IT WORKS · 02", "hook": ["YOU FILL IT.", "THAT'S YOUR", "ENTIRE JOB."], "accent_line": 2, "sub": "No sorting, no counting, no per-pound math.", "layout": "evidence" },
+        { "kicker": "HOW IT WORKS · 03", "hook": ["{{PICKUP}}.", "GUARANTEED SLOT."], "accent_line": 1, "sub": "Subscribers get a locked weekly pickup time and priority service.", "layout": "evidence" },
+        { "kicker": "HOW IT WORKS · 04", "hook": ["BACK IN 24–48", "HOURS. FOLDED."], "accent_line": 1, "sub": "{{PRICE}} a month, flat. That is the whole product.", "layout": "offer" }
       ],
       "caption": "The whole product, in four steps.\n\nThe bag comes to you, free with a subscription. You fill it — that is your entire job. We pick up on your guaranteed weekly slot. It comes back folded in 24 to 48 hours.\n\n{{PRICE}} a month, flat. No per-pound math, no surprise totals.\nhamperd.com",
-      "photo_brief": "Four real photos: the folded Hamper'd bag on a doormat, the bag being filled, the bag on the porch at pickup time, a folded stack coming back in."
+      "alt": "Four-slide carousel: the bag comes to you, you fill it, guaranteed weekly pickup slot, back in 24 to 48 hours folded.",
+      "first_comment": "Family-run and Raleigh-based. Questions: {{EMAIL}}",
+      "photo_brief": "Four photos: the folded bag on a doormat, the bag being filled, the bag on the porch at pickup, a folded stack coming back in."
     },
     {
       "id": "H07", "name": "The Sunday Tax", "lane": "residential", "format": "reel",
-      "hook": ["THE SUNDAY TAX."],
-      "beats": [
-        "EVERY WEEK YOU PAY IT.",
-        "NOT IN MONEY.",
-        "IN SUNDAYS.",
-        "SORTING. WAITING. FOLDING.",
-        "PUTTING IT AWAY. TOMORROW. PROBABLY.",
-        "OR ONE BAG ON THE PORCH.",
-        "{{PRICE}} A MONTH. FLAT.",
-        "BACK IN 24 TO 48 HOURS. FOLDED."
-      ],
+      "renders": ["reel-9x16", "feed-4x5"], "theme": "night",
+      "schedule": "2026-08-25T19:00:00-04:00",
+      "video": {
+        "duration": 12,
+        "beats": [
+          { "t": 0.0, "lines": ["THE SUNDAY TAX."], "kicker": "EVERY WEEK, YOU PAY IT" },
+          { "t": 2.0, "lines": ["NOT IN MONEY.", "IN SUNDAYS."] },
+          { "t": 4.0, "lines": ["SORTING.", "WAITING.", "FOLDING."] },
+          { "t": 6.2, "lines": ["PUTTING IT AWAY.", "TOMORROW.", "PROBABLY."] },
+          { "t": 8.4, "lines": ["OR ONE BAG", "ON THE PORCH."], "theme": "offer" },
+          { "t": 10.0, "lines": ["{{PRICE}}/MO. FLAT.", "BACK IN 24–48 HRS."], "theme": "offer" }
+        ],
+        "end_card": true
+      },
+      "slides": [{
+        "kicker": "EVERY WEEK, YOU PAY IT",
+        "hook": ["THE SUNDAY TAX.", "NOT IN MONEY.", "IN SUNDAYS."],
+        "accent_line": 2,
+        "sub": "Sorting. Waiting. Folding. Putting it away tomorrow, probably."
+      }],
       "caption": "You pay the Sunday tax every week. Not in money — in Sundays.\n\n{{PRICE}} a month, flat. One bag on the porch, back in 24 to 48 hours, folded.\nhamperd.com",
-      "photo_brief": "Vertical. A Sunday passing in one room — light moving across a pile of laundry — then the bag on the porch. Real footage or stills with slow push-in."
+      "alt": "Vertical video reading The Sunday Tax. Not in money, in Sundays. Sorting, waiting, folding. Or one bag on the porch, with flat monthly pricing.",
+      "first_comment": "No per-pound math. One flat monthly rate and a guaranteed weekly pickup slot.",
+      "photo_brief": "Vertical. A Sunday passing in one room — light moving across a pile of laundry — then the bag on the porch."
     },
     {
       "id": "H08", "name": "First Thing They Touch", "lane": "commercial", "format": "single",
-      "hook": ["YOUR TOWELS", "ARE THE FIRST", "THING THEY TOUCH."],
-      "sub": "Before the cut, before the class, before the treatment. Them, and a towel.",
+      "renders": ["feed-4x5", "feed-1x1"], "theme": "powder",
+      "schedule": "2026-08-27T09:00:00-04:00",
+      "slides": [{
+        "kicker": "COMMERCIAL · RALEIGH",
+        "hook": ["YOUR TOWELS ARE", "THE FIRST THING", "THEY TOUCH."],
+        "accent_line": 2,
+        "sub": "Before the cut, before the class, before the treatment. Them, and a towel."
+      }],
       "caption": "Before the cut, before the class, before the treatment — a client picks up one of your towels. That is the first thing your business physically hands them.\n\nHamper'd runs commercial laundry for Raleigh salons, gyms, studios and clinics. {{COMMERCIAL_TERMS}}\n\nhamperd.com",
-      "photo_brief": "Real photo. A stack of clean folded salon or gym towels on a counter, shallow depth of field, professional but not stocky. Shot in an actual Raleigh business if possible."
+      "alt": "Graphic reading 'Your towels are the first thing they touch.' with commercial laundry terms in the footer.",
+      "first_comment": "Commercial enquiries: {{EMAIL}}",
+      "photo_brief": "A stack of clean folded salon or gym towels on a counter, shallow depth of field, professional but not stocky. Shot in a real Raleigh business if possible."
     },
     {
       "id": "H09", "name": "Not A Labor Line", "lane": "commercial", "format": "single",
-      "hook": ["LINEN SHOULDN'T", "BE A LABOR LINE."],
-      "sub": "Every hour your staff spends on a dryer is an hour they are not doing the job you hired them for.",
+      "renders": ["feed-4x5", "feed-1x1"], "theme": "navy",
+      "schedule": "2026-09-01T08:30:00-04:00",
+      "slides": [{
+        "kicker": "COMMERCIAL · RALEIGH",
+        "hook": ["LINEN SHOULDN'T", "BE A LABOR LINE."],
+        "accent_line": 1,
+        "sub": "Every hour your staff spends at a dryer is an hour they are not doing the job you hired them for."
+      }],
       "caption": "Every hour your staff spends in front of a dryer is an hour they are not doing the job you hired them for. It rarely shows up as a line item, but you are paying for it.\n\nHamper'd runs commercial laundry across Raleigh. {{COMMERCIAL_TERMS}}\n\nhamperd.com",
-      "photo_brief": "Real photo. Back-of-house at a small restaurant or studio — folded linens on a steel shelf, working environment, honest light."
+      "alt": "Graphic reading 'Linen shouldn't be a labor line.' with commercial laundry terms in the footer.",
+      "first_comment": "Commercial enquiries: {{EMAIL}}",
+      "photo_brief": "Back-of-house at a small restaurant or studio — folded linens on a steel shelf, working environment, honest light."
     },
     {
       "id": "H10", "name": "Turnover Day", "lane": "commercial", "format": "single",
-      "hook": ["TURNOVER DAY", "DOESN'T WAIT", "FOR A DRYER."],
-      "sub": "Checkout at 11. Check-in at 4. Everything in between is linen.",
+      "renders": ["feed-4x5", "feed-1x1"], "theme": "navy",
+      "schedule": "2026-09-03T09:15:00-04:00",
+      "slides": [{
+        "kicker": "TURNOVER · RALEIGH",
+        "hook": ["TURNOVER DAY", "DOESN'T WAIT", "FOR A DRYER."],
+        "accent_line": 2,
+        "sub": "Checkout at 11. Check-in at 4. Everything in between is linen."
+      }],
       "caption": "Checkout at eleven. Check-in at four. Everything in between is linen, and none of it is negotiable.\n\nHamper'd handles turnover laundry for Raleigh short-term rental hosts — beds, baths, the whole set, on a schedule that fits the gap. {{COMMERCIAL_TERMS}}\n\nhamperd.com",
-      "photo_brief": "Real photo. A stripped bed mid-turnover with fresh folded linens stacked at the foot, bright rental-property light, clock visible or implied."
+      "alt": "Graphic reading 'Turnover day doesn't wait for a dryer.' with short-term rental turnover terms in the footer.",
+      "first_comment": "Turnover schedules and volume pricing: {{EMAIL}}",
+      "photo_brief": "A stripped bed mid-turnover with fresh folded linens stacked at the foot, bright rental-property light."
     }
   ]
 }

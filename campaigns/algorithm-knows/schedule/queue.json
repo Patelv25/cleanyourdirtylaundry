@@ -6,13 +6,13 @@
     "instagram_url": "https://www.instagram.com/cleanyourdirtylaundry",
     "facebook_page": "CYDL",
     "facebook_url": "https://www.facebook.com/profile.php?id=61592741337111",
-    "source": "index.html schema.org sameAs — verified against the live site markup"
+    "verify_against": "index.html"
   },
   "not_this_brand": "Hamper'd (hamperd.com) is the sibling Raleigh household + commercial brand. Different site, different logo, different audience, different accounts. No asset, font, colour or line of copy in this campaign is Hamper'd's, and none of it may be published to a Hamper'd account.",
   "timezone": "America/New_York",
   "posts": [
     {
-      "brand": "CYDL",
+      "brand": "CYDL — Clean Your Dirty Laundry",
       "instagram_account": "@cleanyourdirtylaundry",
       "facebook_page": "https://www.facebook.com/profile.php?id=61592741337111",
       "id": "P01",
@@ -31,7 +31,7 @@
       "first_comment": "Pickup Tuesday. Back Thursday. Washed at a commercial laundromat on North Raleigh Boulevard. hello@cleanyourdirtylaundry.com"
     },
     {
-      "brand": "CYDL",
+      "brand": "CYDL — Clean Your Dirty Laundry",
       "instagram_account": "@cleanyourdirtylaundry",
       "facebook_page": "https://www.facebook.com/profile.php?id=61592741337111",
       "id": "P02",
@@ -53,7 +53,7 @@
       "first_comment": "Hard cap is 20 lb. If a bag goes over, you get a text before anything is charged. hello@cleanyourdirtylaundry.com"
     },
     {
-      "brand": "CYDL",
+      "brand": "CYDL — Clean Your Dirty Laundry",
       "instagram_account": "@cleanyourdirtylaundry",
       "facebook_page": "https://www.facebook.com/profile.php?id=61592741337111",
       "id": "P03",
@@ -73,7 +73,7 @@
       "first_comment": "No app to download. You sign up, you get a number, we text you Monday night. hello@cleanyourdirtylaundry.com"
     },
     {
-      "brand": "CYDL",
+      "brand": "CYDL — Clean Your Dirty Laundry",
       "instagram_account": "@cleanyourdirtylaundry",
       "facebook_page": "https://www.facebook.com/profile.php?id=61592741337111",
       "id": "P04",
@@ -92,7 +92,7 @@
       "first_comment": "20 lb is roughly two full kitchen bags of clothes. It is a hard cap, not a starting point."
     },
     {
-      "brand": "CYDL",
+      "brand": "CYDL — Clean Your Dirty Laundry",
       "instagram_account": "@cleanyourdirtylaundry",
       "facebook_page": "https://www.facebook.com/profile.php?id=61592741337111",
       "id": "P05",
@@ -112,7 +112,7 @@
       "first_comment": "Comforter is a $20 add-on. Sheets and linens are priced at signup. hello@cleanyourdirtylaundry.com"
     },
     {
-      "brand": "CYDL",
+      "brand": "CYDL — Clean Your Dirty Laundry",
       "instagram_account": "@cleanyourdirtylaundry",
       "facebook_page": "https://www.facebook.com/profile.php?id=61592741337111",
       "id": "P06",
@@ -131,7 +131,7 @@
       "first_comment": "We text you Monday night so the bag is out Tuesday. That is the entire reminder system."
     },
     {
-      "brand": "CYDL",
+      "brand": "CYDL — Clean Your Dirty Laundry",
       "instagram_account": "@cleanyourdirtylaundry",
       "facebook_page": "https://www.facebook.com/profile.php?id=61592741337111",
       "id": "P07",
@@ -149,7 +149,7 @@
       "first_comment": ""
     },
     {
-      "brand": "CYDL",
+      "brand": "CYDL — Clean Your Dirty Laundry",
       "instagram_account": "@cleanyourdirtylaundry",
       "facebook_page": "https://www.facebook.com/profile.php?id=61592741337111",
       "id": "P08",
@@ -168,7 +168,7 @@
       "first_comment": "Written for the person paying: cleanyourdirtylaundry.com/parents.html · hello@cleanyourdirtylaundry.com"
     },
     {
-      "brand": "CYDL",
+      "brand": "CYDL — Clean Your Dirty Laundry",
       "instagram_account": "@cleanyourdirtylaundry",
       "facebook_page": "https://www.facebook.com/profile.php?id=61592741337111",
       "id": "P09",
@@ -189,7 +189,7 @@
       "first_comment": "One van, four campuses. hello@cleanyourdirtylaundry.com"
     },
     {
-      "brand": "CYDL",
+      "brand": "CYDL — Clean Your Dirty Laundry",
       "instagram_account": "@cleanyourdirtylaundry",
       "facebook_page": "https://www.facebook.com/profile.php?id=61592741337111",
       "id": "P10",

@@ -2,7 +2,7 @@
 
 Every post opens by admitting the ad is targeted, then names the specific domestic evidence that got you targeted. The hook is the reader's own suspicion, said out loud first. Deadpan, receipts-first, no hype.
 
-## Post these to CYDL only
+## Post these to CYDL — Clean Your Dirty Laundry only
 
 - Instagram: **@cleanyourdirtylaundry**
 - Facebook: **CYDL** — https://www.facebook.com/profile.php?id=61592741337111

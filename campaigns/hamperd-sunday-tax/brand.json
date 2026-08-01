@@ -1,0 +1,55 @@
+{
+  "id": "hamperd",
+  "status": "placeholder",
+  "_status_note": "PLACEHOLDER IDENTITY. Every value marked TODO below is a neutral stand-in, NOT Hamper'd's real branding — hamperd.com returns 403 to this session so none of it could be read. While status is 'placeholder' the renderer stamps a DRAFT band on every frame and the queue refuses to mark posts publishable. Fill the TODOs, set status to 'final', re-run render + verify, and the whole campaign comes out clean.",
+
+  "name": "Hamper'd",
+  "lane": "Raleigh residential + commercial",
+  "url": "hamperd.com",
+  "email": "TODO — the public contact address",
+
+  "logo": {
+    "type": "wordmark",
+    "wordmark": "HAMPER'D",
+    "tagline": "RALEIGH LAUNDRY, PICKED UP",
+    "_todo": "TODO — drop the real logo at brand/logo.svg and set type to 'file'. The tagline above is a stand-in."
+  },
+
+  "fonts": {
+    "_todo": "TODO — Hamper'd's real display/body faces. These are neutral defaults, deliberately NOT CYDL's Archivo Black.",
+    "display": "'Inter',Helvetica,Arial,sans-serif",
+    "body": "'Inter',Helvetica,Arial,sans-serif",
+    "mono": "'Plex Mono',ui-monospace,Menlo,monospace"
+  },
+
+  "palette": {
+    "_todo": "TODO — Hamper'd's real hex values. These are neutral ink/slate greys chosen to look obviously unfinished, so a draft frame can never be mistaken for finished branding. CYDL's navy/powder/lemon must NOT be used here.",
+    "navy": "#2B2F36", "navy-deep": "#20242A", "navy-raise": "#343941",
+    "powder": "#ECEEF1", "sky": "#9AA4B2", "steel": "#8A929C",
+    "lemon": "#C8CDD4", "parchment": "#F4F5F7", "ink": "#20242A",
+    "deep-sky": "#5A6472", "heart": "#8A929C"
+  },
+
+  "art": {
+    "dir": "campaigns/hamperd-sunday-tax/brand/photos",
+    "prefix": "",
+    "note": "TODO — real photography. Hamper'd has no character set, so there is no illustrated fallback. Each post in campaign.json carries a photo_brief. CYDL's Pile and Bag must never appear here."
+  },
+
+  "accounts": {
+    "instagram": "TODO — the Hamper'd Instagram handle",
+    "instagram_url": "TODO",
+    "facebook_page": "TODO — the Hamper'd Facebook page name",
+    "facebook_url": "TODO",
+    "verify_against": null
+  },
+
+  "cta": "Get a quote",
+
+  "forbidden": {
+    "other_brand": "\\bCYDL\\b|cleanyourdirtylaundry",
+    "other_brand_label": "CYDL",
+    "off_lane": "\\b(dorm|move-in day|packapalooza|campus|NC State)\\b",
+    "off_lane_label": "the campus/student lane (that is CYDL's)"
+  }
+}

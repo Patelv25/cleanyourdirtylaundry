@@ -14,12 +14,12 @@
   @font-face{font-family:'Plex Mono';font-weight:500;font-display:block;
     src:url('../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2') format('woff2')}
 
-  /* ── locked palette (V3-SPEC / AGENTS.md rail #2) ────────────────── */
+  /* ── palette + type: injected at render time from the campaign's brand.json.
+        Nothing brand-specific is hardcoded in this file. ─────────────── */
   :root{
     --navy:#1E2A38; --navy-deep:#16202B; --navy-raise:#243447;
     --powder:#E6F0FA; --sky:#7FBFE9; --steel:#8FA3B8; --lemon:#FFD24D;
-    --parchment:#F1F6FC; --parch-raise:#FAFCFE; --ink:#1E2A38;
-    --ink-soft:#44546A; --deep-sky:#2F6FA8; --heart:#C9A227;
+    --parchment:#F1F6FC; --ink:#1E2A38; --deep-sky:#2F6FA8; --heart:#C9A227;
     --display:'Archivo Black','Arial Black',sans-serif;
     --body:'Inter',Helvetica,Arial,sans-serif;
     --mono:'Plex Mono',ui-monospace,Menlo,monospace;
@@ -96,6 +96,16 @@
   .art img{display:block;max-width:100%;max-height:100%;
     width:auto;height:100%;object-fit:contain}
 
+  /* draft-only: shows where the photograph goes, and what to shoot */
+  .slot{position:absolute;left:var(--pad);right:var(--pad);
+    border:calc(var(--u)*2) dashed var(--rule);border-radius:calc(var(--u)*18);
+    display:flex;align-items:center;justify-content:center;
+    padding:calc(var(--u)*40);text-align:center}
+  .slot p{font-family:var(--mono);font-size:calc(var(--u)*21);line-height:1.6;
+    color:var(--dim);max-width:80%}
+  .slot b{display:block;font-size:calc(var(--u)*17);letter-spacing:calc(var(--u)*3);
+    color:var(--accent);margin-bottom:calc(var(--u)*14);text-transform:uppercase}
+
   /* ── footer receipts bar ─────────────────────────────────────────── */
   .bar{position:absolute;left:0;right:0;background:var(--bar);color:var(--barfg);
     display:flex;align-items:center;gap:calc(var(--u)*28);
@@ -147,14 +157,41 @@
     transform-origin:left center}
   .prog{position:absolute;left:0;top:calc(var(--u)*250);height:calc(var(--u)*7);
     background:var(--accent);opacity:.85}
+
+  /* stamped on every frame while brand.json status is not "final", so a
+     placeholder identity can never be mistaken for finished creative */
+  .draft{position:absolute;left:0;right:0;top:0;z-index:9;
+    background:repeating-linear-gradient(135deg,#B4342A 0 calc(var(--u)*22),
+      #8E2A22 calc(var(--u)*22) calc(var(--u)*44));
+    color:#fff;font-family:var(--mono);font-weight:500;
+    font-size:calc(var(--u)*20);letter-spacing:calc(var(--u)*3);
+    text-align:center;padding:calc(var(--u)*14) calc(var(--u)*20);text-transform:uppercase}
 </style>
 
 <div id="frame"><div class="wash"></div><div class="grid"></div></div>
 
 <script>
 const HEART = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27.5C10 21.5 3 16.3 3 10.4 3 6.3 6.4 3 10.5 3c2.3 0 4.4 1.1 5.5 2.8C17.1 4.1 19.2 3 21.5 3 25.6 3 29 6.3 29 10.4c0 5.9-7 11.1-13 17.1Z"/></svg>';
-const MARK = '<div class="mark" style="--p:1"><div class="tag">'+HEART+'</div>'+
-  '<div class="wm"><b>CYDL</b><span>CLEAN YOUR DIRTY LAUNDRY</span></div></div>';
+let BRAND = null;   // set by applyBrand() before any render
+function mark(){
+  const l = BRAND.logo;
+  const tag = l.type === 'hearttag' ? '<div class="tag">'+HEART+'</div>' : '';
+  return '<div class="mark">'+tag+
+    '<div class="wm"><b>'+esc(l.wordmark)+'</b><span>'+esc(l.tagline)+'</span></div></div>';
+}
+
+window.applyBrand = function(brand){
+  BRAND = brand;
+  const r = document.documentElement.style;
+  for (const [k, v] of Object.entries(brand.palette)) {
+    if (k.startsWith('_')) continue;
+    r.setProperty('--' + k, v);
+  }
+  for (const [k, v] of Object.entries(brand.fonts)) {
+    if (k.startsWith('_')) continue;
+    r.setProperty('--' + k, v);
+  }
+};
 
 const SPECS = {
   // barBottom lifts the receipts bar clear of the platform UI on 9:16 surfaces
@@ -165,6 +202,10 @@ const SPECS = {
 };
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function draftBand(){
+  return BRAND.status === 'final' ? ''
+    : '<div class="draft">Draft — placeholder branding, not for publication</div>';
+}
 
 // Shrink the display type until the hook block fits its allotted box.
 function fitHook(el, min, max, boxH, boxW){
@@ -214,11 +255,13 @@ window.renderStill = function(o){
   f.innerHTML =
     '<div class="wash"></div><div class="grid"></div>'+
     '<div class="body">'+(isPanel?'<div class="panel">'+stack+'</div>':stack)+'</div>'+
+    (o.photoBrief && !o.art ? '<div class="slot" id="slot"><p><b>Photo goes here</b>'+
+      esc(o.photoBrief)+'</p></div>' : '')+
     '<div class="bar" style="bottom:'+(S.barBottom*u)+'px"><div class="facts">'+esc(o.facts)+'</div>'+
-      '<div class="cta"><div class="chip">'+esc(o.chipText||'Claim your spot')+'</div>'+
-      '<div class="url">cleanyourdirtylaundry.com</div></div></div>'+
-    MARK.replace('class="mark"','class="mark" style="top:'+(S.top*u)+'px;right:'+(S.pad*u)+'px;'+
-      'transform:translateY('+(-24*u)+'px)"');
+      '<div class="cta"><div class="chip">'+esc(o.chipText||BRAND.cta)+'</div>'+
+      '<div class="url">'+esc(BRAND.url)+'</div></div></div>'+
+    mark().replace('class="mark"','class="mark" style="top:'+(S.top*u)+'px;right:'+(S.pad*u)+'px;'+
+      'transform:translateY('+(-24*u)+'px)"') + draftBand();
 
   // shrink the receipts line until the longest row fits the bar
   const facts = f.querySelector('.facts');
@@ -235,6 +278,17 @@ window.renderStill = function(o){
     - f.querySelector('.lower').offsetHeight
     - 86*u;                                   // breathing room above/below
   fitHook(hk, S.hookMin, S.hookMax, Math.max(avail, 140*u), box.clientWidth);
+
+  const slot = f.querySelector('#slot');
+  if (slot) {
+    const hookBox = hk.getBoundingClientRect();
+    const lowerBox = f.querySelector('.lower').getBoundingClientRect();
+    const top = hookBox.bottom + 34*u, bottom = lowerBox.top - 34*u;
+    if (bottom - top > 150*u) {
+      slot.style.top = top + 'px';
+      slot.style.height = (bottom - top) + 'px';
+    } else { slot.remove(); }
+  }
   return {w:S.w,h:S.h};
 };
 
@@ -256,13 +310,13 @@ window.setupVideo = function(o){
       '</h1></div>').join('');
 
   f.innerHTML='<div class="wash"></div><div class="grid"></div>'+
-    MARK.replace('class="mark"','class="mark vmark" id="vm"')+beats+
-    '<div class="endcard" id="ec">'+MARK+
+    mark().replace('class="mark"','class="mark vmark" id="vm"')+beats+
+    '<div class="endcard" id="ec">'+mark()+
       '<div class="facts" style="text-align:center;font-size:'+(28*u)+'px;line-height:1.7">'+
         esc(o.facts)+'</div>'+
-      '<div class="chip" style="margin:0">'+esc(o.chipText||'Claim your spot')+'</div>'+
-      '<div class="url" style="position:static">cleanyourdirtylaundry.com</div>'+
-    '</div>'+
+      '<div class="chip" style="margin:0">'+esc(o.chipText||BRAND.cta)+'</div>'+
+      '<div class="url" style="position:static">'+esc(BRAND.url)+'</div>'+
+    '</div>'+draftBand()+
     '<div class="prog" id="pg" style="width:0"></div>';
 
   // pre-fit every beat's type once, so frames are stable

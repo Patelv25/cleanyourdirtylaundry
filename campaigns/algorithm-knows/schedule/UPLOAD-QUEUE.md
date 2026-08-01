@@ -1,6 +1,6 @@
 # UPLOAD QUEUE — THE ALGORITHM KNOWS
 
-**Brand: CYDL.** Post to **@cleanyourdirtylaundry** on Instagram and
+**Brand: CYDL — Clean Your Dirty Laundry.** Post to **@cleanyourdirtylaundry** on Instagram and
 **CYDL** on Facebook (https://www.facebook.com/profile.php?id=61592741337111).
 Not Hamper'd — that is a different brand with different accounts.
 

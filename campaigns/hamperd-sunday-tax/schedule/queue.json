@@ -1,0 +1,211 @@
+{
+  "campaign": "THE SUNDAY TAX",
+  "brand": "Hamper'd — Raleigh residential + commercial",
+  "accounts": {
+    "instagram": "TODO — the Hamper'd Instagram handle",
+    "instagram_url": "TODO",
+    "facebook_page": "TODO — the Hamper'd Facebook page name",
+    "facebook_url": "TODO",
+    "verify_against": null
+  },
+  "not_this_brand": "CYDL (cleanyourdirtylaundry.com) is the sibling campus brand. Its navy/powder palette, Archivo Black, heart-tag lockup, Pile and Bag characters, $100/mo student price and deadpan student voice must never appear here.",
+  "timezone": "America/New_York",
+  "posts": [
+    {
+      "brand": "Hamper'd",
+      "instagram_account": "TODO — the Hamper'd Instagram handle",
+      "facebook_page": "TODO",
+      "id": "H01",
+      "name": "The Basement",
+      "format": "single",
+      "publish_at": "2026-08-04T18:00:00-04:00",
+      "instagram": "Feed (4:5)",
+      "facebook": "Feed (1:1)",
+      "media": [
+        "out/H01-the-basement/H01-feed-1x1.jpg",
+        "out/H01-the-basement/H01-feed-4x5.jpg"
+      ],
+      "caption": "You did not buy a house to spend Sunday in the basement.\n\nHamper'd picks it up, washes it, folds it, and brings it back in 24 to 48 hours. One flat monthly rate — {{PRICE}}. No per-pound math, no surprise total at the end.\n\nRaleigh and {{AREA}}.\nhamperd.com",
+      "hashtags": "#hamperd #raleigh #raleighnc #laundryservice #laundryday #pickupanddelivery #washandfold",
+      "alt_text": "Graphic reading 'You didn't buy a house to spend Sunday in it.' with flat monthly pricing and 24 to 48 hour turnaround in the footer.",
+      "first_comment": "Family-run, eco-friendly, Raleigh-based. {{EMAIL}}"
+    },
+    {
+      "brand": "Hamper'd",
+      "instagram_account": "TODO — the Hamper'd Instagram handle",
+      "facebook_page": "TODO",
+      "id": "H02",
+      "name": "The Thursday Load",
+      "format": "single",
+      "publish_at": "2026-08-06T12:15:00-04:00",
+      "instagram": "Feed (4:5)",
+      "facebook": "Feed (1:1)",
+      "media": [
+        "out/H02-the-thursday-load/H02-feed-1x1.jpg",
+        "out/H02-the-thursday-load/H02-feed-4x5.jpg"
+      ],
+      "caption": "The load you started Thursday is still in the washer. You know because you opened it. You are going to have to run it again.\n\nThat is the part nobody counts. Laundry is not one job — it is a job you have to keep remembering.\n\nWe remember it for you. Picked up, washed, folded, back in 24 to 48 hours. {{PRICE}} a month, flat.\nhamperd.com",
+      "hashtags": "#hamperd #raleigh #raleighnc #laundryservice #raleighsmallbusiness #workingparents #familyrun",
+      "alt_text": "Graphic reading 'The load you started Thursday is still in there.' above flat monthly pricing and 24 to 48 hour turnaround.",
+      "first_comment": "Guaranteed weekly pickup slot means it stops being something you have to remember."
+    },
+    {
+      "brand": "Hamper'd",
+      "instagram_account": "TODO — the Hamper'd Instagram handle",
+      "facebook_page": "TODO",
+      "id": "H03",
+      "name": "Never Once Empty",
+      "format": "single",
+      "publish_at": "2026-08-11T18:00:00-04:00",
+      "instagram": "Feed (4:5)",
+      "facebook": "Feed (1:1)",
+      "media": [
+        "out/H03-never-once-empty/H03-feed-1x1.jpg",
+        "out/H03-never-once-empty/H03-feed-4x5.jpg"
+      ],
+      "caption": "Two jobs. Three kids. One hamper that has never once, in its entire life, been empty.\n\nIt is not really a chore. It is a standing weekly appointment nobody ever agreed to.\n\nHamper'd takes the appointment. {{PRICE}} a month flat, guaranteed weekly pickup slot, back in 24 to 48 hours folded.\nhamperd.com",
+      "hashtags": "#hamperd #raleigh #raleighnc #laundryservice #trianglenc #airbnbhost #raleighbusiness",
+      "alt_text": "Graphic reading 'Two jobs. Three kids. One hamper that's never been empty.' with flat monthly pricing in the footer.",
+      "first_comment": "Free reusable Hamper'd bag with a subscription. Fill it, put it out, done."
+    },
+    {
+      "brand": "Hamper'd",
+      "instagram_account": "TODO — the Hamper'd Instagram handle",
+      "facebook_page": "TODO",
+      "id": "H04",
+      "name": "What A Sunday Costs",
+      "format": "carousel",
+      "publish_at": "2026-08-13T19:00:00-04:00",
+      "instagram": "Carousel (4:5)",
+      "facebook": "Album (4:5)",
+      "media": [
+        "out/H04-what-a-sunday-costs/H04-feed-4x5-01.jpg",
+        "out/H04-what-a-sunday-costs/H04-feed-4x5-02.jpg",
+        "out/H04-what-a-sunday-costs/H04-feed-4x5-03.jpg",
+        "out/H04-what-a-sunday-costs/H04-feed-4x5-04.jpg",
+        "out/H04-what-a-sunday-costs/H04-feed-4x5-05.jpg",
+        "out/H04-what-a-sunday-costs/H04-feed-4x5-06.jpg"
+      ],
+      "caption": "Add up one Sunday. Sorting, twenty minutes. Wash and dry, three hours of waiting. Folding, forty-five minutes. Putting it away — tomorrow, probably.\n\nThat is most of a day, every week, for as long as you live in that house.\n\nOr: one bag on the porch. {{PRICE}} a month, flat.\nhamperd.com",
+      "hashtags": "#hamperd #raleigh #raleighnc #laundryservice #timeback #laundryday #pickupanddelivery",
+      "alt_text": "Six-slide carousel costing out a Sunday spent on laundry: sorting twenty minutes, wash and dry three hours, folding forty-five minutes, putting it away tomorrow, versus one bag on the porch.",
+      "first_comment": "No per-pound math and no surprise totals. One flat rate, every month."
+    },
+    {
+      "brand": "Hamper'd",
+      "instagram_account": "TODO — the Hamper'd Instagram handle",
+      "facebook_page": "TODO",
+      "id": "H05",
+      "name": "Works Weekends",
+      "format": "single",
+      "publish_at": "2026-08-18T07:45:00-04:00",
+      "instagram": "Feed (4:5)",
+      "facebook": "Feed (1:1)",
+      "media": [
+        "out/H05-works-weekends/H05-feed-1x1.jpg",
+        "out/H05-works-weekends/H05-feed-4x5.jpg"
+      ],
+      "caption": "Your washing machine works every weekend. It is the only one in the house getting overtime and it is not even complaining.\n\nYou can stop covering its shift. {{PRICE}} a month flat, guaranteed weekly pickup, folded and back in 24 to 48 hours.\nhamperd.com",
+      "hashtags": "#hamperd #raleigh #raleighnc #laundryservice #washandfold #raleighsmallbusiness #workingparents",
+      "alt_text": "Graphic reading 'Your washer works weekends. You shouldn't.' with flat monthly pricing and turnaround in the footer.",
+      "first_comment": "Picked up on your guaranteed slot, back in 24 to 48 hours. {{EMAIL}}"
+    },
+    {
+      "brand": "Hamper'd",
+      "instagram_account": "TODO — the Hamper'd Instagram handle",
+      "facebook_page": "TODO",
+      "id": "H06",
+      "name": "The Whole Product",
+      "format": "carousel",
+      "publish_at": "2026-08-20T18:30:00-04:00",
+      "instagram": "Carousel (4:5)",
+      "facebook": "Album (4:5)",
+      "media": [
+        "out/H06-the-whole-product/H06-feed-4x5-01.jpg",
+        "out/H06-the-whole-product/H06-feed-4x5-02.jpg",
+        "out/H06-the-whole-product/H06-feed-4x5-03.jpg",
+        "out/H06-the-whole-product/H06-feed-4x5-04.jpg"
+      ],
+      "caption": "The whole product, in four steps.\n\nThe bag comes to you, free with a subscription. You fill it — that is your entire job. We pick up on your guaranteed weekly slot. It comes back folded in 24 to 48 hours.\n\n{{PRICE}} a month, flat. No per-pound math, no surprise totals.\nhamperd.com",
+      "hashtags": "#hamperd #raleigh #raleighnc #laundryservice #familyrun #trianglenc #airbnbhost",
+      "alt_text": "Four-slide carousel: the bag comes to you, you fill it, guaranteed weekly pickup slot, back in 24 to 48 hours folded.",
+      "first_comment": "Family-run and Raleigh-based. Questions: {{EMAIL}}"
+    },
+    {
+      "brand": "Hamper'd",
+      "instagram_account": "TODO — the Hamper'd Instagram handle",
+      "facebook_page": "TODO",
+      "id": "H07",
+      "name": "The Sunday Tax",
+      "format": "reel",
+      "publish_at": "2026-08-25T19:00:00-04:00",
+      "instagram": "Reel (9:16)",
+      "facebook": "Reel (9:16)",
+      "media": [
+        "out/H07-the-sunday-tax/H07-feed-4x5.jpg",
+        "out/H07-the-sunday-tax/H07-reel-9x16.jpg"
+      ],
+      "caption": "You pay the Sunday tax every week. Not in money — in Sundays.\n\n{{PRICE}} a month, flat. One bag on the porch, back in 24 to 48 hours, folded.\nhamperd.com",
+      "hashtags": "#hamperd #raleigh #raleighnc #laundryservice #raleighbusiness #timeback #laundryday",
+      "alt_text": "Vertical video reading The Sunday Tax. Not in money, in Sundays. Sorting, waiting, folding. Or one bag on the porch, with flat monthly pricing.",
+      "first_comment": "No per-pound math. One flat monthly rate and a guaranteed weekly pickup slot."
+    },
+    {
+      "brand": "Hamper'd",
+      "instagram_account": "TODO — the Hamper'd Instagram handle",
+      "facebook_page": "TODO",
+      "id": "H08",
+      "name": "First Thing They Touch",
+      "format": "single",
+      "publish_at": "2026-08-27T09:00:00-04:00",
+      "instagram": "Feed (4:5)",
+      "facebook": "Feed (1:1)",
+      "media": [
+        "out/H08-first-thing-they-touch/H08-feed-1x1.jpg",
+        "out/H08-first-thing-they-touch/H08-feed-4x5.jpg"
+      ],
+      "caption": "Before the cut, before the class, before the treatment — a client picks up one of your towels. That is the first thing your business physically hands them.\n\nHamper'd runs commercial laundry for Raleigh salons, gyms, studios and clinics. {{COMMERCIAL_TERMS}}\n\nhamperd.com",
+      "hashtags": "#hamperd #raleigh #raleighnc #laundryservice #pickupanddelivery #washandfold #raleighsmallbusiness",
+      "alt_text": "Graphic reading 'Your towels are the first thing they touch.' with commercial laundry terms in the footer.",
+      "first_comment": "Commercial enquiries: {{EMAIL}}"
+    },
+    {
+      "brand": "Hamper'd",
+      "instagram_account": "TODO — the Hamper'd Instagram handle",
+      "facebook_page": "TODO",
+      "id": "H09",
+      "name": "Not A Labor Line",
+      "format": "single",
+      "publish_at": "2026-09-01T08:30:00-04:00",
+      "instagram": "Feed (4:5)",
+      "facebook": "Feed (1:1)",
+      "media": [
+        "out/H09-not-a-labor-line/H09-feed-1x1.jpg",
+        "out/H09-not-a-labor-line/H09-feed-4x5.jpg"
+      ],
+      "caption": "Every hour your staff spends in front of a dryer is an hour they are not doing the job you hired them for. It rarely shows up as a line item, but you are paying for it.\n\nHamper'd runs commercial laundry across Raleigh. {{COMMERCIAL_TERMS}}\n\nhamperd.com",
+      "hashtags": "#hamperd #raleigh #raleighnc #laundryservice #workingparents #familyrun #trianglenc",
+      "alt_text": "Graphic reading 'Linen shouldn't be a labor line.' with commercial laundry terms in the footer.",
+      "first_comment": "Commercial enquiries: {{EMAIL}}"
+    },
+    {
+      "brand": "Hamper'd",
+      "instagram_account": "TODO — the Hamper'd Instagram handle",
+      "facebook_page": "TODO",
+      "id": "H10",
+      "name": "Turnover Day",
+      "format": "single",
+      "publish_at": "2026-09-03T09:15:00-04:00",
+      "instagram": "Feed (4:5)",
+      "facebook": "Feed (1:1)",
+      "media": [
+        "out/H10-turnover-day/H10-feed-1x1.jpg",
+        "out/H10-turnover-day/H10-feed-4x5.jpg"
+      ],
+      "caption": "Checkout at eleven. Check-in at four. Everything in between is linen, and none of it is negotiable.\n\nHamper'd handles turnover laundry for Raleigh short-term rental hosts — beds, baths, the whole set, on a schedule that fits the gap. {{COMMERCIAL_TERMS}}\n\nhamperd.com",
+      "hashtags": "#hamperd #raleigh #raleighnc #laundryservice #airbnbhost #raleighbusiness #timeback",
+      "alt_text": "Graphic reading 'Turnover day doesn't wait for a dryer.' with short-term rental turnover terms in the footer.",
+      "first_comment": "Turnover schedules and volume pricing: {{EMAIL}}"
+    }
+  ]
+}

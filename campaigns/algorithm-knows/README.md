@@ -38,13 +38,16 @@ Open `preview.html` for the contact sheet.
 ## What's here
 
 ```
-campaign.json          the single source of truth — copy, art, schedule, facts
-out/<post>/            rendered creative (jpg stills, mp4 reels)
-schedule/queue.csv     one row per post: date, time, placements, media, caption
-schedule/queue.json    the same, for anything driving the Meta Graph API
-schedule/captions.md   copy-paste captions, first comments, alt text
-preview.html           contact sheet of all ten posts
-build/                 the renderer, the queue generator, and the gate
+campaign.json             the copy: hooks, captions, art refs, schedule
+brand.json                the identity: palette, fonts, logo, accounts, art set
+out/<post>/               rendered creative (jpg stills, mp4 reels)
+schedule/UPLOAD-QUEUE.md  the run-sheet — work top to bottom
+schedule/queue.csv        one row per post: date, placements, media, caption
+schedule/queue.json       the same, for anything driving the Meta Graph API
+schedule/captions.md      copy-paste captions, first comments, alt text
+preview.html              contact sheet of all ten posts
+../_engine/               the renderer, queue generator and gate, shared with
+                          every other campaign in this repo
 ```
 
 ## The ten posts
@@ -84,12 +87,18 @@ and the same 9:16 for Reels/Stories. Reels are H.264/MP4, 1080×1920, 30 fps.
 ## Rebuilding
 
 ```bash
-cd build
+cd ../_engine
 npm install
-node render.mjs          # all creative  (--stills to skip video; or pass P03 P10)
-node schedule.mjs        # queue.csv, queue.json, captions.md, preview.html
-node verify.mjs          # facts + palette gate — run before you ship
+node render.mjs   ../algorithm-knows          # all creative
+node render.mjs   ../algorithm-knows --stills # skip video
+node render.mjs   ../algorithm-knows P03 P10  # just these posts
+node schedule.mjs ../algorithm-knows          # queue + captions + preview
+node verify.mjs   ../algorithm-knows          # gates — run before you ship
 ```
+
+The engine is brand-agnostic: it takes its palette, fonts, logo, CTA and
+account targeting from `brand.json`, so the same code renders Hamper'd
+without a code change and cannot silently blend the two.
 
 Everything renders offline from vendored fonts and the repo's own artwork. No
 network, no external requests, no design tool in the loop.
