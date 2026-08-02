@@ -81,3 +81,22 @@ Rules here are binding on future runs.
 - R-A6: Frame exfil from sandbox for visual QA: use small crops <10KB, single-line
   base64, printf/heredoc verbatim — larger transfers corrupt. Better: rely on
   signalstats + video_analysis + one small face crop.
+
+## 2026-08-02 — ep-001 v2 (Vee's polish feedback)
+
+- V1: Voice: seed_audio TTS reads as AI to the owner's ear. LOCKED CHANGE: all VO
+  now text2speech_v2 variant=elevenlabs (same Brooks voice id). Middle beats at
+  atempo 1.05 (not 1.1 — ElevenLabs pacing is naturally faster).
+- V2: New locked cold open: 2.6s sting card (navy + logo + "TODAY IN RALEIGH") with
+  sonilo_music news sting + Sterling-voice announcer "Today in Raleigh!" at +0.75s.
+  Assets: sting job 698a5c14, announcer job d183d003. Reuse every episode.
+- V3: B-roll realism language LOCKED into prompts: "handheld smartphone/fan-shot
+  footage, imperfect framing, natural motion blur, documentary realism, sensor
+  noise/filmic grain" — kills the glossy AI look. Never "cinematic".
+- V4: Anchor proportions fixed: new master keyframe job 34203960-56b1-4f1e-b200-7a9fe495109c
+  (he sits taller, desk at lower chest). SUPERSEDES 497e6f21 in ANCHOR-BIBLE.
+- V5: Real venue/partner footage: never scrape others' photos (rights). Pipeline
+  supports image-to-video animation of any photo Vee or a partner supplies —
+  request photo permission in partnership DMs; store approved media ids in config.
+- V6: media_confirm between sandbox calls breaks the back-to-back chain and wipes
+  the workspace — do all sandbox work first, confirm after.

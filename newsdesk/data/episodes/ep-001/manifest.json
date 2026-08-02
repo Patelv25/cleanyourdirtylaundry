@@ -15,15 +15,73 @@
     "voice": "Brooks preset c2acff45-84b2-4974-892d-89fa2d4e5598 (seed_audio)"
   },
   "segments": [
-    {"seg": 0, "type": "anchor", "video_job": "0acf10d2-f639-4105-893e-0c2babba9bf5", "tts_job": "b34443c7-856a-4cdc-a211-1fc005b701d6", "text": "hook + intro sting"},
-    {"seg": 1, "type": "broll", "event": "nOg Run Club Monday Night Run", "video_job": "c6a2a549-8336-4476-ac35-6de13d22f121", "tts_job": "c4877a21-bd6e-45b0-bb8b-71c5e98e134f", "ig": "nogrunclub"},
-    {"seg": 2, "type": "broll", "event": "Deep Purple with Kansas (tour opener)", "video_job": "b1381960-2ad3-42bd-a166-0e73910e0f85", "tts_job": "97a10ab5-d948-441c-8462-95bbfddd91fe", "ig": "redhatamphitheater"},
-    {"seg": 3, "type": "broll", "event": "First Friday Raleigh", "video_job": "89361abc-01d5-4b42-85c3-0047cd3d2492", "tts_job": "7efbf935-ffb1-4ab9-b070-56028ce11f0c", "ig": "firstfridayral"},
-    {"seg": 4, "type": "broll", "event": "Sir Walter Miler 2026", "video_job": "1639ef33-7ca4-4b20-8182-723b75361fe1", "tts_job": "94e757f5-46f2-461b-a869-2d9628df70be", "ig": "sirwaltermiler"},
-    {"seg": 5, "type": "broll", "event": "Audio Advice Live 2026", "video_job": "fe219c3c-179a-4828-9854-e0bb93bede82", "tts_job": "ed589936-114f-4bd2-9fe7-a39a0207faff", "ig": "audio.advice"},
-    {"seg": 6, "type": "broll", "event": "The Raleigh Market", "video_job": "1ce11037-6b3e-4f4a-a7bb-c4dd458a3103", "tts_job": "d007e551-58f4-4e5e-ae71-2e4a4d3b9e22", "ig": "theraleighmarket"},
-    {"seg": 7, "type": "anchor", "video_job": "aaef2293-d79e-4bee-b8e1-c92454235eb5", "tts_job": "424cb059-fd2f-4c20-a6f6-46172989b1ec", "text": "outro"},
-    {"seg": 8, "type": "endcard", "note": "navy bg + logo + hamperd.com + tagline, 2.5s"}
+    {
+      "seg": 0,
+      "type": "anchor",
+      "video_job": "0acf10d2-f639-4105-893e-0c2babba9bf5",
+      "tts_job": "b34443c7-856a-4cdc-a211-1fc005b701d6",
+      "text": "hook + intro sting"
+    },
+    {
+      "seg": 1,
+      "type": "broll",
+      "event": "nOg Run Club Monday Night Run",
+      "video_job": "c6a2a549-8336-4476-ac35-6de13d22f121",
+      "tts_job": "c4877a21-bd6e-45b0-bb8b-71c5e98e134f",
+      "ig": "nogrunclub"
+    },
+    {
+      "seg": 2,
+      "type": "broll",
+      "event": "Deep Purple with Kansas (tour opener)",
+      "video_job": "b1381960-2ad3-42bd-a166-0e73910e0f85",
+      "tts_job": "97a10ab5-d948-441c-8462-95bbfddd91fe",
+      "ig": "redhatamphitheater"
+    },
+    {
+      "seg": 3,
+      "type": "broll",
+      "event": "First Friday Raleigh",
+      "video_job": "89361abc-01d5-4b42-85c3-0047cd3d2492",
+      "tts_job": "7efbf935-ffb1-4ab9-b070-56028ce11f0c",
+      "ig": "firstfridayral"
+    },
+    {
+      "seg": 4,
+      "type": "broll",
+      "event": "Sir Walter Miler 2026",
+      "video_job": "1639ef33-7ca4-4b20-8182-723b75361fe1",
+      "tts_job": "94e757f5-46f2-461b-a869-2d9628df70be",
+      "ig": "sirwaltermiler"
+    },
+    {
+      "seg": 5,
+      "type": "broll",
+      "event": "Audio Advice Live 2026",
+      "video_job": "fe219c3c-179a-4828-9854-e0bb93bede82",
+      "tts_job": "ed589936-114f-4bd2-9fe7-a39a0207faff",
+      "ig": "audio.advice"
+    },
+    {
+      "seg": 6,
+      "type": "broll",
+      "event": "The Raleigh Market",
+      "video_job": "1ce11037-6b3e-4f4a-a7bb-c4dd458a3103",
+      "tts_job": "d007e551-58f4-4e5e-ae71-2e4a4d3b9e22",
+      "ig": "theraleighmarket"
+    },
+    {
+      "seg": 7,
+      "type": "anchor",
+      "video_job": "aaef2293-d79e-4bee-b8e1-c92454235eb5",
+      "tts_job": "424cb059-fd2f-4c20-a6f6-46172989b1ec",
+      "text": "outro"
+    },
+    {
+      "seg": 8,
+      "type": "endcard",
+      "note": "navy bg + logo + hamperd.com + tagline, 2.5s"
+    }
   ],
   "assembly": "Higgsfield sandbox ffmpeg: B-roll ping-pong stretched to VO length (VO atempo 1.1), navy/sky lower-thirds Montserrat ExtraBold, concat + loudnorm I=-16",
   "fact_trace": "all six events status=confirmed in data/events/2026-08-02.jsonl with evidence URLs",
@@ -44,9 +102,38 @@
   },
   "publish": {
     "mode": "package",
-    "targets": ["instagram:@gethamperd (Reel)", "facebook:/gethamperd"],
+    "targets": [
+      "instagram:@gethamperd (Reel)",
+      "facebook:/gethamperd"
+    ],
     "caption_file": "caption.md",
     "status": "pending"
   },
-  "credits_spent_estimate": {"images": 12, "tts": 8, "broll": 45, "anchor_clips": 37.5, "total_approx": 105}
+  "credits_spent_estimate": {
+    "images": 12,
+    "tts": 8,
+    "broll": 45,
+    "anchor_clips": 37.5,
+    "total_approx": 105
+  },
+  "v2": {
+    "date": "2026-08-02",
+    "runtime_seconds": 82.3,
+    "final_video": {
+      "media_id": "edf5d435-61aa-4dfe-a003-b7db18543c53",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3BiQBfnQpWhNeBZQY2nVohh2sug/edf5d435-61aa-4dfe-a003-b7db18543c53.mp4"
+    },
+    "changes": [
+      "ElevenLabs VO (all lines)",
+      "2.6s news sting cold open (sonilo + Sterling announcer)",
+      "documentary-realism B-roll regen (6 clips)",
+      "anchor keyframe proportions fixed (job 34203960)",
+      "anchor clips regenerated at 1080p with new keyframe+audio"
+    ],
+    "qa": {
+      "av_sync": "82.30/82.31s",
+      "anchor_luma": "147-148 steady",
+      "long_silences": 2
+    }
+  }
 }

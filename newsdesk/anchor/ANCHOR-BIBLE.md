@@ -7,7 +7,7 @@ Changes only with Vee's explicit written sign-off.
 
 - Anchor: South Asian American man, early 30s, short black hair, neat short beard,
   warm polished smile. On-air name: **Dev** (proposed — Vee may rename before ep-002).
-- Face: master keyframe = Higgsfield image job `497e6f21-a1aa-4ed5-b718-ea376eac18e6`
+- Face: master keyframe = Higgsfield image job `34203960-56b1-4f1e-b200-7a9fe495109c` (v2, fixed proportions; v1 was 497e6f21)
   (this exact person, every episode; always pass as start_image / identity reference)
   URL: https://d8j0ntlcm91z4.cloudfront.net/user_3BiQBfnQpWhNeBZQY2nVohh2sug/hf_20260802_195422_497e6f21-a1aa-4ed5-b718-ea376eac18e6.png
 - Wardrobe: tailored deep-navy blazer (#1a3a6b) over plain white tee, no other logos.
