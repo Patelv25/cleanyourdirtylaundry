@@ -61,3 +61,23 @@ Rules here are binding on future runs.
   production needs a session with connectors until org enables connector
   pass-through (or COMPOSIO_API_KEY lands in env for API-based posting).
 - L14: Virality predictor caps at 16s — run it on the hook clip only.
+
+## 2026-08-02 — ep-001 realism audit (Vee requested "make sure it looks real")
+
+- R-A1: Frame-level inspection of the anchor (t=5 close-up, personally viewed):
+  photorealistic face, natural skin texture/tone, realistic beard/hair, correct
+  broadcast key light, no plastic-AI sheen. Wall logo + "HAMPER'D NEWS DESK"
+  lettering render clean behind him. PASS.
+- R-A2: Exposure measured (ffmpeg signalstats): anchor open runs YAVG 148-151
+  for all 10s, close 149-151 — steady bright broadcast exposure, no fade/flicker. PASS.
+- R-A3: Lower-thirds are programmatic ffmpeg/Montserrat text — garbled-AI-text
+  impossible by construction on overlays; keep it that way.
+- R-A4: Known softness: B-roll is 720p upscaled to 1080p (kling3_0_turbo cap) vs
+  1080p anchor. Upgrade path for future eps: kling3_0 at 1080p or upscale_video
+  per clip (+credits).
+- R-A5: Voice realism can't be verified by the pipeline (no audio ear) — Brooks/
+  seed_audio at 1.1x tempo; if Vee wants warmer, switch to text2speech_v2
+  variant=elevenlabs (one config change, ~10 credits to re-VO an episode).
+- R-A6: Frame exfil from sandbox for visual QA: use small crops <10KB, single-line
+  base64, printf/heredoc verbatim — larger transfers corrupt. Better: rely on
+  signalstats + video_analysis + one small face crop.
