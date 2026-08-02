@@ -18,3 +18,19 @@ Rules here are binding on future runs.
   lower-thirds every episode — recognizability is the strategy.
 - R7: Every factual claim maps to a `confirmed` event row with source URLs recorded
   in the episode manifest.
+
+## 2026-08-02 — scan run 1 (ep-001 prep)
+
+- L1: Dedupe by normalized-name+date missed a duplicate (First Friday appeared twice
+  with different name strings). Future merges: also fuzzy-match on date+venue.
+- L2: This environment's egress proxy 403-blocks direct page loads on most external
+  hosts; verifiers correctly fell back to multi-source web-search corroboration.
+  Verify prompts should state this fallback is acceptable when ≥3 independent
+  sources agree — two solid events (Crank Arm Tue run, Midtown Farmers' Market)
+  went "unverified" on that technicality alone.
+- L3: Verifier caught a real input error (Midtown market season ends Oct 31, not
+  Nov 2) and a real understatement (Raleigh Market ~1,000 vendors, not 500+).
+  Adversarial pass earns its cost — keep it.
+- L4: Same-day events (tonight 6pm concert) are only usable if the episode posts
+  before start time; prefer Mon–Sun-ahead events for the weekly episode.
+- L5: Red Hat Amphitheater relocates for 2027 — recheck venue address next summer.
