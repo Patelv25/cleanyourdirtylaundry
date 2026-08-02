@@ -30,7 +30,17 @@
   "qa": {
     "video_analysis_id": "36ea6bc1-fa52-46ff-8735-4bf7dc1f40e8",
     "virality_hook_job": "faaef138-dc80-439e-97c8-5a0fdbddc3b5",
-    "status": "pending"
+    "status": "PASSED 2026-08-02",
+    "notes": [
+      "27-scene analysis: anchor identity + set consistent in open (0:00) and close (1:11); all 6 events narrated once, in order; end card clean.",
+      "Analysis suggested mid-video A/V drift; objectively refuted via silencedetect: audio/video stream durations match within 60ms, only silences are a natural 1.7s TTS pause at 42.5s and the 2.8s quiet end card. Scene-timestamp fuzz on longer videos is a known limitation of the analysis tool.",
+      "Per-segment A/V pairing is structural (VO baked into each segment file before concat)."
+    ]
+  },
+  "preview_video": {
+    "media_id": "3b111b16-5a5e-49c5-b48e-17f40d8b7924",
+    "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3BiQBfnQpWhNeBZQY2nVohh2sug/3b111b16-5a5e-49c5-b48e-17f40d8b7924.mp4",
+    "note": "35MB crf24 copy for phone preview; post the master or this one, Meta recompresses either way."
   },
   "publish": {
     "mode": "package",
