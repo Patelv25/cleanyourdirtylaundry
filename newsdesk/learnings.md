@@ -100,3 +100,23 @@ Rules here are binding on future runs.
   request photo permission in partnership DMs; store approved media ids in config.
 - V6: media_confirm between sandbox calls breaks the back-to-back chain and wipes
   the workspace — do all sandbox work first, confirm after.
+
+## 2026-08-02 — ep-001 v3 (comedy weekend-freedom format, LOCKED)
+
+- F1: FORMAT CHANGE (Vee): the show is not news-reading — it's a hype announcement
+  of what viewers could be doing instead of laundry chores. Every event beat gets
+  a laundry joke; delivery is playful sports-desk energy, not anchor-neutral.
+- F2: Structure locked: sting card ("TODAY IN RALEIGH") → comedy hook ("We interrupt
+  your spin cycle…") → WEEKEND events first (Fri→Sun) → rapid-fire weekday "bonus
+  round" (two events share one segment, lower-thirds switch at midpoint) → outro
+  "WE grab the laundry, YOU grab the weekend… go be legendary."
+- F3: Curation rule: pick events people trade chore-time for (fun, social, free,
+  weekend-slotted). Niche expos get caption-mention only, not video beats.
+- F4: Comedy scripts run long — budget ~14-19s raw VO per beat; max 4 video beats
+  + bonus round to stay ≤90s. Wan open clip supports up to 15s hook.
+- F5: Anchor delivery prompt for comedy: "playful breaking-news bulletin, big
+  animated energy, grinning through the jokes, leaning toward camera on emphasis,
+  charismatic sports-desk host having fun."
+- F6: Sandbox reliability: the ONLY safe pattern is ending the chain with ONE call
+  that does concat + 720p superfast preview + PUT upload together. Never split
+  concat from upload. 1080p master can be re-rendered on demand after approval.
