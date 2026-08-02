@@ -1,0 +1,58 @@
+{
+  "brand": {
+    "name": "Hamper'd",
+    "show_name": "Hamper'd News Desk",
+    "logo_url": "https://pub-9f93ea10f72c417d846284734145e8d5.r2.dev/hamperd-logo-transparent.png",
+    "colors": {
+      "navy": "#1a3a6b",
+      "sky": "#29abe2",
+      "ice": "#e8f4fd",
+      "bg_light": "#f7f9fc"
+    },
+    "tagline": "Pickup • Wash • Deliver • Repeat",
+    "promise": "Your laundry is done before you remember you had any.",
+    "instagram": "gethamperd",
+    "facebook": "gethamperd",
+    "website": "hamperd.com",
+    "phone": "(919) 283-3010",
+    "hq": "1100 North Raleigh Blvd, Suite 143, Raleigh NC 27610",
+    "voice": "Punchy, warm, benefit-first. Short sentences. Local pride. Never hype-y filler. Sign-off: The Hamper'd Team."
+  },
+  "audience": "Raleigh residents and busy professionals/families (residential + commercial accounts). NOT the CYDL student brand.",
+  "cadence": {
+    "scan_cron_utc": "0 11 * * *",
+    "episode_cron_utc": "0 12 * * 1",
+    "note": "7:00am ET daily scan; Monday 8:00am ET episode. Cron stored in UTC (EDT=UTC-4). Shift to 12:00/13:00 UTC during EST."
+  },
+  "episode": {
+    "target_seconds_min": 60,
+    "target_seconds_max": 90,
+    "events_min": 5,
+    "events_max": 7,
+    "aspect": "9:16",
+    "intro_line": "From the Hamper'd News Desk in Raleigh…",
+    "outro_line": "Go live it up, Raleigh — the laundry's on us. Hamperd dot com.",
+    "max_qa_retries": 2
+  },
+  "publish": {
+    "mode": "package",
+    "modes": ["composio", "package"],
+    "composio_env": "COMPOSIO_API_KEY",
+    "package_email": "vee@gethamperd.com",
+    "ai_disclosure": true,
+    "disclosure_text": "Anchor generated with AI."
+  },
+  "verification": {
+    "confirmed_rule": "(official organizer/venue/ticketing source AND future date AND Raleigh-area venue) OR two independent sources that agree on date+venue",
+    "never_air_unverified": true,
+    "handle_check": "Every tagged Instagram handle must be resolved from an official source before it goes in a caption."
+  },
+  "sources": [
+    {"lane": "reddit", "targets": ["reddit.com/r/raleigh", "reddit.com/r/triangle", "reddit.com/r/bullcity"]},
+    {"lane": "local-press", "targets": ["Axios Raleigh", "INDY Week calendar", "Raleigh Magazine", "News & Observer things to do", "WRAL Out and About"]},
+    {"lane": "event-platforms", "targets": ["visitRaleigh.com events", "Eventbrite Raleigh", "Meetup Raleigh", "Triangle on the Cheap"]},
+    {"lane": "social-public", "targets": ["public Instagram/Facebook pages of Raleigh venues, breweries, coffee shops, run clubs — best effort, no login"]},
+    {"lane": "openings", "targets": ["new restaurant/bar/coffee openings — Axios Raleigh openings, Triangle Business Journal, Raleigh Magazine food news"]}
+  ],
+  "event_categories": ["run club", "fitness", "coffee meetup", "festival", "block party", "market", "concert", "food/restaurant opening", "free family thing", "wildcard"]
+}
