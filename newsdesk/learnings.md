@@ -34,3 +34,30 @@ Rules here are binding on future runs.
 - L4: Same-day events (tonight 6pm concert) are only usable if the episode posts
   before start time; prefer Mon–Sun-ahead events for the weekly episode.
 - L5: Red Hat Amphitheater relocates for 2027 — recheck venue address next summer.
+
+## 2026-08-02 — ep-001 production
+
+- L6: Higgsfield sandbox_exec calls are killed by the MCP client at ~55-60s regardless
+  of timeout_seconds, and background:true fails to launch — chunk assembly into <55s
+  foreground calls (downloads / 3 segs / 3 segs / seg0 / seg7+8 / concat+upload) and
+  NEVER let a call time out: a killed call wipes the whole sandbox workspace.
+- L7: wan2_7 anchor generations may trigger a bogus preset recommendation ("IN THE
+  DARK") — retry immediately with declined_preset_id, don't ask.
+- L8: seed_audio and wan2_7 rate-limit (429) on parallel bursts — submit ≤6 TTS at
+  once, wait ~25-40s before retrying the rest.
+- L9: TTS runs slower than script-read estimates (~10.9s per event beat vs ~9
+  planned). atempo=1.1 at assembly fixed pacing; next time write event lines 1-2
+  words shorter.
+- L10: video_analysis scene timestamps drift on 60s+ videos — never treat its
+  mid-video A/V pairing as a defect by itself; verify objectively with ffprobe
+  stream durations + silencedetect before rebuilding (saved a full re-render).
+- L11: anchor clips come back 768x1344 (not exact 9:16) — use
+  scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920, never
+  scale=-2:1920,crop.
+- L12: ultrafast/crf20 master = 233MB for 78s; make a crf24 preview copy for phone
+  delivery. Meta recompresses anyway.
+- L13: Routine-fired sessions in this org run WITHOUT MCP connectors (no Higgsfield/
+  Gmail) — the weekly episode Routine has a stop-after-script fallback; full
+  production needs a session with connectors until org enables connector
+  pass-through (or COMPOSIO_API_KEY lands in env for API-based posting).
+- L14: Virality predictor caps at 16s — run it on the hook clip only.
