@@ -1,55 +1,44 @@
 # ASSET BRAND LABELS — which pictures belong to which brand
-(Added Aug 2 2026, per Vee. Rule of thumb before any asset leaves this
-repo: check its label here. If it isn't labeled, it doesn't ship.)
+(Added Aug 2 2026, per Vee. Corrected same day: Vee ruled that ALL
+character/world art — the Pile, the Bag, the washing machine, every
+scene — is CYDL-only. No exceptions, no "shared" tier for artwork.
+Rule of thumb before any asset leaves this repo: check its label here.
+If it isn't labeled, it doesn't ship.)
 
 Two brands, one company:
 - **CYDL** — Clean Your Dirty Laundry. Campus brand (NC State). This repo
-  is its site. Navy/powder/skywash palette, lemon CTAs.
-- **HAMPER'D** — the Raleigh household brand (hamperd.com). Same facility,
-  same drivers. Ads for Hamper'd must carry Hamper'd lockups and NEVER a
-  CYDL wordmark.
+  is its site. Owns ALL character and world art.
+- **HAMPER'D** — the Raleigh household brand (hamperd.com). Ads for
+  Hamper'd carry Hamper'd lockups only. Until Hamper'd gets its own
+  commissioned art, Hamper'd creative is typography-only or uses
+  licensed third-party footage.
 
-Naming convention going forward: new files get a brand prefix —
-`cydl-*`, `hamperd-*`, or `shared-*`. Everything already here is
-labeled below.
+Naming convention: new files get a brand prefix — `cydl-*` or
+`hamperd-*`. Directory placement is part of the label: nothing under
+`ads/hamperd/` may contain CYDL art.
 
-## CYDL-ONLY — contains CYDL wordmarks or campus-specific content
-Never use in Hamper'd material.
-
-| Asset | Why it's CYDL-only |
-|---|---|
-| `assets/logo_wordmark_stacked.svg` | "CLEAN YOUR DIRTY LAUNDRY" wordmark |
-| `assets/logo_wordmark_dots_horizontal.svg` | CYDL wordmark |
-| `assets/logo_cydl_monogram_primary.svg` | CYDL monogram |
-| `assets/logo_cydl_hearttag_lockup.svg` | CYDL lockup |
-| `assets/world/merch-drop.webp` | hoodie printed with the CYDL wordmark |
-| `assets/hero-dorm.jpg`, `assets/gameday-exit.jpg`, `assets/tuesday-ritual.jpg`, `assets/parent-facetime.jpg`, `assets/fresh-stack.jpg`, `assets/texture-rinse.jpg` | campus-life photography shot for the CYDL site |
-| `v3-build/ch1-immersive/boards/*` | CYDL site design boards |
-
-## SHARED UNIVERSE — Pile/Bag character art, no wordmarks
-Characters originate in the CYDL universe canon (`CYDL-UNIVERSE.md`) but
-carry no brand marks. Cleared for Hamper'd use when paired with Hamper'd
-lockups only (used that way in the Aug 2026 Hamper'd reel, per Vee).
-If Vee ever wants strict separation, re-label these CYDL-only and
-commission Hamper'd-specific art.
-
+## CYDL-ONLY — never in Hamper'd material
 | Asset | Notes |
 |---|---|
-| `assets/world/hero-loop.mp4` | blue Pile on dorm chair, live-action hybrid, 5s loop |
-| `assets/world/porch-loop.mp4` | Bag glowing at a door, live-action hybrid, 5s loop |
-| `assets/world/pile-*.webp`, `assets/world/blue-*.webp` | Pile character art (blue-* = palette-strict versions) |
-| `assets/world/chair-buried.webp`, `assets/world/chair-simple.webp` | the Chair |
-| `assets/world/scene-dorm-hero.webp`, `scene-tuesday-porch.webp`, `scene-thursday-fold.webp` | story scenes, no marks |
-| `assets/world/fold-hybrid.webp`, `hero-hybrid.webp`, `porch-hybrid.webp`, `standoff-night.webp`, `blue-duel.webp` | scenes/standoffs, no marks |
-| `assets/world/truck-a.webp`, `washing-machine.webp` | operational imagery, no marks |
+| `assets/logo_*.svg` (all four) | CYDL wordmarks/monograms/lockups |
+| `assets/*.jpg` (all site photography) | campus-life shots for the CYDL site |
+| `assets/world/*` — ALL of it | Pile/Bag/Chair/washing-machine/truck/scene art and both video loops (`hero-loop.mp4`, `porch-loop.mp4`). CYDL universe canon, CYDL-only per Vee (Aug 2 2026) |
+| `v3-build/**` | CYDL site boards and motion previews |
+| `ads/cydl-candidates/*` | finished reels built from CYDL art (see that folder's README) — postable for CYDL after an end-card swap, NEVER as Hamper'd |
 
 ## HAMPER'D-ONLY
 | Asset | Notes |
 |---|---|
-| `ads/hamperd/hamperd-reel-v1.mp4` | original reel, all-canon assets |
-| `ads/hamperd/hamperd-reel-v2-fitted-sheet.mp4` | original reel, all-canon assets |
-| `ads/hamperd/hamperd-x-miriamj-edit-v1.mp4` | contains THIRD-PARTY footage — see below |
-| `ads/hamperd/*` (covers, captions, playbook, src) | the Hamper'd ad kit |
+| `ads/hamperd/hamperd-reel-v2-fitted-sheet.mp4` | typography-only fitted-sheet reel — contains no artwork at all |
+| `ads/hamperd/hamperd-x-miriamj-edit-v1.mp4` | licensed third-party footage + typography outro — see below |
+| `ads/hamperd/hamperd-reel-cover-endcard.png`, `hamperd-reel-v2-cover.png` | typography end-card/hook frames |
+| `ads/hamperd/*.md`, `ads/hamperd/src/**` | post kit, playbook, render source |
+
+## SHARED DESIGN SYSTEM (not artwork)
+Type (Archivo Black + Inter + mono) and the navy/powder/skywash/lemon
+palette are currently used by both brands' materials. If Hamper'd has or
+gets its own palette/type, tell the agent and these get split too —
+until then this is the one deliberately shared layer.
 
 ## THIRD-PARTY LICENSED — special handling
 | Asset | Status |
