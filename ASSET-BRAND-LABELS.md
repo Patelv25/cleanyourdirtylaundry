@@ -46,7 +46,15 @@ commission Hamper'd-specific art.
 ## HAMPER'D-ONLY
 | Asset | Notes |
 |---|---|
-| `ads/hamperd/*` | the Hamper'd reel ad kit (video, covers, captions, source) |
+| `ads/hamperd/hamperd-reel-v1.mp4` | original reel, all-canon assets |
+| `ads/hamperd/hamperd-reel-v2-fitted-sheet.mp4` | original reel, all-canon assets |
+| `ads/hamperd/hamperd-x-miriamj-edit-v1.mp4` | contains THIRD-PARTY footage — see below |
+| `ads/hamperd/*` (covers, captions, playbook, src) | the Hamper'd ad kit |
+
+## THIRD-PARTY LICENSED — special handling
+| Asset | Status |
+|---|---|
+| Miriam J (@epitomeofclassy) fitted-sheet reel (raw file, kept off-repo on Vee's machine) | Permission granted verbally per Vee, Aug 2 2026. **Get it in writing before the edit posts** and file it with scope (platforms, organic/paid, duration). Never repost the raw reel; use only inside `hamperd-x-miriamj-edit-v1.mp4`. Credit @epitomeofclassy in captions. The musical tail of her original was cut from the edit — her permission cannot cover third-party music rights. |
 
 ## QUARANTINE — do not use anywhere until fixed
 | Asset | Problem |
