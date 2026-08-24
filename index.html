@@ -171,6 +171,23 @@
   .plan .btn { margin-top: 20px; width: 100%; }
   .plan-basic .btn { background: var(--navy); color: var(--white); box-shadow: 0 6px 0 #0B1526; }
 
+  /* savings math */
+  .math { background: var(--white); }
+  .math .cols { display: grid; gap: 18px; margin-top: 34px; }
+  @media (min-width: 760px) { .math .cols { grid-template-columns: repeat(3, 1fr); } }
+  .mcol { border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; background: #FBFAF7; position: relative; }
+  .mcol.hot { border: 3px solid var(--red); background: var(--white); }
+  .mcol .label { font-weight: 800; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+  .mcol .ours { font-family: 'Archivo Black', sans-serif; font-size: 42px; color: var(--navy); margin: 10px 0 2px; }
+  .mcol .ours small { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--muted); }
+  .mcol .them { margin-top: 14px; font-size: 14.5px; color: var(--muted); line-height: 1.5; }
+  .mcol .them s { color: #B04A55; }
+  .mcol .save { display: inline-block; margin-top: 14px; background: var(--navy); color: var(--white); font-weight: 800; font-size: 13.5px; padding: 6px 12px; border-radius: 6px; }
+  .mcol.hot .save { background: var(--red); }
+  .bagline { margin-top: 26px; background: var(--navy); color: var(--white); border-radius: 12px; padding: 18px 22px; font-size: 16px; text-align: center; }
+  .bagline b { color: var(--sky); }
+  .math .foot { margin-top: 14px; font-size: 12.5px; color: var(--muted); text-align: center; }
+
   .referral { background: var(--red); color: var(--white); }
   .referral .wrap { text-align: center; }
   .referral h2 { font-size: clamp(34px, 6vw, 58px); }
@@ -291,6 +308,35 @@
   </div>
 </section>
 
+<section class="math" id="math">
+  <div class="wrap">
+    <div class="eyebrow">Do the math</div>
+    <h2>Cheaper than doing it the hard way. By a lot.</h2>
+    <div class="cols">
+      <div class="mcol hot">
+        <div class="label">One month</div>
+        <div class="ours">$99 <small>flat · 4+ bags</small></div>
+        <div class="them">Pay-as-you-go wash &amp; fold: <s>~$149/mo</s><br>Per-bag campus services: <s>$182–$217/mo</s></div>
+        <span class="save">Save up to $118 every month</span>
+      </div>
+      <div class="mcol">
+        <div class="label">Fall semester</div>
+        <div class="ours">$376 <small>with WOLFPACK20</small></div>
+        <div class="them">Pay-as-you-go wash &amp; fold: <s>~$595</s><br>Per-bag campus services: <s>$727–$866</s></div>
+        <span class="save">Save up to $470 a semester</span>
+      </div>
+      <div class="mcol">
+        <div class="label">Full school year</div>
+        <div class="ours">$871 <small>Aug–May, with code</small></div>
+        <div class="them">Pay-as-you-go wash &amp; fold: <s>~$1,339</s><br>Per-bag campus services: <s>$1,637–$1,949</s></div>
+        <span class="save">Save $1,000+ a year</span>
+      </div>
+    </div>
+    <div class="bagline">One 15 lb bag, washed, folded, delivered: <b>~$23 on the plan</b> · $34 pay-per-pound · $42–50 with other campus services</div>
+    <p class="foot">Based on one 15 lb bag weekly. Pay-as-you-go = $2.29/lb Raleigh wash-and-fold rate. Per-bag = published rates of other student laundry services serving NC State ($42–$50 per 20 lb bag). Semester = 4 months, school year = 9 months. First month $79 with code WOLFPACK20.</p>
+  </div>
+</section>
+
 <section class="referral">
   <div class="wrap">
     <h2>GIVE $20. GET $20.</h2>
@@ -361,6 +407,36 @@
     <p class="disclaimer">© 2026 Hamper'd Laundry, Raleigh NC. Never Do Laundry Again.</p>
   </div>
 </footer>
+
+<script>
+/* Attribution: carry utm_* params from ads/QR links into the Curbside signup
+ * portal as its native msource/mmedium/mcampaign params, so every signup is
+ * attributed to its channel inside Curbside itself. Persists for the session
+ * so the tag survives scrolling/reading before the click. */
+(function () {
+  var qs = new URLSearchParams(location.search);
+  var KEY = 'hamperd_attr';
+  var attr = {};
+  try { attr = JSON.parse(sessionStorage.getItem(KEY) || '{}'); } catch (e) {}
+  var map = { utm_source: 'msource', utm_medium: 'mmedium', utm_campaign: 'mcampaign' };
+  Object.keys(map).forEach(function (k) {
+    if (qs.get(k)) attr[map[k]] = qs.get(k);
+  });
+  if (!attr.mreferrer) {
+    try { attr.mreferrer = document.referrer ? new URL(document.referrer).hostname : 'direct'; } catch (e) { attr.mreferrer = 'direct'; }
+  }
+  if (!attr.msource) attr.msource = 'cydl-student-page';
+  if (!attr.macquisitiondate) attr.macquisitiondate = new Date().toISOString();
+  try { sessionStorage.setItem(KEY, JSON.stringify(attr)); } catch (e) {}
+  document.querySelectorAll('a[href*="curbsidelaundries.com"]').forEach(function (a) {
+    try {
+      var u = new URL(a.href);
+      Object.keys(attr).forEach(function (k) { u.searchParams.set(k, attr[k]); });
+      a.href = u.toString();
+    } catch (e) {}
+  });
+})();
+</script>
 
 </body>
 </html>
