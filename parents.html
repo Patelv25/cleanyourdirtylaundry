@@ -6,6 +6,25 @@
 <meta http-equiv="refresh" content="0; url=/">
 <link rel="canonical" href="https://cleanyourdirtylaundry.com/">
 <script>window.location.replace("/");</script>
+<!-- Meta pixel — dataset 2513474502449186 (Hamper'd), ad account 994090446958564. Added 2026-09-18.
+     PageView + Lead on click-through to the Curbside signup (that form is on a vendor domain we cannot script,
+     so the click is the last moment we can observe). eventID lets a future Conversions API call deduplicate. -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2513474502449186');fbq('track','PageView');
+document.addEventListener('click',function(ev){
+  var a=ev.target&&ev.target.closest?ev.target.closest('a[href]'):null;
+  if(!a||!/curbsidelaundries\.com\/Account\/SignUp/i.test(a.href))return;
+  try{fbq('track','Lead',{content_name:'Curbside signup click',content_category:'student subscription',
+    source_path:window.location.pathname},{eventID:'ld-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10)});}catch(e){}
+},true);
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2513474502449186&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 <p>This page has moved. <a href="/">Continue to Hamper'd Student Laundry</a>.</p>

@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NC State Laundry Service — Hamper'd Student Plan | $99/mo</title>
-<meta name="description" content="Never do laundry again. Hamper'd picks up your laundry every week at NC State & Meredith, washes and folds it, and delivers it back in 48 hours. $99/month flat — first month $79 with code WOLFPACK20.">
+<meta name="description" content="Never do laundry again. Hamper'd picks up your laundry every week at NC State & Meredith, washes and folds it, and delivers it back in 48 hours. $99/month flat — first month $79 with WOLFPACK20, applied to your first bill automatically.">
 <meta name="theme-color" content="#14213D">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Never Do Laundry Again — $99/mo for NC State & Meredith Students">
-<meta property="og:description" content="Weekly pickup, wash & fold, delivered back in 48 hours. $99/month flat. First month $79 with code WOLFPACK20. Give $20, get $20.">
+<meta property="og:description" content="Weekly pickup, wash & fold, delivered back in 48 hours. $99/month flat. First month $79 with WOLFPACK20, applied to your first bill automatically. Give $20, get $20.">
 <meta property="og:image" content="https://cleanyourdirtylaundry.com/assets/hamperd/hero-campus-van.jpg">
 <meta property="og:site_name" content="Hamper'd Student Laundry">
 <meta property="og:url" content="https://cleanyourdirtylaundry.com/">
 <link rel="canonical" href="https://cleanyourdirtylaundry.com/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Never Do Laundry Again — $99/mo Student Laundry">
-<meta name="twitter:description" content="Weekly pickup, wash & fold, back in 48 hours. First month $79 with code WOLFPACK20.">
+<meta name="twitter:description" content="Weekly pickup, wash & fold, back in 48 hours. First month $79 with WOLFPACK20, applied to your first bill automatically.">
 <meta name="twitter:image" content="https://cleanyourdirtylaundry.com/assets/hamperd/hero-campus-van.jpg">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C8102E'/%3E%3Ctext x='32' y='45' font-family='Arial Black, Arial, sans-serif' font-size='34' font-weight='900' fill='%23FFFFFF' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
@@ -57,7 +57,7 @@
         "@type": "Offer",
         "price": "99.00",
         "priceCurrency": "USD",
-        "description": "One 15 lb bag of laundry picked up, washed, folded, and delivered every week. $99/month flat. First month $79 with code WOLFPACK20."
+        "description": "One 15 lb bag of laundry picked up, washed, folded, and delivered every week. $99/month flat. First month $79 with WOLFPACK20, applied to your first bill automatically."
       }
     }
   ]
@@ -219,6 +219,25 @@
   .skip { position: absolute; left: -9999px; }
   a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
 </style>
+<!-- Meta pixel — dataset 2513474502449186 (Hamper'd), ad account 994090446958564. Added 2026-09-18.
+     PageView + Lead on click-through to the Curbside signup (that form is on a vendor domain we cannot script,
+     so the click is the last moment we can observe). eventID lets a future Conversions API call deduplicate. -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2513474502449186');fbq('track','PageView');
+document.addEventListener('click',function(ev){
+  var a=ev.target&&ev.target.closest?ev.target.closest('a[href]'):null;
+  if(!a||!/curbsidelaundries\.com\/Account\/SignUp/i.test(a.href))return;
+  try{fbq('track','Lead',{content_name:'Curbside signup click',content_category:'student subscription',
+    source_path:window.location.pathname},{eventID:'ld-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10)});}catch(e){}
+},true);
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2513474502449186&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 
@@ -337,7 +356,7 @@
       </div>
     </div>
     <div class="bagline">One 15 lb bag, washed, folded, delivered: <b>~$23 on the plan</b> · $34 pay-per-pound · $42–50 with other campus services</div>
-    <p class="foot">Based on one 15 lb bag weekly. Pay-as-you-go = $2.29/lb Raleigh wash-and-fold rate. Per-bag = published rates of other student laundry services serving NC State ($42–$50 per 20 lb bag). Semester = 4 months, school year = 9 months. First month $79 with code WOLFPACK20.</p>
+    <p class="foot">Based on one 15 lb bag weekly. Pay-as-you-go = $2.29/lb Raleigh wash-and-fold rate. Per-bag = published rates of other student laundry services serving NC State ($42–$50 per 20 lb bag). Semester = 4 months, school year = 9 months. First month $79 with WOLFPACK20, applied to your first bill automatically.</p>
   </div>
 </section>
 
