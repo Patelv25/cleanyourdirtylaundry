@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face{
+    font-family:'Archivo Black';
+    src:url('fonts/archivo-black.woff2') format('woff2');
+    font-weight:400;
+  }
+  @font-face{
+    font-family:'Inter';
+    src:url('fonts/inter-latin.woff2') format('woff2');
+    font-weight:100 900;
+  }
+  :root{
+    --navy:#1E2A38; --navy-deep:#16202B; --navy-raise:#243447;
+    --powder:#E6F0FA; --powder-dim:rgba(230,240,250,.72);
+    --sky:#7FBFE9; --sky-faint:rgba(127,191,233,.16); --sky-line:rgba(127,191,233,.32);
+    --lemon:#FFD24D;
+    --display:'Archivo Black','Arial Black',sans-serif;
+    --body:'Inter','Helvetica Neue',Arial,sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1080px;height:1920px;overflow:hidden;background:var(--navy)}
+  #stage{
+    position:relative;width:1080px;height:1920px;overflow:hidden;
+    background:
+      radial-gradient(1400px 900px at 50% 12%, var(--navy-raise) 0%, transparent 62%),
+      radial-gradient(1200px 800px at 50% 108%, var(--navy-deep) 0%, transparent 55%),
+      var(--navy);
+  }
+  #vignette{
+    position:absolute;inset:0;z-index:40;pointer-events:none;
+    background:radial-gradient(1500px 2100px at 50% 46%, transparent 62%, rgba(22,32,43,.55) 100%);
+  }
+  .beat{position:absolute;inset:0;opacity:0}
+  .col{
+    position:absolute;left:0;right:0;top:0;bottom:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:230px 84px 430px;
+  }
+  .kicker{
+    font-family:var(--mono);font-size:32px;letter-spacing:.26em;
+    color:var(--sky);text-transform:uppercase;
+    display:flex;align-items:center;gap:22px;
+  }
+  .kicker::before,.kicker::after{
+    content:"";display:block;width:56px;height:2px;background:var(--sky-line);
+  }
+  .headline{
+    font-family:var(--display);font-weight:400;color:var(--powder);
+    font-size:132px;line-height:1.05;letter-spacing:-.01em;text-align:center;
+    margin-top:52px;
+  }
+  .headline .dim{color:var(--powder-dim)}
+  .headline .line{display:block}
+  .note{
+    margin-top:70px;font-family:var(--mono);font-size:35px;letter-spacing:.1em;
+    color:var(--sky);background:var(--sky-faint);
+    border:1.5px solid var(--sky-line);border-radius:999px;
+    padding:24px 48px;
+  }
+  /* end card */
+  #b5 .col{justify-content:center}
+  .endword{
+    font-family:var(--display);color:var(--powder);
+    font-size:66px;letter-spacing:.30em;text-indent:.30em;text-align:center;
+  }
+  .endrule{width:120px;height:3px;background:var(--sky-line);margin:44px auto 0}
+  .endline{
+    font-family:var(--display);color:var(--powder);text-align:center;
+    font-size:100px;line-height:1.06;letter-spacing:-.01em;margin-top:46px;
+  }
+  .endsub{
+    font-family:var(--body);font-weight:600;color:var(--sky);
+    font-size:52px;text-align:center;margin-top:34px;letter-spacing:.01em;
+  }
+  .pill{
+    margin-top:74px;
+    font-family:var(--body);font-weight:700;font-size:46px;letter-spacing:.02em;
+    color:var(--navy-deep);background:var(--lemon);
+    padding:34px 76px;border-radius:999px;
+  }
+  .endfoot{
+    margin-top:60px;font-family:var(--mono);font-size:29px;
+    letter-spacing:.24em;color:var(--powder-dim);text-transform:uppercase;
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- B1 · hook -->
+  <section class="beat" id="b1">
+    <div class="col">
+      <div class="kicker" data-el="k">POV · laundry day</div>
+      <div class="headline" data-el="h">
+        <span class="line" data-l="0">The fitted</span>
+        <span class="line" data-l="1">sheet has</span>
+        <span class="line" data-l="2">your towels.</span>
+      </div>
+      <div class="note" data-el="n">it is not negotiating</div>
+    </div>
+  </section>
+
+  <!-- B2 · escalation -->
+  <section class="beat" id="b2">
+    <div class="col">
+      <div class="kicker" data-el="k">8 PM</div>
+      <div class="headline" data-el="h">
+        <span class="line" data-l="0">Negotiations</span>
+        <span class="line" data-l="1">have stalled.</span>
+      </div>
+      <div class="note" data-el="n">everything it touches joins it</div>
+    </div>
+  </section>
+
+  <!-- B3 · the turn -->
+  <section class="beat" id="b3">
+    <div class="col">
+      <div class="kicker" data-el="k">The alternative</div>
+      <div class="headline" data-el="h">
+        <span class="line" data-l="0">Send in</span>
+        <span class="line" data-l="1">the bag.</span>
+      </div>
+      <div class="note" data-el="n">you: not involved</div>
+    </div>
+  </section>
+
+  <!-- B4 · resolution -->
+  <section class="beat" id="b4">
+    <div class="col">
+      <div class="kicker" data-el="k">Two days later</div>
+      <div class="headline" data-el="h">
+        <span class="line" data-l="0">Flat sheets.</span>
+        <span class="line dim" data-l="1">Somehow.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- B5 · end card -->
+  <section class="beat" id="b5">
+    <div class="col">
+      <div class="endword" data-el="w">HAMPER'D</div>
+      <div class="endrule" data-el="r"></div>
+      <div class="endline" data-el="h">Let Hamper'd<br>take care of<br>this mess.</div>
+      <div class="endsub" data-el="s">So you don't have to.</div>
+      <div class="pill" data-el="c">hamperd.com</div>
+      <div class="endfoot" data-el="f">wash · fold · delivered · raleigh</div>
+    </div>
+  </section>
+
+  <div id="vignette"></div>
+</div>
+
+<script>
+const FPS = 30;
+const BEATS = [
+  {id:'b1', t0:0.00,  t1:3.40},
+  {id:'b2', t0:3.40,  t1:6.40},
+  {id:'b3', t0:6.40,  t1:9.40},
+  {id:'b4', t0:9.40,  t1:12.00},
+  {id:'b5', t0:12.00, t1:16.20},
+];
+const TOTAL = 16.20;
+
+const $ = (sel,root)=> (root||document).querySelector(sel);
+const $$ = (sel,root)=> Array.from((root||document).querySelectorAll(sel));
+const clamp01 = x => Math.max(0, Math.min(1, x));
+const eoc = x => 1 - Math.pow(1-x, 3);
+const eob = x => { const c1=1.30, c3=c1+1;
+  return 1 + c3*Math.pow(x-1,3) + c1*Math.pow(x-1,2); };
+
+function ent(u, delay, dur){ return eoc(clamp01((u-delay)/(dur||0.45))); }
+function exf(u, beatDur, dur){ return clamp01((beatDur-u)/(dur||0.30)); }
+
+function styleIn(el, p, rise){
+  el.style.opacity = p;
+  el.style.transform = 'translateY(' + ((1-p)*(rise==null?44:rise)) + 'px)';
+}
+
+function seek(t){
+  t = Math.max(0, Math.min(TOTAL - 1/FPS, t));
+  for(const b of BEATS){
+    const el = document.getElementById(b.id);
+    if(t < b.t0 || t >= b.t1){ el.style.opacity = 0; continue; }
+    el.style.opacity = 1;
+    const u = t - b.t0, D = b.t1 - b.t0;
+    const isEnd = b.id === 'b5';
+    const X = isEnd ? 1 : exf(u, D);
+
+    if(!isEnd){
+      const k=$('[data-el=k]',el), n=$('[data-el=n]',el);
+      styleIn(k, ent(u,0.00)*X);
+      // kinetic line-by-line reveal: each display line pops with a slight
+      // overshoot, staggered 0.14s apart
+      $$('.line',el).forEach((ln,i)=>{
+        const lp = clamp01((u - 0.12 - i*0.14)/0.5);
+        ln.style.opacity = eoc(lp)*X;
+        ln.style.transform =
+          'translateY('+((1-eoc(lp))*56)+'px) scale('+(0.96+0.04*eob(lp))+')';
+      });
+      if(n) styleIn(n, ent(u,0.12+$$('.line',el).length*0.14+0.28)*X);
+    } else {
+      const w=$('[data-el=w]',el), r=$('[data-el=r]',el), h=$('[data-el=h]',el),
+            s=$('[data-el=s]',el), c=$('[data-el=c]',el), f=$('[data-el=f]',el);
+      styleIn(w, ent(u,0.00));
+      r.style.opacity = ent(u,0.10);
+      const hp = clamp01((u-0.18)/0.6);
+      h.style.opacity = eoc(hp);
+      h.style.transform = 'scale(' + (0.92 + 0.08*eob(hp)) + ')';
+      styleIn(s, ent(u,0.62));
+      const cp2 = ent(u,0.88,0.5);
+      const pulse = 0.25 + 0.15*Math.sin(2*Math.PI*(u/1.6));
+      c.style.opacity = cp2;
+      c.style.transform = 'translateY('+((1-cp2)*40)+'px)';
+      c.style.boxShadow = '0 24px 70px rgba(255,210,77,'+(pulse*cp2)+')';
+      styleIn(f, ent(u,1.10));
+    }
+  }
+}
+
+window.TOTAL = TOTAL; window.FPS = FPS; window.seek = seek;
+window.READY = false;
+document.fonts.ready.then(()=>{ seek(0); window.READY = true; });
+</script>
+</body>
+</html>

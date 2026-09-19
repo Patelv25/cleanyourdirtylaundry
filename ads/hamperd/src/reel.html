@@ -1,0 +1,315 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face{
+    font-family:'Archivo Black';
+    src:url('fonts/archivo-black.woff2') format('woff2');
+    font-weight:400;
+  }
+  @font-face{
+    font-family:'Inter';
+    src:url('fonts/inter-latin.woff2') format('woff2');
+    font-weight:100 900;
+  }
+  :root{
+    --navy:#1E2A38; --navy-deep:#16202B; --navy-raise:#243447;
+    --powder:#E6F0FA; --powder-dim:rgba(230,240,250,.72);
+    --sky:#7FBFE9; --sky-faint:rgba(127,191,233,.16); --sky-line:rgba(127,191,233,.32);
+    --lemon:#FFD24D;
+    --display:'Archivo Black','Arial Black',sans-serif;
+    --body:'Inter','Helvetica Neue',Arial,sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1080px;height:1920px;overflow:hidden;background:var(--navy)}
+  #stage{
+    position:relative;width:1080px;height:1920px;overflow:hidden;
+    background:
+      radial-gradient(1400px 900px at 50% 12%, var(--navy-raise) 0%, transparent 62%),
+      radial-gradient(1200px 800px at 50% 108%, var(--navy-deep) 0%, transparent 55%),
+      var(--navy);
+  }
+  #vignette{
+    position:absolute;inset:0;z-index:40;pointer-events:none;
+    background:radial-gradient(1500px 2100px at 50% 46%, transparent 62%, rgba(22,32,43,.55) 100%);
+  }
+  .beat{position:absolute;inset:0;opacity:0}
+  .col{
+    position:absolute;left:0;right:0;top:0;bottom:0;
+    display:flex;flex-direction:column;align-items:center;
+    padding:230px 84px 430px;
+  }
+  .kicker{
+    font-family:var(--mono);font-size:30px;letter-spacing:.26em;
+    color:var(--sky);text-transform:uppercase;
+    display:flex;align-items:center;gap:22px;
+  }
+  .kicker::before,.kicker::after{
+    content:"";display:block;width:56px;height:2px;background:var(--sky-line);
+  }
+  .headline{
+    font-family:var(--display);font-weight:400;color:var(--powder);
+    font-size:96px;line-height:1.04;letter-spacing:-.01em;text-align:center;
+    margin-top:36px;
+  }
+  .headline .dim{color:var(--powder-dim)}
+  .plate{
+    margin-top:64px;width:912px;border-radius:30px;overflow:hidden;
+    border:2px solid var(--sky-line);
+    box-shadow:0 40px 90px rgba(22,32,43,.6);
+    background:var(--navy-deep);
+    position:relative;
+  }
+  .plate img{display:block;width:100%;height:auto}
+  .plate .platecap{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:26px 34px 24px;
+    background:linear-gradient(transparent, rgba(22,32,43,.88));
+    font-family:var(--mono);font-size:27px;letter-spacing:.14em;
+    color:var(--powder-dim);text-transform:uppercase;
+  }
+  .note{
+    margin-top:52px;font-family:var(--mono);font-size:33px;letter-spacing:.1em;
+    color:var(--sky);background:var(--sky-faint);
+    border:1.5px solid var(--sky-line);border-radius:999px;
+    padding:22px 44px;
+  }
+  .sticker{margin-top:70px;position:relative}
+  .sticker img{display:block;filter:drop-shadow(0 46px 60px rgba(22,32,43,.75))}
+  .shadow-ellipse{
+    position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);
+    width:70%;height:56px;border-radius:50%;
+    background:radial-gradient(closest-side, rgba(22,32,43,.8), transparent);
+  }
+  /* end card */
+  #b6 .col{justify-content:center;padding:230px 84px 430px}
+  .endword{
+    font-family:var(--display);color:var(--powder);
+    font-size:66px;letter-spacing:.30em;text-indent:.30em;text-align:center;
+  }
+  .endrule{width:120px;height:3px;background:var(--sky-line);margin:44px auto 0}
+  .endline{
+    font-family:var(--display);color:var(--powder);text-align:center;
+    font-size:100px;line-height:1.06;letter-spacing:-.01em;margin-top:46px;
+  }
+  .endsub{
+    font-family:var(--body);font-weight:600;color:var(--sky);
+    font-size:52px;text-align:center;margin-top:34px;letter-spacing:.01em;
+  }
+  .pill{
+    margin-top:74px;
+    font-family:var(--body);font-weight:700;font-size:46px;letter-spacing:.02em;
+    color:var(--navy-deep);background:var(--lemon);
+    padding:34px 76px;border-radius:999px;
+  }
+  .endfoot{
+    margin-top:60px;font-family:var(--mono);font-size:29px;
+    letter-spacing:.24em;color:var(--powder-dim);text-transform:uppercase;
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- B1 · hook: dorm video, pile on the chair -->
+  <section class="beat" id="b1">
+    <div class="col">
+      <div class="kicker" data-el="k">A cautionary tale</div>
+      <div class="headline" data-el="h">This started as<br>one hoodie.</div>
+      <div class="plate" data-el="p">
+        <img id="heroFrame" src="frames/hero/f_0001.jpg" alt="">
+        <div class="platecap">day 4 · it has the chair</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B2 · escalation: chair buried -->
+  <section class="beat" id="b2">
+    <div class="col">
+      <div class="kicker" data-el="k">Day 6</div>
+      <div class="headline" data-el="h">The chair<br>is gone.</div>
+      <div class="sticker" data-el="p" style="width:820px">
+        <img src="/home/user/cleanyourdirtylaundry/assets/world/chair-buried.webp" style="width:820px" alt="">
+        <div class="shadow-ellipse"></div>
+      </div>
+      <div class="note" data-el="n">items: <span id="count">0</span> · climbing</div>
+    </div>
+  </section>
+
+  <!-- B3 · escalation: the pile has a face -->
+  <section class="beat" id="b3">
+    <div class="col">
+      <div class="kicker" data-el="k">Day 9</div>
+      <div class="headline" data-el="h">It has a<br>face now.</div>
+      <div class="sticker" data-el="p" style="width:730px">
+        <img src="/home/user/cleanyourdirtylaundry/assets/world/blue-pile-floor.webp" style="width:730px" alt="">
+        <div class="shadow-ellipse"></div>
+      </div>
+      <div class="note" data-el="n">morale: declining</div>
+    </div>
+  </section>
+
+  <!-- B4 · the turn: bag at the door video -->
+  <section class="beat" id="b4">
+    <div class="col">
+      <div class="kicker" data-el="k">The alternative</div>
+      <div class="headline" data-el="h">One bag.<br>Once a week.</div>
+      <div class="plate" data-el="p">
+        <img id="porchFrame" src="frames/porch/f_0001.jpg" alt="">
+        <div class="platecap">you: not involved</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B5 · resolution: folded stack -->
+  <section class="beat" id="b5">
+    <div class="col">
+      <div class="kicker" data-el="k">Two days later</div>
+      <div class="headline" data-el="h">Back. Folded.<br><span class="dim">Like nothing happened.</span></div>
+      <div class="plate" data-el="p">
+        <img src="/home/user/cleanyourdirtylaundry/assets/world/scene-thursday-fold.webp" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- B6 · end card -->
+  <section class="beat" id="b6">
+    <div class="col">
+      <div class="endword" data-el="w">HAMPER'D</div>
+      <div class="endrule" data-el="r"></div>
+      <div class="endline" data-el="h">Let Hamper'd<br>take care of<br>this mess.</div>
+      <div class="endsub" data-el="s">So you don't have to.</div>
+      <div class="pill" data-el="c">hamperd.com</div>
+      <div class="endfoot" data-el="f">wash · fold · delivered · raleigh</div>
+    </div>
+  </section>
+
+  <div id="vignette"></div>
+</div>
+
+<script>
+const FPS = 30;
+const BEATS = [
+  {id:'b1', t0:0.00,  t1:3.30},
+  {id:'b2', t0:3.30,  t1:6.90},
+  {id:'b3', t0:6.90,  t1:10.40},
+  {id:'b4', t0:10.40, t1:14.20},
+  {id:'b5', t0:14.20, t1:17.80},
+  {id:'b6', t0:17.80, t1:22.00},
+];
+const TOTAL = 22.00;
+
+const $ = (sel,root)=> (root||document).querySelector(sel);
+const clamp01 = x => Math.max(0, Math.min(1, x));
+const eoc = x => 1 - Math.pow(1-x, 3);                 // easeOutCubic
+const eob = x => { const c1=1.30, c3=c1+1;             // easeOutBack (soft)
+  return 1 + c3*Math.pow(x-1,3) + c1*Math.pow(x-1,2); };
+
+// entry animation: fade + rise. returns progress 0..1
+function ent(u, delay, dur){ return eoc(clamp01((u-delay)/(dur||0.45))); }
+// beat-exit fade multiplier
+function exf(u, beatDur, dur){ return clamp01((beatDur-u)/(dur||0.30)); }
+
+function styleIn(el, p, rise, extra){
+  el.style.opacity = p;
+  el.style.transform = 'translateY(' + ((1-p)*(rise==null?44:rise)) + 'px)' + (extra||'');
+}
+
+const heroImgs = [], porchImgs = [];
+function preload(){
+  const jobs = [];
+  for(let i=1;i<=151;i++){
+    const a=new Image(); a.src='frames/hero/f_'+String(i).padStart(4,'0')+'.jpg'; heroImgs.push(a);
+    const b=new Image(); b.src='frames/porch/f_'+String(i).padStart(4,'0')+'.jpg'; porchImgs.push(b);
+    jobs.push(a.decode().catch(()=>{}), b.decode().catch(()=>{}));
+  }
+  document.querySelectorAll('#stage img').forEach(im=>jobs.push(im.decode().catch(()=>{})));
+  return Promise.all(jobs);
+}
+
+function vidFrame(localT){ // 30fps frames 1..151 of a 5.03s loop
+  return Math.min(151, Math.floor((localT % 5.03) * 30) + 1);
+}
+
+function seek(t){
+  t = Math.max(0, Math.min(TOTAL - 1/FPS, t));
+  for(const b of BEATS){
+    const el = document.getElementById(b.id);
+    if(t < b.t0 || t >= b.t1){ el.style.opacity = 0; continue; }
+    el.style.opacity = 1;
+    const u = t - b.t0, D = b.t1 - b.t0;
+    const isEnd = b.id === 'b6';
+    const X = isEnd ? 1 : exf(u, D);
+
+    if(b.id==='b1'){
+      $('#heroFrame').src = heroImgs[vidFrame(u)-1].src;
+      const k=$('[data-el=k]',el), h=$('[data-el=h]',el), p=$('[data-el=p]',el);
+      styleIn(k, ent(u,0.00)*X);
+      styleIn(h, ent(u,0.12)*X);
+      const pp = ent(u,0.28,0.55);
+      p.style.opacity = pp*X;
+      p.style.transform = 'translateY('+((1-pp)*70)+'px) scale('+(0.97+0.03*pp)+')';
+    }
+
+    if(b.id==='b2' || b.id==='b3'){
+      const k=$('[data-el=k]',el), h=$('[data-el=h]',el), p=$('[data-el=p]',el), n=$('[data-el=n]',el);
+      styleIn(k, ent(u,0.00)*X);
+      styleIn(h, ent(u,0.10)*X);
+      const pp = ent(u,0.24,0.5);
+      const breathe = 1 + 0.006*Math.sin(2*Math.PI*(t/3.4));
+      p.style.opacity = pp*X;
+      p.style.transform = 'translateY('+((1-pp)*60)+'px) scale('+((0.96+0.04*pp)*breathe)+')';
+      styleIn(n, ent(u,0.55)*X);
+      if(b.id==='b2'){
+        const cp = eoc(clamp01((u-0.6)/0.9));
+        $('#count').textContent = Math.round(cp*47);
+      }
+    }
+
+    if(b.id==='b4'){
+      $('#porchFrame').src = porchImgs[vidFrame(u)-1].src;
+      const k=$('[data-el=k]',el), h=$('[data-el=h]',el), p=$('[data-el=p]',el);
+      styleIn(k, ent(u,0.00)*X);
+      styleIn(h, ent(u,0.12)*X);
+      const pp = ent(u,0.28,0.55);
+      p.style.opacity = pp*X;
+      p.style.transform = 'translateY('+((1-pp)*70)+'px) scale('+(0.97+0.03*pp)+')';
+    }
+
+    if(b.id==='b5'){
+      const k=$('[data-el=k]',el), h=$('[data-el=h]',el), p=$('[data-el=p]',el);
+      styleIn(k, ent(u,0.00)*X);
+      styleIn(h, ent(u,0.12)*X);
+      const pp = ent(u,0.26,0.55);
+      const drift = 1 + 0.015*eoc(clamp01(u/D)); // slow push-in on the plate
+      p.style.opacity = pp*X;
+      p.style.transform = 'translateY('+((1-pp)*70)+'px) scale('+((0.97+0.03*pp)*drift)+')';
+    }
+
+    if(b.id==='b6'){
+      const w=$('[data-el=w]',el), r=$('[data-el=r]',el), h=$('[data-el=h]',el),
+            s=$('[data-el=s]',el), c=$('[data-el=c]',el), f=$('[data-el=f]',el);
+      styleIn(w, ent(u,0.00));
+      r.style.opacity = ent(u,0.10);
+      const hp = clamp01((u-0.18)/0.6);
+      h.style.opacity = eoc(hp);
+      h.style.transform = 'scale(' + (0.92 + 0.08*eob(hp)) + ')';
+      styleIn(s, ent(u,0.62));
+      const cp2 = ent(u,0.88,0.5);
+      const pulse = 0.25 + 0.15*Math.sin(2*Math.PI*(u/1.6));
+      c.style.opacity = cp2;
+      c.style.transform = 'translateY('+((1-cp2)*40)+'px)';
+      c.style.boxShadow = '0 24px 70px rgba(255,210,77,'+(pulse*cp2)+')';
+      styleIn(f, ent(u,1.10));
+    }
+  }
+}
+
+window.TOTAL = TOTAL; window.FPS = FPS; window.seek = seek;
+window.READY = false;
+Promise.all([document.fonts.ready, preload()]).then(()=>{ seek(0); window.READY = true; });
+</script>
+</body>
+</html>
